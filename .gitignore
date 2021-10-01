@@ -1,7 +1,7 @@
 # files and directories created by pub
 .dart_tool/
-.packages
-.pub/
+*.packages
+*.pub/
 build/
 pubspec.lock  # Except for application packages
 # API documentation directory created by dartdoc
