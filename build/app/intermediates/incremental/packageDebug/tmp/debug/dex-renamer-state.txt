@@ -1,4 +1,0 @@
-#Fri Oct 01 09:00:56 CEST 2021
-base.0=/Users/thanhpham/Documents/bachelor/BeefitMember.Application/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
-path.0=classes.dex
-renamed.0=classes.dex
