@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'widgets/CarouselWidget.dart';
+import 'widgets/ButtonGroupWidget.dart';
 
 class PreLogin extends StatelessWidget {
   // This widget is the root of your application.
@@ -9,6 +10,7 @@ class PreLogin extends StatelessWidget {
       body: Column(
         children: <Widget>[
           CarouselWidget(),
+          ButtonGroupWidget(),
         ],
       ),
     );
