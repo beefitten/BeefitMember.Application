@@ -8,7 +8,7 @@ class CarouselWidget extends StatelessWidget {
     String imagePath = "lib/user/pages/pre_login/assets/testPicure.png";
     return Container(
       constraints: BoxConstraints.expand(
-        height: 600.0,
+        height: 500,
       ),
       decoration: BoxDecoration(color: Colors.deepPurple),
       child: Image.asset(imagePath, fit: BoxFit.fitWidth),
