@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 class ButtonGroupWidget extends StatelessWidget {
@@ -11,7 +13,7 @@ class ButtonGroupWidget extends StatelessWidget {
         PlaceholderButton(),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          // crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisSize: MainAxisSize.max,
           children: [
             PlaceholderButton(),
             PlaceholderButton(),
