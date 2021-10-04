@@ -5,7 +5,7 @@ class CarouselWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String imagePath = "assets/images/testPicure.png";
+    String imagePath = "lib/user/pages/pre_login/assets/testPicure.png";
     return Container(
       constraints: BoxConstraints.expand(
         height: 600.0,
