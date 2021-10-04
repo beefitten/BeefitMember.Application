@@ -25,8 +25,29 @@ class _UserLoginState extends State<Login> {
   @override
   Widget build(BuildContext context){
     final logo = Center(
-      child: Icon(Icons.supervised_user_circle, size: 150, color: Colors.lightBlue,),
+      child: Icon(
+        Icons.supervised_user_circle,
+        size: 150,
+        color: Colors.lightBlue,
+      ),
     );
+
+    final welcomeText = Container(
+      child: Column(
+        children: [
+          Text("Welcome!",
+        style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 24,),
+      ), Text("Please enter your email and password",
+          style: TextStyle(
+            fontSize: 13,
+            color: Color.fromRGBO(138, 141, 178, 1)),)
+        ],
+      ),
+    );
+
+
 
     final msg = BlocBuilder<LoginBLoc, LoginState>(
       builder: (context, state) {
@@ -46,9 +67,8 @@ class _UserLoginState extends State<Login> {
       keyboardType: TextInputType.emailAddress,
       autofocus: false,
       decoration: InputDecoration(
-        prefixIcon: Icon(Icons.email),
         filled: true,
-        fillColor: Color(0xFFF2F3F5),
+        fillColor: Color.fromRGBO(247, 247, 252, 1),
         hintStyle: TextStyle(
           color: Color(0xFF666666)
         ),
@@ -63,9 +83,8 @@ class _UserLoginState extends State<Login> {
       autofocus: false,
       obscureText: true,
       decoration: InputDecoration(
-          prefixIcon: Icon(Icons.lock),
           filled: true,
-          fillColor: Color(0xFFF2F3F5),
+          fillColor: Color.fromRGBO(247, 247, 252, 1),
           hintStyle: TextStyle(
               color: Color(0xFF666666)
           ),
@@ -77,15 +96,16 @@ class _UserLoginState extends State<Login> {
 
     final loginButton = Padding(
         padding: EdgeInsets.symmetric(vertical: 16.0),
+      // ignore: deprecated_member_use
       child: RaisedButton(
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(24),
+          borderRadius: BorderRadius.circular(5),
         ),
         onPressed: () {
           loginBLoc.add(LoginButtonPressed(email: email.text, password: password.text));
         },
         padding: EdgeInsets.all(12),
-        color: Colors.lightBlueAccent,
+        color: Color.fromRGBO(6, 62, 249, 1),
         child: Text('Login', style: TextStyle(color: Colors.white),),
       ),
     );
@@ -103,13 +123,15 @@ class _UserLoginState extends State<Login> {
           padding: EdgeInsets.only(left: 24.0, right: 24.0),
           children: <Widget>[
             logo,
+            welcomeText,
             msg,
-            SizedBox(height: 20.0),
+            SizedBox(height: 10.0),
             username,
-            SizedBox(height: 20.0),
+            SizedBox(height: 8.0),
             pass,
-            SizedBox(height: 20.0),
-            loginButton
+            SizedBox(height: 8.0),
+            loginButton,
+            SizedBox(height: 5.0)
           ],
         ),
       ),
