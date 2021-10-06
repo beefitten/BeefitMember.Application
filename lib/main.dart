@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
           '/contacts' : (context) => Contact(),
         },
       ),
+      home: PreLogin(),
     );
   }
 }
