@@ -7,13 +7,17 @@ class ButtonGroupWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        PlaceholderButton(),
+        Row(
+          children: [
+            Expanded(child: PlaceholderButton()),
+          ],
+        ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           mainAxisSize: MainAxisSize.max,
           children: [
-            PlaceholderButton(),
-            PlaceholderButton(),
+            Expanded(child: PlaceholderButton()),
+            Expanded(child: PlaceholderButton()),
           ],
         ),
       ],
@@ -26,14 +30,17 @@ class PlaceholderButton extends StatelessWidget {
   const PlaceholderButton({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: ButtonTheme(
-        child: TextButton(
-          onPressed: () => {},
-          child: Text("Button"),
-          style: TextButton.styleFrom(
-            primary: Colors.black,
-            backgroundColor: Colors.blue,
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: Container(
+        child: ButtonTheme(
+          child: TextButton(
+            onPressed: () => {},
+            child: Text("Button"),
+            style: TextButton.styleFrom(
+              primary: Colors.black,
+              backgroundColor: Colors.blue,
+            ),
           ),
         ),
       ),
