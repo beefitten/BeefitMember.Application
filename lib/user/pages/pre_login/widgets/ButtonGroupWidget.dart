@@ -17,7 +17,7 @@ class ButtonGroupWidget extends StatelessWidget {
           ],
         ),
       ],
-    ));
+    );
   }
 }
 
