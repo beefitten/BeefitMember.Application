@@ -10,9 +10,11 @@ class PreLogin extends StatelessWidget {
       body: Column(
         children: <Widget>[
           CarouselWidget(),
-          ButtonGroupWidget(),
-          Text(
-              "This text should be at the bottom of the page \n and hopefully in two lines centered in the middle."),
+          Expanded(child: ButtonGroupWidget()),
+          Container(
+            child: Text(
+                "This text should be at the bottom of the page \n and hopefully in two lines centered in the middle."),
+          ),
         ],
       ),
     );
