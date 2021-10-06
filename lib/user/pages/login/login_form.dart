@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:beefitmember_application/shared/shared_widgets/textfield.dart';
+import 'package:beefitmember_application/shared/widgets/textfield.dart';
 import 'package:beefitmember_application/user/bloc/login_bloc.dart';
 import 'package:beefitmember_application/user/bloc/login_events.dart';
 import 'package:beefitmember_application/user/bloc/login_state.dart';
@@ -28,7 +28,7 @@ class _UserLoginState extends State<Login> {
       _obscureText = !_obscureText;
     });
   }
-  final String logo_path = "lib/shared/shared_assets/images/logo.svg";
+  final String logo_path = "lib/shared/assets/images/logo.svg";
 
   @override
   void initState() {
