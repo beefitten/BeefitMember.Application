@@ -27,7 +27,6 @@ class ButtonGroupWidget extends StatelessWidget {
 //TODO: Delete this when "lib/shared/widgets/button.dart" has been created
 class PlaceholderButton extends StatelessWidget {
   const PlaceholderButton({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Container(
