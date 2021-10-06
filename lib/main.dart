@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         title: 'Beefit Member',
         routes: {
           '/' : (context) => Login(),
-          'contacts' : (context) => Contact(),
+          '/contacts' : (context) => Contact(),
         },
       ),
     );

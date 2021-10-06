@@ -18,14 +18,12 @@ class LoginBLoc extends Bloc<LoginEvents, LoginState>{
       yield LoginLoadingState();
       var data = await service.login(event.email, event.password);
 
-      if(data) {
-        pref.setString("token", data['token']);
-        pref.setString('email', data['email']);
-        yield UserLoginSuccessState();
-      }
-      else {
-        yield LoginErrorState(message: "Login error");
-      }
+
+      pref.setString("token", data);
+      yield UserLoginSuccessState();
+    }
+    else {
+      yield LoginErrorState(message: "Login error");
     }
 
 
