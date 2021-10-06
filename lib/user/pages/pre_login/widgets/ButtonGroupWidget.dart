@@ -5,8 +5,7 @@ class ButtonGroupWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: Column(
+    return Column(
       children: [
         PlaceholderButton(),
         Row(
