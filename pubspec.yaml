@@ -33,6 +33,7 @@ dependencies:
   shared_preferences:
   equatable:
   flutter_svg:
+  carousel_slider: ^4.0.0
 
 dev_dependencies:
   flutter_test:
