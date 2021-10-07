@@ -21,19 +21,22 @@ class _CarouselWidgetState extends State<CarouselWidget> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        CarouselSlider.builder(
-          options: CarouselOptions(
-            height: 550,
-            autoPlay: true,
-            viewportFraction: 1,
-            onPageChanged: (index, reason) =>
-                setState(() => activeIndex = index),
+        ClipPath(
+          clipper: CurveClipper(),
+          child: CarouselSlider.builder(
+            options: CarouselOptions(
+              height: 550,
+              autoPlay: true,
+              viewportFraction: 1,
+              onPageChanged: (index, reason) =>
+                  setState(() => activeIndex = index),
+            ),
+            itemCount: images.length,
+            itemBuilder: (context, index, realIndex) {
+              final image = images[index];
+              return buildImage(image, index);
+            },
           ),
-          itemCount: images.length,
-          itemBuilder: (context, index, realIndex) {
-            final image = images[index];
-            return buildImage(image, index);
-          },
         ),
         Padding(
           padding: const EdgeInsets.all(14.0),
@@ -44,7 +47,6 @@ class _CarouselWidgetState extends State<CarouselWidget> {
   }
 
   Widget buildImage(String image, int index) => Container(
-        //margin: EdgeInsets.symmetric(horizontal: 1),
         color: Colors.grey,
         child: Image.asset(
           image,
@@ -56,4 +58,36 @@ class _CarouselWidgetState extends State<CarouselWidget> {
         activeIndex: activeIndex,
         count: images.length,
       );
+}
+
+class CurveClipper extends CustomClipper<Path> {
+  @override
+  getClip(Size size) {
+    Path path = Path();
+    path.lineTo(0, size.height * 0.7);
+    // path.relativeQuadraticBezierTo(
+    //   0,
+    //   size.height * 0.2,
+    //   size.width * 0.1,
+    //   size.height * 0.2,
+    // );
+    path.relativeConicTo(
+      0,
+      size.height * 0.1,
+      size.width * 0.75,
+      size.height * 0.3,
+      1.75,
+    );
+
+    path.lineTo(size.width * 0.75, size.height);
+    path.lineTo(size.width, size.height * 0.85);
+    path.lineTo(size.width, 0);
+    path.close();
+    return path;
+  }
+
+  @override
+  bool shouldReclip(covariant CustomClipper oldClipper) {
+    return false;
+  }
 }
