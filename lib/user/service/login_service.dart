@@ -1,34 +1,31 @@
 import 'dart:convert';
+import 'dart:io';
+import 'package:beefitmember_application/utils/secure_storage.dart';
 import 'package:http/http.dart' as http;
 
 class LoginService {
   login(String email, String password) async {
-    var resBody = {};
-    resBody["email"] = email;
-    resBody["password"] = password;
-    var str = json.encode(resBody);
 
-    var res = await http.post(
-        Uri.parse("http://stellers.dk/login"),
-        headers: <String, String>{
-          'Content-Type': 'application/json; charset=UTF-8',
-        }, body: str);
+    var endpointUrl = Uri.parse('https://beefitmemberuser.azurewebsites.net/login');
 
-    var data = res.body;
+        var body = {};
+        body["email"] = email;
+        body["password"] = password;
+        var bodyJson = json.encode(body);
 
-    print(data);
+    var headers = {
+      HttpHeaders.contentTypeHeader: 'application/json; charset=UTF-8'
+    };
 
-    return data;
+    var response = await http.post(
+        endpointUrl,
+        headers: headers,
+        body: bodyJson);
+
+    var token = response.body;
+
+    await SecureStorage.setToken(token);
+
+    return token;
   }
 }
-
-/*
-var res = await http.post(
-Uri.parse("http://stellers.dk/login") ,
-headers: {},
-body: {"email": email, "password": password});
-final data = json.decode(res.body);
-
-if(data) return data;
-else return "something went wrong";
-}*/

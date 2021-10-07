@@ -143,7 +143,7 @@ class _UserLoginState extends State<Login> {
       body: BlocListener<LoginBLoc, LoginState>(
         listener: (context, state){
           if(state is UserLoginSuccessState){
-           Navigator.pushNamed(context, '/contacts');
+           Navigator.pushNamed(context, '/nav');
           }
         },
         child: ListView(
