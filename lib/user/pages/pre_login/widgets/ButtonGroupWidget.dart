@@ -34,12 +34,12 @@ class PlaceholderButton extends StatelessWidget {
       padding: const EdgeInsets.all(10.0),
       child: Container(
         child: ButtonTheme(
-          child: TextButton(
+          child: ElevatedButton(
             onPressed: () => {},
             child: Text("Button"),
-            style: TextButton.styleFrom(
-              primary: Colors.black,
-              backgroundColor: Colors.blue,
+            style: ElevatedButton.styleFrom(
+              primary: Colors.blue,
+              elevation: 10,
             ),
           ),
         ),
