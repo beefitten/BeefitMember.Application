@@ -52,38 +52,65 @@ class PlaceholderButton extends StatelessWidget {
 class PlaceholderButton_notImplemented extends StatelessWidget {
   const PlaceholderButton_notImplemented({Key? key}) : super(key: key);
 
-  final String _regAcc = "Register Account";
-  final String _hint = "The Selected email was not found in the system. Do you want to register a new account or try another email?";
-  displayDialog(context, textButtonOne, hintText){
+  final String _regAccLabel = "Register Account";
+  final String _tryAnother = "Try another email";
+  final String _txt = "The Selected email was not found in the system. Do you want to register a new account or try another email?";
+
+  displayDialog(context, regAccLabel, tryAnother, txt){
     showDialog(
         context: context,
         builder: (context){
           return Dialog(
+            insetPadding: EdgeInsets.only(top: 100.0, bottom: 250.0, left: 15.0, right: 15.0),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(5.0),
             ),
             child: Padding(
-              padding: EdgeInsets.all(12.0),
+              padding: EdgeInsets.only(left: 10.0, right: 10.0, top: 0),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  TextField(
-                    decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: hintText),
+                  Row(
+                    children: [
+                      Text("Ups!",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold
+                        ),
+                      ),
+                    ],
                   ),
+                  Text(txt),
+                  SizedBox(height: MediaQuery.of(context).size.height *0.03),
                   SizedBox(
                     width: 320.0,
                     height: 40.0,
                     // ignore: deprecated_member_use
                     child: RaisedButton(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5.0)
+                      ),
                       color: Color.fromRGBO(6, 62, 249, 1),
                       onPressed: (){},
-                      child: Text(_regAcc, style: TextStyle(
+                      child: Text(regAccLabel, style: TextStyle(
                         color: Colors.white,
                       ),),
-                    ),)
+                    ),
+                  ),
+                  SizedBox(height: 10.0),
+                  SizedBox(
+                    width: 320.0,
+                    height: 40.0,
+                    // ignore: deprecated_member_use
+                    child: RaisedButton(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5.0)
+                      ),
+                      color: Color.fromRGBO(229, 235, 254, 1),
+                      onPressed: (){},
+                      child: Text(tryAnother, style: TextStyle(
+                        color: Color.fromRGBO(6, 62, 249, 1),
+                      ),),
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -98,7 +125,7 @@ class PlaceholderButton_notImplemented extends StatelessWidget {
       child: Container(
         child: ButtonTheme(
           child: TextButton(
-            onPressed: () => {displayDialog(context, _regAcc, _hint)},
+            onPressed: () => {displayDialog(context, _regAccLabel, _tryAnother, _txt)},
             child: Text("Button"),
             style: TextButton.styleFrom(
               primary: Colors.black,
