@@ -25,7 +25,7 @@ class _UserLoginState extends State<Login> {
     });
   }
 
-  final String logo_path = "lib/shared/assets/images/logo.svg";
+  final String logoPath = "lib/shared/assets/images/logo.svg";
 
   @override
   void initState() {
@@ -37,7 +37,7 @@ class _UserLoginState extends State<Login> {
   Widget build(BuildContext context) {
     final logo = Center(
         child: SvgPicture.asset(
-      logo_path,
+      logoPath,
     ));
 
     final headContainer = Container(
