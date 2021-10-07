@@ -2,17 +2,36 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 class CarouselWidget extends StatelessWidget {
-  const CarouselWidget({Key? key}) : super(key: key);
+  final images = [
+    "lib/user/pages/pre_login/assets/tree.jpg",
+    "lib/user/pages/pre_login/assets/plane.jpg",
+    "lib/user/pages/pre_login/assets/jura.png",
+  ];
 
   @override
   Widget build(BuildContext context) {
-    String imagePath = "lib/user/pages/pre_login/assets/testPicure.png";
-    return Container(
-      constraints: BoxConstraints.expand(
-        height: 500,
+    return Center(
+      child: CarouselSlider.builder(
+        options: CarouselOptions(
+          height: 550,
+          autoPlay: true,
+          viewportFraction: 1,
+        ),
+        itemCount: images.length,
+        itemBuilder: (context, index, realIndex) {
+          final image = images[index];
+          return buildImage(image, index);
+        },
       ),
-      decoration: BoxDecoration(color: Colors.deepPurple),
-      child: Image.asset(imagePath, fit: BoxFit.fitWidth),
     );
   }
+
+  Widget buildImage(String image, int index) => Container(
+        //margin: EdgeInsets.symmetric(horizontal: 1),
+        color: Colors.grey,
+        child: Image.asset(
+          image,
+          fit: BoxFit.cover,
+        ),
+      );
 }
