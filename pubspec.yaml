@@ -34,7 +34,8 @@ dependencies:
   shared_preferences:
   equatable:
   flutter_svg:
-  carousel_slider: ^4.0.0
+  carousel_slider:
+  smooth_page_indicator:
 
 dev_dependencies:
   flutter_test:
