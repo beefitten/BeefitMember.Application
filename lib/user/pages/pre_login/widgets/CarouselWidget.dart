@@ -41,13 +41,18 @@ class _CarouselWidgetState extends State<CarouselWidget> {
                 },
               ),
             ),
-            Padding(
-              padding: EdgeInsets.all(10),
-              child: Text("Track your \n activities",
+            Container(
+              alignment: Alignment.bottomLeft,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  "Track your \n activities",
                   textScaleFactor: 2,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                  )),
+                  ),
+                ),
+              ),
             ),
           ],
         ),
