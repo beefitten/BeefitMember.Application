@@ -43,7 +43,9 @@ class _UserLoginState extends State<Login> {
     );
 
     final backButton = RawMaterialButton(
-      onPressed: () {},
+      onPressed: () {
+        Navigator.pop(context, '/');
+      },
       elevation: 3.0,
       fillColor: Colors.white,
       child: Icon(
@@ -94,7 +96,8 @@ class _UserLoginState extends State<Login> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           TextButton(
-              onPressed: () {},
+              onPressed: () {
+              },
               child: Text("Forgot password?")),
         ],
       ),
