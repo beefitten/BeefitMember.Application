@@ -11,10 +11,15 @@ class PreLogin extends StatelessWidget {
         children: <Widget>[
           CarouselWidget(),
           Expanded(child: ButtonGroupWidget()),
-          Container(
-            child: Text(
-                "This text should be at the bottom of the page \n and hopefully in two lines centered in the middle."),
-
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Container(
+              alignment: Alignment.bottomCenter,
+              child: Text(
+                "By continuing you agree to Beefits Terms of Service \n and Privacy Policy",
+                textAlign: TextAlign.center,
+              ),
+            ),
           ),
         ],
       ),
