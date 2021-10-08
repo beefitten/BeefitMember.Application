@@ -88,7 +88,7 @@ class CurveClipper extends CustomClipper<Path> {
       size.height * 1.2,
       size.width,
       size.height * 0.8,
-      0.75,
+      0.3,
     );
     // path.relativeConicTo(
     //   0,
