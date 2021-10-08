@@ -83,14 +83,21 @@ class CurveClipper extends CustomClipper<Path> {
   getClip(Size size) {
     Path path = Path();
     path.lineTo(0, size.height * 0.7);
-    path.relativeConicTo(
-      0,
-      size.height * 0.1,
+    path.conicTo(
       size.width * 0.8,
-      size.height * 0.3,
-      1.75,
+      size.height * 1.2,
+      size.width,
+      size.height * 0.8,
+      0.75,
     );
-    path.lineTo(size.width, size.height * 0.85);
+    // path.relativeConicTo(
+    //   0,
+    //   size.height * 0.1,
+    //   size.width * 0.8,
+    //   size.height * 0.3,
+    //   1.75,
+    // );
+    // path.lineTo(size.width, size.height * 0.85);
     path.lineTo(size.width, 0);
     return path;
   }
