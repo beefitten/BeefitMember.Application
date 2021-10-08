@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:beefitmember_application/shared/widgets/textfield.dart';
 import 'package:beefitmember_application/user/bloc/login_bloc.dart';
 import 'package:beefitmember_application/user/bloc/login_events.dart';
@@ -40,15 +42,38 @@ class _UserLoginState extends State<Login> {
       logoPath,
     ));
 
-    final headContainer = Container(
-      child: logo,
-      height: MediaQuery.of(context).size.height * 0.3,
-      color: Color.fromRGBO(242, 245, 255, 1),
-      margin:
-          EdgeInsets.only(bottom: MediaQuery.of(context).size.height * 0.03),
+    final backButton = RawMaterialButton(
+      onPressed: () {
+        Navigator.pop(context, '/');
+      },
+      elevation: 3.0,
+      fillColor: Colors.white,
+      child: Icon(
+        Icons.arrow_back,
+        size: 25.0,
+      ),
+      padding: EdgeInsets.all(15.0),
+      shape: CircleBorder(),
+    );
+
+    final headContainer = Stack(
+      children: [
+        Container(
+          child: logo,
+          height: MediaQuery.of(context).size.height * 0.3,
+          color: Color.fromRGBO(242, 245, 255, 1),
+          margin: EdgeInsets.only(
+              bottom: MediaQuery.of(context).size.height * 0.03),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 10, top: 20),
+          child: backButton,
+        ),
+      ],
     );
 
     final welcomeText = Container(
+      padding: EdgeInsets.only(left: 24.0, right: 24.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -69,6 +94,15 @@ class _UserLoginState extends State<Login> {
       ),
     );
 
+    final forgotPassword = Container(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          TextButton(onPressed: () {}, child: Text("Forgot password?")),
+        ],
+      ),
+    );
+
     final msg = BlocBuilder<LoginBLoc, LoginState>(
       builder: (context, state) {
         if (state is LoginErrorState) {
@@ -82,24 +116,31 @@ class _UserLoginState extends State<Login> {
       },
     );
 
-    final emailInput = TextFieldInput(
-        email,
-        false,
-        true,
-        247,
-        247,
-        252,
-        1,
-        0xFF666666,
-        'Email',
-        20.0,
-        10.0,
-        20.0,
-        10.0,
-        5.0,
-        TextInputType.emailAddress);
+    final emailInput = Container(
+        padding: EdgeInsets.only(left: 24.0, right: 24.0),
+        child: Column(
+          children: [
+            TextFieldInput(
+                email,
+                false,
+                true,
+                247,
+                247,
+                252,
+                1,
+                0xFF666666,
+                'Email',
+                20.0,
+                10.0,
+                20.0,
+                10.0,
+                5.0,
+                TextInputType.emailAddress),
+          ],
+        ));
 
     final passwordInput = Container(
+      padding: EdgeInsets.only(left: 24.0, right: 24.0),
       child: Column(
         children: [
           TextField(
@@ -125,7 +166,7 @@ class _UserLoginState extends State<Login> {
     );
 
     final loginButton = Padding(
-      padding: EdgeInsets.symmetric(vertical: 16.0),
+      padding: EdgeInsets.fromLTRB(24.0, 24.0, 16.0, 0),
       // ignore: deprecated_member_use
       child: RaisedButton(
         shape: RoundedRectangleBorder(
@@ -149,12 +190,11 @@ class _UserLoginState extends State<Login> {
       body: BlocListener<LoginBLoc, LoginState>(
         listener: (context, state) {
           if (state is UserLoginSuccessState) {
-            Navigator.pushNamed(context, '/contacts');
+            Navigator.pushNamed(context, '/nav');
           }
         },
         child: ListView(
           shrinkWrap: true,
-          padding: EdgeInsets.only(left: 24.0, right: 24.0),
           children: <Widget>[
             headContainer,
             welcomeText,
@@ -163,7 +203,8 @@ class _UserLoginState extends State<Login> {
             emailInput,
             SizedBox(height: 8.0),
             passwordInput,
-            loginButton
+            loginButton,
+            forgotPassword,
           ],
         ),
       ),
