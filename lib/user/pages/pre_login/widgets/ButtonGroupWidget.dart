@@ -9,15 +9,28 @@ class ButtonGroupWidget extends StatelessWidget {
       children: [
         Row(
           children: [
-            Expanded(child: PlaceholderButton()),
+            Expanded(
+              child: PlaceholderButton(
+                "Sign in with e-mail",
+                () => {Navigator.pushNamed(context, '/login')},
+              ),
+            ),
           ],
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           mainAxisSize: MainAxisSize.max,
           children: [
-            Expanded(child: PlaceholderButton_notImplemented()),
-            Expanded(child: PlaceholderButton_notImplemented()),
+            Expanded(
+                child: PlaceholderButton(
+              "Facebook",
+              () => {},
+            )),
+            Expanded(
+                child: PlaceholderButton(
+              "AppleID",
+              () => {},
+            )),
           ],
         ),
       ],
@@ -27,7 +40,11 @@ class ButtonGroupWidget extends StatelessWidget {
 
 //TODO: Delete this when "lib/shared/widgets/button.dart" has been created
 class PlaceholderButton extends StatelessWidget {
-  const PlaceholderButton({Key? key}) : super(key: key);
+  final VoidCallback _onPressed;
+  final String _text;
+
+  PlaceholderButton(this._text, this._onPressed);
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -35,8 +52,9 @@ class PlaceholderButton extends StatelessWidget {
       child: Container(
         child: ButtonTheme(
           child: TextButton(
-            onPressed: () => {Navigator.pushNamed(context, '/login')},
-            child: Text("Button"),
+            onPressed: this._onPressed,
+            // onPressed: () => {Navigator.pushNamed(context, '/login')},
+            child: Text(this._text),
             style: TextButton.styleFrom(
               primary: Colors.black,
               backgroundColor: Colors.blue,
