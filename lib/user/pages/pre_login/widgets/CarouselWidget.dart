@@ -21,22 +21,35 @@ class _CarouselWidgetState extends State<CarouselWidget> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        ClipPath(
-          clipper: CurveClipper(),
-          child: CarouselSlider.builder(
-            options: CarouselOptions(
-              height: 550,
-              autoPlay: true,
-              viewportFraction: 1,
-              onPageChanged: (index, reason) =>
-                  setState(() => activeIndex = index),
+        Stack(
+          alignment: Alignment.bottomLeft,
+          children: [
+            ClipPath(
+              clipper: CurveClipper(),
+              child: CarouselSlider.builder(
+                options: CarouselOptions(
+                  height: 550,
+                  autoPlay: true,
+                  viewportFraction: 1,
+                  onPageChanged: (index, reason) =>
+                      setState(() => activeIndex = index),
+                ),
+                itemCount: images.length,
+                itemBuilder: (context, index, realIndex) {
+                  final image = images[index];
+                  return buildImage(image, index);
+                },
+              ),
             ),
-            itemCount: images.length,
-            itemBuilder: (context, index, realIndex) {
-              final image = images[index];
-              return buildImage(image, index);
-            },
-          ),
+            Padding(
+              padding: EdgeInsets.all(10),
+              child: Text("Track your \n activities",
+                  textScaleFactor: 2,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  )),
+            ),
+          ],
         ),
         Padding(
           padding: const EdgeInsets.all(14.0),
@@ -65,24 +78,15 @@ class CurveClipper extends CustomClipper<Path> {
   getClip(Size size) {
     Path path = Path();
     path.lineTo(0, size.height * 0.7);
-    // path.relativeQuadraticBezierTo(
-    //   0,
-    //   size.height * 0.2,
-    //   size.width * 0.1,
-    //   size.height * 0.2,
-    // );
     path.relativeConicTo(
       0,
       size.height * 0.1,
-      size.width * 0.75,
+      size.width * 0.8,
       size.height * 0.3,
       1.75,
     );
-
-    path.lineTo(size.width * 0.75, size.height);
     path.lineTo(size.width, size.height * 0.85);
     path.lineTo(size.width, 0);
-    path.close();
     return path;
   }
 
