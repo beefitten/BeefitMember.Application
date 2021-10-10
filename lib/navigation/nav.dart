@@ -48,15 +48,25 @@ class _NavState extends State<Nav> {
           showSelectedLabels: true,
           items: [
             BottomNavigationBarItem(
-                icon: Icon(Icons.home), title: Text("Overview")),
+              icon: Icon(Icons.home),
+              label: "Overview",
+            ),
             BottomNavigationBarItem(
-                icon: Icon(Icons.fitness_center), title: Text("Strong")),
+              icon: Icon(Icons.fitness_center),
+              label: "Strong",
+            ),
             BottomNavigationBarItem(
-                icon: Icon(Icons.add_circle), title: Text("Plus")),
+              icon: Icon(Icons.add_circle),
+              label: "Plus",
+            ),
             BottomNavigationBarItem(
-                icon: Icon(Icons.calendar_today), title: Text("Calender")),
+              icon: Icon(Icons.calendar_today),
+              label: "Calender",
+            ),
             BottomNavigationBarItem(
-                icon: Icon(Icons.menu), title: Text("More")),
+              icon: Icon(Icons.menu),
+              label: "More",
+            ),
           ],
           currentIndex: _selectedIndex,
           onTap: onItemTap,
