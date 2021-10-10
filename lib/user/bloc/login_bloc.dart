@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:beefitmember_application/user/bloc/login_events.dart';
 import 'package:beefitmember_application/user/bloc/login_state.dart';
 import 'package:beefitmember_application/user/service/login_service.dart';
@@ -15,8 +17,8 @@ class LoginBLoc extends Bloc<LoginEvents, LoginState> {
       yield LoginLoadingState();
       var token = await service.login(event.email, event.password);
 
-      if (token == "Error")
-        yield LoginErrorState(message: "Fail: Wrong Password");
+      if (token == "error")
+        yield LoginErrorState(message: "Fail: Wrong username or password");
       else
         yield UserLoginSuccessState();
     } else {
