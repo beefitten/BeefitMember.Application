@@ -13,16 +13,14 @@ class ButtonGroupWidget extends StatelessWidget {
           Row(
             children: [
               Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: CustomButton(
-                    "Sign in with e-mail",
-                    () => {Navigator.pushNamed(context, '/login')},
-                  ),
+                child: CustomButton(
+                  "Sign in with e-mail",
+                  () => {Navigator.pushNamed(context, '/login')},
                 ),
               ),
             ],
           ),
+          SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             mainAxisSize: MainAxisSize.max,
@@ -33,6 +31,7 @@ class ButtonGroupWidget extends StatelessWidget {
                   () => {},
                 ),
               ),
+              SizedBox(width: 20),
               Expanded(
                 child: CustomIconButton(
                   Icons.alarm,

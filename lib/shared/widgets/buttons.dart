@@ -29,20 +29,17 @@ class CustomIconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 0),
-      child: RaisedButton(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-        ),
+    return RaisedButton(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
+      onPressed: this._onPressed,
+      color: Colors.white,
+      textColor: Colors.black,
+      child: IconButton(
+        icon: Icon(this._icon),
         onPressed: this._onPressed,
-        color: Colors.white,
-        textColor: Colors.black,
-        child: IconButton(
-          icon: Icon(this._icon),
-          onPressed: this._onPressed,
-          iconSize: 35,
-        ),
+        iconSize: 35,
       ),
     );
   }

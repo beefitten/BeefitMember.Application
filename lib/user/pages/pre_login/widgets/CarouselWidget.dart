@@ -44,7 +44,7 @@ class _CarouselWidgetState extends State<CarouselWidget> {
             Container(
               alignment: Alignment.bottomLeft,
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.fromLTRB(24.0, 0, 0, 0),
                 child: Text(
                   "Track your \n activities",
                   textScaleFactor: 2,
@@ -57,7 +57,7 @@ class _CarouselWidgetState extends State<CarouselWidget> {
           ],
         ),
         Padding(
-          padding: const EdgeInsets.all(14.0),
+          padding: const EdgeInsets.fromLTRB(24.0, 10, 0, 10),
           child: buildIndicator(),
         ),
       ],
