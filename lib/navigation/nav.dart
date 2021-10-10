@@ -1,4 +1,3 @@
-import 'package:beefitmember_application/utils/refreshRate.dart';
 import 'package:flutter/material.dart';
 
 class Nav extends StatefulWidget {
@@ -7,7 +6,6 @@ class Nav extends StatefulWidget {
 }
 
 class _NavState extends State<Nav> {
-
   @override
   void initState() {
     super.initState();
@@ -23,7 +21,7 @@ class _NavState extends State<Nav> {
     Text("More"),
   ];
 
-  void onItemTap(int index){
+  void onItemTap(int index) {
     setState(() {
       _selectedIndex = index;
     });
@@ -32,8 +30,7 @@ class _NavState extends State<Nav> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:
-      AppBar(
+      appBar: AppBar(
         title: Text("Bottom Nav Bar"),
       ),
       body: Center(
@@ -45,36 +42,26 @@ class _NavState extends State<Nav> {
           highlightColor: Colors.transparent,
         ),
         child: BottomNavigationBar(
-          iconSize: MediaQuery.of(context).size.height*0.035,
+          iconSize: MediaQuery.of(context).size.height * 0.035,
           type: BottomNavigationBarType.fixed,
           showUnselectedLabels: false,
           showSelectedLabels: true,
           items: [
             BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                title: Text("Overview")
-            ),
+                icon: Icon(Icons.home), title: Text("Overview")),
             BottomNavigationBarItem(
-                icon: Icon(Icons.fitness_center),
-                title: Text("Strong")
-            ),
+                icon: Icon(Icons.fitness_center), title: Text("Strong")),
             BottomNavigationBarItem(
-                icon: Icon(Icons.add_circle),
-                title: Text("Plus")
-            ),
+                icon: Icon(Icons.add_circle), title: Text("Plus")),
             BottomNavigationBarItem(
-                icon: Icon(Icons.calendar_today),
-                title: Text("Calender")
-            ),
+                icon: Icon(Icons.calendar_today), title: Text("Calender")),
             BottomNavigationBarItem(
-                icon: Icon(Icons.menu),
-                title: Text("More")
-            ),
+                icon: Icon(Icons.menu), title: Text("More")),
           ],
           currentIndex: _selectedIndex,
           onTap: onItemTap,
           backgroundColor: Colors.white,
-          selectedItemColor: Color.fromRGBO(6,62,249,1),
+          selectedItemColor: Color.fromRGBO(6, 62, 249, 1),
         ),
       ),
     );
