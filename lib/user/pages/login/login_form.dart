@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:beefitmember_application/shared/widgets/textfield.dart';
 import 'package:beefitmember_application/user/bloc/login_bloc.dart';
 import 'package:beefitmember_application/user/bloc/login_events.dart';
