@@ -84,9 +84,9 @@ class CurveClipper extends CustomClipper<Path> {
     Path path = Path();
     path.lineTo(0, 0);
     path.cubicTo(0, 0, 0, size.height * 0.69, 0, size.height * 0.69);
-    path.cubicTo(0, size.height * 0.79, size.width * 0.7, size.height,
+    path.cubicTo(0, size.height * 0.79, size.width * 0.66, size.height,
         size.width * 0.73, size.height);
-    path.cubicTo(size.width * 0.76, size.height, size.width, size.height * 0.94,
+    path.cubicTo(size.width * 0.8, size.height, size.width, size.height * 0.94,
         size.width, size.height * 0.94);
     path.cubicTo(size.width, size.height * 0.94, size.width, size.height * 0.3,
         size.width, 0);
