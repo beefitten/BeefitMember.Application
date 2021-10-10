@@ -3,8 +3,6 @@ import 'package:beefitmember_application/user/bloc/login_state.dart';
 import 'package:beefitmember_application/user/pages/Contact.dart';
 
 import 'package:beefitmember_application/navigation/nav.dart';
-import 'package:beefitmember_application/user/bloc/login_bloc.dart';
-import 'package:beefitmember_application/user/bloc/login_state.dart';
 import 'package:beefitmember_application/user/pages/login/login_form.dart';
 import 'package:beefitmember_application/user/pages/pre_login/pre_login.dart';
 import 'package:beefitmember_application/user/service/login_service.dart';
