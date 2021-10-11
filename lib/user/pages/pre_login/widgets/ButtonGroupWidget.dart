@@ -7,7 +7,7 @@ class ButtonGroupWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
+      padding: const EdgeInsets.only(left: 24, right: 24),
       child: Column(
         children: [
           Row(
@@ -20,7 +20,7 @@ class ButtonGroupWidget extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 20),
+          SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             mainAxisSize: MainAxisSize.max,
@@ -31,7 +31,7 @@ class ButtonGroupWidget extends StatelessWidget {
                   () => {},
                 ),
               ),
-              SizedBox(width: 20),
+              SizedBox(width: 10),
               Expanded(
                 child: CustomIconButton(
                   Icons.alarm,
