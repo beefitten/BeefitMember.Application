@@ -62,7 +62,7 @@ class _CarouselWidgetState extends State<CarouselWidget> {
             ),
             Positioned(
               bottom: MediaQuery.of(context).size.height * 0.07,
-              left: MediaQuery.of(context).size.height * 0.28,
+              left: MediaQuery.of(context).size.height * 0.3,
               child: Container(
                 child: Center(
                   child: SvgPicture.asset(
