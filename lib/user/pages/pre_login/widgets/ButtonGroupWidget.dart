@@ -13,32 +13,42 @@ class ButtonGroupWidget extends StatelessWidget {
           Row(
             children: [
               Expanded(
-                child: CustomButton(
-                  "Sign in with e-mail",
-                  () => {Navigator.pushNamed(context, '/login')},
+                child: Container(
+                  height: MediaQuery.of(context).size.height * 0.07,
+                  child: CustomButton(
+                    "Sign in with e-mail",
+                    () => {Navigator.pushNamed(context, '/login')},
+                  ),
                 ),
               ),
             ],
           ),
-          SizedBox(height: 10),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Expanded(
-                child: CustomIconButton(
-                  Icons.facebook_sharp,
-                  () => {},
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.015,
+          ),
+          Container(
+            height: MediaQuery.of(context).size.height * 0.07,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Expanded(
+                  child: CustomIconButton(
+                    Icons.facebook_sharp,
+                    () => {},
+                  ),
                 ),
-              ),
-              SizedBox(width: 10),
-              Expanded(
-                child: CustomIconButton(
-                  Icons.alarm,
-                  () => {},
+                SizedBox(
+                  width: MediaQuery.of(context).size.height * 0.015,
                 ),
-              ),
-            ],
+                Expanded(
+                  child: CustomIconButton(
+                    Icons.alarm,
+                    () => {},
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
       ),
