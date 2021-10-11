@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class CarouselWidget extends StatefulWidget {
@@ -59,6 +60,18 @@ class _CarouselWidgetState extends State<CarouselWidget> {
                 ),
               ),
             ),
+            Positioned(
+              bottom: MediaQuery.of(context).size.height * 0.07,
+              left: MediaQuery.of(context).size.height * 0.28,
+              child: Container(
+                child: Center(
+                  child: SvgPicture.asset(
+                    "lib/shared/assets/images/logo.svg",
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            )
           ],
         ),
         Padding(
