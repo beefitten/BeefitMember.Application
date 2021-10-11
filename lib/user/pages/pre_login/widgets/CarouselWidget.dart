@@ -22,13 +22,13 @@ class _CarouselWidgetState extends State<CarouselWidget> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Stack(
-          alignment: Alignment.bottomLeft,
+          alignment: Alignment.topLeft,
           children: [
             ClipPath(
               clipper: CurveClipper(),
               child: CarouselSlider.builder(
                 options: CarouselOptions(
-                  height: 550,
+                  height: MediaQuery.of(context).size.height * 0.6,
                   autoPlay: true,
                   viewportFraction: 1,
                   onPageChanged: (index, reason) =>
@@ -41,15 +41,20 @@ class _CarouselWidgetState extends State<CarouselWidget> {
                 },
               ),
             ),
-            Container(
-              alignment: Alignment.bottomLeft,
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(24.0, 0, 0, 0),
-                child: Text(
-                  "Track your \n activities",
-                  textScaleFactor: 2,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
+            Positioned(
+              // bottom: 0,
+              child: Container(
+                height: MediaQuery.of(context).size.height * 0.65,
+                alignment: Alignment.bottomLeft,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 24),
+                  child: Text(
+                    "Track your \n activities",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: MediaQuery.of(context).size.height *
+                          0.04, //Scales text to screensize. Adjust the integer to adjust size
+                    ),
                   ),
                 ),
               ),
@@ -57,7 +62,7 @@ class _CarouselWidgetState extends State<CarouselWidget> {
           ],
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(24.0, 10, 0, 10),
+          padding: const EdgeInsets.only(left: 24, top: 10, bottom: 10),
           child: buildIndicator(),
         ),
       ],
