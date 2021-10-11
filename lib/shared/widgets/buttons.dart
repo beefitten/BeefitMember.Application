@@ -8,15 +8,18 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RaisedButton(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10),
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        primary: Color.fromRGBO(6, 62, 249, 1),
+        shape: new RoundedRectangleBorder(
+          borderRadius: new BorderRadius.circular(10.0),
+        ),
       ),
       onPressed: this._onPressed,
-      padding: EdgeInsets.all(20),
-      color: Color.fromRGBO(6, 62, 249, 1),
-      textColor: Colors.white,
-      child: Text(this._text),
+      child: Text(
+        this._text,
+        style: TextStyle(color: Colors.white),
+      ),
     );
   }
 }
@@ -29,17 +32,19 @@ class CustomIconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RaisedButton(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10),
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        primary: Colors.white,
+        onPrimary: Colors.black,
+        shape: new RoundedRectangleBorder(
+          borderRadius: new BorderRadius.circular(10.0),
+        ),
       ),
       onPressed: this._onPressed,
-      color: Colors.white,
-      textColor: Colors.black,
       child: IconButton(
         icon: Icon(this._icon),
         onPressed: this._onPressed,
-        iconSize: 35,
+        iconSize: 30,
       ),
     );
   }
