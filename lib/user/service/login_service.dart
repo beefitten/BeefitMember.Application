@@ -26,8 +26,7 @@ class LoginService {
     if (response.statusCode == 200) {
       var responseJson = json.decode(response.body);
       var token = responseJson['token'].toString();
-
-      await SecureStorage.setToken(token);
+      await SecureStorage.setToken(responseJson['token'].toString());
 
       return responseJson;
     } else {

@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:beefitmember_application/user/bloc/login_events.dart';
 import 'package:beefitmember_application/user/bloc/login_state.dart';
 import 'package:beefitmember_application/user/service/login_service.dart';
@@ -15,12 +16,15 @@ class LoginBLoc extends Bloc<LoginEvents, LoginState> {
       yield LoginInitState();
     } else if (event is LoginButtonPressed) {
       yield LoginLoadingState();
-      var token = await service.login(event.email, event.password);
+      var json = await service.login(event.email, event.password);
 
-      if (token == "error")
+      if (json == "error")
         yield LoginErrorState(message: "Fail: Wrong username or password");
-      else
+      else {
+        //saving fitness package properties from token in manager
+        FitnessPackage().update(json);
         yield UserLoginSuccessState();
+      }
     } else {
       yield LoginErrorState(message: "Login error");
     }
