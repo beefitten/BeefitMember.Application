@@ -1,3 +1,4 @@
+import 'package:beefitmember_application/bookings/pages/bookings_list/bookings_list.dart';
 import 'package:beefitmember_application/bookings/pages/your_bookings.dart';
 import 'package:beefitmember_application/user/bloc/login_bloc.dart';
 import 'package:beefitmember_application/user/bloc/login_state.dart';
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Beefit Member',
         routes: {
-          '/': (context) => YourBookings(),
+          '/': (context) => Classes(),
           '/contacts': (context) => Contact(),
           '/login': (context) => Login(),
           '/nav': (context) => Nav(),
