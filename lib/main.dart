@@ -30,8 +30,8 @@ class MyApp extends StatelessWidget {
           '/': (context) => YourBookings(),
           '/contacts': (context) => Contact(),
           '/login': (context) => Login(),
-          '/nav': (context) => Nav(),
-        },
+          '/nav': (context) => Nav()       
+           },
       ),
     );
   }
