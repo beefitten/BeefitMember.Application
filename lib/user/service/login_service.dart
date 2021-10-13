@@ -23,17 +23,14 @@ class LoginService {
       body: bodyJson,
     );
 
-    if (response.statusCode == 200){
+    if (response.statusCode == 200) {
       var responseJson = json.decode(response.body);
       var token = responseJson['token'].toString();
-      var name = responseJson['name'].toString();
 
       await SecureStorage.setToken(token);
 
-      return token;
-    }
-    else
-    {
+      return responseJson;
+    } else {
       return "error";
     }
   }
