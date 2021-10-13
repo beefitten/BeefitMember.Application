@@ -1,5 +1,5 @@
 
-import 'package:beefitmember_application/user/pages/login/login_form.dart';
+import 'package:beefitmember_application/overview/pages/overview/overview.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Login(),
+      home:  new Overview(),
     );
   }
 }
