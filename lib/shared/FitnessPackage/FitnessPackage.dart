@@ -7,7 +7,7 @@ class FitnessPackage {
   String secondaryColor = "0xF7F7FC";
   String logo = "noPath";
 
-  List<String> features = []; // Could also be a list of ints
+  List features = []; // Could also be a list of ints
 
   factory FitnessPackage() {
     return _instance;
@@ -26,6 +26,6 @@ class FitnessPackage {
         .toString(); // Might need to be changed to a "Color"
     secondaryColor = json['SeconderyColor'].toString();
     logo = json['Logo'].toString();
-    features = json['Features'];
+    //features = json['Features']; //TODO: Fix bug "_TypeError (type 'Null' is not a subtype of type 'List<dynamic>')"
   }
 }
