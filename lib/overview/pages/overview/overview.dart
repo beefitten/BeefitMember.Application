@@ -71,11 +71,6 @@ class AppBarCurve extends ShapeBorder {
   }
 }
 
-// Container(
-//         child: SvgPicture.asset(logoPath),
-//         alignment: Alignment.center,
-//       ),
-
 final sliverBar =  SliverAppBar(
       pinned: true,
       stretch: true,
