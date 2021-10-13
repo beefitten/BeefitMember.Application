@@ -2,7 +2,6 @@ import 'package:beefitmember_application/user/bloc/login_bloc.dart';
 import 'package:beefitmember_application/user/bloc/login_state.dart';
 import 'package:beefitmember_application/user/pages/Contact.dart';
 
-import 'package:beefitmember_application/overview/pages/overview/overview.dart';
 import 'package:beefitmember_application/navigation/nav.dart';
 import 'package:beefitmember_application/user/pages/login/login_form.dart';
 import 'package:beefitmember_application/user/pages/pre_login/pre_login.dart';
@@ -30,8 +29,8 @@ class MyApp extends StatelessWidget {
           '/': (context) => PreLogin(),
           '/contacts': (context) => Contact(),
           '/login': (context) => Login(),
-          '/nav': (context) => Nav(),
-        },
+          '/nav': (context) => Nav()       
+           },
       ),
     );
   }

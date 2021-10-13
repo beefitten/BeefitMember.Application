@@ -1,4 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+
+final String logoPath = "lib/shared/assets/images/logo.svg";
+
+class Overview extends StatefulWidget {
+  @override
+  OverviewState createState() => OverviewState();
+}
+
+class OverviewState extends State<Overview>
+    with SingleTickerProviderStateMixin {
+  late TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(vsync: this, length: 2);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: NestedScrollView(
+        floatHeaderSlivers: true,
+        physics: const BouncingScrollPhysics(),
+        body: previewList,
+        headerSliverBuilder: (context, innerBoxIsScrolled) {
+          return <Widget>[
+            sliverBar
+          ];
+        },
+      ),
+    );
+  }
+}
 
 class AppBarCurve extends ShapeBorder {
   @override
@@ -8,7 +43,6 @@ class AppBarCurve extends ShapeBorder {
     path.moveTo(0, rect.height * 0.80);
     path.quadraticBezierTo(
         rect.width / 2, rect.height, rect.width, rect.height*0.80);
-
     path.lineTo(rect.width, 0);
     path.lineTo(0, 0);
     path.close();
@@ -28,7 +62,6 @@ class AppBarCurve extends ShapeBorder {
 
   @override
   void paint(Canvas canvas, Rect rect, {TextDirection? textDirection}) {
-
   }
 
   @override
@@ -38,50 +71,30 @@ class AppBarCurve extends ShapeBorder {
   }
 }
 
-final silverBar =  SliverAppBar(
+// Container(
+//         child: SvgPicture.asset(logoPath),
+//         alignment: Alignment.center,
+//       ),
+
+final sliverBar =  SliverAppBar(
       pinned: true,
       stretch: true,
       expandedHeight: 150.0,
-      backgroundColor: Color.fromARGB(255, 75, 120, 255),
       shape: AppBarCurve(),
+      backgroundColor: Color.fromARGB(255, 2, 51, 199),
       bottom: PreferredSize(
         preferredSize: Size.fromHeight(30.0),
         child: Text('')),
-      flexibleSpace: Container(
-        child: FlexibleSpaceBar(
-          title: Text('Beefit', 
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 30.0),
-          ),
-          centerTitle: true),
-      ),
+      flexibleSpace: Stack(
+        children: [
+          Center(child: SvgPicture.asset(
+            logoPath, 
+            color: Colors.white,)),
+        ],
+      )
     );
 
-final silverL = SliverFixedExtentList(
-        delegate: SliverChildBuilderDelegate(
-          (BuildContext context, int index) {
-            return Container(
-              alignment: Alignment.center,
-              color: Colors.lightBlue[100*(index % 9)],
-              child: Text('List Item $index')  
-            );
-          }
-        ), 
-        itemExtent: 50);
-
-
-final listIteration1 = SliverList(delegate: 
-SliverChildBuilderDelegate( (context, index) {
-  return Container(
-    alignment: Alignment.center,
-    color: Colors.teal,
-    child: Text('grid item $index')
-  );
-}, childCount: 100));
-
-final listIteration2 = SliverFillRemaining(
-  child: Center(
+final previewList = Center(
     child: ListView(
       children: [
         Center(child: Text('data')),
@@ -102,30 +115,25 @@ final listIteration2 = SliverFillRemaining(
         Center(child: Text('data')),
         Center(child: Text('data')),
         Center(child: Text('data')),
-        
+        Center(child: Text('data')),
+        Center(child: Text('data')),
+        Center(child: Text('data')),
+        Center(child: Text('data')),
+        Center(child: Text('data')),
+        Center(child: Text('data')),
+        Center(child: Text('data')),
+        Center(child: Text('data')),
+        Center(child: Text('data')),
+        Center(child: Text('data')),
+        Center(child: Text('data')),
+        Center(child: Text('data')),
+        Center(child: Text('data')),
+        Center(child: Text('data')),
+        Center(child: Text('data')),
+        Center(child: Text('data'))        
        ]
     )
-  ),
 );
-
-final appBar = CustomScrollView(
-  slivers: <Widget>[
-    silverBar,
-    listIteration2],
-);
-
-class Overview extends StatelessWidget {
-  const Overview({ Key? key }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        child: appBar,
-      )
-    );
-  }
-}
 
 class TestWdiget extends StatelessWidget {
   @override
@@ -134,5 +142,4 @@ class TestWdiget extends StatelessWidget {
         child: Text('TestApp')
     );
   }
-
 }
