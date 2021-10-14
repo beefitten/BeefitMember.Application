@@ -1,5 +1,5 @@
+import 'package:beefitmember_application/overview/widgets/parallax_app_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 final String logoPath = "lib/shared/assets/images/logo.svg";
 
@@ -24,10 +24,12 @@ class OverviewState extends State<Overview>
       body: NestedScrollView(
         floatHeaderSlivers: true,
         physics: const BouncingScrollPhysics(),
-        body: previewList,
+        body: ScrollConfiguration(
+          behavior: ScrollSetup(), 
+          child: previewList),
         headerSliverBuilder: (context, innerBoxIsScrolled) {
           return <Widget>[
-            sliverBar
+            ParallaxAppBar(logoPath, )
           ];
         },
       ),
@@ -35,65 +37,18 @@ class OverviewState extends State<Overview>
   }
 }
 
-class AppBarCurve extends ShapeBorder {
+class ScrollSetup extends ScrollBehavior {
   @override
-  Path getOuterPath(Rect rect, {TextDirection? textDirection}) {
-    var path = Path();
-    
-    path.moveTo(0, rect.height * 0.80);
-    path.quadraticBezierTo(
-        rect.width / 2, rect.height, rect.width, rect.height*0.80);
-    path.lineTo(rect.width, 0);
-    path.lineTo(0, 0);
-    path.close();
-
-    return path;
-  }
-
-  @override
-  // TODO: implement dimensions
-  EdgeInsetsGeometry get dimensions => throw UnimplementedError();
-
-  @override
-  Path getInnerPath(Rect rect, {TextDirection? textDirection}) {
-    // TODO: implement getInnerPath
-    throw UnimplementedError();
-  }
-
-  @override
-  void paint(Canvas canvas, Rect rect, {TextDirection? textDirection}) {
-  }
-
-  @override
-  ShapeBorder scale(double t) {
-    // TODO: implement scale
-    throw UnimplementedError();
+  Widget buildViewportChrome(
+      BuildContext context, Widget child, AxisDirection axisDirection) {
+    return child;
   }
 }
-
-final sliverBar =  SliverAppBar(
-      pinned: true,
-      stretch: true,
-      expandedHeight: 150.0,
-      shape: AppBarCurve(),
-      backgroundColor: Color.fromARGB(255, 2, 51, 199),
-      bottom: PreferredSize(
-        preferredSize: Size.fromHeight(30.0),
-        child: Text('')),
-      flexibleSpace: Stack(
-        children: [
-          Center(child: SvgPicture.asset(
-            logoPath, 
-            color: Colors.white,)),
-        ],
-      )
-    );
 
 final previewList = Center(
     child: ListView(
       children: [
         Center(child: Text('data')),
-        Center(child: TestWdiget()),
         Center(child: Text('data')),
         Center(child: Text('data')),
         Center(child: Text('data')),
@@ -129,12 +84,3 @@ final previewList = Center(
        ]
     )
 );
-
-class TestWdiget extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        child: Text('TestApp')
-    );
-  }
-}

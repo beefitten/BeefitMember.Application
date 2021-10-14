@@ -1,4 +1,4 @@
-import 'package:beefitmember_application/overview/pages/overview/overview.dart';
+import 'package:beefitmember_application/overview/overview.dart';
 import 'package:flutter/material.dart';
 
 class Nav extends StatefulWidget {
