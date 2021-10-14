@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Beefit Member',
         routes: {
-          '/': (context) => Classes(),
+          '/': (context) => PreLogin(),
           '/contacts': (context) => Contact(),
           '/login': (context) => Login(),
           '/nav': (context) => Nav(),
