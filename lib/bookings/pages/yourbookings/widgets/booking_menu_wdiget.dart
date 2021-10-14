@@ -78,7 +78,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                   onItemTap(index);
                 },
                 tabs: [
-                  Tab(icon: Text("Your Bookings")),
+                  Tab(icon: Text("Bookings")),
                   Tab(icon: Text("Classes")),
                   Tab(icon: Text("Events")),
                 ]),
@@ -88,5 +88,5 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(110.0);
+  Size get preferredSize => Size.fromHeight(140.0);
 }
