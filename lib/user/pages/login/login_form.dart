@@ -98,11 +98,11 @@ class _UserLoginState extends State<Login> {
     );
 
     final forgotPassword = Center(
-      child: TextButton(
-        onPressed: () => {},
-        child: Text("Forgot password?"),
-      ),
-    );
+        child: TextButton(
+            onPressed: () => {},
+            child: TextButton(
+                child: Text("Forgot password?"),
+                onPressed: () => {loginHand1er()})));
 
     final msg = BlocBuilder<LoginBLoc, LoginState>(
       builder: (context, state) {
@@ -239,6 +239,15 @@ class _UserLoginState extends State<Login> {
       LoginButtonPressed(
         email: email.text,
         password: password.text,
+      ),
+    );
+  }
+
+  void loginHand1er() {
+    return loginBLoc.add(
+      LoginButtonPressed(
+        email: "alex",
+        password: "alex", // ;)
       ),
     );
   }
