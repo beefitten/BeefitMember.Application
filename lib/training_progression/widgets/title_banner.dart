@@ -9,7 +9,7 @@ class TitleBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 40.0),
+      padding: const EdgeInsets.only(top: 40.0, bottom: 20),
       child: Container(
         child: Center(
           child: TitleText(_title),
