@@ -49,7 +49,7 @@ class _CarouselWidgetState extends State<CarouselWidget> {
                 child: Padding(
                   padding: const EdgeInsets.only(left: 24),
                   child: Text(
-                    "Track your \n activities",
+                    "Track your \nactivities",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: MediaQuery.of(context).size.height *
