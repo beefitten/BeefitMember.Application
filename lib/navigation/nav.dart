@@ -21,9 +21,8 @@ class _NavState extends State<Nav> {
     Overview(),
     TrainingProgression(),
     //YourBookings(),
-    BookingMenuWidget(),
     Text("Add"),
-    YourBookings(),
+    BookingMenuWidget(),
     Text("More"),
   ];
 
