@@ -222,7 +222,10 @@ class _UserLoginState extends State<Login> {
             headContainer,
             welcomeText,
             loginFunc,
-            CustomButton("Login", () => {loginHandler()}),
+            Padding(
+              padding: const EdgeInsets.only(left: 24.0, right: 24.0, top: 10),
+              child: CustomButton("Login", () => {loginHandler()}),
+            ),
             forgotPassword,
           ],
         ),
