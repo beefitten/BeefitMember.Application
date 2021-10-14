@@ -94,12 +94,10 @@ class _UserLoginState extends State<Login> {
       ),
     );
 
-    final forgotPassword = Container(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          TextButton(onPressed: () {}, child: Text("Forgot password?")),
-        ],
+    final forgotPassword = Center(
+      child: TextButton(
+        onPressed: () => {},
+        child: Text("Forgot password?"),
       ),
     );
 
@@ -217,7 +215,7 @@ class _UserLoginState extends State<Login> {
           }
         },
         child: Column(
-          // shrinkWrap: true,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             headContainer,
             welcomeText,
