@@ -216,15 +216,21 @@ class _UserLoginState extends State<Login> {
             Navigator.pushNamed(context, '/nav');
           }
         },
-        child: ListView(
-          shrinkWrap: true,
+        child: Column(
+          // shrinkWrap: true,
           children: <Widget>[
             headContainer,
             welcomeText,
             loginFunc,
             Padding(
               padding: const EdgeInsets.only(left: 24.0, right: 24.0, top: 10),
-              child: CustomButton("Login", () => {loginHandler()}),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: CustomButton("Login", () => {loginHandler()}),
+                  ),
+                ],
+              ),
             ),
             forgotPassword,
           ],
