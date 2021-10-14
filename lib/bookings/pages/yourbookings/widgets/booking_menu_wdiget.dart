@@ -46,7 +46,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return Column(
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 30),
+            padding: const EdgeInsets.only(top: 50),
             child: Text(
               _title,
               textAlign: TextAlign.center,
@@ -61,7 +61,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 10, right: 10, top: 10),
+            padding: const EdgeInsets.only(left: 8, right: 8, top: 10),
             child: TabBar(
                 indicator: ShapeDecoration(
                   shape: StadiumBorder(),
@@ -88,5 +88,5 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(100.0);
+  Size get preferredSize => Size.fromHeight(110.0);
 }
