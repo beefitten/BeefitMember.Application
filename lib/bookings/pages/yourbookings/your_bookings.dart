@@ -20,7 +20,6 @@ class _YourBookingsState extends State<YourBookings> {
       body: ListView(
         shrinkWrap: true,
         children: <Widget>[
-          BookingMenuWidget(),
           FindClassesWidget(),
           BookingWidget(),
           AppointmentsWidget(),
