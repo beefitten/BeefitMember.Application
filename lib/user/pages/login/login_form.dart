@@ -214,24 +214,38 @@ class _UserLoginState extends State<Login> {
             Navigator.pushNamed(context, '/nav');
           }
         },
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            headContainer,
-            welcomeText,
-            loginFunc,
-            Padding(
-              padding: const EdgeInsets.only(left: 24.0, right: 24.0, top: 10),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: CustomButton("Login", () => {loginHandler()}),
+        child: SingleChildScrollView(
+          // Avoids pixeloverflow when keyboard opens
+          physics: NeverScrollableScrollPhysics(),
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+              minWidth: MediaQuery.of(context).size.width,
+              minHeight: MediaQuery.of(context).size.height,
+            ),
+            child: IntrinsicHeight(
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                children: <Widget>[
+                  // CONTENT HERE
+                  headContainer,
+                  welcomeText,
+                  loginFunc,
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(left: 24.0, right: 24.0, top: 10),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: CustomButton("Login", () => {loginHandler()}),
+                        ),
+                      ],
+                    ),
                   ),
+                  forgotPassword,
                 ],
               ),
             ),
-            forgotPassword,
-          ],
+          ),
         ),
       ),
     );
