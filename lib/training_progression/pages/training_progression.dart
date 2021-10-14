@@ -1,3 +1,5 @@
+import 'package:beefitmember_application/shared/widgets/buttons.dart';
+import 'package:beefitmember_application/training_progression/widgets/title_banner.dart';
 import 'package:flutter/material.dart';
 
 class TrainingProgression extends StatefulWidget {
@@ -10,8 +12,13 @@ class TrainingProgression extends StatefulWidget {
 class _TrainingProgressionState extends State<TrainingProgression> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-        //TODO: Implemet
-        );
+    return Column(
+      children: [
+        TitleBanner(),
+        // ImageBox(),
+        // DescriptionText(),
+        CustomButton("Setup new weightgoal", () => {}),
+      ],
+    );
   }
 }
