@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/appointmentswidget.dart';
 import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/booking_menu_wdiget.dart';
 import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/bookingswidget.dart';
@@ -14,7 +13,6 @@ class YourBookings extends StatefulWidget {
 class _YourBookingsState extends State<YourBookings> {
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: Colors.white,
       body: ListView(
