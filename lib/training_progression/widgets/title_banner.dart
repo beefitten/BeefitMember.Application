@@ -1,5 +1,5 @@
 import 'package:beefitmember_application/shared/widgets/texts.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class TitleBanner extends StatelessWidget {
   final String _title;
@@ -9,7 +9,10 @@ class TitleBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 40.0, bottom: 20),
+      padding: EdgeInsets.only(
+        top: MediaQuery.of(context).size.height * 0.1,
+        bottom: 20,
+      ),
       child: Container(
         child: Center(
           child: TitleText(_title),
