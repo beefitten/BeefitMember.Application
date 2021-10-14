@@ -1,5 +1,6 @@
 import 'package:beefitmember_application/bookings/pages/yourbookings/your_bookings.dart';
 import 'package:beefitmember_application/overview/pages/overview/overview.dart';
+import 'package:beefitmember_application/training_progression/pages/training_progression.dart';
 import 'package:flutter/material.dart';
 
 class Nav extends StatefulWidget {
@@ -74,17 +75,5 @@ class _NavState extends State<Nav> {
         ),
       ),
     );
-  }
-}
-
-//TODO Move  me to my own lib
-class TrainingProgression extends StatelessWidget {
-  const TrainingProgression({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        //TODO: Implemet
-        );
   }
 }
