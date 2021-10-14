@@ -52,3 +52,24 @@ class CustomIconButton extends StatelessWidget {
     );
   }
 }
+
+class CustomTextButton extends StatelessWidget {
+  final VoidCallback _onPressed;
+  final String _text;
+
+  CustomTextButton(this._text, this._onPressed);
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+      onPressed: _onPressed,
+      child: Text(
+        this._text,
+        style: TextStyle(
+          color: Color.fromRGBO(75, 120, 255, 1),
+          fontSize: MediaQuery.of(context).size.height * 0.02,
+        ),
+      ),
+    );
+  }
+}

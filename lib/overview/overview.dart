@@ -1,3 +1,6 @@
+import 'package:beefitmember_application/bookings/pages/previewBookings/preview_bookings.dart';
+import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/appointmentswidget.dart';
+import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/bookingswidget.dart';
 import 'package:beefitmember_application/overview/widgets/parallax_app_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -24,13 +27,9 @@ class OverviewState extends State<Overview>
       body: NestedScrollView(
         floatHeaderSlivers: true,
         physics: const BouncingScrollPhysics(),
-        body: ScrollConfiguration(
-          behavior: ScrollSetup(), 
-          child: previewList),
+        body: ScrollConfiguration(behavior: ScrollSetup(), child: previewList),
         headerSliverBuilder: (context, innerBoxIsScrolled) {
-          return <Widget>[
-            ParallaxAppBar(logoPath, )
-          ];
+          return <Widget>[ParallaxAppBar(logoPath)];
         },
       ),
     );
@@ -47,40 +46,5 @@ class ScrollSetup extends ScrollBehavior {
 
 final previewList = Center(
     child: ListView(
-      children: [
-        Center(child: Text('data')),
-        Center(child: Text('data')),
-        Center(child: Text('data')),
-        Center(child: Text('data')),
-        Center(child: Text('data')),
-        Center(child: Text('data')),
-        Center(child: Text('data')),
-        Center(child: Text('data')),
-        Center(child: Text('data')),
-        Center(child: Text('data')),
-        Center(child: Text('data')),
-        Center(child: Text('data')),
-        Center(child: Text('data')),
-        Center(child: Text('data')),
-        Center(child: Text('data')),
-        Center(child: Text('data')),
-        Center(child: Text('data')),
-        Center(child: Text('data')),
-        Center(child: Text('data')),
-        Center(child: Text('data')),
-        Center(child: Text('data')),
-        Center(child: Text('data')),
-        Center(child: Text('data')),
-        Center(child: Text('data')),
-        Center(child: Text('data')),
-        Center(child: Text('data')),
-        Center(child: Text('data')),
-        Center(child: Text('data')),
-        Center(child: Text('data')),
-        Center(child: Text('data')),
-        Center(child: Text('data')),
-        Center(child: Text('data')),
-        Center(child: Text('data'))        
-       ]
-    )
-);
+  children: [PreviewBookings(), PreviewBookings()],
+));

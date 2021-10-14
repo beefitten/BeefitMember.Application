@@ -10,22 +10,25 @@ class ParallaxAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return     SliverAppBar(
-          pinned: true,
-          stretch: true,
-          expandedHeight: 150.0,
-          shape: AppBarCurve(),
-          backgroundColor: Color.fromARGB(255, 2, 51, 199),
-          bottom: PreferredSize(
-            preferredSize: Size.fromHeight(30.0),
-            child: Text('')),
-          flexibleSpace: Stack(
-            children: [
-              Center(child: SvgPicture.asset(
-                _logo, 
-                color: Colors.white,)),
-            ],
-          )
-        );
+    return SliverAppBar(
+        pinned: true,
+        stretch: true,
+        expandedHeight: 150.0,
+        shape: AppBarCurve(),
+        backgroundColor: Color.fromARGB(255, 75, 120, 255),
+        bottom: PreferredSize(
+            preferredSize: Size.fromHeight(30.0), child: Text('')),
+        flexibleSpace: Stack(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 20.0),
+              child: Center(
+                  child: SvgPicture.asset(
+                _logo,
+                color: Colors.white,
+              )),
+            ),
+          ],
+        ));
   }
 }
