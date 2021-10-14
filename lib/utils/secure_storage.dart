@@ -20,4 +20,14 @@ class SecureStorage {
       print("Something went wrong collecting the token: " + error.toString());
     }
   }
+
+  static deleteToken() async {
+    try {
+      final storage = new FlutterSecureStorage();
+      return await storage.delete(key: "token");
+    }
+    catch (error) {
+      print("Something went wrong with deleting the token: " + error.toString());
+    }
+  }
 }
