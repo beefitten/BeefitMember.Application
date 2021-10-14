@@ -43,7 +43,6 @@ class _CarouselWidgetState extends State<CarouselWidget> {
               ),
             ),
             Positioned(
-              // bottom: 0,
               child: Container(
                 height: MediaQuery.of(context).size.height * 0.65,
                 alignment: Alignment.bottomLeft,
