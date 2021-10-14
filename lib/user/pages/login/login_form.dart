@@ -89,7 +89,9 @@ class _UserLoginState extends State<Login> {
               Text(
                 "Please enter your email and password",
                 style: TextStyle(
-                    fontSize: 13, color: Color.fromRGBO(138, 141, 178, 1)),
+                  fontSize: 13,
+                  color: Color.fromRGBO(138, 141, 178, 1),
+                ),
               )
             ],
           ),
