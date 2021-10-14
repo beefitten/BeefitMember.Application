@@ -1,3 +1,4 @@
+import 'package:beefitmember_application/shared/widgets/buttons.dart';
 import 'package:beefitmember_application/shared/widgets/textfield.dart';
 import 'package:beefitmember_application/user/bloc/login_bloc.dart';
 import 'package:beefitmember_application/user/bloc/login_events.dart';
@@ -107,11 +108,10 @@ class _UserLoginState extends State<Login> {
         if (state is LoginErrorState) {
           return Center(
               child: Padding(
-                padding: const EdgeInsets.only(top: 125),
-                child: Text(state.message, style: TextStyle(color: Colors.red)),
-              ));
-        }
-        else if (state is LoginLoadingState) {
+            padding: const EdgeInsets.only(top: 125),
+            child: Text(state.message, style: TextStyle(color: Colors.red)),
+          ));
+        } else if (state is LoginLoadingState) {
           return Center(
             child: CircularProgressIndicator(),
           );
@@ -149,25 +149,25 @@ class _UserLoginState extends State<Login> {
         alignment: Alignment.centerRight,
         children: [
           TextField(
-          controller: password,
-          autofocus: false,
-          obscureText: _obscureText,
-          decoration: InputDecoration(
+            controller: password,
+            autofocus: false,
+            obscureText: _obscureText,
+            decoration: InputDecoration(
               filled: true,
               fillColor: Color.fromRGBO(247, 247, 252, 1),
               hintStyle: TextStyle(color: Color(0xFF666666)),
               hintText: 'Password',
               contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-              border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(5.0)),
+              border:
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
             ),
           ),
           Padding(
             padding: const EdgeInsets.only(right: 15),
             child: InkWell(
               onTap: _toggleObscureText,
-              child: Icon(
-                  _obscureText ? Icons.visibility : Icons.visibility_off),
+              child:
+                  Icon(_obscureText ? Icons.visibility : Icons.visibility_off),
             ),
           ),
         ],
@@ -222,10 +222,22 @@ class _UserLoginState extends State<Login> {
             headContainer,
             welcomeText,
             loginFunc,
-            loginButton,
+            Padding(
+              padding: const EdgeInsets.only(left: 24.0, right: 24.0, top: 10),
+              child: CustomButton("Login", () => {loginHandler()}),
+            ),
             forgotPassword,
           ],
         ),
+      ),
+    );
+  }
+
+  void loginHandler() {
+    return loginBLoc.add(
+      LoginButtonPressed(
+        email: email.text,
+        password: password.text,
       ),
     );
   }

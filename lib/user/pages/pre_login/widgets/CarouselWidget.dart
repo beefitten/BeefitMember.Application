@@ -43,14 +43,13 @@ class _CarouselWidgetState extends State<CarouselWidget> {
               ),
             ),
             Positioned(
-              // bottom: 0,
               child: Container(
                 height: MediaQuery.of(context).size.height * 0.65,
                 alignment: Alignment.bottomLeft,
                 child: Padding(
                   padding: const EdgeInsets.only(left: 24),
                   child: Text(
-                    "Track your \n activities",
+                    "Track your \nactivities",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: MediaQuery.of(context).size.height *
@@ -62,12 +61,13 @@ class _CarouselWidgetState extends State<CarouselWidget> {
             ),
             Positioned(
               bottom: MediaQuery.of(context).size.height * 0.07,
-              left: MediaQuery.of(context).size.height * 0.3,
+              left: MediaQuery.of(context).size.width * 0.55,
               child: Container(
                 child: Center(
                   child: SvgPicture.asset(
                     "lib/shared/assets/images/logo.svg",
                     color: Colors.white,
+                    width: MediaQuery.of(context).size.width * 0.35,
                   ),
                 ),
               ),
