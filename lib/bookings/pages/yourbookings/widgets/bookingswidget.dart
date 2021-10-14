@@ -81,11 +81,12 @@ class CardExample extends StatelessWidget {
                     height: MediaQuery.of(context).size.height * 0.18,
                     width: MediaQuery.of(context).size.width * 0.6,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: NetworkImage(_picture),
-                        )),
+                      borderRadius: BorderRadius.circular(10),
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: NetworkImage(_picture),
+                      ),
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
