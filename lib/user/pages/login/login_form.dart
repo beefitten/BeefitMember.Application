@@ -6,7 +6,6 @@ import 'package:beefitmember_application/user/pages/login/widgets/login_input_wi
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -36,10 +35,10 @@ class _UserLoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
-    final logo = Center(
-        child: SvgPicture.asset(
-      logoPath,
-    ));
+    // final logo = Center(
+    //     child: SvgPicture.asset(
+    //   logoPath,
+    // ));
 
     final backButton = RawMaterialButton(
       onPressed: () {
@@ -58,7 +57,7 @@ class _UserLoginState extends State<Login> {
     final headContainer = Stack(
       children: [
         Container(
-          child: logo,
+          //child: logo,
           height: MediaQuery.of(context).size.height * 0.3,
           color: Color.fromRGBO(242, 245, 255, 1),
           margin: EdgeInsets.only(

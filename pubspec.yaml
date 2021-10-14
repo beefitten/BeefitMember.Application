@@ -1,5 +1,5 @@
 name: beefitmember_application
-description: Flutter application for BeefitMember
+description: A new Flutter application.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
@@ -21,7 +21,6 @@ environment:
   sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
-  
   flutter:
     sdk: flutter
 
@@ -30,9 +29,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   http:
   flutter_bloc:
-  shared_preferences:
   equatable:
-  flutter_svg:
   carousel_slider:
   smooth_page_indicator:
   flutter_secure_storage:
@@ -55,11 +52,9 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - lib/shared/assets/images/
-    - lib/user/pages/pre_login/assets/
     - lib/bookings/pages/yourbookings/assets/
-    
-    
+    - lib/user/pages/pre_login/assets/
+#    - lib/shared/assets/images/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

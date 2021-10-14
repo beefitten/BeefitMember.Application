@@ -1,6 +1,5 @@
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 final String logoPath = "lib/shared/assets/images/logo.svg";
 
@@ -79,11 +78,11 @@ final sliverBar = SliverAppBar(
         PreferredSize(preferredSize: Size.fromHeight(30.0), child: Text('')),
     flexibleSpace: Stack(
       children: [
-        Center(
-            child: SvgPicture.asset(
-          logoPath,
-          color: Colors.white,
-        )),
+        // Center(
+        //     child: SvgPicture.asset(
+        //   logoPath,
+        //   color: Colors.white,
+        // )),
       ],
     ));
 
