@@ -14,18 +14,22 @@ class LoginBLoc extends Bloc<LoginEvents, LoginState> {
   Stream<LoginState> mapEventToState(LoginEvents event) async* {
     if (event is StartEvent) {
       yield LoginInitState();
-    } else if (event is LoginButtonPressed) {
+    }
+    else if (event is LoginButtonPressed)
+    {
       yield LoginLoadingState();
       var json = await service.login(event.email, event.password);
 
       if (json == "error")
-        yield LoginErrorState(message: "Fail: Wrong username or password");
-      else {
-        //saving fitness package properties from token in manager
+        yield LoginErrorState(message: "Wrong username or password!");
+      else 
+      {
         FitnessPackage().update(json);
         yield UserLoginSuccessState();
       }
-    } else {
+    } 
+    else 
+    {
       yield LoginErrorState(message: "Login error");
     }
   }
