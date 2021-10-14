@@ -4,7 +4,14 @@ import 'package:flutter/material.dart';
 class BookingCard extends StatefulWidget {
   final String timeStart, timeEnd, className, place, city;
 
-  const BookingCard({Key? key, required this.timeStart, required this.timeEnd, required this.className, required this.place, required this.city}) : super(key: key);
+  const BookingCard(
+      {Key? key,
+      required this.timeStart,
+      required this.timeEnd,
+      required this.className,
+      required this.place,
+      required this.city})
+      : super(key: key);
 
   @override
   _BookingCardState createState() => _BookingCardState();
@@ -12,6 +19,7 @@ class BookingCard extends StatefulWidget {
 
 class _BookingCardState extends State<BookingCard> {
   bool _isBooked = false;
+  bool _isFull = false;
 
   handleBook() {
     setState(() {
@@ -31,15 +39,15 @@ class _BookingCardState extends State<BookingCard> {
     String city = widget.city;
 
     final generalHeaderText = (String txt) => Padding(
-      padding: const EdgeInsets.only(top: 10),
-      child: Text(
+          padding: const EdgeInsets.only(top: 10),
+          child: Text(
             txt,
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 16.0,
             ),
           ),
-    );
+        );
 
     final subtext = (String txt) => Padding(
           padding: EdgeInsets.only(bottom: 6.0, top: 6.0),
@@ -51,13 +59,13 @@ class _BookingCardState extends State<BookingCard> {
         );
 
     final locationText = (String txt) => Padding(
-      padding: const EdgeInsets.only(bottom: 6.0),
-      child: Text(
+          padding: const EdgeInsets.only(bottom: 6.0),
+          child: Text(
             txt,
             style: TextStyle(
                 fontSize: 13.0, color: Color.fromRGBO(138, 141, 178, 1)),
           ),
-    );
+        );
 
     final bookBtn = ElevatedButton(
       onPressed: () {
@@ -76,7 +84,22 @@ class _BookingCardState extends State<BookingCard> {
               alignment: Alignment.centerRight,
               children: [
                 ListTile(
-                    title: generalHeaderText("$className"),
+                    title: Row(
+                      children: [
+                        generalHeaderText("$className"),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 16.0, top: 10.0),
+                          child: Container(
+                            width: 9,
+                            height: 9,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: _isFull? Colors.red : Colors.green,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                     subtitle: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -94,12 +117,12 @@ class _BookingCardState extends State<BookingCard> {
                       ],
                     ),
                     tileColor: Color.fromRGBO(247, 247, 252, 1)),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 16.0),
-                      child: SizedBox(
-                        child: bookBtn,
-                        width: MediaQuery.of(context).size.width * 0.2),
-                    )
+                Padding(
+                  padding: const EdgeInsets.only(right: 16.0),
+                  child: SizedBox(
+                      child: bookBtn,
+                      width: MediaQuery.of(context).size.width * 0.2),
+                )
               ],
             ),
           ),
