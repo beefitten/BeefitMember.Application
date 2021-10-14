@@ -78,7 +78,7 @@ class _BookingCardState extends State<BookingCard> {
     final card = Column(
       children: [
         Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.fromLTRB(8, 2, 8, 0),
           child: Card(
             child: Stack(
               alignment: Alignment.centerRight,
