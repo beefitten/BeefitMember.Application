@@ -74,22 +74,26 @@ class _UserLoginState extends State<Login> {
 
     final welcomeText = Container(
       padding: EdgeInsets.only(left: 24.0, right: 24.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: Row(
         children: [
-          Text(
-            "Welcome!",
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 24,
-            ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Welcome!",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 24,
+                ),
+              ),
+              SizedBox(height: 6.0),
+              Text(
+                "Please enter your email and password",
+                style: TextStyle(
+                    fontSize: 13, color: Color.fromRGBO(138, 141, 178, 1)),
+              )
+            ],
           ),
-          SizedBox(height: 6.0),
-          Text(
-            "Please enter your email and password",
-            style: TextStyle(
-                fontSize: 13, color: Color.fromRGBO(138, 141, 178, 1)),
-          )
         ],
       ),
     );
