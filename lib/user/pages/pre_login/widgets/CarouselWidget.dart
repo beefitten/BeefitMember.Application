@@ -62,12 +62,13 @@ class _CarouselWidgetState extends State<CarouselWidget> {
             ),
             Positioned(
               bottom: MediaQuery.of(context).size.height * 0.07,
-              left: MediaQuery.of(context).size.height * 0.3,
+              left: MediaQuery.of(context).size.width * 0.55,
               child: Container(
                 child: Center(
                   child: SvgPicture.asset(
                     "lib/shared/assets/images/logo.svg",
                     color: Colors.white,
+                    width: MediaQuery.of(context).size.width * 0.35,
                   ),
                 ),
               ),
