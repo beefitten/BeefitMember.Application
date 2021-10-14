@@ -12,7 +12,7 @@ class CustomButton extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         primary: Color.fromRGBO(6, 62, 249, 1),
         shape: new RoundedRectangleBorder(
-          borderRadius: new BorderRadius.circular(10.0),
+          borderRadius: new BorderRadius.circular(5.0),
         ),
       ),
       onPressed: this._onPressed,
@@ -35,19 +35,22 @@ class CustomIconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        primary: Colors.white,
-        onPrimary: Colors.black,
-        shape: new RoundedRectangleBorder(
-          borderRadius: new BorderRadius.circular(10.0),
+    return Container(
+      constraints: BoxConstraints(maxHeight: 200),
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          primary: Colors.white,
+          onPrimary: Colors.black,
+          shape: new RoundedRectangleBorder(
+            borderRadius: new BorderRadius.circular(10.0),
+          ),
         ),
-      ),
-      onPressed: this._onPressed,
-      child: IconButton(
-        icon: Icon(this._icon),
         onPressed: this._onPressed,
-        iconSize: 30,
+        child: IconButton(
+          icon: Icon(this._icon),
+          onPressed: this._onPressed,
+          iconSize: 30,
+        ),
       ),
     );
   }
