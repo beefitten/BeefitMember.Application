@@ -1,4 +1,4 @@
-import 'package:beefitmember_application/bookings/pages/yourbookings/your_bookings.dart';
+import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/booking_menu_wdiget.dart';
 import 'package:beefitmember_application/overview/pages/overview/overview.dart';
 import 'package:beefitmember_application/training_progression/pages/training_progression.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +19,8 @@ class _NavState extends State<Nav> {
   List<Widget> _widgetOptions = <Widget>[
     Overview(),
     TrainingProgression(),
+    //YourBookings(),
+    BookingMenuWidget(),
     Text("Add"),
     YourBookings(),
     Text("More"),

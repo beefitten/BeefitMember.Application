@@ -50,12 +50,10 @@ class AppBarCurve extends ShapeBorder {
   }
 
   @override
-  // TODO: implement dimensions
   EdgeInsetsGeometry get dimensions => throw UnimplementedError();
 
   @override
   Path getInnerPath(Rect rect, {TextDirection? textDirection}) {
-    // TODO: implement getInnerPath
     throw UnimplementedError();
   }
 
@@ -64,7 +62,6 @@ class AppBarCurve extends ShapeBorder {
 
   @override
   ShapeBorder scale(double t) {
-    // TODO: implement scale
     throw UnimplementedError();
   }
 }

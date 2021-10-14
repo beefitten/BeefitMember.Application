@@ -3,7 +3,6 @@ import 'package:beefitmember_application/shared/widgets/textfield.dart';
 import 'package:beefitmember_application/user/bloc/login_bloc.dart';
 import 'package:beefitmember_application/user/bloc/login_events.dart';
 import 'package:beefitmember_application/user/bloc/login_state.dart';
-import 'package:beefitmember_application/user/pages/login/widgets/login_input_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -74,22 +73,26 @@ class _UserLoginState extends State<Login> {
 
     final welcomeText = Container(
       padding: EdgeInsets.only(left: 24.0, right: 24.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: Row(
         children: [
-          Text(
-            "Welcome!",
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 24,
-            ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Welcome!",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 24,
+                ),
+              ),
+              SizedBox(height: 6.0),
+              Text(
+                "Please enter your email and password",
+                style: TextStyle(
+                    fontSize: 13, color: Color.fromRGBO(138, 141, 178, 1)),
+              )
+            ],
           ),
-          SizedBox(height: 6.0),
-          Text(
-            "Please enter your email and password",
-            style: TextStyle(
-                fontSize: 13, color: Color.fromRGBO(138, 141, 178, 1)),
-          )
         ],
       ),
     );
@@ -184,26 +187,6 @@ class _UserLoginState extends State<Login> {
         loginForm,
         msg,
       ],
-    );
-
-    final loginButton = Padding(
-      padding: EdgeInsets.fromLTRB(24.0, 10, 16.0, 0),
-      // ignore: deprecated_member_use
-      child: RaisedButton(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(5),
-        ),
-        onPressed: () {
-          loginBLoc.add(
-              LoginButtonPressed(email: email.text, password: password.text));
-        },
-        padding: EdgeInsets.all(15),
-        color: Color.fromRGBO(6, 62, 249, 1),
-        child: Text(
-          'Login',
-          style: TextStyle(color: Colors.white),
-        ),
-      ),
     );
 
     return Scaffold(
