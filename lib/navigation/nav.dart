@@ -17,9 +17,9 @@ class _NavState extends State<Nav> {
 
   List<Widget> _widgetOptions = <Widget>[
     Overview(),
-    YourBookings(),
+    TrainingProgression(),
     Text("Add"),
-    Text("Calender"),
+    YourBookings(),
     Text("More"),
   ];
 
@@ -74,5 +74,17 @@ class _NavState extends State<Nav> {
         ),
       ),
     );
+  }
+}
+
+//TODO Move  me to my own lib
+class TrainingProgression extends StatelessWidget {
+  const TrainingProgression({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        //TODO: Implemet
+        );
   }
 }
