@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
           '/': (context) => PreLogin(),
           '/contacts': (context) => Contact(),
           '/login': (context) => Login(),
-          '/nav': (context) => Nav(),
+          '/nav': (context) => Nav()
         },
       ),
     );

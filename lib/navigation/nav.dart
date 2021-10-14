@@ -1,4 +1,5 @@
 import 'package:beefitmember_application/bookings/pages/yourbookings/your_bookings.dart';
+import 'package:beefitmember_application/overview/pages/overview/overview.dart';
 import 'package:flutter/material.dart';
 
 class Nav extends StatefulWidget {
@@ -15,7 +16,7 @@ class _NavState extends State<Nav> {
   int _selectedIndex = 0;
 
   List<Widget> _widgetOptions = <Widget>[
-    Text("home"),
+    Overview(),
     YourBookings(),
     Text("Add"),
     Text("Calender"),
