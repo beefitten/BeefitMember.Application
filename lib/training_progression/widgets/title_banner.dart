@@ -2,7 +2,9 @@ import 'package:beefitmember_application/shared/widgets/texts.dart';
 import 'package:flutter/cupertino.dart';
 
 class TitleBanner extends StatelessWidget {
-  const TitleBanner({Key? key}) : super(key: key);
+  final String _title;
+
+  const TitleBanner(this._title);
 
   @override
   Widget build(BuildContext context) {
@@ -10,7 +12,7 @@ class TitleBanner extends StatelessWidget {
       padding: const EdgeInsets.only(top: 40.0),
       child: Container(
         child: Center(
-          child: TitleText("Weight Goal"),
+          child: TitleText(_title),
         ),
       ),
     );

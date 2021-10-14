@@ -15,8 +15,8 @@ class _TrainingProgressionState extends State<TrainingProgression> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        TitleBanner(),
-        ImageBox(
+          TitleBanner("Weight Goal"),
+          ImageBox(
             "https://2.bp.blogspot.com/-q3qJmAW1T_0/Vty1RAbGe4I/AAAAAAAAAlc/otdCoDEdMl8/s640/Arnold-Schwarzenegger-Champion-BodyBuilder.jpg"),
         // DescriptionText(),
         CustomButton("Setup new weight goal", () => {}),
