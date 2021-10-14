@@ -13,15 +13,19 @@ class LoginBLoc extends Bloc<LoginEvents, LoginState> {
   Stream<LoginState> mapEventToState(LoginEvents event) async* {
     if (event is StartEvent) {
       yield LoginInitState();
-    } else if (event is LoginButtonPressed) {
+    }
+    else if (event is LoginButtonPressed)
+    {
       yield LoginLoadingState();
       var token = await service.login(event.email, event.password);
 
       if (token == "error")
-        yield LoginErrorState(message: "Fail: Wrong username or password");
+        yield LoginErrorState(message: "Wrong email or password!");
       else
         yield UserLoginSuccessState();
-    } else {
+    }
+    else
+    {
       yield LoginErrorState(message: "Login error");
     }
   }

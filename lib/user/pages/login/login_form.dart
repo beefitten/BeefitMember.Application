@@ -2,6 +2,7 @@ import 'package:beefitmember_application/shared/widgets/textfield.dart';
 import 'package:beefitmember_application/user/bloc/login_bloc.dart';
 import 'package:beefitmember_application/user/bloc/login_events.dart';
 import 'package:beefitmember_application/user/bloc/login_state.dart';
+import 'package:beefitmember_application/user/pages/login/widgets/login_input_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -104,8 +105,13 @@ class _UserLoginState extends State<Login> {
     final msg = BlocBuilder<LoginBLoc, LoginState>(
       builder: (context, state) {
         if (state is LoginErrorState) {
-          return Text(state.message);
-        } else if (state is LoginLoadingState) {
+          return Center(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 125),
+                child: Text(state.message, style: TextStyle(color: Colors.red)),
+              ));
+        }
+        else if (state is LoginLoadingState) {
           return Center(
             child: CircularProgressIndicator(),
           );
@@ -115,7 +121,7 @@ class _UserLoginState extends State<Login> {
     );
 
     final emailInput = Container(
-        padding: EdgeInsets.only(left: 24.0, right: 24.0),
+        padding: EdgeInsets.only(left: 24.0, right: 24.0, top: 10),
         child: Column(
           children: [
             TextFieldInput(
@@ -138,33 +144,52 @@ class _UserLoginState extends State<Login> {
         ));
 
     final passwordInput = Container(
-      padding: EdgeInsets.only(left: 24.0, right: 24.0),
-      child: Column(
+      padding: EdgeInsets.only(left: 24.0, right: 24.0, top: 10),
+      child: Stack(
+        alignment: Alignment.centerRight,
         children: [
           TextField(
-            controller: password,
-            autofocus: false,
-            obscureText: _obscureText,
-            decoration: InputDecoration(
-                filled: true,
-                fillColor: Color.fromRGBO(247, 247, 252, 1),
-                hintStyle: TextStyle(color: Color(0xFF666666)),
-                hintText: 'Password',
-                contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(5.0)),
-                suffix: InkWell(
-                  onTap: _toggleObscureText,
-                  child: Icon(
-                      _obscureText ? Icons.visibility : Icons.visibility_off),
-                )),
+          controller: password,
+          autofocus: false,
+          obscureText: _obscureText,
+          decoration: InputDecoration(
+              filled: true,
+              fillColor: Color.fromRGBO(247, 247, 252, 1),
+              hintStyle: TextStyle(color: Color(0xFF666666)),
+              hintText: 'Password',
+              contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+              border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(5.0)),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(right: 15),
+            child: InkWell(
+              onTap: _toggleObscureText,
+              child: Icon(
+                  _obscureText ? Icons.visibility : Icons.visibility_off),
+            ),
           ),
         ],
       ),
     );
 
+    final loginForm = Column(
+      children: [
+        emailInput,
+        passwordInput,
+      ],
+    );
+
+    final loginFunc = Stack(
+      children: [
+        loginForm,
+        msg,
+      ],
+    );
+
     final loginButton = Padding(
-      padding: EdgeInsets.fromLTRB(24.0, 24.0, 16.0, 0),
+      padding: EdgeInsets.fromLTRB(24.0, 10, 16.0, 0),
       // ignore: deprecated_member_use
       child: RaisedButton(
         shape: RoundedRectangleBorder(
@@ -174,7 +199,7 @@ class _UserLoginState extends State<Login> {
           loginBLoc.add(
               LoginButtonPressed(email: email.text, password: password.text));
         },
-        padding: EdgeInsets.all(12),
+        padding: EdgeInsets.all(15),
         color: Color.fromRGBO(6, 62, 249, 1),
         child: Text(
           'Login',
@@ -196,11 +221,7 @@ class _UserLoginState extends State<Login> {
           children: <Widget>[
             headContainer,
             welcomeText,
-            msg,
-            SizedBox(height: 10.0),
-            emailInput,
-            SizedBox(height: 8.0),
-            passwordInput,
+            loginFunc,
             loginButton,
             forgotPassword,
           ],

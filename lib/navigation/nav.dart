@@ -1,3 +1,4 @@
+import 'package:beefitmember_application/bookings/pages/yourbookings/your_bookings.dart';
 import 'package:flutter/material.dart';
 
 class Nav extends StatefulWidget {
@@ -15,7 +16,7 @@ class _NavState extends State<Nav> {
 
   List<Widget> _widgetOptions = <Widget>[
     Text("home"),
-    Text("Strong"),
+    YourBookings(),
     Text("Add"),
     Text("Calender"),
     Text("More"),
@@ -30,9 +31,6 @@ class _NavState extends State<Nav> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Bottom Nav Bar"),
-      ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),

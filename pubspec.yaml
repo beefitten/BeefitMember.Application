@@ -58,6 +58,7 @@ flutter:
   assets:
     - lib/shared/assets/images/
     - lib/user/pages/pre_login/assets/
+    - lib/bookings/pages/yourbookings/assets/
     
     
 
