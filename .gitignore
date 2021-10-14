@@ -118,4 +118,6 @@ lint/tmp/
 
 # Android Profiling
 *.hprof
+
+# Other
 pubspec.lock
