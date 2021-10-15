@@ -9,10 +9,10 @@ class AppointmentsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8),
+      padding: const EdgeInsets.only(top: 10),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding: const EdgeInsets.all(0.0),
           child: Text(FitnessPackage.name,
               textAlign: TextAlign.left,
               style: TextStyle(
@@ -73,36 +73,37 @@ class BookingExample extends StatelessWidget {
                         radius: 30, backgroundImage: NetworkImage(_picture)),
                   ),
                   Container(
-                      height: 100,
-                      child: Padding(
-                        padding: EdgeInsets.fromLTRB(15, 10, 0, 0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(
-                              _title,
-                              style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.bold),
-                            ),
-                            Container(
-                              width: MediaQuery.of(context).size.width * 0.6,
-                              child: Padding(
-                                padding: const EdgeInsets.only(top: 4),
-                                child: Text(
-                                  _date,
-                                  style: TextStyle(
-                                      fontSize: 15, color: Colors.grey),
-                                ),
+                    height: 100,
+                    child: Padding(
+                      padding: EdgeInsets.fromLTRB(15, 10, 0, 0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            _title,
+                            style: TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.bold),
+                          ),
+                          Container(
+                            width: MediaQuery.of(context).size.width * 0.6,
+                            child: Padding(
+                              padding: const EdgeInsets.only(top: 4),
+                              child: Text(
+                                _date,
+                                style:
+                                    TextStyle(fontSize: 15, color: Colors.grey),
                               ),
-                            )
-                          ],
-                        ),
-                      ))
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  )
                 ],
               ),
             ),
           ),
-        )
+        ),
       ],
     );
   }
