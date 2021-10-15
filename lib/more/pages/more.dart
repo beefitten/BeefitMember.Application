@@ -1,6 +1,7 @@
 import 'package:beefitmember_application/bookings/pages/previewBookings/widgets/show_more_button.dart';
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:beefitmember_application/training_progression/pages/training_progression.dart';
+import 'package:beefitmember_application/training_progression/preview/training_prog_preview.dart';
 import 'package:beefitmember_application/user/service/logout_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -72,7 +73,8 @@ class _MoreState extends State<More> {
               // left column under more
               Column(
                 children: [
-                  Text("data1")
+                  Text("data1"),
+                  // TrainingProgPreview(),
                 ],
               ),
               // right column under more
