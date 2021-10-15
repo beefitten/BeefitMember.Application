@@ -2,6 +2,7 @@ import 'package:beefitmember_application/bookings/pages/previewBookings/preview_
 import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/appointmentswidget.dart';
 import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/bookingswidget.dart';
 import 'package:beefitmember_application/overview/widgets/parallax_app_bar.dart';
+import 'package:beefitmember_application/training_progression/preview/training_prog_preview.dart';
 import 'package:flutter/material.dart';
 
 final String logoPath = "lib/shared/assets/images/logo.svg";
@@ -45,6 +46,14 @@ class ScrollSetup extends ScrollBehavior {
 }
 
 final previewList = Center(
+  child: Padding(
+    padding: const EdgeInsets.only(left: 10.0, right: 10),
     child: ListView(
-  children: [PreviewBookings(), PreviewBookings()],
-));
+      children: [
+        PreviewBookings(),
+        TrainingProgPreview(),
+        PreviewBookings(),
+      ],
+    ),
+  ),
+);
