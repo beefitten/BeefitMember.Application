@@ -1,6 +1,5 @@
 import 'package:beefitmember_application/bookings/pages/previewBookings/widgets/show_more_button.dart';
 import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/appointmentswidget.dart';
-import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/bookingswidget.dart';
 import 'package:flutter/material.dart';
 
 class PreviewBookings extends StatelessWidget {
