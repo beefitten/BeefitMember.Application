@@ -67,15 +67,7 @@ class _GoalWidgetState extends State<GoalWidget> {
                   ),
                 ],
               ),
-              Center(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: CircleAvatar(
-                    backgroundColor: Colors.purple,
-                    radius: MediaQuery.of(context).size.width * 0.13,
-                  ),
-                ),
-              ),
+              CircleChart(),
             ],
           ),
         ),
@@ -96,6 +88,23 @@ class ValueText extends StatelessWidget {
       style: TextStyle(
           fontSize: MediaQuery.of(context).size.height * 0.04,
           fontWeight: FontWeight.bold),
+    );
+  }
+}
+
+class CircleChart extends StatelessWidget {
+  const CircleChart({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: CircleAvatar(
+          backgroundColor: Colors.purple,
+          radius: MediaQuery.of(context).size.width * 0.13,
+        ),
+      ),
     );
   }
 }
