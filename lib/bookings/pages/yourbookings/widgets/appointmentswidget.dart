@@ -1,3 +1,4 @@
+import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +13,7 @@ class AppointmentsWidget extends StatelessWidget {
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Padding(
           padding: const EdgeInsets.all(10.0),
-          child: Text("Your Appointments",
+          child: Text(FitnessPackage.name,
               textAlign: TextAlign.left,
               style: TextStyle(
                 color: Colors.black,
