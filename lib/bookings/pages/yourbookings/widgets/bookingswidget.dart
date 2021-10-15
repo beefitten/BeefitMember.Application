@@ -13,15 +13,18 @@ class BookingWidget extends StatelessWidget {
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Padding(
           padding: const EdgeInsets.all(10.0),
-          child: Text("Your Bookings",
-              textAlign: TextAlign.left,
-              style: TextStyle(
-                  color: Colors.black,
-                  fontSize: MediaQuery.of(context).size.height * 0.03,
-                  fontWeight: FontWeight.bold)),
+          child: Text(
+            "Your Bookings",
+            textAlign: TextAlign.left,
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: MediaQuery.of(context).size.height * 0.03,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
         ),
         Container(
-          color: _color,
+          color: Colors.white,
           height: MediaQuery.of(context).size.height * 0.26,
           child: ListView(
             scrollDirection: Axis.horizontal,

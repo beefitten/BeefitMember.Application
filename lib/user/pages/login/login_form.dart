@@ -1,8 +1,8 @@
+import 'package:beefitmember_application/shared/widgets/buttons.dart';
 import 'package:beefitmember_application/shared/widgets/textfield.dart';
 import 'package:beefitmember_application/user/bloc/login_bloc.dart';
 import 'package:beefitmember_application/user/bloc/login_events.dart';
 import 'package:beefitmember_application/user/bloc/login_state.dart';
-import 'package:beefitmember_application/user/pages/login/widgets/login_input_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -73,45 +73,48 @@ class _UserLoginState extends State<Login> {
 
     final welcomeText = Container(
       padding: EdgeInsets.only(left: 24.0, right: 24.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: Row(
         children: [
-          Text(
-            "Welcome!",
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 24,
-            ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Welcome!",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 24,
+                ),
+              ),
+              SizedBox(height: 6.0),
+              Text(
+                "Please enter your email and password",
+                style: TextStyle(
+                  fontSize: 13,
+                  color: Color.fromRGBO(138, 141, 178, 1),
+                ),
+              )
+            ],
           ),
-          SizedBox(height: 6.0),
-          Text(
-            "Please enter your email and password",
-            style: TextStyle(
-                fontSize: 13, color: Color.fromRGBO(138, 141, 178, 1)),
-          )
         ],
       ),
     );
 
-    final forgotPassword = Container(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          TextButton(onPressed: () {}, child: Text("Forgot password?")),
-        ],
-      ),
-    );
+    final forgotPassword = Center(
+        child: TextButton(
+            onPressed: () => {},
+            child: TextButton(
+                child: Text("Forgot password?"),
+                onPressed: () => {loginHand1er()})));
 
     final msg = BlocBuilder<LoginBLoc, LoginState>(
       builder: (context, state) {
         if (state is LoginErrorState) {
           return Center(
               child: Padding(
-                padding: const EdgeInsets.only(top: 125),
-                child: Text(state.message, style: TextStyle(color: Colors.red)),
-              ));
-        }
-        else if (state is LoginLoadingState) {
+            padding: const EdgeInsets.only(top: 125),
+            child: Text(state.message, style: TextStyle(color: Colors.red)),
+          ));
+        } else if (state is LoginLoadingState) {
           return Center(
             child: CircularProgressIndicator(),
           );
@@ -149,25 +152,25 @@ class _UserLoginState extends State<Login> {
         alignment: Alignment.centerRight,
         children: [
           TextField(
-          controller: password,
-          autofocus: false,
-          obscureText: _obscureText,
-          decoration: InputDecoration(
+            controller: password,
+            autofocus: false,
+            obscureText: _obscureText,
+            decoration: InputDecoration(
               filled: true,
               fillColor: Color.fromRGBO(247, 247, 252, 1),
               hintStyle: TextStyle(color: Color(0xFF666666)),
               hintText: 'Password',
               contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-              border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(5.0)),
+              border:
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
             ),
           ),
           Padding(
             padding: const EdgeInsets.only(right: 15),
             child: InkWell(
               onTap: _toggleObscureText,
-              child: Icon(
-                  _obscureText ? Icons.visibility : Icons.visibility_off),
+              child:
+                  Icon(_obscureText ? Icons.visibility : Icons.visibility_off),
             ),
           ),
         ],
@@ -188,26 +191,6 @@ class _UserLoginState extends State<Login> {
       ],
     );
 
-    final loginButton = Padding(
-      padding: EdgeInsets.fromLTRB(24.0, 10, 16.0, 0),
-      // ignore: deprecated_member_use
-      child: RaisedButton(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(5),
-        ),
-        onPressed: () {
-          loginBLoc.add(
-              LoginButtonPressed(email: email.text, password: password.text));
-        },
-        padding: EdgeInsets.all(15),
-        color: Color.fromRGBO(6, 62, 249, 1),
-        child: Text(
-          'Login',
-          style: TextStyle(color: Colors.white),
-        ),
-      ),
-    );
-
     return Scaffold(
       backgroundColor: Colors.white,
       body: BlocListener<LoginBLoc, LoginState>(
@@ -216,16 +199,57 @@ class _UserLoginState extends State<Login> {
             Navigator.pushNamed(context, '/nav');
           }
         },
-        child: ListView(
-          shrinkWrap: true,
-          children: <Widget>[
-            headContainer,
-            welcomeText,
-            loginFunc,
-            loginButton,
-            forgotPassword,
-          ],
+        child: SingleChildScrollView(
+          // Avoids pixeloverflow when keyboard opens
+          physics: NeverScrollableScrollPhysics(),
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+              minWidth: MediaQuery.of(context).size.width,
+              minHeight: MediaQuery.of(context).size.height,
+            ),
+            child: IntrinsicHeight(
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                children: <Widget>[
+                  // CONTENT HERE
+                  headContainer,
+                  welcomeText,
+                  loginFunc,
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(left: 24.0, right: 24.0, top: 10),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: CustomButton("Login", () => {loginHandler()}),
+                        ),
+                      ],
+                    ),
+                  ),
+                  forgotPassword,
+                ],
+              ),
+            ),
+          ),
         ),
+      ),
+    );
+  }
+
+  void loginHandler() {
+    return loginBLoc.add(
+      LoginButtonPressed(
+        email: email.text,
+        password: password.text,
+      ),
+    );
+  }
+
+  void loginHand1er() {
+    return loginBLoc.add(
+      LoginButtonPressed(
+        email: "alex",
+        password: "alex", // ;)
       ),
     );
   }

@@ -1,4 +1,3 @@
-import 'package:beefitmember_application/bookings/pages/yourbookings/your_bookings.dart';
 import 'package:beefitmember_application/user/bloc/login_bloc.dart';
 import 'package:beefitmember_application/user/bloc/login_state.dart';
 import 'package:beefitmember_application/user/pages/Contact.dart';
@@ -10,6 +9,7 @@ import 'package:beefitmember_application/user/service/login_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'bookings/pages/yourbookings/your_bookings.dart';
 import 'user/pages/pre_login/pre_login.dart';
 
 void main() {

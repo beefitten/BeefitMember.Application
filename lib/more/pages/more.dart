@@ -2,27 +2,31 @@ import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/app
 import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/booking_menu_wdiget.dart';
 import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/bookingswidget.dart';
 import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/find_classes_widget.dart';
+import 'package:beefitmember_application/shared/widgets/buttons.dart';
+import 'package:beefitmember_application/user/service/logout_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class YourBookings extends StatefulWidget {
+class More extends StatefulWidget {
   @override
-  _YourBookingsState createState() => _YourBookingsState();
+  _MoreState createState() => _MoreState();
 }
 
-class _YourBookingsState extends State<YourBookings> {
+class _MoreState extends State<More> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: ListView(
-        shrinkWrap: true,
-        children: <Widget>[
-          FindClassesWidget(),
-          BookingWidget(),
-          AppointmentsWidget(),
-        ],
-      ),
-    );
+      body: Container(
+        child: Center(
+            child: TextButton(
+              child: Text('Log out', style: TextStyle(fontSize: 20.0),),
+              onPressed: () {
+                LogoutService.logOut();
+                Navigator.pop(context, '/nav');
+              },
+        ), )
+    ));
   }
 }
