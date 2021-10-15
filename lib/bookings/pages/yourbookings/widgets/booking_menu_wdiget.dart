@@ -1,3 +1,4 @@
+import 'package:beefitmember_application/bookings/pages/bookings_list/bookings_list.dart';
 import 'package:beefitmember_application/bookings/pages/yourbookings/your_bookings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -12,8 +13,8 @@ class BookingMenuWidget extends StatelessWidget {
           body: TabBarView(
             children: [
               YourBookings(),
-              Text("Sut"),
-              Text("Dut"),
+              Classes(),
+              Text("Not implemented..."),
             ],
           ),
         ),
