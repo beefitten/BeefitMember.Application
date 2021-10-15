@@ -11,8 +11,12 @@ class Classes extends StatefulWidget {
 
 class _ClassesState extends State<Classes> {
   bool _isBooked = false;
+
   final items = ["Select class type", "Bike", "Run"];
   String? value = "Select class type";
+
+  // final locations = ["Frederiksbjerg, Viby, Rundhøj, Randers City, Varde City"];
+  // String? valueLocations = "Select locations";
 
   // List<Map> _classes = [
   //   {
@@ -56,21 +60,21 @@ class _ClassesState extends State<Classes> {
           ),
         );
 
-    final selectClass = () => Container(
-          width: MediaQuery.of(context).size.width * 0.95,
-          padding: EdgeInsets.only(
-              bottom: MediaQuery.of(context).size.height * 0.01),
-          child: TextField(
-            autofocus: false,
-            decoration: InputDecoration(
-              filled: true,
-              fillColor: Color.fromRGBO(247, 247, 252, 1),
-              hintStyle: TextStyle(color: Color(0xFF666666)),
-              hintText: 'Select class type',
-              contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-            ),
-          ),
-        );
+    // final selectClass = () => Container(
+    //       width: MediaQuery.of(context).size.width * 0.95,
+    //       padding: EdgeInsets.only(
+    //           bottom: MediaQuery.of(context).size.height * 0.01),
+    //       child: TextField(
+    //         autofocus: false,
+    //         decoration: InputDecoration(
+    //           filled: true,
+    //           fillColor: Color.fromRGBO(247, 247, 252, 1),
+    //           hintStyle: TextStyle(color: Color(0xFF666666)),
+    //           hintText: 'Select class type',
+    //           contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+    //         ),
+    //       ),
+    //     );
 
     final card = BookingCard(
       className: className,
@@ -88,6 +92,26 @@ class _ClassesState extends State<Classes> {
           ),
         );
 
+    final classes = Container(
+      decoration: BoxDecoration(color: Color.fromRGBO(247, 247, 252, 1)),
+      margin: EdgeInsets.only(left: 10, right: 10),
+      child: DropdownButtonHideUnderline(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(45, 4, 0, 4),
+          child: DropdownButton<String>(
+            value: value,
+            items: items.map(buildMenuItem).toList(),
+            icon: Icon(
+              Icons.arrow_drop_down,
+              color: Colors.black,
+            ),
+            isExpanded: true,
+            onChanged: (value) => setState(() => this.value = value),
+          ),
+        ),
+      ),
+    );
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: ListView(
@@ -96,25 +120,7 @@ class _ClassesState extends State<Classes> {
           generalText("Filters"),
           Stack(
             children: [
-              Container(
-                decoration:BoxDecoration(color: Color.fromRGBO(247, 247, 252, 1)),
-                margin: EdgeInsets.only(left: 10, right: 10),
-                child: DropdownButtonHideUnderline(
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(45, 4, 0, 4),
-                    child: DropdownButton<String>(
-                      value: value,
-                      items: items.map(buildMenuItem).toList(),
-                      icon: Icon(
-                        Icons.arrow_drop_down,
-                        color: Colors.black,
-                      ),
-                      isExpanded: true,
-                      onChanged: (value) => setState(() => this.value = value),
-                    ),
-                  ),
-                ),
-              ),
+              classes,
               Container(
                 child: Padding(
                   padding: const EdgeInsets.only(left: 26, top: 17),
@@ -142,4 +148,3 @@ class _ClassesState extends State<Classes> {
     );
   }
 }
-
