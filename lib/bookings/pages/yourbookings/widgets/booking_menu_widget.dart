@@ -1,7 +1,7 @@
 import 'package:beefitmember_application/bookings/pages/bookings_list/bookings_list.dart';
 import 'package:beefitmember_application/bookings/pages/yourbookings/your_bookings.dart';
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
-import 'package:beefitmember_application/training_progression/widgets/title_banner.dart';
+import 'package:beefitmember_application/shared/widgets/texts.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
