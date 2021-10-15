@@ -10,8 +10,8 @@ class TitleBanner extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
-        top: MediaQuery.of(context).size.height * 0.1,
-        bottom: 20,
+        top: MediaQuery.of(context).size.height * 0.05,
+        bottom: 10,
       ),
       child: Container(
         child: Center(
