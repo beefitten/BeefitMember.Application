@@ -13,7 +13,6 @@ class More extends StatefulWidget {
 }
 
 class _MoreState extends State<More> {
-
   @override
   void initState() {
     super.initState();
@@ -37,7 +36,7 @@ class _MoreState extends State<More> {
               child: Text('Log out', style: TextStyle(fontSize: 20.0),),
               onPressed: () {
                 LogoutService.logOut();
-                Navigator.pop(context, '/nav');
+                Navigator.pop(context, MaterialPageRoute);
               },
         ), )
     ));
