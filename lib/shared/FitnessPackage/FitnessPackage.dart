@@ -24,7 +24,7 @@ class FitnessPackage {
     name = json['name'].toString();
     primaryColor = json['primaryColor']
         .toString(); // Might need to be changed to a "Color"
-    secondaryColor = json['seconderyColor'].toString();
+    secondaryColor = json['secondaryColor'].toString();
     logo = json['logo'].toString();
     //features = json['Features']; //TODO: Fix bug "_TypeError (type 'Null' is not a subtype of type 'List<dynamic>')"
   }

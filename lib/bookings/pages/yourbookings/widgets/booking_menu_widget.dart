@@ -1,5 +1,6 @@
 import 'package:beefitmember_application/bookings/pages/bookings_list/bookings_list.dart';
 import 'package:beefitmember_application/bookings/pages/yourbookings/your_bookings.dart';
+import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:beefitmember_application/training_progression/widgets/title_banner.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +38,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         child: TabBar(
             indicator: ShapeDecoration(
               shape: StadiumBorder(),
-              color: Color.fromRGBO(95, 46, 234, 1),
+              color: Color(int.parse(FitnessPackage.secondaryColor)),
             ),
             labelStyle:
                 TextStyle(color: Colors.white, fontWeight: FontWeight.bold),

@@ -2,6 +2,7 @@ import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/app
 import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/booking_menu_widget.dart';
 import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/bookingswidget.dart';
 import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/find_classes_widget.dart';
+import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:beefitmember_application/shared/widgets/buttons.dart';
 import 'package:beefitmember_application/user/service/logout_service.dart';
 import 'package:flutter/cupertino.dart';
@@ -34,7 +35,7 @@ class _MoreState extends State<More> {
       body: Container(
         child: Center(
             child: TextButton(
-              child: Text('Log out', style: TextStyle(fontSize: 20.0),),
+              child: Text('Log out', style: TextStyle(fontSize: 20.0, color: Color(int.parse(FitnessPackage.secondaryColor))),),
               onPressed: () {
                 LogoutService.logOut();
                 Navigator.pop(context, '/nav');
