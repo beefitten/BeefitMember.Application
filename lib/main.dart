@@ -9,6 +9,7 @@ import 'package:beefitmember_application/user/service/login_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'bookings/pages/yourbookings/your_bookings.dart';
 import 'user/pages/pre_login/pre_login.dart';
 
 void main() {
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
           '/contacts': (context) => Contact(),
           '/login': (context) => Login(),
           '/nav': (context) => Nav(),
+          '/bookings': (context) => YourBookings()
         },
       ),
     );
