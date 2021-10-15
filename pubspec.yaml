@@ -37,7 +37,6 @@ dependencies:
   flutter_secure_storage:
   flutter_displaymode: 
   flutter_svg: 0.22.0 # Bug in version 0.23.0
-  flutter_circular_chart:
 
 
 dev_dependencies:
