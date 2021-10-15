@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 class CustomButton extends StatelessWidget {
   final VoidCallback _onPressed;
   final String _text;
+  final Color _color;
+  static const Color _defaultColor = Color.fromRGBO(6, 62, 249, 1);
 
-  CustomButton(this._text, this._onPressed);
+  CustomButton(this._text, this._onPressed, [this._color = _defaultColor] );
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +16,7 @@ class CustomButton extends StatelessWidget {
       constraints: BoxConstraints(maxHeight: 200),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          primary: Color(int.parse(FitnessPackage.secondaryColor)),
+          primary: _color,
           shape: new RoundedRectangleBorder(
             borderRadius: new BorderRadius.circular(5.0),
           ),
