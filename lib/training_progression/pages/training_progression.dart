@@ -1,3 +1,4 @@
+import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:beefitmember_application/shared/widgets/buttons.dart';
 import 'package:beefitmember_application/shared/widgets/texts.dart';
 import 'package:beefitmember_application/training_progression/widgets/image_box.dart';
@@ -29,7 +30,7 @@ class _TrainingProgressionState extends State<TrainingProgression> {
           ),
           CustomButton(
             "Setup new weight goal",
-            () => {},
+            () => {}, Color(int.parse(FitnessPackage.secondaryColor))
           ),
         ],
       ),

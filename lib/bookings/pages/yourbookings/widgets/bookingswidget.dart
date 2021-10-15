@@ -1,3 +1,4 @@
+import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -93,7 +94,7 @@ class CardExample extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
-                      color: Color.fromRGBO(95, 46, 234, 1),
+                      color: Color(int.parse(FitnessPackage.secondaryColor)),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(

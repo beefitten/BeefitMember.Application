@@ -1,3 +1,4 @@
+import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -30,7 +31,7 @@ class _BookingCardState extends State<BookingCard> {
   @override
   Widget build(BuildContext context) {
     final green = Color.fromRGBO(0, 186, 136, 1);
-    final blue = Color.fromRGBO(6, 62, 249, 1);
+    final blue = Color(int.parse(FitnessPackage.secondaryColor));
 
     String className = widget.className;
     String timeStart = widget.timeStart;

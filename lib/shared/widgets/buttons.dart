@@ -1,10 +1,13 @@
+import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
   final VoidCallback _onPressed;
   final String _text;
+  final Color _color;
+  static const Color _defaultColor = Color.fromRGBO(6, 62, 249, 1);
 
-  CustomButton(this._text, this._onPressed);
+  CustomButton(this._text, this._onPressed, [this._color = _defaultColor] );
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +16,7 @@ class CustomButton extends StatelessWidget {
       constraints: BoxConstraints(maxHeight: 200),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          primary: Color.fromRGBO(6, 62, 249, 1),
+          primary: _color,
           shape: new RoundedRectangleBorder(
             borderRadius: new BorderRadius.circular(5.0),
           ),
@@ -73,7 +76,7 @@ class CustomTextButton extends StatelessWidget {
       child: Text(
         this._text,
         style: TextStyle(
-          color: Color.fromRGBO(75, 120, 255, 1),
+          color: Color(int.parse(FitnessPackage.secondaryColor)),
           fontSize: MediaQuery.of(context).size.height * 0.02,
         ),
       ),

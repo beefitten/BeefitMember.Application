@@ -1,4 +1,13 @@
+<<<<<<< HEAD
 import 'package:beefitmember_application/bookings/pages/previewBookings/widgets/show_more_button.dart';
+=======
+import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/appointmentswidget.dart';
+import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/booking_menu_widget.dart';
+import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/bookingswidget.dart';
+import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/find_classes_widget.dart';
+import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
+import 'package:beefitmember_application/shared/widgets/buttons.dart';
+>>>>>>> 15382addf1ae051750a8eb832eea54a9a56bd88e
 import 'package:beefitmember_application/user/service/logout_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -57,6 +66,7 @@ class _MoreState extends State<More> {
     );
 
     return Scaffold(
+<<<<<<< HEAD
         backgroundColor: Colors.white,
         body: Padding(
           padding: EdgeInsets.only(left: MediaQuery.of(context).size.width *0.05),
@@ -69,5 +79,18 @@ class _MoreState extends State<More> {
             ],
           )),
         ));
+=======
+      backgroundColor: Colors.white,
+      body: Container(
+        child: Center(
+            child: TextButton(
+              child: Text('Log out', style: TextStyle(fontSize: 20.0, color: Color(int.parse(FitnessPackage.secondaryColor))),),
+              onPressed: () {
+                LogoutService.logOut();
+                Navigator.pop(context, '/nav');
+              },
+        ), )
+    ));
+>>>>>>> 15382addf1ae051750a8eb832eea54a9a56bd88e
   }
 }
