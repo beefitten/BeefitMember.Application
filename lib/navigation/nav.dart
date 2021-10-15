@@ -13,6 +13,13 @@ class _NavState extends State<Nav> {
   @override
   void initState() {
     super.initState();
+    print("Init nav");
+  }
+
+  @override
+  void dispose(){
+    super.dispose();
+    print("Dispose nav");
   }
 
   int _selectedIndex = 0;
