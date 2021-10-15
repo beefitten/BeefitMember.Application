@@ -16,13 +16,17 @@ class _NavState extends State<Nav> {
     super.initState();
   }
 
+  @override
+  void dispose(){
+    super.dispose();
+  }
+
   int _selectedIndex = 0;
 
   List<Widget> _widgetOptions = <Widget>[
     Overview(),
     TrainingProgression(),
-    //YourBookings(),
-    Text("Add"),
+    Text("Not implemented yet."),
     BookingMenuWidget(),
     More(),
   ];
@@ -64,7 +68,7 @@ class _NavState extends State<Nav> {
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.calendar_today),
-              label: "Calender",
+              label: "Bookings",
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.menu),
