@@ -1,5 +1,4 @@
 import 'package:beefitmember_application/bookings/pages/bookings_list/booking_card.dart';
-import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/booking_menu_wdiget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -12,22 +11,25 @@ class Classes extends StatefulWidget {
 
 class _ClassesState extends State<Classes> {
   bool _isBooked = false;
-  List<Map> _classes = [
-    {
-      "timeStart": "10:30",
-      "timeEnd": "12:45",
-      "className": "Bike Standard",
-      "place": "Frederiksbjerg",
-      "city": "København"
-    },
-    {
-      "timeStart": "10:30",
-      "timeEnd": "12:45",
-      "className": "Bike Standard",
-      "place": "Viby",
-      "city": "Aarhus"
-    }
-  ];
+  final items = ["Select class type", "Bike", "Run"];
+  String? value = "Select class type";
+
+  // List<Map> _classes = [
+  //   {
+  //     "timeStart": "10:30",
+  //     "timeEnd": "12:45",
+  //     "className": "Bike Standard",
+  //     "place": "Frederiksbjerg",
+  //     "city": "København"
+  //   },
+  //   {
+  //     "timeStart": "10:30",
+  //     "timeEnd": "12:45",
+  //     "className": "Bike Standard",
+  //     "place": "Viby",
+  //     "city": "Aarhus"
+  //   }
+  // ];
 
   handleBook() {
     setState(() {
@@ -78,15 +80,52 @@ class _ClassesState extends State<Classes> {
       city: city,
     );
 
+    DropdownMenuItem<String> buildMenuItem(String item) => DropdownMenuItem(
+          value: item,
+          child: Text(
+            item,
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
+          ),
+        );
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: ListView(
         shrinkWrap: true,
         children: <Widget>[
-          BookingMenuWidget(),
           generalText("Filters"),
-          Column(
-            children: [selectClass(), selectClass(), selectClass()],
+          Stack(
+            children: [
+              Container(
+                decoration:BoxDecoration(color: Color.fromRGBO(247, 247, 252, 1)),
+                margin: EdgeInsets.only(left: 10, right: 10),
+                child: DropdownButtonHideUnderline(
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(45, 4, 0, 4),
+                    child: DropdownButton<String>(
+                      value: value,
+                      items: items.map(buildMenuItem).toList(),
+                      icon: Icon(
+                        Icons.arrow_drop_down,
+                        color: Colors.black,
+                      ),
+                      isExpanded: true,
+                      onChanged: (value) => setState(() => this.value = value),
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 26, top: 17),
+                  child: Icon(
+                    Icons.access_time,
+                    color: Colors.redAccent,
+                    size: 20.0,
+                  ),
+                ),
+              )
+            ],
           ),
           generalText("Today"),
           card,
@@ -103,3 +142,4 @@ class _ClassesState extends State<Classes> {
     );
   }
 }
+
