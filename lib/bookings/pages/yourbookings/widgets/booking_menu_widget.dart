@@ -28,20 +28,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   CustomAppBar(this._title);
 
-  onItemTap(int index) {
-    switch (index) {
-      case 0:
-        _title = "Bookings";
-        break;
-      case 1:
-        _title = "D";
-        break;
-      case 2:
-        _title = "S";
-        break;
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Column(children: [
@@ -60,11 +46,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               fontSize: 14,
             ),
             unselectedLabelColor: Colors.grey,
-            onTap: (index) {
-              onItemTap(index);
-            },
             tabs: [
-              Tab(icon: Text("Bookings")),
+              Tab(icon: Text("My Bookings")),
               Tab(icon: Text("Classes")),
               Tab(icon: Text("Events")),
             ]),
