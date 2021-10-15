@@ -8,16 +8,15 @@ class BookingMenuWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-        length: 3,
-        child: Scaffold(
-          appBar: CustomAppBar("Bookings"),
-          body: TabBarView(
-            children: [
-              YourBookings(),
-              Classes(),
-              Text("Not implemented..."),
-            ],
-          ),
+      length: 3,
+      child: Scaffold(
+        appBar: CustomAppBar("Bookings"),
+        body: TabBarView(
+          children: [
+            YourBookings(),
+            Classes(),
+            Text("Not implemented..."),
+          ],
         ),
       ),
     );
