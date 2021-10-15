@@ -1,4 +1,5 @@
 import 'package:beefitmember_application/bookings/pages/bookings_list/booking_card.dart';
+import 'package:beefitmember_application/bookings/pages/bookings_list/widgets/filter_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -11,29 +12,6 @@ class Classes extends StatefulWidget {
 
 class _ClassesState extends State<Classes> {
   bool _isBooked = false;
-
-  final items = ["Select class type", "Bike", "Run"];
-  String? value = "Select class type";
-
-  // final locations = ["Frederiksbjerg, Viby, Rundhøj, Randers City, Varde City"];
-  // String? valueLocations = "Select locations";
-
-  // List<Map> _classes = [
-  //   {
-  //     "timeStart": "10:30",
-  //     "timeEnd": "12:45",
-  //     "className": "Bike Standard",
-  //     "place": "Frederiksbjerg",
-  //     "city": "København"
-  //   },
-  //   {
-  //     "timeStart": "10:30",
-  //     "timeEnd": "12:45",
-  //     "className": "Bike Standard",
-  //     "place": "Viby",
-  //     "city": "Aarhus"
-  //   }
-  // ];
 
   handleBook() {
     setState(() {
@@ -60,22 +38,6 @@ class _ClassesState extends State<Classes> {
           ),
         );
 
-    // final selectClass = () => Container(
-    //       width: MediaQuery.of(context).size.width * 0.95,
-    //       padding: EdgeInsets.only(
-    //           bottom: MediaQuery.of(context).size.height * 0.01),
-    //       child: TextField(
-    //         autofocus: false,
-    //         decoration: InputDecoration(
-    //           filled: true,
-    //           fillColor: Color.fromRGBO(247, 247, 252, 1),
-    //           hintStyle: TextStyle(color: Color(0xFF666666)),
-    //           hintText: 'Select class type',
-    //           contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-    //         ),
-    //       ),
-    //     );
-
     final card = BookingCard(
       className: className,
       timeStart: timeStart,
@@ -84,30 +46,37 @@ class _ClassesState extends State<Classes> {
       city: city,
     );
 
-    DropdownMenuItem<String> buildMenuItem(String item) => DropdownMenuItem(
-          value: item,
-          child: Text(
-            item,
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
-          ),
-        );
+    final classType = Filter(
+        items: ["Select class type", "Bike", "Run"],
+        value: "Select class type");
+    final locationType = Filter(items: [
+      "Select locations",
+      "Frederiksbjerg",
+      "Viby",
+      "Åbyhøj",
+      "Rundhøj",
+      "Randers City",
+      "Varde City"
+    ], value: "Select locations");
 
-    final classes = Container(
-      decoration: BoxDecoration(color: Color.fromRGBO(247, 247, 252, 1)),
-      margin: EdgeInsets.only(left: 10, right: 10),
-      child: DropdownButtonHideUnderline(
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(45, 4, 0, 4),
-          child: DropdownButton<String>(
-            value: value,
-            items: items.map(buildMenuItem).toList(),
-            icon: Icon(
-              Icons.arrow_drop_down,
-              color: Colors.black,
-            ),
-            isExpanded: true,
-            onChanged: (value) => setState(() => this.value = value),
-          ),
+    final iconTime = Container(
+      child: Padding(
+        padding: const EdgeInsets.only(left: 26, top: 26),
+        child: Icon(
+          Icons.access_time,
+          color: Colors.blue,
+          size: 20.0,
+        ),
+      ),
+    );
+
+    final iconTwo = Container(
+      child: Padding(
+        padding: const EdgeInsets.only(left: 26, top: 93),
+        child: Icon(
+          Icons.access_time,
+          color: Colors.blue,
+          size: 20.0,
         ),
       ),
     );
@@ -120,17 +89,11 @@ class _ClassesState extends State<Classes> {
           generalText("Filters"),
           Stack(
             children: [
-              classes,
-              Container(
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 26, top: 17),
-                  child: Icon(
-                    Icons.access_time,
-                    color: Colors.redAccent,
-                    size: 20.0,
-                  ),
-                ),
-              )
+              Column(
+                children: [classType, locationType],
+              ),
+              iconTime,
+              iconTwo,
             ],
           ),
           generalText("Today"),

@@ -1,3 +1,4 @@
+import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -15,7 +16,7 @@ class ParallaxAppBar extends StatelessWidget {
         stretch: true,
         expandedHeight: 150.0,
         shape: AppBarCurve(),
-        backgroundColor: Color.fromARGB(255, 75, 120, 255),
+        backgroundColor: Color(int.parse(FitnessPackage.primaryColor)),
         bottom: PreferredSize(
             preferredSize: Size.fromHeight(30.0), child: Text('')),
         flexibleSpace: Stack(
@@ -23,10 +24,7 @@ class ParallaxAppBar extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 20.0),
               child: Center(
-                  child: SvgPicture.asset(
-                _logo,
-                color: Colors.white,
-              )),
+                  child: Image.network(FitnessPackage.logo, height: 60)),
             ),
           ],
         ));

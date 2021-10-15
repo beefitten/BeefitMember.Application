@@ -12,8 +12,8 @@ class AppointmentsWidget extends StatelessWidget {
       padding: const EdgeInsets.only(top: 10),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Padding(
-          padding: const EdgeInsets.all(0.0),
-          child: Text(FitnessPackage.name,
+          padding: const EdgeInsets.all(10.0),
+          child: Text("Your Appointments",
               textAlign: TextAlign.left,
               style: TextStyle(
                 color: Colors.black,

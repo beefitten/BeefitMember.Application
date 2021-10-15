@@ -1,5 +1,6 @@
 import 'package:beefitmember_application/bookings/pages/bookings_list/bookings_list.dart';
 import 'package:beefitmember_application/bookings/pages/yourbookings/your_bookings.dart';
+import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:beefitmember_application/shared/widgets/texts.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -28,20 +29,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   CustomAppBar(this._title);
 
-  onItemTap(int index) {
-    switch (index) {
-      case 0:
-        _title = "Bookings";
-        break;
-      case 1:
-        _title = "D";
-        break;
-      case 2:
-        _title = "S";
-        break;
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Column(children: [
@@ -51,7 +38,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         child: TabBar(
             indicator: ShapeDecoration(
               shape: StadiumBorder(),
-              color: Color.fromRGBO(95, 46, 234, 1),
+              color: Color(int.parse(FitnessPackage.secondaryColor)),
             ),
             labelStyle:
                 TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
@@ -60,11 +47,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               fontSize: 14,
             ),
             unselectedLabelColor: Colors.grey,
-            onTap: (index) {
-              onItemTap(index);
-            },
             tabs: [
-              Tab(icon: Text("Bookings")),
+              Tab(icon: Text("My Bookings")),
               Tab(icon: Text("Classes")),
               Tab(icon: Text("Events")),
             ]),
@@ -73,5 +57,5 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(140.0);
+  Size get preferredSize => Size.fromHeight(110.0);
 }

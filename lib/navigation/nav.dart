@@ -1,6 +1,7 @@
-import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/booking_menu_wdiget.dart';
+import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/booking_menu_widget.dart';
 import 'package:beefitmember_application/more/pages/more.dart';
 import 'package:beefitmember_application/overview/overview.dart';
+import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:beefitmember_application/training_progression/pages/training_progression.dart';
 import 'package:flutter/material.dart';
 
@@ -80,7 +81,7 @@ class _NavState extends State<Nav> {
           currentIndex: _selectedIndex,
           onTap: onItemTap,
           backgroundColor: Colors.white,
-          selectedItemColor: Color.fromRGBO(6, 62, 249, 1),
+          selectedItemColor: Color(int.parse(FitnessPackage.primaryColor)),
         ),
       ),
     );

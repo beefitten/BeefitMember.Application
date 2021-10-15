@@ -1,3 +1,4 @@
+import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -39,7 +40,7 @@ class FindClassesWidget extends StatelessWidget {
                   style:
                   ElevatedButton.styleFrom(
                       primary: Colors.white,
-                      onPrimary: Color.fromRGBO(6, 62, 249, 1),
+                      onPrimary: Color(int.parse(FitnessPackage.secondaryColor)),
                       onSurface: Colors.black,
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))))
               ),
