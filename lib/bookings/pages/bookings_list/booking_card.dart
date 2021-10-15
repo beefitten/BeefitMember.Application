@@ -121,7 +121,7 @@ class _BookingCardState extends State<BookingCard> {
                   padding: const EdgeInsets.only(right: 16.0),
                   child: SizedBox(
                       child: bookBtn,
-                      width: MediaQuery.of(context).size.width * 0.2),
+                      width: MediaQuery.of(context).size.width * 0.28),
                 )
               ],
             ),
