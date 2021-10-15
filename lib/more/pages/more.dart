@@ -15,6 +15,19 @@ class More extends StatefulWidget {
 class _MoreState extends State<More> {
 
   @override
+  void initState() {
+    super.initState();
+    build(context);
+    print("Init more");
+  }
+
+  @override
+  void dispose(){
+    super.dispose();
+    print("Dispose more");
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
