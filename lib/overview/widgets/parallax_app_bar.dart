@@ -24,7 +24,7 @@ class ParallaxAppBar extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 20.0),
               child: Center(
-                  child: Image.network(FitnessPackage.logo, height: 45)),
+                  child: Image.network(FitnessPackage.logo, height: 60)),
             ),
           ],
         ));
