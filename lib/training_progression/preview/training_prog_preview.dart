@@ -1,6 +1,5 @@
-import 'dart:ffi';
-
 import 'package:beefitmember_application/bookings/pages/previewBookings/widgets/show_more_button.dart';
+import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:beefitmember_application/shared/widgets/texts.dart';
 import 'package:flutter/material.dart';
 
@@ -35,8 +34,8 @@ class GoalWidget extends StatefulWidget {
 class _GoalWidgetState extends State<GoalWidget> {
   @override
   Widget build(BuildContext context) {
-    var percentage = 43;
-    double weight = 30.0;
+    var _percentage = 43;
+    double _weight = 30.0;
     return Card(
       elevation: 3,
       color: Color(0xfff7f7fc),
@@ -63,11 +62,11 @@ class _GoalWidgetState extends State<GoalWidget> {
                       maxWidth: MediaQuery.of(context).size.width * 0.5,
                     ),
                     child: DescriptionText(
-                        "That’s $percentage\% of your goal of loosing $weight kg"),
+                        "That’s $_percentage\% of your goal of loosing $_weight kg"),
                   ),
                 ],
               ),
-              CircleChart(),
+              CircleChart(_percentage),
             ],
           ),
         ),
@@ -93,16 +92,23 @@ class ValueText extends StatelessWidget {
 }
 
 class CircleChart extends StatelessWidget {
-  const CircleChart({Key? key}) : super(key: key);
+  final int _percentage;
+
+  CircleChart(this._percentage);
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: CircleAvatar(
-          backgroundColor: Colors.purple,
-          radius: MediaQuery.of(context).size.width * 0.13,
+    return Container(
+      constraints:
+          BoxConstraints(minWidth: MediaQuery.of(context).size.width * 0.2),
+      child: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: CircularProgressIndicator(
+            strokeWidth: 8,
+            color: Color(int.parse(FitnessPackage.secondaryColor)),
+            value: _percentage / 100,
+          ),
         ),
       ),
     );
