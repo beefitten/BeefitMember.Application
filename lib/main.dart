@@ -1,4 +1,3 @@
-import 'package:beefitmember_application/center_information/center_information.dart';
 import 'package:beefitmember_application/user/bloc/login_bloc.dart';
 import 'package:beefitmember_application/user/bloc/login_state.dart';
 import 'package:beefitmember_application/user/pages/Contact.dart';
@@ -11,7 +10,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'bookings/pages/yourbookings/your_bookings.dart';
-import 'center_information/widgets/center_information_map.dart';
 import 'user/pages/pre_login/pre_login.dart';
 
 void main() {
@@ -29,7 +27,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Beefit Member',
         routes: {
-          '/': (context) => CenterInformation(),
+          '/': (context) => PreLogin(),
           '/contacts': (context) => Contact(),
           '/login': (context) => Login(),
           '/nav': (context) => Nav(),

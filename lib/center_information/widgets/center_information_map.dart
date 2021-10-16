@@ -9,8 +9,16 @@ class CenterInformationMap extends StatefulWidget {
 
 class _CenterInformationMapState extends State<CenterInformationMap> {
   late GoogleMapController mapController;
-
   final LatLng _center = const LatLng(56.16961731336789, 10.193464582067223);
+
+  List<Marker> markers = [];
+
+  @override
+  void initState() {
+    super.initState();
+    markers.add(Marker(
+        markerId: MarkerId('CurrentGym'), draggable: false, position: _center));
+  }
 
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
@@ -21,14 +29,15 @@ class _CenterInformationMapState extends State<CenterInformationMap> {
     return Padding(
       padding: const EdgeInsets.all(4.0),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(5),
+        borderRadius: BorderRadius.circular(10),
         child: Container(
           constraints: BoxConstraints(
               maxWidth: MediaQuery.of(context).size.width * 0.9,
-              maxHeight: MediaQuery.of(context).size.height * 0.9),
+              maxHeight: MediaQuery.of(context).size.height * 0.4),
           child: GoogleMap(
             onMapCreated: _onMapCreated,
-            initialCameraPosition: CameraPosition(target: _center, zoom: 16.0),
+            initialCameraPosition: CameraPosition(target: _center, zoom: 14.5),
+            markers: Set.from(markers),
           ),
         ),
       ),

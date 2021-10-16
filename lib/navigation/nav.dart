@@ -1,4 +1,5 @@
 import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/booking_menu_widget.dart';
+import 'package:beefitmember_application/center_information/center_information.dart';
 import 'package:beefitmember_application/more/pages/more.dart';
 import 'package:beefitmember_application/overview/overview.dart';
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
@@ -18,7 +19,7 @@ class _NavState extends State<Nav> {
   }
 
   @override
-  void dispose(){
+  void dispose() {
     super.dispose();
     print("Dispose nav");
   }
@@ -28,8 +29,7 @@ class _NavState extends State<Nav> {
   List<Widget> _widgetOptions = <Widget>[
     Overview(),
     TrainingProgression(),
-    //YourBookings(),
-    Text("Add"),
+    CenterInformation(),
     BookingMenuWidget(),
     More(),
   ];
