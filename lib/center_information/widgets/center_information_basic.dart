@@ -22,6 +22,7 @@ class _CenterInformationBasicState extends State<CenterInformationBasic> {
         elevation: 3,
         color: Color(0xffF7F7FC),
         child: Container(
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(5)),
           child: Column(
             children: [
               Container(

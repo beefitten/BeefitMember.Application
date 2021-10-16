@@ -15,10 +15,10 @@ class CenterInformation extends StatelessWidget {
           Container(
             child: CenterInformationBasic(),
           ),
-          Container(
+          Padding(
+            padding: const EdgeInsets.all(4.0),
             child: CenterInformationMap(),
           ),
-          Container(child: GoalWidget()),
           Container(
             child: PreviewBookings(),
           )

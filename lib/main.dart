@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'bookings/pages/yourbookings/your_bookings.dart';
+import 'center_information/widgets/center_information_map.dart';
 import 'user/pages/pre_login/pre_login.dart';
 
 void main() {
