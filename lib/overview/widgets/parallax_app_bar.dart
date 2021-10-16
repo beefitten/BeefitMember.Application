@@ -5,9 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'app_bar_curve.dart';
 
 class ParallaxAppBar extends StatelessWidget {
-  final _logo;
-
-  ParallaxAppBar(this._logo);
+  ParallaxAppBar();
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +22,7 @@ class ParallaxAppBar extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 20.0),
               child: Center(
-                  child: Image.network(FitnessPackage.logo, height: 60)),
+                  child: Image.network("FitnessPackage.logo", height: 60)),
             ),
           ],
         ));
