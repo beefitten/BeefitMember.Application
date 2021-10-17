@@ -1,4 +1,3 @@
-import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:flutter/material.dart';
 
 var logoPath =
@@ -30,19 +29,10 @@ class _CenterInformationBasicState extends State<CenterInformationBasic> {
             Container(
               alignment: Alignment.centerLeft,
               child: Padding(
-                padding: const EdgeInsets.only(left: 20, top: 4),
-                child: Text("Your gym",
-                    style:
-                        TextStyle(fontWeight: FontWeight.w600, fontSize: 26)),
-              ),
-            ),
-            Container(
-              alignment: Alignment.centerLeft,
-              child: Padding(
-                padding: const EdgeInsets.only(left: 20, bottom: 16),
+                padding: const EdgeInsets.only(left: 20, bottom: 16, top: 8),
                 child: Text('Fitness world - Jens Baggesens vej',
                     style:
-                        TextStyle(fontSize: 18, fontWeight: FontWeight.w300)),
+                        TextStyle(fontSize: 18, fontWeight: FontWeight.w400)),
               ),
             ),
             Row(
@@ -61,7 +51,7 @@ class _CenterInformationBasicState extends State<CenterInformationBasic> {
                         padding: const EdgeInsets.only(left: 2),
                         child: Text('kundeservice@FWFinlandsgade',
                             style: TextStyle(
-                                fontSize: 12, color: Colors.blueAccent)),
+                                fontSize: 14, color: Colors.blueAccent)),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: 2),
@@ -71,12 +61,12 @@ class _CenterInformationBasicState extends State<CenterInformationBasic> {
                       Padding(
                         padding: const EdgeInsets.only(left: 2),
                         child: Text('$mondayThursday (Mon-Thu)',
-                            style: TextStyle(fontSize: 12)),
+                            style: TextStyle(fontSize: 14)),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: 2),
                         child: Text('$friday (Fri)',
-                            style: TextStyle(fontSize: 12)),
+                            style: TextStyle(fontSize: 14)),
                       )
                     ],
                   ),

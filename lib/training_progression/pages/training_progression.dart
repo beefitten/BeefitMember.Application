@@ -30,10 +30,8 @@ class _TrainingProgressionState extends State<TrainingProgression> {
             child: DescriptionText(
                 "Get motivated by setting up a few simple weekly goals, and the app will keep track of whether you archive the goals every week. "),
           ),
-          CustomButton(
-            "Setup new weight goal",
-            () => {}, Color(int.parse(FitnessPackage.secondaryColor))
-          ),
+          CustomButton("Setup new weight goal", () => {},
+              Color(int.parse(FitnessPackage.secondaryColor))),
         ],
       ),
     );

@@ -3,82 +3,120 @@ import 'package:flutter/material.dart';
 
 class CenterInformationHeatMap extends StatelessWidget {
   final List<Color> colorGradient = [
-    Color(0xFFf54242),
-    Color(0xFFf56342),
-    Color(0xFFf57e42),
-    Color(0xFF4293f5)
+    Color(0xFF4B78FF),
+    Color(0xFFff0000),
+    Color(0xFFff3300),
+    Color(0xFFff0000),
+    Color(0xFF063EF9),
+  ];
+
+  final List<FlSpot> dataPoints = [
+    FlSpot(0, 0.1),
+    FlSpot(1, 0.4),
+    FlSpot(2, 0.3),
+    FlSpot(3, 0.4),
+    FlSpot(4, 0.3),
+    FlSpot(5, 0.9),
+    FlSpot(6, 3),
+    FlSpot(7, 3.4),
+    FlSpot(8, 6),
+    FlSpot(9, 6.5),
+    FlSpot(10, 3),
+    FlSpot(11, 3),
+    FlSpot(12, 4),
+    FlSpot(13, 5.5),
+    FlSpot(14, 4.5),
+    FlSpot(15, 4),
+    FlSpot(16, 6),
+    FlSpot(17, 6.9),
+    FlSpot(18, 6.5),
+    FlSpot(19, 4.6),
+    FlSpot(20, 3.7),
+    FlSpot(21, 3.2),
+    FlSpot(22, 2),
+    FlSpot(23, 0.5),
   ];
 
   CenterInformationHeatMap();
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      color: Color(0xFFF7F7FC),
-      child: Container(
-        constraints: BoxConstraints(
-            maxHeight: MediaQuery.of(context).size.height * 0.3,
-            maxWidth: MediaQuery.of(context).size.width * 0.9),
-        child: LineChart(
-          LineChartData(
-            minX: 0,
-            maxX: 11,
-            minY: 0,
-            maxY: 6,
-            titlesData: FlTitlesData(show: false),
-            borderData: FlBorderData(show: false),
-            gridData: FlGridData(show: false, drawVerticalLine: false),
-            lineBarsData: [
-              LineChartBarData(
-                  spots: [
-                    FlSpot(0, 3),
-                    FlSpot(2.6, 2),
-                    FlSpot(4.9, 5),
-                    FlSpot(6.8, 2.5),
-                    FlSpot(8, 4),
-                    FlSpot(9.5, 3),
-                    FlSpot(11, 4)
-                  ],
-                  isCurved: true,
-                  colors: colorGradient,
-                  barWidth: 5,
-                  dotData: FlDotData(show: false),
-                  belowBarData: BarAreaData(
-                      show: true,
-                      colors: colorGradient
-                          .map((e) => e.withOpacity(0.3))
-                          .toList()))
-            ],
+    return Stack(children: [
+      Card(
+        elevation: 3,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        color: Color(0xFFF7F7FC),
+        child: Container(
+          constraints: BoxConstraints(
+              maxHeight: MediaQuery.of(context).size.height * 0.3,
+              maxWidth: MediaQuery.of(context).size.width),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: LineChart(
+              LineChartData(
+                minX: 0,
+                maxX: 23,
+                minY: 0,
+                maxY: 10,
+                titlesData: FlTitlesData(show: false),
+                borderData: FlBorderData(show: false),
+                gridData: FlGridData(show: false, drawVerticalLine: false),
+                lineBarsData: [
+                  LineChartBarData(
+                      spots: dataPoints,
+                      isCurved: true,
+                      colors:
+                          colorGradient.map((e) => e.withOpacity(0.5)).toList(),
+                      barWidth: 5,
+                      dotData: FlDotData(show: false),
+                      belowBarData: BarAreaData(
+                          show: true,
+                          colors: colorGradient
+                              .map((e) => e.withOpacity(0.3))
+                              .toList()))
+                ],
+              ),
+            ),
           ),
         ),
       ),
-    );
+      Padding(
+        padding: const EdgeInsets.only(left: 16, top: 20),
+        child: Text('Current status',
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400)),
+      ),
+      Padding(
+        padding: const EdgeInsets.only(left: 20, top: 40),
+        child: Text('HOT',
+            style: TextStyle(
+                fontSize: 26,
+                color: Color(0xFFff0000),
+                fontWeight: FontWeight.bold)),
+      )
+    ]);
   }
 }
 
 class LineTitles {
   static getTitleData() => FlTitlesData(
       show: true,
+      topTitles: SideTitles(showTitles: false),
+      rightTitles: SideTitles(showTitles: false),
+      leftTitles: SideTitles(showTitles: false),
       bottomTitles: SideTitles(
           showTitles: true,
-          reservedSize: 22,
+          reservedSize: 11,
+          margin: 20,
           getTitles: (value) {
             switch (value.toInt()) {
-              case 2:
-                return '8:00';
-              case 3:
-                return '10:00';
+              case 0:
+                return '00:00';
               case 4:
-                return '12:00';
-              case 5:
-                return '14:00';
+                return '04:00';
               case 6:
-                return '16:00';
+                return '00:00';
               case 7:
-                return '17:00';
-              case 8:
-                return '18:00';
+                return '04:00';
             }
             return '';
           }));
