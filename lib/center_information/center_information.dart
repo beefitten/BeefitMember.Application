@@ -16,10 +16,6 @@ class CenterInformation extends StatelessWidget {
         padding: const EdgeInsets.only(left: 8, right: 8),
         child: ListView(children: [
           TitleBanner('Center informations'),
-          Padding(
-            padding: const EdgeInsets.only(top: 12),
-            child: TitleText('Your gym'),
-          ),
           CenterInformationBasic(),
           Padding(
             padding: const EdgeInsets.only(top: 20),

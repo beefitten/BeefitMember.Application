@@ -1,18 +1,17 @@
+import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
+final blue = Color(int.parse(FitnessPackage.secondaryColor));
+
 class CenterInformationHeatMap extends StatelessWidget {
   final List<Color> colorGradient = [
-    Color(0xFF4B78FF),
-    Color(0xFFff0000),
-    Color(0xFFff3300),
-    Color(0xFFff0000),
-    Color(0xFF063EF9),
+    Color(int.parse(FitnessPackage.secondaryColor)),
+    Color(int.parse(FitnessPackage.primaryColor)),
   ];
 
-  final List<FlSpot> dataPoints = [
-    FlSpot(0, 0.1),
-    FlSpot(1, 0.4),
+  final List<FlSpot> dataPoints = const [
+    FlSpot(1, 0.2),
     FlSpot(2, 0.3),
     FlSpot(3, 0.4),
     FlSpot(4, 0.3),
@@ -35,6 +34,7 @@ class CenterInformationHeatMap extends StatelessWidget {
     FlSpot(21, 3.2),
     FlSpot(22, 2),
     FlSpot(23, 0.5),
+    FlSpot(24, 0.1),
   ];
 
   CenterInformationHeatMap();
@@ -54,13 +54,13 @@ class CenterInformationHeatMap extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
             child: LineChart(
               LineChartData(
-                minX: 0,
+                minX: 1,
                 maxX: 23,
                 minY: 0,
                 maxY: 10,
-                titlesData: FlTitlesData(show: false),
+                titlesData: LineTitles.getTitleData(),
                 borderData: FlBorderData(show: false),
-                gridData: FlGridData(show: false, drawVerticalLine: false),
+                gridData: FlGridData(show: false),
                 lineBarsData: [
                   LineChartBarData(
                       spots: dataPoints,
@@ -90,7 +90,7 @@ class CenterInformationHeatMap extends StatelessWidget {
         child: Text('HOT',
             style: TextStyle(
                 fontSize: 26,
-                color: Color(0xFFff0000),
+                color: Color(int.parse(FitnessPackage.secondaryColor)),
                 fontWeight: FontWeight.bold)),
       )
     ]);
@@ -105,18 +105,18 @@ class LineTitles {
       leftTitles: SideTitles(showTitles: false),
       bottomTitles: SideTitles(
           showTitles: true,
-          reservedSize: 11,
-          margin: 20,
+          reservedSize: 22,
+          margin: 8,
           getTitles: (value) {
             switch (value.toInt()) {
-              case 0:
-                return '00:00';
-              case 4:
-                return '04:00';
-              case 6:
-                return '00:00';
-              case 7:
-                return '04:00';
+              case 3:
+                return '03:00';
+              case 9:
+                return '09:00';
+              case 15:
+                return '15:00';
+              case 21:
+                return '21:00';
             }
             return '';
           }));
