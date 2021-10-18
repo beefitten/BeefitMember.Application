@@ -34,14 +34,14 @@ class _FilterState extends State<Filter> {
         child: Padding(
           padding: const EdgeInsets.fromLTRB(45, 4, 0, 4),
           child: DropdownButton<String>(
-            value: widget.value,
+            value: value,
             items: widget.items.map(buildMenuItem).toList(),
             icon: Icon(
               Icons.arrow_drop_down,
               color: Colors.black,
             ),
             isExpanded: true,
-            onChanged: (value) => setState(() => this.value = widget.value),
+            onChanged: (value) => setState(() => this.value = value),
           ),
         ),
       ),
