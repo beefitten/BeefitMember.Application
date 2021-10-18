@@ -28,13 +28,16 @@ class TitleText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      _text,
-      textAlign: TextAlign.left,
-      style: TextStyle(
-        color: Colors.black,
-        fontSize: MediaQuery.of(context).size.height * 0.03,
-        fontWeight: FontWeight.bold,
+    return Padding(
+      padding: const EdgeInsets.only(left: 10),
+      child: Text(
+        _text,
+        textAlign: TextAlign.left,
+        style: TextStyle(
+          color: Colors.black,
+          fontSize: MediaQuery.of(context).size.height * 0.03,
+          fontWeight: FontWeight.bold,
+        ),
       ),
     );
   }
