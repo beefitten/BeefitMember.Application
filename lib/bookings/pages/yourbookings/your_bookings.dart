@@ -1,5 +1,4 @@
 import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/appointmentswidget.dart';
-import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/booking_menu_widget.dart';
 import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/bookingswidget.dart';
 import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/find_classes_widget.dart';
 import 'package:flutter/cupertino.dart';
