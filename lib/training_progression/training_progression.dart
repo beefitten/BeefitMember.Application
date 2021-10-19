@@ -2,6 +2,8 @@ import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.da
 import 'package:beefitmember_application/shared/widgets/buttons.dart';
 import 'package:beefitmember_application/shared/widgets/texts.dart';
 import 'package:beefitmember_application/training_progression/widgets/image_box.dart';
+import 'package:beefitmember_application/training_progression/widgets/plus_minus_counter.dart';
+import 'package:beefitmember_application/training_progression/widgets/time_limit_counter.dart';
 import 'package:flutter/material.dart';
 
 class TrainingProgression extends StatefulWidget {
@@ -91,63 +93,6 @@ class _TrainingProgressionState extends State<TrainingProgression> {
             leading: Icon(Icons.surfing),
             title: Text("Test"),
           ),
-        ],
-      ),
-    );
-  }
-}
-
-class TimeLimitCounter extends StatefulWidget {
-  const TimeLimitCounter();
-
-  @override
-  _TimeLimitCounterState createState() => _TimeLimitCounterState();
-}
-
-class _TimeLimitCounterState extends State<TimeLimitCounter> {
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        H3Text("Enable time limit"),
-        DescriptionText(
-            "If you enable time limit this goal will become a weekly weight loss goal as well."),
-        PlusMinusCounter(),
-      ],
-    );
-  }
-}
-
-class PlusMinusCounter extends StatefulWidget {
-  const PlusMinusCounter({Key? key}) : super(key: key);
-
-  @override
-  _PlusMinusCounterState createState() => _PlusMinusCounterState();
-}
-
-class _PlusMinusCounterState extends State<PlusMinusCounter> {
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 10, bottom: 10),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          CustomIconButton(Icons.remove, () => {}),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Text(
-                "80.4",
-                style: TextStyle(
-                  fontSize: MediaQuery.of(context).size.height * 0.03,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text("KG")
-            ],
-          ),
-          CustomIconButton(Icons.add, () => {}),
         ],
       ),
     );
