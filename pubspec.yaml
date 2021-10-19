@@ -37,8 +37,9 @@ dependencies:
   flutter_secure_storage:
   flutter_displaymode: 
   flutter_svg: 0.22.0 # Bug in version 0.23.0
-  google_maps_flutter: ^2.0.9
-  fl_chart: ^0.40.2
+  google_maps_flutter:
+  fl_chart:
+  modal_bottom_sheet:
 
 
 dev_dependencies:
