@@ -32,7 +32,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      TitleBanner(_title),
+      H1Text(_title),
       Padding(
         padding: const EdgeInsets.only(left: 8, right: 8),
         child: TabBar(

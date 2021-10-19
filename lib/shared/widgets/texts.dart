@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class TitleBanner extends StatelessWidget {
+class H1Text extends StatelessWidget {
   final String _title;
 
-  const TitleBanner(this._title);
+  const H1Text(this._title);
 
   @override
   Widget build(BuildContext context) {
@@ -14,17 +14,17 @@ class TitleBanner extends StatelessWidget {
       ),
       child: Container(
         child: Center(
-          child: TitleText(_title),
+          child: H2Text(_title),
         ),
       ),
     );
   }
 }
 
-class TitleText extends StatelessWidget {
+class H2Text extends StatelessWidget {
   final String _text;
 
-  TitleText(this._text);
+  H2Text(this._text);
 
   @override
   Widget build(BuildContext context) {
