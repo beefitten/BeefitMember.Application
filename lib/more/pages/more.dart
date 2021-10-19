@@ -56,10 +56,29 @@ class _MoreState extends State<More> {
       ),
     );
 
-    // final bigCard = Container(
-    //   child: ,
-    // );
-    final smallCard = Container();
+    final bigCard = Container(
+      height: 100,
+      width: MediaQuery.of(context).size.width*0.42,
+      margin: EdgeInsets.only(bottom: 8.0, right: MediaQuery.of(context).size.width*0.05),
+      decoration: BoxDecoration(
+          color: Color.fromRGBO(247, 247, 252, 1),
+          borderRadius: BorderRadius.circular(5.0)),
+      child: Column(
+        children: [Text("Logo"), Text("data")],
+      ),
+    );
+
+    final smallCard = Container(
+      height: 85,
+      width: MediaQuery.of(context).size.width*0.42,
+      margin: EdgeInsets.only(bottom: 8.0, right: 16.0),
+      decoration: BoxDecoration(
+          color: Color.fromRGBO(247, 247, 252, 1),
+          borderRadius: BorderRadius.circular(5.0)),
+      child: Column(
+        children: [Text("Logo"), Text("data")],
+      ),
+    );
 
     final more = Container(
       child: Column(
@@ -67,21 +86,37 @@ class _MoreState extends State<More> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           headerGeneral("More"),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              // left column under more
-              Column(
-                children: [
-                  Text("data1"),
-                  // TrainingProgPreview(),
-                ],
-              ),
-              // right column under more
-              Column(
-                children: [Text("data2")],
-              )
-            ],
+          Padding(
+            padding: const EdgeInsets.only(top: 8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // left column under more
+                Column(
+                  children: [
+                    bigCard,
+                    bigCard,
+                    bigCard,
+                    bigCard,
+                    bigCard,
+                    bigCard
+                  ],
+                ),
+                // right column under more
+                Column(
+                  children: [
+                    smallCard,
+                    smallCard,
+                    smallCard,
+                    smallCard,
+                    smallCard,
+                    smallCard,
+                    smallCard
+                  ],
+                )
+              ],
+            ),
           )
         ],
       ),
