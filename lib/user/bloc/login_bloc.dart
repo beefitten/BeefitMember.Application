@@ -1,3 +1,4 @@
+import 'package:beefitmember_application/bookings/services/booking_service.dart';
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:beefitmember_application/user/bloc/login_events.dart';
 import 'package:beefitmember_application/user/bloc/login_state.dart';
@@ -6,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginBLoc extends Bloc<LoginEvents, LoginState> {
   LoginService service;
+
   LoginBLoc(LoginState initialState, this.service) : super(initialState);
 
   @override

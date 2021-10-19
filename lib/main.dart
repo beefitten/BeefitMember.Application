@@ -1,3 +1,4 @@
+import 'package:beefitmember_application/bookings/services/booking_service.dart';
 import 'package:beefitmember_application/user/bloc/login_bloc.dart';
 import 'package:beefitmember_application/user/bloc/login_state.dart';
 import 'package:beefitmember_application/user/pages/Contact.dart';
