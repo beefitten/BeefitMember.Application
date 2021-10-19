@@ -48,7 +48,7 @@ class _TrainingProgressionState extends State<TrainingProgression> {
   }
 
   _showSheet() {
-    showModalBottomSheet<dynamic>(
+    return showModalBottomSheet<dynamic>(
       isScrollControlled: true,
       constraints: BoxConstraints.expand(
           height: MediaQuery.of(context).size.height * 0.9),
@@ -73,14 +73,10 @@ class _TrainingProgressionState extends State<TrainingProgression> {
           DescriptionText(
               "Get motivated by setting up a few simple weekly goals, and the app will keep track of whether you archive the goals every week."),
           H3Text("Your current weight"),
-          PlusMinusCounter(),
+          PlusMinusCounter(onChanged: (value) => {value}),
           H3Text("Your goal weight"),
-          PlusMinusCounter(),
+          PlusMinusCounter(onChanged: (value) => {value}),
           TimeLimitCounter(),
-          ListTile(
-            leading: Icon(Icons.surfing),
-            title: Text("Test"),
-          ),
           ListTile(
             leading: Icon(Icons.surfing),
             title: Text("Test"),
