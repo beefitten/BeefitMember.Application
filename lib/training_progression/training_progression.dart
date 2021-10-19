@@ -21,11 +21,11 @@ class _TrainingProgressionState extends State<TrainingProgression> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            TitleBanner("Weight Goal"),
+            H1Text("Weight Goal"),
             ImageBox(
               "https://2.bp.blogspot.com/-q3qJmAW1T_0/Vty1RAbGe4I/AAAAAAAAAlc/otdCoDEdMl8/s640/Arnold-Schwarzenegger-Champion-BodyBuilder.jpg",
             ),
-            TitleText("Setup a weight goal"),
+            H2Text("Setup a weight goal"),
             Container(
               width: 100,
               child: DescriptionText(
