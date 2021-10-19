@@ -3,7 +3,7 @@ import 'package:beefitmember_application/center_information/center_information.d
 import 'package:beefitmember_application/more/pages/more.dart';
 import 'package:beefitmember_application/overview/overview.dart';
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
-import 'package:beefitmember_application/training_progression/pages/training_progression.dart';
+import 'package:beefitmember_application/training_progression/training_progression.dart';
 import 'package:flutter/material.dart';
 
 class Nav extends StatefulWidget {
