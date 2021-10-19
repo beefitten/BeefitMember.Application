@@ -13,6 +13,7 @@ class _TimeLimitCounterState extends State<TimeLimitCounter> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         H3Text("Enable time limit"),
         DescriptionText(
