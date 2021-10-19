@@ -13,6 +13,7 @@ class ParallaxAppBar extends StatelessWidget {
         backwardsCompatibility: false,
         systemOverlayStyle: SystemUiOverlayStyle(statusBarBrightness: Brightness.dark),
         pinned: true,
+        automaticallyImplyLeading: false,
         stretch: true,
         expandedHeight: 150.0,
         shape: AppBarCurve(),

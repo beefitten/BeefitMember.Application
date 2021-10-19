@@ -36,25 +36,28 @@ class _NavState extends State<Nav> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
-      ),
-      bottomNavigationBar: Theme(
-        data: ThemeData(
-          splashColor: Colors.transparent,
-          highlightColor: Colors.transparent,
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        body: Center(
+          child: _widgetOptions.elementAt(_selectedIndex),
         ),
-        child: BottomNavigationBar(
-          iconSize: MediaQuery.of(context).size.height * 0.035,
-          type: BottomNavigationBarType.fixed,
-          showUnselectedLabels: false,
-          showSelectedLabels: true,
-          items: generateIcons(FitnessPackage.features),
-          currentIndex: _selectedIndex,
-          onTap: onItemTap,
-          backgroundColor: Colors.white,
-          selectedItemColor: Color(int.parse(FitnessPackage.primaryColor)),
+        bottomNavigationBar: Theme(
+          data: ThemeData(
+            splashColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+          ),
+          child: BottomNavigationBar(
+            iconSize: MediaQuery.of(context).size.height * 0.035,
+            type: BottomNavigationBarType.fixed,
+            showUnselectedLabels: false,
+            showSelectedLabels: true,
+            items: generateIcons(FitnessPackage.features),
+            currentIndex: _selectedIndex,
+            onTap: onItemTap,
+            backgroundColor: Colors.white,
+            selectedItemColor: Color(int.parse(FitnessPackage.primaryColor)),
+          ),
         ),
       ),
     );
