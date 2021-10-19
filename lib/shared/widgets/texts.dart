@@ -29,7 +29,7 @@ class TitleText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 10),
+      padding: const EdgeInsets.only(top: 10),
       child: Text(
         _text,
         textAlign: TextAlign.left,
@@ -50,9 +50,12 @@ class DescriptionText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      _text,
-      softWrap: true,
+    return Padding(
+      padding: const EdgeInsets.only(top: 10.0, bottom: 10),
+      child: Text(
+        _text,
+        softWrap: true,
+      ),
     );
   }
 }
