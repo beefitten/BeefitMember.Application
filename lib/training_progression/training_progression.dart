@@ -77,17 +77,10 @@ class _TrainingProgressionState extends State<TrainingProgression> {
           H3Text("Your goal weight"),
           PlusMinusCounter(onChanged: (value) => {value}),
           TimeLimitCounter(),
-          ListTile(
-            leading: Icon(Icons.surfing),
-            title: Text("Test"),
-          ),
-          ListTile(
-            leading: Icon(Icons.surfing),
-            title: Text("Test"),
-          ),
-          ListTile(
-            leading: Icon(Icons.surfing),
-            title: Text("Test"),
+          CustomButton(
+            "Save",
+            () => {},
+            Color(int.parse(FitnessPackage.primaryColor)),
           ),
         ],
       ),
