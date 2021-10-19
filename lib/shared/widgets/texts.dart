@@ -43,6 +43,23 @@ class H2Text extends StatelessWidget {
   }
 }
 
+class H3Text extends StatelessWidget {
+  final String _text;
+
+  const H3Text(this._text);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      _text,
+      style: TextStyle(
+        fontSize: MediaQuery.of(context).size.height * 0.02,
+        fontWeight: FontWeight.bold,
+      ),
+    );
+  }
+}
+
 class DescriptionText extends StatelessWidget {
   final String _text;
 
