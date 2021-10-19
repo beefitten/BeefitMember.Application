@@ -26,13 +26,7 @@ class _NavState extends State<Nav> {
 
   int _selectedIndex = 0;
 
-  List<Widget> _widgetOptions = <Widget>[
-    Overview(),
-    TrainingProgression(),
-    CenterInformation(),
-    BookingMenuWidget(),
-    More(),
-  ];
+  List<Widget> _widgetOptions = generateFeatures(FitnessPackage.features);
 
   void onItemTap(int index) {
     setState(() {
@@ -56,28 +50,7 @@ class _NavState extends State<Nav> {
           type: BottomNavigationBarType.fixed,
           showUnselectedLabels: false,
           showSelectedLabels: true,
-          items: [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: "Overview",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.fitness_center),
-              label: "Strong",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.add_circle),
-              label: "Plus",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.calendar_today),
-              label: "Calender",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.menu),
-              label: "More",
-            ),
-          ],
+          items: generateIcons(FitnessPackage.features),
           currentIndex: _selectedIndex,
           onTap: onItemTap,
           backgroundColor: Colors.white,
@@ -86,4 +59,67 @@ class _NavState extends State<Nav> {
       ),
     );
   }
+
+  static List<Widget> generateFeatures(List<int> featureList) {
+    List<Widget> _widgetOptions = <Widget>[
+      Overview()
+    ];
+
+    featureList.forEach((element) {
+      switch(element){
+        case 0:
+          _widgetOptions.add(BookingMenuWidget());
+          break;
+        case 1:
+          _widgetOptions.add(TrainingProgression());
+          break;
+        case 2:
+          _widgetOptions.add(CenterInformation());
+          break;
+      }
+    });
+
+    _widgetOptions.add(More());
+    return _widgetOptions;
+  }
+
+  static List<BottomNavigationBarItem> generateIcons(List<int> featureList) {
+    List<BottomNavigationBarItem> _navigationBarList = <BottomNavigationBarItem>[
+      BottomNavigationBarItem(
+        icon: Icon(Icons.home),
+        label: "Overview",
+      ),
+    ];
+
+    featureList.forEach((element) {
+      switch(element){
+        case 0:
+          _navigationBarList.add(BottomNavigationBarItem(
+            icon: Icon(Icons.calendar_today),
+            label: "Bookings",
+          ));
+          break;
+        case 1:
+          _navigationBarList.add(BottomNavigationBarItem(
+            icon: Icon(Icons.fitness_center),
+            label: "Weight Goal",
+          ),);
+          break;
+        case 2:
+          _navigationBarList.add(BottomNavigationBarItem(
+            icon: Icon(Icons.info_rounded),
+            label: "Information",
+          ));
+          break;
+      }
+    });
+
+    _navigationBarList.add(BottomNavigationBarItem(
+      icon: Icon(Icons.menu),
+      label: "More",
+    ));
+
+    return _navigationBarList;
+  }
 }
+
