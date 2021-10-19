@@ -1,7 +1,7 @@
-import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/appointmentswidget.dart';
-import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/booking_menu_widget.dart';
-import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/bookingswidget.dart';
-import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/find_classes_widget.dart';
+import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/appointments_widget.dart';
+import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/bookingMenu_widget.dart';
+import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/bookings_widget.dart';
+import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/findClasses_widget.dart';
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:beefitmember_application/shared/widgets/buttons.dart';
 import 'package:beefitmember_application/user/service/logout_service.dart';
