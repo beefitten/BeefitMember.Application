@@ -1,3 +1,4 @@
+import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:flutter/material.dart';
 
 var logoPath =
@@ -18,49 +19,137 @@ class _CenterInformationBasicState extends State<CenterInformationBasic> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          color: Colors.red,
+          color: Color(0xFFF7F7FC),
           borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(10),
-              bottomRight: Radius.circular(10))),
-      constraints: BoxConstraints(
-          maxHeight: MediaQuery.of(context).size.height * 0.2,
-          maxWidth: MediaQuery.of(context).size.width * 0.9),
-      child: Row(
-        children: [
-          Container(
-            constraints: BoxConstraints(
-                maxWidth: MediaQuery.of(context).size.width * 0.2,
-                maxHeight: MediaQuery.of(context).size.height * 0.2),
-            color: Colors.yellow,
-            child: Image.network(logoPath, height: 75),
+              bottomRight: Radius.circular(10),
+              bottomLeft: Radius.circular(10))),
+      constraints:
+          BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.9),
+      child: Padding(
+        padding: const EdgeInsets.only(left: 12, top: 16),
+        child: Container(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              phone,
+              email,
+              Padding(
+                padding: const EdgeInsets.only(left: 2, bottom: 10),
+                child: Text('Opening hours',
+                    style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.grey,
+                        fontWeight: FontWeight.w800)),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 2),
+                child: Text('$mondayThursday (Mon-Thu)',
+                    style: TextStyle(
+                        fontSize: 16,
+                        color:
+                            Color(int.parse(FitnessPackage.secondaryColor)))),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 2, bottom: 16),
+                child: Text('$friday (Fri)',
+                    style: TextStyle(
+                        fontSize: 16,
+                        color:
+                            Color(int.parse(FitnessPackage.secondaryColor)))),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 2, bottom: 10),
+                child: Text('Manned hours',
+                    style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.grey,
+                        fontWeight: FontWeight.w800)),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 2),
+                child: Text('$mondayThursday (Mon-Thu)',
+                    style: TextStyle(
+                        fontSize: 16,
+                        color:
+                            Color(int.parse(FitnessPackage.secondaryColor)))),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 2, bottom: 16),
+                child: Text('$friday (Fri)',
+                    style: TextStyle(
+                        fontSize: 16,
+                        color:
+                            Color(int.parse(FitnessPackage.secondaryColor)))),
+              ),
+            ],
           ),
-          Container(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 2),
-                  child: Text('kundeservice@FWFinlandsgade',
-                      style: TextStyle(fontSize: 16, color: Colors.blueAccent)),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 2),
-                  child: Text('12 34 56 78', style: TextStyle(fontSize: 16)),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 2),
-                  child: Text('$mondayThursday (Mon-Thu)',
-                      style: TextStyle(fontSize: 16)),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 2),
-                  child: Text('$friday (Fri)', style: TextStyle(fontSize: 16)),
-                )
-              ],
-            ),
-          )
-        ],
+        ),
       ),
     );
   }
 }
+
+final phone = Row(
+  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  children: [
+    Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(left: 2, bottom: 10),
+          child: Text('Phone',
+              style: TextStyle(
+                  fontSize: 14,
+                  color: Colors.grey,
+                  fontWeight: FontWeight.w800)),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 2, bottom: 16),
+          child: Text('12 34 56 78',
+              style: TextStyle(
+                  fontSize: 16,
+                  color: Color(int.parse(FitnessPackage.secondaryColor)))),
+        ),
+      ],
+    ),
+    Padding(
+      padding: const EdgeInsets.only(right: 12, top: 2),
+      child: Icon(
+        Icons.phone,
+        size: 22,
+        color: Color(int.parse(FitnessPackage.secondaryColor)),
+      ),
+    )
+  ],
+);
+
+final email = Row(
+  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  children: [
+    Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(left: 2, bottom: 10),
+          child: Text('Email',
+              style: TextStyle(
+                  fontSize: 14,
+                  color: Colors.grey,
+                  fontWeight: FontWeight.w800)),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 2, bottom: 16),
+          child: Text('kundeservice@FWFinlandsgade',
+              style: TextStyle(
+                  fontSize: 16,
+                  color: Color(int.parse(FitnessPackage.secondaryColor)))),
+        ),
+      ],
+    ),
+    Padding(
+      padding: const EdgeInsets.only(right: 12, top: 10),
+      child: Icon(Icons.email_rounded,
+          size: 22, color: Color(int.parse(FitnessPackage.secondaryColor))),
+    ),
+  ],
+);

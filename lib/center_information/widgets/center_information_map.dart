@@ -35,11 +35,12 @@ class _CenterInformationMapState extends State<CenterInformationMap> {
           child: Container(
             constraints: BoxConstraints(
                 maxWidth: MediaQuery.of(context).size.width,
-                maxHeight: MediaQuery.of(context).size.height * 0.4),
+                maxHeight: MediaQuery.of(context).size.height * 0.3),
             child: GoogleMap(
+              zoomControlsEnabled: false,
               onMapCreated: _onMapCreated,
               initialCameraPosition:
-                  CameraPosition(target: _center, zoom: 14.5),
+                  CameraPosition(target: _center, zoom: 14.7),
               markers: Set.from(markers),
             ),
           ),
@@ -47,7 +48,7 @@ class _CenterInformationMapState extends State<CenterInformationMap> {
         Container(
           constraints: BoxConstraints(
               maxWidth: MediaQuery.of(context).size.width,
-              maxHeight: MediaQuery.of(context).size.height * 0.4),
+              maxHeight: MediaQuery.of(context).size.height * 0.3),
           decoration: BoxDecoration(
               gradient: LinearGradient(
                   end: Alignment.bottomCenter,
@@ -59,11 +60,11 @@ class _CenterInformationMapState extends State<CenterInformationMap> {
         )
       ]),
       Padding(
-        padding: const EdgeInsets.only(left: 36, bottom: 46),
+        padding: const EdgeInsets.only(left: 32, bottom: 42),
         child: Container(
             constraints: BoxConstraints(
-                maxWidth: MediaQuery.of(context).size.width * 0.5),
-            child: CapsText('Jens Baggesens vej')),
+                maxWidth: MediaQuery.of(context).size.width * 0.7),
+            child: CapsText('Jens Baggesens vej 90')),
       )
     ]);
   }

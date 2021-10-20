@@ -65,7 +65,7 @@ class CapsText extends StatelessWidget {
       _text.toUpperCase(),
       style: GoogleFonts.mulish(
           textStyle: TextStyle(
-              fontSize: 26, fontWeight: FontWeight.w800, color: Colors.white)),
+              fontSize: 22, fontWeight: FontWeight.w800, color: Colors.white)),
     );
   }
 }
