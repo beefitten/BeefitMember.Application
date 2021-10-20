@@ -55,35 +55,36 @@ class _MoreState extends State<More> {
       ),
     );
 
-    final card = (double height,Icon icon ,String txt) => Container(
-      height: height,
-      width: MediaQuery.of(context).size.width * 0.42,
-      margin: EdgeInsets.only(
-          bottom: 8.0, right: MediaQuery.of(context).size.width * 0.05),
-      decoration: BoxDecoration(
-          color: Color.fromRGBO(247, 247, 252, 1),
-          borderRadius: BorderRadius.circular(5.0)),
-      child: Padding(
-        padding: EdgeInsets.only(
-          left: MediaQuery.of(context).size.width * 0.05,
-          right: MediaQuery.of(context).size.width * 0.05,
-          top: MediaQuery.of(context).size.height * 0.01),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            icon,
-            Padding(
-              padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.01),
-              child: Text(
-                txt, 
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 14),),
-            )],
-        ),
-      ),
-    );
+    final card = (double height, Icon icon, String txt) => Container(
+          height: height,
+          width: MediaQuery.of(context).size.width * 0.42,
+          margin: EdgeInsets.only(
+              bottom: 8.0, right: MediaQuery.of(context).size.width * 0.05),
+          decoration: BoxDecoration(
+              color: Color.fromRGBO(247, 247, 252, 1),
+              borderRadius: BorderRadius.circular(5.0)),
+          child: Padding(
+            padding: EdgeInsets.only(
+                left: MediaQuery.of(context).size.width * 0.05,
+                right: MediaQuery.of(context).size.width * 0.05,
+                top: MediaQuery.of(context).size.height * 0.01),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                icon,
+                Padding(
+                  padding: EdgeInsets.only(
+                      top: MediaQuery.of(context).size.height * 0.01),
+                  child: Text(
+                    txt,
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+                  ),
+                )
+              ],
+            ),
+          ),
+        );
 
     final more = Container(
       child: Column(
@@ -99,23 +100,101 @@ class _MoreState extends State<More> {
               children: [
                 Column(
                   children: [
-                    card(100,Icon(Icons.watch_later, size: 36,) ,"Watches and Scales"),
-                    card(100,Icon(Icons.watch_later, size: 36,) ,"Watches and Scales"),
-                    card(100,Icon(Icons.watch_later, size: 36,) ,"Watches and Scales"),
-                    card(100,Icon(Icons.watch_later, size: 36,) ,"Watches and Scales"),
-                    card(100,Icon(Icons.watch_later, size: 36,) ,"Watches and Scales"),
-                    card(100,Icon(Icons.watch_later, size: 36,) ,"Watches and Scales"),
+                    card(
+                        100,
+                        Icon(
+                          Icons.watch_later,
+                          size: 36,
+                        ),
+                        "Watches and Scales"),
+                    card(
+                        100,
+                        Icon(
+                          Icons.watch_later,
+                          size: 36,
+                        ),
+                        "Watches and Scales"),
+                    card(
+                        100,
+                        Icon(
+                          Icons.watch_later,
+                          size: 36,
+                        ),
+                        "Watches and Scales"),
+                    card(
+                        100,
+                        Icon(
+                          Icons.watch_later,
+                          size: 36,
+                        ),
+                        "Watches and Scales"),
+                    card(
+                        100,
+                        Icon(
+                          Icons.watch_later,
+                          size: 36,
+                        ),
+                        "Watches and Scales"),
+                    card(
+                        100,
+                        Icon(
+                          Icons.watch_later,
+                          size: 36,
+                        ),
+                        "Watches and Scales"),
                   ],
                 ),
                 Column(
                   children: [
-                    card(85,Icon(Icons.mobile_friendly, size: 36,) ,"Integrations"),
-                    card(85,Icon(Icons.mobile_friendly, size: 36,) ,"Integrations"),
-                    card(85,Icon(Icons.mobile_friendly, size: 36,) ,"Integrations"),
-                    card(85,Icon(Icons.mobile_friendly, size: 36,) ,"Integrations"),
-                    card(85,Icon(Icons.mobile_friendly, size: 36,) ,"Integrations"),
-                    card(85,Icon(Icons.mobile_friendly, size: 36,) ,"Integrations"),
-                    card(85,Icon(Icons.mobile_friendly, size: 36,) ,"Integrations"),
+                    card(
+                        85,
+                        Icon(
+                          Icons.mobile_friendly,
+                          size: 36,
+                        ),
+                        "Integrations"),
+                    card(
+                        85,
+                        Icon(
+                          Icons.mobile_friendly,
+                          size: 36,
+                        ),
+                        "Integrations"),
+                    card(
+                        85,
+                        Icon(
+                          Icons.mobile_friendly,
+                          size: 36,
+                        ),
+                        "Integrations"),
+                    card(
+                        85,
+                        Icon(
+                          Icons.mobile_friendly,
+                          size: 36,
+                        ),
+                        "Integrations"),
+                    card(
+                        85,
+                        Icon(
+                          Icons.mobile_friendly,
+                          size: 36,
+                        ),
+                        "Integrations"),
+                    card(
+                        85,
+                        Icon(
+                          Icons.mobile_friendly,
+                          size: 36,
+                        ),
+                        "Integrations"),
+                    card(
+                        85,
+                        Icon(
+                          Icons.mobile_friendly,
+                          size: 36,
+                        ),
+                        "Integrations"),
                   ],
                 )
               ],
@@ -135,8 +214,12 @@ class _MoreState extends State<More> {
         child: Row(
           children: [
             Padding(
-              padding: EdgeInsets.only(right: MediaQuery.of(context).size.width *0.04, left: MediaQuery.of(context).size.width *0.02),
-              child: Icon(Icons.beach_access,),
+              padding: EdgeInsets.only(
+                  right: MediaQuery.of(context).size.width * 0.04,
+                  left: MediaQuery.of(context).size.width * 0.02),
+              child: Icon(
+                Icons.beach_access,
+              ),
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -173,10 +256,13 @@ class _MoreState extends State<More> {
         child: Column(
           children: [
             CircleAvatar(
-              radius: 45,
-              backgroundImage: NetworkImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROy2NZIldQXwZCIOka2hb-jtPEpTBcipkyVA&usqp=CAU')
-            ),
-            Padding(padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.02), child: Column(
+                radius: 45,
+                backgroundImage: NetworkImage(
+                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROy2NZIldQXwZCIOka2hb-jtPEpTBcipkyVA&usqp=CAU')),
+            Padding(
+              padding: EdgeInsets.only(
+                  top: MediaQuery.of(context).size.height * 0.02),
+              child: Column(
                 children: [
                   Text(User.email),
                   Text(
@@ -186,7 +272,6 @@ class _MoreState extends State<More> {
                 ],
               ),
             )
-            
           ],
         ),
       ),
@@ -198,13 +283,11 @@ class _MoreState extends State<More> {
             child: ListView(
           children: [
             Stack(
-              children: [
-                backgroundCurve,
-                profileInfo
-              ],
+              children: [backgroundCurve, profileInfo],
             ),
             Padding(
-              padding: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.05),
+              padding: EdgeInsets.only(
+                  left: MediaQuery.of(context).size.width * 0.05),
               child: membership,
             ),
             Padding(
@@ -215,7 +298,9 @@ class _MoreState extends State<More> {
               child: membershipCard,
             ),
             Padding(
-              padding: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.05,),
+              padding: EdgeInsets.only(
+                left: MediaQuery.of(context).size.width * 0.05,
+              ),
               child: more,
             ),
             Padding(
