@@ -9,25 +9,29 @@ class CenterInformation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MediaQuery.removePadding(
-      context: context,
-      removeTop: true,
-      child: Padding(
-        padding: const EdgeInsets.only(left: 8, right: 8),
-        child: ListView(children: [
-          H1Text('Center informations'),
-          CenterInformationBasic(),
-          Padding(
-            padding: const EdgeInsets.only(top: 20),
-            child: H2Text('Location heat map'),
+    return Scaffold(
+      body: MediaQuery.removePadding(
+        context: context,
+        removeTop: true,
+        child: Padding(
+          padding: const EdgeInsets.only(left: 8, right: 8),
+          child: Column(
+            children: [
+              H1Text('Center information'),
+              Expanded(
+                child: ListView(children: [
+                  CenterInformationMap(),
+                  CenterInformationBasic(),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20, left: 10),
+                    child: H2Text('Location heat map'),
+                  ),
+                  CenterInformationHeatMap(),
+                ]),
+              ),
+            ],
           ),
-          CenterInformationHeatMap(),
-          Padding(
-            padding: const EdgeInsets.only(top: 20),
-            child: H2Text('Location'),
-          ),
-          CenterInformationMap(),
-        ]),
+        ),
       ),
     );
   }
