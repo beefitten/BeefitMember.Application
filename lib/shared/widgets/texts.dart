@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class TitleBanner extends StatelessWidget {
+class H1Text extends StatelessWidget {
   final String _title;
 
-  const TitleBanner(this._title);
+  const H1Text(this._title);
 
   @override
   Widget build(BuildContext context) {
@@ -15,27 +15,50 @@ class TitleBanner extends StatelessWidget {
       ),
       child: Container(
         child: Center(
-          child: TitleText(_title),
+          child: H2Text(_title),
         ),
       ),
     );
   }
 }
 
-class TitleText extends StatelessWidget {
+class H2Text extends StatelessWidget {
   final String _text;
 
-  TitleText(this._text);
+  H2Text(this._text);
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      _text,
-      textAlign: TextAlign.left,
-      style: TextStyle(
-        color: Colors.black,
-        fontSize: MediaQuery.of(context).size.height * 0.03,
-        fontWeight: FontWeight.bold,
+    return Padding(
+      padding: const EdgeInsets.only(top: 20),
+      child: Text(
+        _text,
+        textAlign: TextAlign.left,
+        style: TextStyle(
+          color: Colors.black,
+          fontSize: MediaQuery.of(context).size.height * 0.03,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    );
+  }
+}
+
+class H3Text extends StatelessWidget {
+  final String _text;
+
+  const H3Text(this._text);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 20, bottom: 10),
+      child: Text(
+        _text,
+        style: TextStyle(
+          fontSize: MediaQuery.of(context).size.height * 0.02,
+          fontWeight: FontWeight.bold,
+        ),
       ),
     );
   }
@@ -48,9 +71,12 @@ class DescriptionText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      _text,
-      softWrap: true,
+    return Padding(
+      padding: const EdgeInsets.only(top: 10.0, bottom: 10),
+      child: Text(
+        _text,
+        softWrap: true,
+      ),
     );
   }
 }

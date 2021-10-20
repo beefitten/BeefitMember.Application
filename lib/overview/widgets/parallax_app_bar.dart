@@ -1,5 +1,6 @@
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'app_bar_curve.dart';
 
@@ -9,7 +10,10 @@ class ParallaxAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
+        backwardsCompatibility: false,
+        systemOverlayStyle: SystemUiOverlayStyle(statusBarBrightness: Brightness.dark),
         pinned: true,
+        automaticallyImplyLeading: false,
         stretch: true,
         expandedHeight: 150.0,
         shape: AppBarCurve(),
@@ -21,7 +25,7 @@ class ParallaxAppBar extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 20.0),
               child:
-                  Center(child: Image.network(FitnessPackage.logo, height: 60)),
+                  Center(child: Image.network(FitnessPackage.logo, height: 50)),
             ),
           ],
         ));

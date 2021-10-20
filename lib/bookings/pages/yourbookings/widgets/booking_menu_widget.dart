@@ -16,7 +16,7 @@ class BookingMenuWidget extends StatelessWidget {
           children: [
             YourBookings(),
             Classes(),
-            Text("Not implemented..."),
+            Center(child: Text("Coming soon!")),
           ],
         ),
       ),
@@ -32,7 +32,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      TitleBanner(_title),
+      H1Text(_title),
       Padding(
         padding: const EdgeInsets.only(left: 8, right: 8),
         child: TabBar(
@@ -57,5 +57,5 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(130.0);
+  Size get preferredSize => Size.fromHeight(110);
 }

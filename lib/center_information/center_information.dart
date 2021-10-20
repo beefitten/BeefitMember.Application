@@ -17,14 +17,14 @@ class CenterInformation extends StatelessWidget {
           padding: const EdgeInsets.only(left: 8, right: 8),
           child: Column(
             children: [
-              TitleBanner('Center information'),
+              H1Text('Center information'),
               Expanded(
                 child: ListView(children: [
                   CenterInformationMap(),
                   CenterInformationBasic(),
                   Padding(
                     padding: const EdgeInsets.only(top: 20, left: 10),
-                    child: TitleText('Location heat map'),
+                    child: H2Text('Location heat map'),
                   ),
                   CenterInformationHeatMap(),
                 ]),
