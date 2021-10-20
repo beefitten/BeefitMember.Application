@@ -115,8 +115,11 @@ class _UserLoginState extends State<Login> {
             child: Text(state.message, style: TextStyle(color: Colors.red)),
           ));
         } else if (state is LoginLoadingState) {
-          return Center(
-            child: CircularProgressIndicator(),
+          return Padding(
+            padding: const EdgeInsets.only(top: 40),
+            child: Center(
+              child: CircularProgressIndicator(),
+            ),
           );
         }
         return Container();

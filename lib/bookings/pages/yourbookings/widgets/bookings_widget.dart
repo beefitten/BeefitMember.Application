@@ -15,7 +15,7 @@ class BookingWidget extends StatefulWidget {
 }
 
 class _BookingWidgetState extends State<BookingWidget> {
-  Cat? _catModel;
+  List<Results>? _classes;
 
   @override void initState() {
     getData();
@@ -42,50 +42,35 @@ class _BookingWidgetState extends State<BookingWidget> {
         Container(
           color: Colors.white,
           height: MediaQuery.of(context).size.height * 0.26,
-          child: _catModel == null
-              ? Center(child: CircularProgressIndicator())
-              : ListView(
-              scrollDirection: Axis.horizontal,
-              shrinkWrap: true,
-              children: [
-                CardExample(
-                    _catModel!.message,
-                    _catModel!.status,
-                    "Aarhus C, Ringkøbingvej 28",
-                    "Thursday, 15:45"),
-                CardExample(
-                    "https://media.wired.com/photos/613800d714e5c8f49420c6c9/master/w_2400,h_1800,c_limit/Gear-WHOOP-Body_Intimates_Adj.Bralette_1.jpg",
-                    "Crossfit for øvede",
-                    "Aarhus C, Ringkøbingvej 28",
-                    "Thursday, 15:45"),
-                CardExample(
-                    "https://i.insider.com/5b43ccf31335b831008b4c1c?width=1136&format=jpeg",
-                    "Crossfit for øvede",
-                    "Aarhus C, Ringkøbingvej 28",
-                    "Thursday, 15:45"),
-                CardExample(
-                    "https://skinnyms.com/wp-content/uploads/2018/02/The-Six-Principles-of-Weight-Training-for-Women4.jpg",
-                    "Crossfit for øvede",
-                    "Aarhus C, Ringkøbingvej 28",
-                    "Thursday, 15:45"),
-            ],
+          child: _classes == null
+              ? Center(child: CircularProgressIndicator(
+                backgroundColor: Color(int.parse(FitnessPackage.primaryColor))))
+              : ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  shrinkWrap: true,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Card(
+                      child: CardExample(
+                          _classes![index].picture,
+                          _classes![index].headline,
+                          _classes![index].address,
+                          _classes![index].date),
+                    );
+                  },
+                  itemCount: _classes!.length,
           ),
         )
       ]),
     );
   }
   Future<void> getData() async {
-    var endpointUrl = Uri.parse('https://dog.ceo/api/breeds/image/random');
+    var endpointUrl = Uri.parse('https://beefitmemberfitnesspackage.azurewebsites.net/testEndpoint');
 
     var response = await http.get(endpointUrl);
 
-    print(response.body);
-
     dynamic body = cnv.jsonDecode(response.body);
-    _catModel = Cat.fromJson(body);
-    setState(() {
-
-    });
+    _classes = Classes.fromJson(body).results;
+    setState(() { });
   }
 }
 
