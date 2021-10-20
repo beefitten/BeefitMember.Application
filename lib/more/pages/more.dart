@@ -57,28 +57,33 @@ class _MoreState extends State<More> {
       ),
     );
 
-    final bigCard = Container(
-      height: 100,
+    final card = (double height,Icon icon ,String txt) => Container(
+      height: height,
       width: MediaQuery.of(context).size.width * 0.42,
       margin: EdgeInsets.only(
           bottom: 8.0, right: MediaQuery.of(context).size.width * 0.05),
       decoration: BoxDecoration(
           color: Color.fromRGBO(247, 247, 252, 1),
           borderRadius: BorderRadius.circular(5.0)),
-      child: Column(
-        children: [Text("Logo"), Text("data")],
-      ),
-    );
-
-    final smallCard = Container(
-      height: 85,
-      width: MediaQuery.of(context).size.width * 0.42,
-      margin: EdgeInsets.only(bottom: 8.0, right: 16.0),
-      decoration: BoxDecoration(
-          color: Color.fromRGBO(247, 247, 252, 1),
-          borderRadius: BorderRadius.circular(5.0)),
-      child: Column(
-        children: [Text("Logo"), Text("data")],
+      child: Padding(
+        padding: EdgeInsets.only(
+          left: MediaQuery.of(context).size.width * 0.05,
+          right: MediaQuery.of(context).size.width * 0.05,
+          top: MediaQuery.of(context).size.height * 0.01),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            icon,
+            Padding(
+              padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.01),
+              child: Text(
+                txt, 
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 14),),
+            )],
+        ),
       ),
     );
 
@@ -94,27 +99,25 @@ class _MoreState extends State<More> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // left column under more
                 Column(
                   children: [
-                    bigCard,
-                    bigCard,
-                    bigCard,
-                    bigCard,
-                    bigCard,
-                    bigCard
+                    card(100,Icon(Icons.watch_later, size: 36,) ,"Watches and Scales"),
+                    card(100,Icon(Icons.watch_later, size: 36,) ,"Watches and Scales"),
+                    card(100,Icon(Icons.watch_later, size: 36,) ,"Watches and Scales"),
+                    card(100,Icon(Icons.watch_later, size: 36,) ,"Watches and Scales"),
+                    card(100,Icon(Icons.watch_later, size: 36,) ,"Watches and Scales"),
+                    card(100,Icon(Icons.watch_later, size: 36,) ,"Watches and Scales"),
                   ],
                 ),
-                // right column under more
                 Column(
                   children: [
-                    smallCard,
-                    smallCard,
-                    smallCard,
-                    smallCard,
-                    smallCard,
-                    smallCard,
-                    smallCard
+                    card(85,Icon(Icons.mobile_friendly, size: 36,) ,"Integrations"),
+                    card(85,Icon(Icons.mobile_friendly, size: 36,) ,"Integrations"),
+                    card(85,Icon(Icons.mobile_friendly, size: 36,) ,"Integrations"),
+                    card(85,Icon(Icons.mobile_friendly, size: 36,) ,"Integrations"),
+                    card(85,Icon(Icons.mobile_friendly, size: 36,) ,"Integrations"),
+                    card(85,Icon(Icons.mobile_friendly, size: 36,) ,"Integrations"),
+                    card(85,Icon(Icons.mobile_friendly, size: 36,) ,"Integrations"),
                   ],
                 )
               ],
