@@ -1,4 +1,5 @@
 import 'package:beefitmember_application/bookings/pages/previewBookings/widgets/show_more_button.dart';
+import 'package:beefitmember_application/overview/pages/overview/overview.dart';
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:beefitmember_application/training_progression/pages/training_progression.dart';
 import 'package:beefitmember_application/training_progression/preview/training_prog_preview.dart';
@@ -58,8 +59,9 @@ class _MoreState extends State<More> {
 
     final bigCard = Container(
       height: 100,
-      width: MediaQuery.of(context).size.width*0.42,
-      margin: EdgeInsets.only(bottom: 8.0, right: MediaQuery.of(context).size.width*0.05),
+      width: MediaQuery.of(context).size.width * 0.42,
+      margin: EdgeInsets.only(
+          bottom: 8.0, right: MediaQuery.of(context).size.width * 0.05),
       decoration: BoxDecoration(
           color: Color.fromRGBO(247, 247, 252, 1),
           borderRadius: BorderRadius.circular(5.0)),
@@ -70,7 +72,7 @@ class _MoreState extends State<More> {
 
     final smallCard = Container(
       height: 85,
-      width: MediaQuery.of(context).size.width*0.42,
+      width: MediaQuery.of(context).size.width * 0.42,
       margin: EdgeInsets.only(bottom: 8.0, right: 16.0),
       decoration: BoxDecoration(
           color: Color.fromRGBO(247, 247, 252, 1),
@@ -132,8 +134,8 @@ class _MoreState extends State<More> {
         child: Row(
           children: [
             Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text("Logo"),
+              padding: EdgeInsets.only(right: MediaQuery.of(context).size.width *0.04, left: MediaQuery.of(context).size.width *0.02),
+              child: Icon(Icons.beach_access,),
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -153,30 +155,75 @@ class _MoreState extends State<More> {
       ),
     );
 
+    final backgroundCurve = Container(
+      height: MediaQuery.of(context).size.height * 0.1,
+      decoration: BoxDecoration(
+          color: Color.fromRGBO(247, 247, 252, 1),
+          borderRadius: new BorderRadius.vertical(
+              bottom: new Radius.elliptical(
+                  MediaQuery.of(context).size.width, 90))),
+    );
+
+    final profileInfo = Container(
+      child: Padding(
+        padding: EdgeInsets.only(
+            left: MediaQuery.of(context).size.width * 0.32,
+            top: MediaQuery.of(context).size.height * 0.01),
+        child: Column(
+          children: [
+            CircleAvatar(
+              radius: 45,
+              backgroundImage: NetworkImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROy2NZIldQXwZCIOka2hb-jtPEpTBcipkyVA&usqp=CAU')
+            ),
+            Padding(padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.02), child: Column(
+                children: [
+                  Text("Jonas West Alrø"),
+                  Text(
+                    "Member since Aug 2018",
+                    style: TextStyle(color: Color.fromRGBO(138, 141, 178, 1)),
+                  )
+                ],
+              ),
+            )
+            
+          ],
+        ),
+      ),
+    );
+
     return Scaffold(
         backgroundColor: Colors.white,
-        body: Padding(
-          padding: EdgeInsets.only(
-            left: MediaQuery.of(context).size.width * 0.05,
-          ),
-          child: Container(
-              child: ListView(
-            children: [
-              membership,
-              Padding(
-                padding: EdgeInsets.only(
-                    right: MediaQuery.of(context).size.width * 0.05,
-                    bottom: MediaQuery.of(context).size.height * 0.02),
-                child: membershipCard,
-              ),
-              more,
-              Padding(
-                padding: EdgeInsets.only(
-                    right: MediaQuery.of(context).size.width * 0.05),
-                child: _logOutBtn,
-              ),
-            ],
-          )),
-        ));
+        body: Container(
+            child: ListView(
+          children: [
+            Stack(
+              children: [
+                backgroundCurve,
+                profileInfo
+              ],
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.05),
+              child: membership,
+            ),
+            Padding(
+              padding: EdgeInsets.only(
+                  left: MediaQuery.of(context).size.width * 0.05,
+                  right: MediaQuery.of(context).size.width * 0.05,
+                  bottom: MediaQuery.of(context).size.height * 0.02),
+              child: membershipCard,
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.05,),
+              child: more,
+            ),
+            Padding(
+              padding: EdgeInsets.only(
+                  left: MediaQuery.of(context).size.width * 0.05,
+                  right: MediaQuery.of(context).size.width * 0.05),
+              child: _logOutBtn,
+            )
+          ],
+        )));
   }
 }
