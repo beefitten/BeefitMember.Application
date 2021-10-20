@@ -1,3 +1,4 @@
+import 'package:beefitmember_application/center_information/center_information.dart';
 import 'package:beefitmember_application/user/bloc/login_bloc.dart';
 import 'package:beefitmember_application/user/bloc/login_state.dart';
 import 'package:beefitmember_application/user/pages/Contact.dart';
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Beefit Member',
         routes: {
-          '/': (context) => PreLogin(),
+          '/': (context) => CenterInformation(),
           '/contacts': (context) => Contact(),
           '/login': (context) => Login(),
           '/nav': (context) => Nav(),

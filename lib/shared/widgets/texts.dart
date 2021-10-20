@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class TitleBanner extends StatelessWidget {
   final String _title;
@@ -50,6 +51,21 @@ class DescriptionText extends StatelessWidget {
     return Text(
       _text,
       softWrap: true,
+    );
+  }
+}
+
+class CapsText extends StatelessWidget {
+  final String _text;
+
+  CapsText(this._text);
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      _text.toUpperCase(),
+      style: GoogleFonts.mulish(
+          textStyle: TextStyle(
+              fontSize: 26, fontWeight: FontWeight.w800, color: Colors.white)),
     );
   }
 }
