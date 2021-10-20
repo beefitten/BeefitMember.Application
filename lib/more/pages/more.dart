@@ -1,8 +1,6 @@
 import 'package:beefitmember_application/bookings/pages/previewBookings/widgets/show_more_button.dart';
-import 'package:beefitmember_application/overview/pages/overview/overview.dart';
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
-import 'package:beefitmember_application/training_progression/pages/training_progression.dart';
-import 'package:beefitmember_application/training_progression/preview/training_prog_preview.dart';
+import 'package:beefitmember_application/shared/user/user.dart';
 import 'package:beefitmember_application/user/service/logout_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -149,7 +147,7 @@ class _MoreState extends State<More> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 8.0),
-                  child: Text("Bindsperiode: 6 måneder"),
+                  child: Text("Bindingsperiode: 6 måneder"),
                 )
               ],
             )
@@ -180,7 +178,7 @@ class _MoreState extends State<More> {
             ),
             Padding(padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.02), child: Column(
                 children: [
-                  Text("Jonas West Alrø"),
+                  Text(User.email),
                   Text(
                     "Member since Aug 2018",
                     style: TextStyle(color: Color.fromRGBO(138, 141, 178, 1)),

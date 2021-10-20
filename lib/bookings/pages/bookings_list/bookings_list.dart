@@ -46,10 +46,11 @@ class _ClassesState extends State<Classes> {
       city: city,
     );
 
-    final classType = Filter(
+    final classType = FilterClass(
         items: ["Select class type", "Bike", "Run"],
         value: "Select class type");
-    final locationType = Filter(items: [
+
+    final locationType = FilterClass(items: [
       "Select locations",
       "Frederiksbjerg",
       "Viby",
