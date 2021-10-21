@@ -1,11 +1,26 @@
+import 'package:beefitmember_application/bookings/pages/yourbookings/models/bookingModel.dart';
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert' as cnv;
 
-class BookingWidget extends StatelessWidget {
+class BookingWidget extends StatefulWidget {
   late final Color _color;
 
   BookingWidget([this._color = Colors.white]);
+
+  @override
+  _BookingWidgetState createState() => _BookingWidgetState();
+}
+
+class _BookingWidgetState extends State<BookingWidget> {
+  List<Classes>? _classes;
+
+  @override void initState() {
+    getData();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,35 +42,35 @@ class BookingWidget extends StatelessWidget {
         Container(
           color: Colors.white,
           height: MediaQuery.of(context).size.height * 0.26,
-          child: ListView(
-            scrollDirection: Axis.horizontal,
-            shrinkWrap: true,
-            children: [
-              CardExample(
-                  "https://ychef.files.bbci.co.uk/1376x774/p07ztf1q.jpg",
-                  "Crossfit for øvede",
-                  "Aarhus C, Ringkøbingvej 28",
-                  "Thursday, 15:45"),
-              CardExample(
-                  "https://media.wired.com/photos/613800d714e5c8f49420c6c9/master/w_2400,h_1800,c_limit/Gear-WHOOP-Body_Intimates_Adj.Bralette_1.jpg",
-                  "Crossfit for øvede",
-                  "Aarhus C, Ringkøbingvej 28",
-                  "Thursday, 15:45"),
-              CardExample(
-                  "https://i.insider.com/5b43ccf31335b831008b4c1c?width=1136&format=jpeg",
-                  "Crossfit for øvede",
-                  "Aarhus C, Ringkøbingvej 28",
-                  "Thursday, 15:45"),
-              CardExample(
-                  "https://skinnyms.com/wp-content/uploads/2018/02/The-Six-Principles-of-Weight-Training-for-Women4.jpg",
-                  "Crossfit for øvede",
-                  "Aarhus C, Ringkøbingvej 28",
-                  "Thursday, 15:45"),
-            ],
+          child: _classes == null
+              ? Center(child: CircularProgressIndicator(
+                backgroundColor: Color(int.parse(FitnessPackage.primaryColor))))
+              : ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  shrinkWrap: true,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Card(
+                      child: CardExample(
+                          _classes![index].classImage,
+                          _classes![index].className,
+                          _classes![index].location,
+                          _classes![index].timeEnd),
+                      );
+                  },
+                  itemCount: _classes!.length,
           ),
         )
       ]),
     );
+  }
+  Future<void> getData() async {
+    var endpointUrl = Uri.parse('https://beefitmemberbookings.azurewebsites.net/getUserClasses/jonas');
+
+    var response = await http.get(endpointUrl);
+
+    List<dynamic> body = cnv.jsonDecode(response.body);
+    _classes = body.map((dynamic item) => Classes.fromJson(item)).toList();
+    setState(() { });
   }
 }
 

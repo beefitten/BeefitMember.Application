@@ -1,4 +1,4 @@
-import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/booking_menu_widget.dart';
+import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/bookingMenu_widget.dart';
 import 'package:beefitmember_application/center_information/center_information.dart';
 import 'package:beefitmember_application/more/pages/more.dart';
 import 'package:beefitmember_application/overview/overview.dart';
