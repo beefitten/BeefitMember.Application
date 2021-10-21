@@ -11,7 +11,9 @@ class BookingMenuWidget extends StatelessWidget {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
-        appBar: CustomAppBar("Bookings"),
+        appBar: PreferredSize(
+            preferredSize: Size(MediaQuery.of(context).size.width, MediaQuery.of(context).size.height*0.17),
+            child: CustomAppBar("Bookings")),
         body: TabBarView(
           children: [
             YourBookings(),
@@ -24,7 +26,7 @@ class BookingMenuWidget extends StatelessWidget {
   }
 }
 
-class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+class CustomAppBar extends StatelessWidget {
   String _title;
 
   CustomAppBar(this._title);
@@ -32,30 +34,27 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      H1Text(_title),
-      Padding(
-        padding: const EdgeInsets.only(left: 8, right: 8),
-        child: TabBar(
-            indicator: ShapeDecoration(
-              shape: StadiumBorder(),
-              color: Color(int.parse(FitnessPackage.secondaryColor)),
-            ),
-            labelStyle:
-                TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-            //For Selected tab
-            unselectedLabelStyle: TextStyle(
-              fontSize: 14,
-            ),
-            unselectedLabelColor: Colors.grey,
-            tabs: [
-              Tab(icon: Text("My Bookings")),
-              Tab(icon: Text("Classes")),
-              Tab(icon: Text("Events")),
-            ]),
-      ),
+        H1Text(_title),
+        Padding(
+          padding: const EdgeInsets.only(left: 8, right: 8),
+          child: TabBar(
+              indicator: ShapeDecoration(
+                shape: StadiumBorder(),
+                color: Color(int.parse(FitnessPackage.secondaryColor)),
+              ),
+              labelStyle:
+                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              //For Selected tab
+              unselectedLabelStyle: TextStyle(
+                fontSize: 14,
+              ),
+              unselectedLabelColor: Colors.grey,
+              tabs: [
+                Tab(icon: Text("My Bookings")),
+                Tab(icon: Text("Classes")),
+                Tab(icon: Text("Events")),
+              ]),
+        ),
     ]);
   }
-
-  @override
-  Size get preferredSize => Size.fromHeight(110);
 }
