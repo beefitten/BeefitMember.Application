@@ -48,11 +48,11 @@ class _ClassesListState extends State<ClassesList> {
 
   @override
   Widget build(BuildContext context) {
-    String timeStart = "10:30";
-    String timeEnd = "12:45";
-    String className = "Bike Standard";
-    String place = "Frederiksbjerg";
-    String city = "København";
+    // String timeStart = "10:30";
+    // String timeEnd = "12:45";
+    // String className = "Bike Standard";
+    // String place = "Frederiksbjerg";
+    // String city = "København";
 
     final generalText = (String txt) => Padding(
           padding: const EdgeInsets.fromLTRB(8, 16, 0, 0),
@@ -65,56 +65,55 @@ class _ClassesListState extends State<ClassesList> {
           ),
     );
 
-    final card = BookingCard(
-      className: className,
-      timeStart: timeStart,
-      timeEnd: timeEnd,
-      place: place,
-      city: city,
-    );
+    // final card = BookingCard(
+    //   className: className,
+    //   timeStart: timeStart,
+    //   timeEnd: timeEnd,
+    //   place: place,
+    // );
 
-    final classType = FilterClass(
-        items: ["Select class type", "Bike", "Run"],
-        value: "Select class type");
+    // final classType = FilterClass(
+    //     items: ["Select class type", "Bike", "Run"],
+    //     value: "Select class type");
 
-    final locationType = FilterClass(items: [
-      "Select locations",
-      "Frederiksbjerg",
-      "Viby",
-      "Åbyhøj",
-      "Rundhøj",
-      "Randers City",
-      "Varde City"
-    ], value: "Select locations");
+    // final locationType = FilterClass(items: [
+    //   "Select locations",
+    //   "Frederiksbjerg",
+    //   "Viby",
+    //   "Åbyhøj",
+    //   "Rundhøj",
+    //   "Randers City",
+    //   "Varde City"
+    // ], value: "Select locations");
 
-    final iconTime = Container(
-      child: Padding(
-        padding: const EdgeInsets.only(left: 26, top: 26),
-        child: Icon(
-          Icons.access_time,
-          color: Colors.blue,
-          size: 20.0,
-        ),
-      ),
-    );
+    // final iconTime = Container(
+    //   child: Padding(
+    //     padding: const EdgeInsets.only(left: 26, top: 26),
+    //     child: Icon(
+    //       Icons.access_time,
+    //       color: Colors.blue,
+    //       size: 20.0,
+    //     ),
+    //   ),
+    // );
 
-    final iconTwo = Container(
-      child: Padding(
-        padding: const EdgeInsets.only(left: 26, top: 93),
-        child: Icon(
-          Icons.access_time,
-          color: Colors.blue,
-          size: 20.0,
-        ),
-      ),
-    );
+    // final iconTwo = Container(
+    //   child: Padding(
+    //     padding: const EdgeInsets.only(left: 26, top: 93),
+    //     child: Icon(
+    //       Icons.access_time,
+    //       color: Colors.blue,
+    //       size: 20.0,
+    //     ),
+    //   ),
+    // );
 
     return Scaffold(
       backgroundColor: Colors.white,
       body: ListView(
         shrinkWrap: true,
         children: <Widget>[
-          generalText("Filters"),
+          // generalText("Filters"),
           // Stack(
           //   children: [
           //     Column(
@@ -137,7 +136,6 @@ class _ClassesListState extends State<ClassesList> {
                         timeStart: DateFormat.Hm().format(_classes![index].timeStart),
                         timeEnd: DateFormat.Hm().add_MMMd().format(_classes![index].timeEnd),
                         place: _classes![index].location,
-                        city: _classes![index].location
                         );
                   },
                   itemCount: _classes!.length,
