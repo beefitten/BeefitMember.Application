@@ -279,37 +279,49 @@ class _MoreState extends State<More> {
 
     return Scaffold(
         backgroundColor: Colors.white,
-        body: Container(
-            child: ListView(
+        body: Column(
           children: [
-            Stack(
-              children: [backgroundCurve, profileInfo],
+            Container(
+              height: MediaQuery.of(context).size.height * 0.032,
             ),
-            Padding(
-              padding: EdgeInsets.only(
-                  left: MediaQuery.of(context).size.width * 0.05),
-              child: membership,
-            ),
-            Padding(
-              padding: EdgeInsets.only(
-                  left: MediaQuery.of(context).size.width * 0.05,
-                  right: MediaQuery.of(context).size.width * 0.05,
-                  bottom: MediaQuery.of(context).size.height * 0.02),
-              child: membershipCard,
-            ),
-            Padding(
-              padding: EdgeInsets.only(
-                left: MediaQuery.of(context).size.width * 0.05,
+            Expanded(
+              child: MediaQuery.removePadding(
+                context: context,
+                removeTop: true,
+                child: ListView(
+                  children: [
+                    Stack(
+                      children: [backgroundCurve, profileInfo],
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left: MediaQuery.of(context).size.width * 0.05),
+                      child: membership,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left: MediaQuery.of(context).size.width * 0.05,
+                          right: MediaQuery.of(context).size.width * 0.05,
+                          bottom: MediaQuery.of(context).size.height * 0.02),
+                      child: membershipCard,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                        left: MediaQuery.of(context).size.width * 0.05,
+                      ),
+                      child: more,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left: MediaQuery.of(context).size.width * 0.05,
+                          right: MediaQuery.of(context).size.width * 0.05),
+                      child: _logOutBtn,
+                    )
+                  ],
+                ),
               ),
-              child: more,
             ),
-            Padding(
-              padding: EdgeInsets.only(
-                  left: MediaQuery.of(context).size.width * 0.05,
-                  right: MediaQuery.of(context).size.width * 0.05),
-              child: _logOutBtn,
-            )
           ],
-        )));
+        ));
   }
 }

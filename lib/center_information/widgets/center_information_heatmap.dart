@@ -42,40 +42,37 @@ class CenterInformationHeatMap extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(children: [
-      Card(
-        elevation: 3,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-        color: Color(0xFFF7F7FC),
-        child: Container(
-          constraints: BoxConstraints(
-              maxHeight: MediaQuery.of(context).size.height * 0.3,
-              maxWidth: MediaQuery.of(context).size.width),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(10),
-            child: LineChart(
-              LineChartData(
-                minX: 1,
-                maxX: 23,
-                minY: 0,
-                maxY: 10,
-                titlesData: LineTitles.getTitleData(),
-                borderData: FlBorderData(show: false),
-                gridData: FlGridData(show: false),
-                lineBarsData: [
-                  LineChartBarData(
-                      spots: dataPoints,
-                      isCurved: true,
-                      colors:
-                          colorGradient.map((e) => e.withOpacity(0.5)).toList(),
-                      barWidth: 5,
-                      dotData: FlDotData(show: false),
-                      belowBarData: BarAreaData(
-                          show: true,
-                          colors: colorGradient
-                              .map((e) => e.withOpacity(0.3))
-                              .toList()))
-                ],
-              ),
+      Container(
+        decoration: BoxDecoration(
+            color: Color(0xFFF7F7FC), borderRadius: BorderRadius.circular(10)),
+        constraints: BoxConstraints(
+            maxHeight: MediaQuery.of(context).size.height * 0.3,
+            maxWidth: MediaQuery.of(context).size.width),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(10),
+          child: LineChart(
+            LineChartData(
+              minX: 1,
+              maxX: 23,
+              minY: 0,
+              maxY: 10,
+              titlesData: LineTitles.getTitleData(),
+              borderData: FlBorderData(show: false),
+              gridData: FlGridData(show: false),
+              lineBarsData: [
+                LineChartBarData(
+                    spots: dataPoints,
+                    isCurved: true,
+                    colors:
+                        colorGradient.map((e) => e.withOpacity(0.5)).toList(),
+                    barWidth: 5,
+                    dotData: FlDotData(show: false),
+                    belowBarData: BarAreaData(
+                        show: true,
+                        colors: colorGradient
+                            .map((e) => e.withOpacity(0.3))
+                            .toList()))
+              ],
             ),
           ),
         ),
