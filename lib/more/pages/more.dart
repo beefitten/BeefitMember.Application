@@ -226,11 +226,11 @@ class _MoreState extends State<More> {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(bottom: 8.0),
-                  child: Text("Medlemsskab A"),
+                  child: Text("Membership: " + User.subscription),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 8.0),
-                  child: Text("Bindingsperiode: 6 måneder"),
+                  child: Text("Primary Gym: " + User.primaryGym),
                 )
               ],
             )
@@ -251,7 +251,7 @@ class _MoreState extends State<More> {
     final profileInfo = Container(
       child: Padding(
         padding: EdgeInsets.only(
-            left: MediaQuery.of(context).size.width * 0.32,
+            left: MediaQuery.of(context).size.width * 0.4,
             top: MediaQuery.of(context).size.height * 0.01),
         child: Column(
           children: [
@@ -266,7 +266,7 @@ class _MoreState extends State<More> {
                 children: [
                   Text(User.email),
                   Text(
-                    "Member since Aug 2018",
+                    "Role: " + User.role,
                     style: TextStyle(color: Color.fromRGBO(138, 141, 178, 1)),
                   )
                 ],

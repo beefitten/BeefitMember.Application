@@ -22,22 +22,21 @@ class User {
     // initialization logic
   }
   void update(dynamic json) {
-    print(json);
-    email = json['email'].toString();
-    subscription = json['subscription'].toString();
-    name = json['name'].toString();
-    primaryGym = json['primaryGym'].toString();
-    List<dynamic> secondaryGyms = json['secondaryGyms'];
+    email = json['userInfo']['email'].toString();
+    subscription = json['userInfo']['subscription'].toString();
+    name = json['userInfo']['name'].toString();
+    primaryGym = json['userInfo']['primaryGym'].toString();
+    List<dynamic> secondaryGyms = json['userInfo']['secondaryGyms'];
     secondaryGymsList = secondaryGyms.cast<String>();
 
-    role = json['role'].toString();
-    cardNumber = json['cardnumber'].toString();
-    expireYear = json['expireYear'].toString();
-    expireMonth = json['expireMonth'].toString();
+    role = json['userInfo']['role'].toString();
+    cardNumber = json['userInfo']['cardnumber'].toString();
+    expireYear = json['userInfo']['expireYear'].toString();
+    expireMonth = json['userInfo']['expireMonth'].toString();
 
-    csc = int.parse(json['csc']);
+    csc = int.parse(json['userInfo']['csc'].toString());
 
-    cardHolderName = json['cardHolderName'].toString();
-    issuer = json['issuer'].toString();
+    cardHolderName = json['userInfo']['cardHolderName'].toString();
+    issuer = json['userInfo']['issuer'].toString();
   }
 }
