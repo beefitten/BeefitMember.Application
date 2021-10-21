@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as cnv;
 
+import 'package:intl/intl.dart';
+
 class ClassesList extends StatefulWidget {
   const ClassesList({Key? key}) : super(key: key);
 
@@ -61,7 +63,7 @@ class _ClassesListState extends State<ClassesList> {
               fontSize: 16.0,
             ),
           ),
-        );
+    );
 
     final card = BookingCard(
       className: className,
@@ -132,8 +134,8 @@ class _ClassesListState extends State<ClassesList> {
                   itemBuilder: (BuildContext context, int index) {
                     return BookingCard(
                         className: _classes![index].className,
-                        timeStart: _classes![index].timeStart,
-                        timeEnd: _classes![index].timeEnd,
+                        timeStart: DateFormat.Hm().format(_classes![index].timeStart),
+                        timeEnd: DateFormat.Hm().add_MMMd().format(_classes![index].timeEnd),
                         place: _classes![index].location,
                         city: _classes![index].location
                         );
