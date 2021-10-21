@@ -1,22 +1,47 @@
 import 'package:beefitmember_application/bookings/pages/bookings_list/booking_card.dart';
 import 'package:beefitmember_application/bookings/pages/bookings_list/widgets/filter_widget.dart';
+import 'package:beefitmember_application/bookings/pages/yourbookings/models/bookingModel.dart';
+import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert' as cnv;
 
-class Classes extends StatefulWidget {
-  const Classes({Key? key}) : super(key: key);
+class ClassesList extends StatefulWidget {
+  const ClassesList({Key? key}) : super(key: key);
 
   @override
-  _ClassesState createState() => _ClassesState();
+  _ClassesListState createState() => _ClassesListState();
 }
 
-class _ClassesState extends State<Classes> {
+class _ClassesListState extends State<ClassesList> {
   bool _isBooked = false;
+  List<Classes>? _classes;
+
+  @override
+  void initState() {
+    getData();
+    super.initState();
+  }
 
   handleBook() {
     setState(() {
       _isBooked = !_isBooked;
     });
+  }
+
+  Future<void> getData() async {
+    // var fitnessName = FitnessPackage.name[0].toUpperCase();
+    var fitness = FitnessPackage.name.toString();
+    print(fitness);
+    var endpointUrl = Uri.parse(
+        'https://beefitmemberbookings.azurewebsites.net/getClasses/$fitness');
+
+    var response = await http.get(endpointUrl);
+
+    List<dynamic> body = cnv.jsonDecode(response.body);
+    _classes = body.map((dynamic item) => Classes.fromJson(item)).toList();
+    setState(() {});
   }
 
   @override
@@ -88,25 +113,33 @@ class _ClassesState extends State<Classes> {
         shrinkWrap: true,
         children: <Widget>[
           generalText("Filters"),
-          Stack(
-            children: [
-              Column(
-                children: [classType, locationType],
-              ),
-              iconTime,
-              iconTwo,
-            ],
+          // Stack(
+          //   children: [
+          //     Column(
+          //       children: [classType, locationType],
+          //     ),
+          //     iconTime,
+          //     iconTwo,
+          //   ],
+          // ),
+          generalText("Classes"),
+          _classes == null
+          ? Center(child: CircularProgressIndicator(
+                backgroundColor: Color(int.parse(FitnessPackage.primaryColor))))
+          : ListView.builder(
+                  scrollDirection: Axis.vertical,
+                  shrinkWrap: true,
+                  itemBuilder: (BuildContext context, int index) {
+                    return BookingCard(
+                        className: _classes![index].className,
+                        timeStart: _classes![index].timeStart,
+                        timeEnd: _classes![index].timeEnd,
+                        place: _classes![index].location,
+                        city: _classes![index].location
+                        );
+                  },
+                  itemCount: _classes!.length,
           ),
-          generalText("Today"),
-          card,
-          generalText("Tomorrow"),
-          card,
-          card,
-          card,
-          card,
-          card,
-          card,
-          card,
         ],
       ),
     );
