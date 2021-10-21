@@ -17,7 +17,7 @@ class BookingMenuWidget extends StatelessWidget {
         body: TabBarView(
           children: [
             YourBookings(),
-            Classes(),
+            ClassesList(),
             Center(child: Text("Coming soon!")),
           ],
         ),
