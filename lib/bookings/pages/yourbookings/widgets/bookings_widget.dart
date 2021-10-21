@@ -1,8 +1,10 @@
 import 'package:beefitmember_application/bookings/pages/yourbookings/models/bookingModel.dart';
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
+import 'package:beefitmember_application/shared/user/user.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:intl/intl.dart';
 import 'dart:convert' as cnv;
 
 class BookingWidget extends StatefulWidget {
@@ -45,17 +47,20 @@ class _BookingWidgetState extends State<BookingWidget> {
           child: _classes == null
               ? Center(child: CircularProgressIndicator(
                 backgroundColor: Color(int.parse(FitnessPackage.primaryColor))))
+              : _classes!.length == 0
+              ? Padding(
+                padding: const EdgeInsets.only(top: 20),
+                child: Center(child: Text("You have no classes booked!")),
+              )
               : ListView.builder(
                   scrollDirection: Axis.horizontal,
                   shrinkWrap: true,
                   itemBuilder: (BuildContext context, int index) {
-                    return Card(
-                      child: CardExample(
-                          _classes![index].classImage,
-                          _classes![index].className,
-                          _classes![index].location,
-                          _classes![index].timeEnd),
-                      );
+                    return CardExample(
+                        _classes![index].classImage,
+                        _classes![index].className,
+                        _classes![index].location,
+                        DateFormat.Hm().add_E().add_MMMd().format(_classes![index].timeStart));
                   },
                   itemCount: _classes!.length,
           ),
@@ -64,7 +69,8 @@ class _BookingWidgetState extends State<BookingWidget> {
     );
   }
   Future<void> getData() async {
-    var endpointUrl = Uri.parse('https://beefitmemberbookings.azurewebsites.net/getUserClasses/jonas');
+    var userEmail = User.email;
+    var endpointUrl = Uri.parse('https://beefitmemberbookings.azurewebsites.net/getUserClasses/$userEmail');
 
     var response = await http.get(endpointUrl);
 
