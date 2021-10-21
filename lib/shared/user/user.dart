@@ -6,6 +6,7 @@ class User {
   static String primaryGym = "";
   static List<String> secondaryGymsList = [];
   static String role = "";
+  static String profileImage = "";
 
   static String cardNumber = "";
   static String expireYear = "";
@@ -28,6 +29,7 @@ class User {
     primaryGym = json['userInfo']['primaryGym'].toString();
     List<dynamic> secondaryGyms = json['userInfo']['secondaryGyms'];
     secondaryGymsList = secondaryGyms.cast<String>();
+    profileImage = json['userInfo']['profileImage'].toString();
 
     role = json['userInfo']['role'].toString();
     cardNumber = json['userInfo']['cardnumber'].toString();

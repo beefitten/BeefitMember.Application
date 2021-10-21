@@ -257,16 +257,14 @@ class _MoreState extends State<More> {
           children: [
             CircleAvatar(
                 radius: 45,
-                backgroundImage: NetworkImage(
-                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROy2NZIldQXwZCIOka2hb-jtPEpTBcipkyVA&usqp=CAU')),
+                backgroundImage: NetworkImage(User.profileImage)),
             Padding(
               padding: EdgeInsets.only(
                   top: MediaQuery.of(context).size.height * 0.02),
               child: Column(
                 children: [
-                  Text(User.email),
-                  Text(
-                    "Role: " + User.role,
+                  Text(User.name),
+                  Text(User.role,
                     style: TextStyle(color: Color.fromRGBO(138, 141, 178, 1)),
                   )
                 ],
