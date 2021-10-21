@@ -1,5 +1,4 @@
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class BookingCard extends StatefulWidget {
@@ -95,7 +94,7 @@ class _BookingCardState extends State<BookingCard> {
                             height: 9,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
-                              color: _isFull? Colors.red : Colors.green,
+                              color: _isFull ? Colors.red : Colors.green,
                             ),
                           ),
                         ),
