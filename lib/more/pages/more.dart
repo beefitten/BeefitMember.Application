@@ -64,7 +64,8 @@ class _MoreState extends State<More> {
                     Padding(
                       padding: EdgeInsets.only(
                           left: MediaQuery.of(context).size.width * 0.05,
-                          right: MediaQuery.of(context).size.width * 0.05),
+                          right: MediaQuery.of(context).size.width * 0.05,
+                          bottom: MediaQuery.of(context).size.height * 0.02),
                       child: LogOutBtn(),
                     )
                   ],

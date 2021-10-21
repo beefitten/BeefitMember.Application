@@ -7,10 +7,10 @@ class LogOutBtn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _logOut = Text(
-    'Log out',
-    style: TextStyle(
-        fontSize: 20.0, color: Color(int.parse(FitnessPackage.secondaryColor))),
-  );
+      'Log out',
+      style: TextStyle(
+          fontSize: 20.0, color: Color(int.parse(FitnessPackage.secondaryColor))),
+    );
 
     return TextButton(
       style: ButtonStyle(

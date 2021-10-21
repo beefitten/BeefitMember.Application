@@ -9,7 +9,7 @@ class ProfileInfo extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.only(
             left: MediaQuery.of(context).size.width * 0.4,
-            top: MediaQuery.of(context).size.height * 0.01),
+            top: MediaQuery.of(context).size.height * 0.05),
         child: Column(
           children: [
             CircleAvatar(
