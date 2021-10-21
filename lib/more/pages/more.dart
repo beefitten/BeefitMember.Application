@@ -1,5 +1,6 @@
 import 'package:beefitmember_application/bookings/pages/previewBookings/widgets/show_more_button.dart';
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
+import 'package:beefitmember_application/shared/user/user.dart';
 import 'package:beefitmember_application/user/service/logout_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -225,11 +226,11 @@ class _MoreState extends State<More> {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(bottom: 8.0),
-                  child: Text("Medlemsskab A"),
+                  child: Text("Membership: " + User.subscription),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 8.0),
-                  child: Text("Bindsperiode: 6 måneder"),
+                  child: Text("Primary Gym: " + User.primaryGym),
                 )
               ],
             )
@@ -250,7 +251,7 @@ class _MoreState extends State<More> {
     final profileInfo = Container(
       child: Padding(
         padding: EdgeInsets.only(
-            left: MediaQuery.of(context).size.width * 0.32,
+            left: MediaQuery.of(context).size.width * 0.4,
             top: MediaQuery.of(context).size.height * 0.01),
         child: Column(
           children: [
@@ -263,9 +264,9 @@ class _MoreState extends State<More> {
                   top: MediaQuery.of(context).size.height * 0.02),
               child: Column(
                 children: [
-                  Text("Jonas West Alrø"),
+                  Text(User.email),
                   Text(
-                    "Member since Aug 2018",
+                    "Role: " + User.role,
                     style: TextStyle(color: Color.fromRGBO(138, 141, 178, 1)),
                   )
                 ],

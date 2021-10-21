@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/cupertino.dart';
 
-class Filter extends StatefulWidget {
+class FilterClass extends StatefulWidget {
   final List<String> items;
   final String? value;
 
-  Filter({Key? key, required this.items, this.value}) : super(key: key);
+  FilterClass({Key? key, required this.items, this.value}) : super(key: key);
 
   @override
-  _FilterState createState() => _FilterState();
+  _FilterClassState createState() => _FilterClassState();
 }
 
-class _FilterState extends State<Filter> {
+class _FilterClassState extends State<FilterClass> {
   String? value = "";
 
   @override
