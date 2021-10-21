@@ -1,16 +1,16 @@
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class BookingCard extends StatefulWidget {
-  final String timeStart, timeEnd, className, place, city;
+  final String timeStart, timeEnd, className, place;
 
   const BookingCard(
       {Key? key,
       required this.timeStart,
       required this.timeEnd,
       required this.className,
-      required this.place,
-      required this.city})
+      required this.place})
       : super(key: key);
 
   @override
@@ -19,7 +19,9 @@ class BookingCard extends StatefulWidget {
 
 class _BookingCardState extends State<BookingCard> {
   bool _isBooked = false;
-  bool _isFull = false;
+  bool _isFull = true;
+  String book = "Book";
+  String booked = "Booked";
 
   handleBook() {
     setState(() {
@@ -30,13 +32,12 @@ class _BookingCardState extends State<BookingCard> {
   @override
   Widget build(BuildContext context) {
     final green = Color.fromRGBO(0, 186, 136, 1);
-    final blue = Color(int.parse(FitnessPackage.secondaryColor));
+    final standardBtnColor = Color(int.parse(FitnessPackage.secondaryColor));
 
     String className = widget.className;
     String timeStart = widget.timeStart;
     String timeEnd = widget.timeEnd;
     String place = widget.place;
-    String city = widget.city;
 
     final generalHeaderText = (String txt) => Padding(
           padding: const EdgeInsets.only(top: 10),
@@ -69,10 +70,22 @@ class _BookingCardState extends State<BookingCard> {
 
     final bookBtn = ElevatedButton(
       onPressed: () {
+        if (_isFull && !_isBooked) {
+          Fluttertoast.showToast(
+            msg: "$className Is Fully Booked...",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.BOTTOM,
+            backgroundColor: Color(int.parse(FitnessPackage.primaryColor)),
+            textColor: Colors.white,
+            fontSize: 16.0);
+          return;
+        }
+
         handleBook();
       },
-      child: Text(this._isBooked ? "Booked" : "Book"),
-      style: ElevatedButton.styleFrom(primary: this._isBooked ? green : blue),
+      child: Text(this._isBooked ? booked : book),
+      style: ElevatedButton.styleFrom(
+          primary: this._isBooked ? green : standardBtnColor),
     );
 
     final card = Column(
@@ -106,7 +119,7 @@ class _BookingCardState extends State<BookingCard> {
                         Column(
                           children: [
                             subtext("$timeStart - $timeEnd"),
-                            locationText("$place, $city")
+                            locationText("Location: $place")
                           ],
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
