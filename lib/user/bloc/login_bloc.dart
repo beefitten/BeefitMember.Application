@@ -1,5 +1,6 @@
 import 'package:beefitmember_application/bookings/services/booking_service.dart';
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
+import 'package:beefitmember_application/shared/user/user.dart';
 import 'package:beefitmember_application/user/bloc/login_events.dart';
 import 'package:beefitmember_application/user/bloc/login_state.dart';
 import 'package:beefitmember_application/user/service/login_service.dart';
@@ -14,22 +15,17 @@ class LoginBLoc extends Bloc<LoginEvents, LoginState> {
   Stream<LoginState> mapEventToState(LoginEvents event) async* {
     if (event is StartEvent) {
       yield LoginInitState();
-    }
-    else if (event is LoginButtonPressed)
-    {
+    } else if (event is LoginButtonPressed) {
       yield LoginLoadingState();
       var json = await service.login(event.email, event.password);
-
       if (json == "error")
         yield LoginErrorState(message: "Wrong username or password!");
-      else 
-      {
+      else {
         FitnessPackage().update(json);
+        User().update(json);
         yield UserLoginSuccessState();
       }
-    } 
-    else 
-    {
+    } else {
       yield LoginErrorState(message: "Login error");
     }
   }
