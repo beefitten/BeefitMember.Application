@@ -15,7 +15,7 @@ class BookingWidget extends StatefulWidget {
 }
 
 class _BookingWidgetState extends State<BookingWidget> {
-  List<Results>? _classes;
+  List<Classes>? _classes;
 
   @override void initState() {
     getData();
@@ -51,11 +51,11 @@ class _BookingWidgetState extends State<BookingWidget> {
                   itemBuilder: (BuildContext context, int index) {
                     return Card(
                       child: CardExample(
-                          _classes![index].picture,
-                          _classes![index].headline,
-                          _classes![index].address,
-                          _classes![index].date),
-                    );
+                          _classes![index].classImage,
+                          _classes![index].className,
+                          _classes![index].location,
+                          _classes![index].timeEnd),
+                      );
                   },
                   itemCount: _classes!.length,
           ),
@@ -64,12 +64,12 @@ class _BookingWidgetState extends State<BookingWidget> {
     );
   }
   Future<void> getData() async {
-    var endpointUrl = Uri.parse('https://beefitmemberfitnesspackage.azurewebsites.net/testEndpoint');
+    var endpointUrl = Uri.parse('https://beefitmemberbookings.azurewebsites.net/getUserClasses/jonas');
 
     var response = await http.get(endpointUrl);
 
-    dynamic body = cnv.jsonDecode(response.body);
-    _classes = Classes.fromJson(body).results;
+    List<dynamic> body = cnv.jsonDecode(response.body);
+    _classes = body.map((dynamic item) => Classes.fromJson(item)).toList();
     setState(() { });
   }
 }
