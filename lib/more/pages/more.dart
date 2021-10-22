@@ -31,9 +31,7 @@ class _MoreState extends State<More> {
         backgroundColor: Colors.white,
         body: Column(
           children: [
-            Container(
-              height: MediaQuery.of(context).size.height * 0.032,
-            ),
+
             Expanded(
               child: MediaQuery.removePadding(
                 context: context,

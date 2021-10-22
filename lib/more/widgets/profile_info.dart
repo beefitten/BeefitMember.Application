@@ -7,27 +7,27 @@ class ProfileInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Padding(
-        padding: EdgeInsets.only(
-            left: MediaQuery.of(context).size.width * 0.4,
-            top: MediaQuery.of(context).size.height * 0.05),
-        child: Column(
-          children: [
-            CircleAvatar(
-                radius: 45, backgroundImage: NetworkImage(User.profileImage)),
-            Padding(
-              padding: EdgeInsets.only(
-                  top: MediaQuery.of(context).size.height * 0.02),
-              child: Column(
-                children: [
-                  Text(User.name),
-                  Text(
-                    User.role,
-                    style: TextStyle(color: Color.fromRGBO(138, 141, 178, 1)),
-                  )
-                ],
-              ),
-            )
-          ],
+        padding: const EdgeInsets.only(top: 50),
+        child: Center(
+          child: Column(
+            children: [
+              CircleAvatar(
+                  radius: 45, backgroundImage: NetworkImage(User.profileImage)),
+              Padding(
+                padding: EdgeInsets.only(
+                    top: MediaQuery.of(context).size.height * 0.02),
+                child: Column(
+                  children: [
+                    Text(User.name + " " + User.lastName),
+                    Text(
+                      User.role,
+                      style: TextStyle(color: Color.fromRGBO(138, 141, 178, 1)),
+                    )
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
