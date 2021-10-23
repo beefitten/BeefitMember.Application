@@ -49,6 +49,30 @@ class _BookingCardState extends State<BookingCard> {
     shouldNotify = false;
   }
 
+  deleteBooking(String classId, String email) async {
+    var endpointUrl = Uri.parse('https://bfmbookings.azurewebsites.net/deleteBooking');
+
+    var body = {};
+    body["classId"] = classId;
+    body["email"] = email;
+    var bodyJson = json.encode(body);
+
+    var headers = {
+      HttpHeaders.contentTypeHeader: 'application/json; charset=UTF-8'
+    };
+
+    var response = await http.post(
+      endpointUrl,
+      headers: headers,
+      body: bodyJson,
+    );
+
+    setState(() {
+      if (response.statusCode == 200)
+        _isBooked = false;
+    });
+  }
+
   handleBook(
       String classId,
       String email,
@@ -75,6 +99,7 @@ class _BookingCardState extends State<BookingCard> {
     setState(() {
       if (response.statusCode == 200)
         shouldNotify = true;
+        _isBooked = true;
     });
   }
 
@@ -187,7 +212,11 @@ class _BookingCardState extends State<BookingCard> {
           return;
         }
 
-        handleBook(classInfo.classId, email, classInfo.className);
+        if (!_isBooked)
+          handleBook(classInfo.classId, email, classInfo.className);
+
+        if (_isBooked)
+          deleteBooking(classInfo.classId, email);
       },
       child: Text(this._isBooked ? booked : book),
       style: ElevatedButton.styleFrom(
