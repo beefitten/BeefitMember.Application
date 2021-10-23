@@ -1,16 +1,26 @@
+import 'dart:convert';
+import 'dart:io';
+
+import 'package:beefitmember_application/bookings/pages/yourbookings/models/bookingModel.dart';
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:http/http.dart' as http;
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 class BookingCard extends StatefulWidget {
-  final String timeStart, timeEnd, className, place;
+  final String timeStart, timeEnd, className, place, email;
+  final Classes classInfo;
 
   const BookingCard(
       {Key? key,
       required this.timeStart,
       required this.timeEnd,
       required this.className,
-      required this.place})
+      required this.place,
+      required this.classInfo,
+      required this.email})
       : super(key: key);
 
   @override
@@ -19,14 +29,108 @@ class BookingCard extends StatefulWidget {
 
 class _BookingCardState extends State<BookingCard> {
   bool _isBooked = false;
-  bool _isFull = true;
+  bool _isFull = false;
   String book = "Book";
   String booked = "Booked";
+  var listener;
+  bool shouldNotify = false;
 
-  handleBook() {
+  late FlutterLocalNotificationsPlugin localNotification;
+
+  @override
+  void initState() {
+    super.initState();
+    var androidInitialize = new AndroidInitializationSettings('ic_launcher');
+    var iOSInitialize = new IOSInitializationSettings();
+    var initializationSettings = new InitializationSettings(android: androidInitialize, iOS: iOSInitialize);
+    localNotification = new FlutterLocalNotificationsPlugin();
+    localNotification.initialize(initializationSettings);
+    listener = null;
+    shouldNotify = false;
+  }
+
+  handleBook(
+      String classId,
+      String email,
+      String className) async {
+    var endpointUrl = Uri.parse('https://bfmbookings.azurewebsites.net/bookClass');
+
+    var body = {};
+    body["classId"] = classId;
+    body["email"] = email;
+    var bodyJson = json.encode(body);
+
+    var headers = {
+      HttpHeaders.contentTypeHeader: 'application/json; charset=UTF-8'
+    };
+
+    listenForBookingConfirmation(classId, email, className);
+
+    var response = await http.post(
+      endpointUrl,
+      headers: headers,
+      body: bodyJson,
+    );
+
     setState(() {
-      _isBooked = !_isBooked;
+      if (response.statusCode == 200)
+        shouldNotify = true;
     });
+  }
+
+  listenForBookingConfirmation(
+      String classId,
+      String email,
+      String className) {
+    if (listener == null){
+
+      listener = FirebaseFirestore.instance
+          .collection('Classes')
+          .doc(classId)
+          .snapshots()
+          .listen((event) {
+
+        print("Subscribed to " + classId);
+        var participants = event.data();
+        var participantsList = participants?["Participants"] as List<dynamic>;
+
+        if (participants == null)
+          return;
+
+        var response = participantsList.where((element) => (element.contains(email))).toList();
+        if (response.length >= 1 && shouldNotify){
+          print(response);
+          print("Send notification!");
+          stopListening(classId);
+          publishNotification(className);
+        }else {
+          print("Not in the list. Still subscribed!");
+        }
+      });
+    }
+  }
+
+  stopListening(String classId){
+    print("Unsubscribed from " + classId);
+    listener.cancel();
+    listener = null;
+    shouldNotify = false;
+  }
+
+  Future publishNotification(String className) async {
+    var androidDetails = new AndroidNotificationDetails(
+        "ChannelId",
+        "Message",
+        "Description",
+        importance: Importance.high);
+
+    var iOSDetails = new IOSNotificationDetails();
+    var generalNotificationDetails = new NotificationDetails(android: androidDetails, iOS: iOSDetails);
+    await localNotification.show(
+        0,
+        "Class " + className + " is confirmed!",
+        "We're looking forward to see you!",
+        generalNotificationDetails);
   }
 
   @override
@@ -38,6 +142,8 @@ class _BookingCardState extends State<BookingCard> {
     String timeStart = widget.timeStart;
     String timeEnd = widget.timeEnd;
     String place = widget.place;
+    String email = widget.email;
+    Classes classInfo = widget.classInfo;
 
     final generalHeaderText = (String txt) => Padding(
           padding: const EdgeInsets.only(top: 10),
@@ -81,7 +187,7 @@ class _BookingCardState extends State<BookingCard> {
           return;
         }
 
-        handleBook();
+        handleBook(classInfo.classId, email, classInfo.className);
       },
       child: Text(this._isBooked ? booked : book),
       style: ElevatedButton.styleFrom(
@@ -107,7 +213,7 @@ class _BookingCardState extends State<BookingCard> {
                             height: 9,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
-                              color: _isFull ? Colors.red : Colors.green,
+                              color: classInfo.isFull ? Colors.red : Colors.green,
                             ),
                           ),
                         ),

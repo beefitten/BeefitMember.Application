@@ -2,6 +2,7 @@ import 'package:beefitmember_application/bookings/pages/bookings_list/booking_ca
 import 'package:beefitmember_application/bookings/pages/bookings_list/widgets/filter_widget.dart';
 import 'package:beefitmember_application/bookings/pages/yourbookings/models/bookingModel.dart';
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
+import 'package:beefitmember_application/shared/user/user.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -37,7 +38,7 @@ class _ClassesListState extends State<ClassesList> {
     var fitness = FitnessPackage.name.toString();
     print(fitness);
     var endpointUrl = Uri.parse(
-        'https://beefitmemberbookings.azurewebsites.net/getClasses/$fitness');
+        'https://bfmbookings.azurewebsites.net/getClasses/$fitness');
 
     var response = await http.get(endpointUrl);
 
@@ -136,6 +137,8 @@ class _ClassesListState extends State<ClassesList> {
                         timeStart: DateFormat.Hm().format(_classes![index].timeStart),
                         timeEnd: DateFormat.Hm().add_MMMd().format(_classes![index].timeEnd),
                         place: _classes![index].location,
+                        classInfo: _classes![index],
+                        email: User.email,
                         );
                   },
                   itemCount: _classes!.length,
