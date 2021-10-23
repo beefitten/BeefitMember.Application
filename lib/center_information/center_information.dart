@@ -1,11 +1,25 @@
+import 'package:beefitmember_application/bookings/services/booking_service.dart';
+import 'package:beefitmember_application/center_information/service/center_information_service.dart';
 import 'package:beefitmember_application/center_information/widgets/center_information_basic.dart';
 import 'package:beefitmember_application/center_information/widgets/center_information_heatmap.dart';
 import 'package:beefitmember_application/center_information/widgets/center_information_map.dart';
 import 'package:beefitmember_application/shared/widgets/texts.dart';
 import 'package:flutter/material.dart';
 
-class CenterInformation extends StatelessWidget {
+class CenterInformation extends StatefulWidget {
   CenterInformation();
+
+  @override
+  State<CenterInformation> createState() => _CenterInformationState();
+}
+
+class _CenterInformationState extends State<CenterInformation> {
+  @override
+  void initState() {
+    CenterInformationService().getCenterInformation("hej");
+
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
