@@ -68,6 +68,7 @@ class _BookingWidgetState extends State<BookingWidget> {
       ]),
     );
   }
+
   Future<void> getData() async {
     var userEmail = User.email;
     var endpointUrl = Uri.parse('https://bfmbookings.azurewebsites.net/getUserClasses/$userEmail');

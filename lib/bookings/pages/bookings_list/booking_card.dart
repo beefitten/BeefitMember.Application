@@ -12,6 +12,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 class BookingCard extends StatefulWidget {
   final String timeStart, timeEnd, className, place, email;
   final Classes classInfo;
+  final bool booked;
 
   const BookingCard(
       {Key? key,
@@ -20,7 +21,8 @@ class BookingCard extends StatefulWidget {
       required this.className,
       required this.place,
       required this.classInfo,
-      required this.email})
+      required this.email,
+      required this.booked})
       : super(key: key);
 
   @override
@@ -28,12 +30,13 @@ class BookingCard extends StatefulWidget {
 }
 
 class _BookingCardState extends State<BookingCard> {
-  bool _isBooked = false;
+  late bool _isBooked;
   bool _isFull = false;
   String book = "Book";
   String booked = "Booked";
   var listener;
   bool shouldNotify = false;
+  bool loaded = false;
 
   late FlutterLocalNotificationsPlugin localNotification;
 
@@ -69,12 +72,12 @@ class _BookingCardState extends State<BookingCard> {
 
     setState(() {
       if (response.statusCode == 200)
-        _isBooked = false;
+        _isBooked = !_isBooked;
+        _isFull = false;
     });
   }
 
-  handleBook(
-      String classId,
+  handleBook(String classId,
       String email,
       String className) async {
     var endpointUrl = Uri.parse('https://bfmbookings.azurewebsites.net/bookClass');
@@ -97,14 +100,15 @@ class _BookingCardState extends State<BookingCard> {
     );
 
     setState(() {
-      if (response.statusCode == 200)
+      if (response.statusCode == 200){
         shouldNotify = true;
-        _isBooked = true;
+        _isBooked = !_isBooked;
+        _isFull = widget.classInfo.isFull;
+      }
     });
   }
 
-  listenForBookingConfirmation(
-      String classId,
+  listenForBookingConfirmation(String classId,
       String email,
       String className) {
     if (listener == null){
@@ -169,6 +173,12 @@ class _BookingCardState extends State<BookingCard> {
     String place = widget.place;
     String email = widget.email;
     Classes classInfo = widget.classInfo;
+
+    if (!loaded){
+      _isBooked = widget.booked;
+      _isFull = widget.classInfo.isFull;
+      loaded = true;
+    }
 
     final generalHeaderText = (String txt) => Padding(
           padding: const EdgeInsets.only(top: 10),
@@ -242,7 +252,7 @@ class _BookingCardState extends State<BookingCard> {
                             height: 9,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
-                              color: classInfo.isFull ? Colors.red : Colors.green,
+                              color: _isFull ? Colors.red : Colors.green,
                             ),
                           ),
                         ),
