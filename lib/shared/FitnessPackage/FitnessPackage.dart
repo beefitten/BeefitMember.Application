@@ -10,7 +10,7 @@ class FitnessPackage {
   static String thirdColor = "";
   static Color backgroundColor = Colors.white;
   static String generalFond = "";
-
+  
   static String H1 = "18";
   static String H1Weight = "";
   static String H1FontFamily = "";
@@ -45,6 +45,8 @@ class FitnessPackage {
     primaryColor = json['primaryColor']
         .toString(); // Might need to be changed to a "Color"
     secondaryColor = json['secondaryColor'].toString();
+    thirdColor = json['ThirdColor'].toString();
+    backgroundColor = Color(int.parse(json['BackgroundColor'].toString()));
     logo = json['logo'].toString();
 
     List<dynamic> featureDynamicList = json['features'];
