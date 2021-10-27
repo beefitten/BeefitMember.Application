@@ -13,6 +13,9 @@ class WeightGoalBloc extends Bloc<WeightGoalEvents, WeightGoalState> {
 
   @override
   Stream<WeightGoalState> mapEventToState(WeightGoalEvents event) async* {
+    if (event is StartEvent) {
+      yield WeightGoalInitState();
+    }
     if (event is SaveButtonPressed) {
       yield WeightGoalLoadingState();
       var response = await service.create(
