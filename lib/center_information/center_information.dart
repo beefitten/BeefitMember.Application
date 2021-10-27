@@ -1,10 +1,16 @@
-import 'package:beefitmember_application/bookings/services/booking_service.dart';
-import 'package:beefitmember_application/center_information/service/center_information_service.dart';
+import 'package:beefitmember_application/center_information/bloc/center_information_events.dart';
+import 'package:beefitmember_application/center_information/bloc/center_information_state.dart';
+import 'package:beefitmember_application/center_information/models/center_information_model.dart';
 import 'package:beefitmember_application/center_information/widgets/center_information_basic.dart';
 import 'package:beefitmember_application/center_information/widgets/center_information_heatmap.dart';
 import 'package:beefitmember_application/center_information/widgets/center_information_map.dart';
+import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:beefitmember_application/shared/widgets/texts.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'bloc/center_information_bloc.dart';
+import 'bloc/center_information_state.dart';
 
 class CenterInformation extends StatefulWidget {
   CenterInformation();
@@ -14,39 +20,72 @@ class CenterInformation extends StatefulWidget {
 }
 
 class _CenterInformationState extends State<CenterInformation> {
+  late CenterInformationBloc centerInfoBloc;
+
   @override
   void initState() {
-    CenterInformationService().getCenterInformation("hej");
-
-    setState(() {});
+    super.initState();
+    centerInfoBloc = BlocProvider.of<CenterInformationBloc>(context);
+    centerInfoBloc.add(LoadEvent(fitnessName: FitnessPackage.name));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: MediaQuery.removePadding(
-        context: context,
-        removeTop: true,
-        child: Padding(
-          padding: const EdgeInsets.only(left: 8, right: 8),
-          child: Column(
-            children: [
-              H1Text('Center information'),
-              Expanded(
-                child: ListView(children: [
-                  CenterInformationMap(),
-                  CenterInformationBasic(),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 20, left: 10),
-                    child: H2Text('Location heat map'),
-                  ),
-                  CenterInformationHeatMap(),
-                ]),
-              ),
-            ],
-          ),
-        ),
+        body: MediaQuery.removePadding(
+      context: context,
+      removeTop: true,
+      child: Padding(
+        padding: const EdgeInsets.only(left: 8, right: 8),
+        child: BlocBuilder<CenterInformationBloc, CenterInformationState>(
+            builder: (context, state) {
+          if (state is InfoLoadedState)
+            return BuildLoaded(state.model);
+          else
+            return BuildLoading();
+        }),
       ),
+    ));
+  }
+
+  @override
+  void dispose() {
+    centerInfoBloc.dispose();
+    super.dispose();
+  }
+}
+
+class BuildLoading extends StatelessWidget {
+  const BuildLoading({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(child: CircularProgressIndicator());
+  }
+}
+
+class BuildLoaded extends StatelessWidget {
+  final CenterInformationModel model;
+
+  BuildLoaded(this.model);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        H1Text('Center information'),
+        Expanded(
+          child: ListView(children: [
+            CenterInformationMap(),
+            CenterInformationBasic(model),
+            Padding(
+              padding: const EdgeInsets.only(top: 20, left: 10),
+              child: H2Text('Location heat map'),
+            ),
+            CenterInformationHeatMap(),
+          ]),
+        ),
+      ],
     );
   }
 }

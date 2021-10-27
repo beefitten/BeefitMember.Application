@@ -11,7 +11,6 @@ class CenterInformationMap extends StatefulWidget {
 class _CenterInformationMapState extends State<CenterInformationMap> {
   late GoogleMapController mapController;
   final LatLng _center = const LatLng(56.16961731336789, 10.193464582067223);
-
   List<Marker> markers = [];
 
   @override

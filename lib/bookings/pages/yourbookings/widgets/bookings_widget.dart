@@ -17,7 +17,8 @@ class BookingWidget extends StatefulWidget {
 class _BookingWidgetState extends State<BookingWidget> {
   List<Classes>? _classes;
 
-  @override void initState() {
+  @override
+  void initState() {
     getData();
     super.initState();
   }
@@ -43,8 +44,10 @@ class _BookingWidgetState extends State<BookingWidget> {
           color: Colors.white,
           height: MediaQuery.of(context).size.height * 0.26,
           child: _classes == null
-              ? Center(child: CircularProgressIndicator(
-                backgroundColor: Color(int.parse(FitnessPackage.primaryColor))))
+              ? Center(
+                  child: CircularProgressIndicator(
+                      backgroundColor:
+                          Color(int.parse(FitnessPackage.primaryColor))))
               : ListView.builder(
                   scrollDirection: Axis.horizontal,
                   shrinkWrap: true,
@@ -55,22 +58,24 @@ class _BookingWidgetState extends State<BookingWidget> {
                           _classes![index].className,
                           _classes![index].location,
                           _classes![index].timeEnd),
-                      );
+                    );
                   },
                   itemCount: _classes!.length,
-          ),
+                ),
         )
       ]),
     );
   }
+
   Future<void> getData() async {
-    var endpointUrl = Uri.parse('https://beefitmemberbookings.azurewebsites.net/getUserClasses/jonas');
+    var endpointUrl = Uri.parse(
+        'https://beefitmemberbookings.azurewebsites.net/getUserClasses/jonas');
 
     var response = await http.get(endpointUrl);
 
     List<dynamic> body = cnv.jsonDecode(response.body);
     _classes = body.map((dynamic item) => Classes.fromJson(item)).toList();
-    setState(() { });
+    setState(() {});
   }
 }
 

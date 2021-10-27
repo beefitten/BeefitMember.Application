@@ -4,14 +4,13 @@ import 'package:beefitmember_application/center_information/models/center_inform
 import 'package:http/http.dart' as http;
 
 class CenterInformationService {
-  getCenterInformation(String centerName) async {
+  Future<CenterInformationModel> getData(String fitnessName) async {
     var endpointUrl = Uri.parse(
-        "https://beefitmembercenterinformation.azurewebsites.net/getCenterInformation/$centerName");
+        'https://beefitmembercenterinformation.azurewebsites.net/getCenterInformation/${fitnessName}');
 
     var response = await http.get(endpointUrl);
 
-    dynamic body = cnv.jsonDecode(response.body);
-
+    var body = cnv.jsonDecode(response.body);
     return CenterInformationModel.fromJson(body);
   }
 }
