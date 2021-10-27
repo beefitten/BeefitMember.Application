@@ -5,12 +5,10 @@ class WeightGoalState extends Equatable {
   List<Object> get props => [];
 }
 
-class WegihtGoalInitState extends WeightGoalState {}
+class WeightGoalSaveState extends WeightGoalState {}
 
-class WegihtGoalLoadingState extends WeightGoalState {}
-
-class WegihtGoalErrorState extends WeightGoalState {
+class WeightGoalErrorState extends WeightGoalState {
   final String message;
 
-  WegihtGoalErrorState({required this.message});
+  WeightGoalErrorState({required this.message});
 }
