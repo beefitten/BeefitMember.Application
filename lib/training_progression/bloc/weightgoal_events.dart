@@ -5,8 +5,6 @@ class WeightGoalEvents extends Equatable {
   List<Object> get props => [];
 }
 
-class StartEvent extends WeightGoalEvents {}
-
 class SaveButtonPressed extends WeightGoalEvents {
   final String user;
   final int currentWeight;
