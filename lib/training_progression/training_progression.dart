@@ -91,11 +91,13 @@ class _TrainingProgressionState extends State<TrainingProgression> {
           CustomButton(
             "Save",
             () => {
-              weightGoalBloc.add(SaveButtonPressed(
-                user: User.name,
-                currentWeight: 90,
-                targetWeight: 80,
-              ))
+              weightGoalBloc.add(
+                SaveButtonPressed(
+                  user: User.name,
+                  currentWeight: 90,
+                  targetWeight: 80,
+                ),
+              ),
             },
             Color(int.parse(FitnessPackage.primaryColor)),
           ),
