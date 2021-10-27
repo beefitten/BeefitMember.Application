@@ -1,4 +1,4 @@
-import 'package:beefitmember_application/bookings/services/booking_service.dart';
+import 'package:beefitmember_application/bookings/services/bookings_service.dart';
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:beefitmember_application/shared/user/user.dart';
 import 'package:beefitmember_application/user/bloc/login_events.dart';
@@ -21,9 +21,9 @@ class LoginBLoc extends Bloc<LoginEvents, LoginState> {
       if (json == "error")
         yield LoginErrorState(message: "Wrong username or password!");
       else {
-        FitnessPackage().update(json);
-        User().update(json);
-        yield UserLoginSuccessState();
+      FitnessPackage().update(json);
+      User().update(json);
+      yield UserLoginSuccessState();
       }
     } else {
       yield LoginErrorState(message: "Login error");
