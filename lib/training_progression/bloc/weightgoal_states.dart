@@ -5,7 +5,11 @@ class WeightGoalState extends Equatable {
   List<Object> get props => [];
 }
 
-class WeightGoalSaveState extends WeightGoalState {}
+class WeightGoalInitState extends WeightGoalState {}
+
+class WeightGoalLoadingState extends WeightGoalState {}
+
+class WeightGoalSuccessState extends WeightGoalState {}
 
 class WeightGoalErrorState extends WeightGoalState {
   final String message;
