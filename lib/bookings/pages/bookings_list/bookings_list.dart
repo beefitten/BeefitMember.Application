@@ -2,6 +2,7 @@ import 'package:beefitmember_application/bookings/pages/bookings_list/booking_ca
 import 'package:beefitmember_application/bookings/pages/bookings_list/widgets/filter_widget.dart';
 import 'package:beefitmember_application/bookings/pages/yourbookings/models/bookingModel.dart';
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
+import 'package:beefitmember_application/shared/user/user.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -18,7 +19,8 @@ class ClassesList extends StatefulWidget {
 
 class _ClassesListState extends State<ClassesList> {
   bool _isBooked = false;
-  List<Classes>? _classes;
+  List<Classes>? _allClasses;
+  List<Classes>? _yourBookings;
 
   @override
   void initState() {
@@ -33,17 +35,30 @@ class _ClassesListState extends State<ClassesList> {
   }
 
   Future<void> getData() async {
-    // var fitnessName = FitnessPackage.name[0].toUpperCase();
-    var fitness = FitnessPackage.name.toString();
-    print(fitness);
-    var endpointUrl = Uri.parse(
-        'https://beefitmemberbookings.azurewebsites.net/getClasses/$fitness');
+    // All classes
+    var fitness = User.primaryGym;
+    var allClassesUrl = Uri.parse('https://bfmbookings.azurewebsites.net/getClasses/$fitness');
+    var allClassesResponse = await http.get(allClassesUrl);
+    List<dynamic> allClassesBody = cnv.jsonDecode(allClassesResponse.body);
+    _allClasses = allClassesBody.map((dynamic item) => Classes.fromJson(item)).toList();
 
-    var response = await http.get(endpointUrl);
 
-    List<dynamic> body = cnv.jsonDecode(response.body);
-    _classes = body.map((dynamic item) => Classes.fromJson(item)).toList();
+    // Your bookings
+    var userEmail = User.email;
+    var yourBookingsUrl = Uri.parse('https://bfmbookings.azurewebsites.net/getUserClasses/$userEmail');
+    var yourBookingsResponse = await http.get(yourBookingsUrl);
+    List<dynamic> yourBookingBody = cnv.jsonDecode(yourBookingsResponse.body);
+    _yourBookings = yourBookingBody.map((dynamic item) => Classes.fromJson(item)).toList();
+
     setState(() {});
+  }
+
+  alreadyBooked(Classes currentClass){
+    for (Classes item in _yourBookings!) {
+      if (item.classId == currentClass.classId)
+        return true;
+    }
+    return false;
   }
 
   @override
@@ -55,14 +70,14 @@ class _ClassesListState extends State<ClassesList> {
     // String city = "København";
 
     final generalText = (String txt) => Padding(
-          padding: const EdgeInsets.fromLTRB(8, 16, 0, 0),
-          child: Text(
-            txt,
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 16.0,
-            ),
-          ),
+      padding: const EdgeInsets.fromLTRB(8, 16, 0, 0),
+      child: Text(
+        txt,
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 16.0,
+        ),
+      ),
     );
 
     // final card = BookingCard(
@@ -110,38 +125,35 @@ class _ClassesListState extends State<ClassesList> {
 
     return Scaffold(
       backgroundColor: Colors.white,
-      body: ListView(
-        shrinkWrap: true,
-        children: <Widget>[
-          // generalText("Filters"),
-          // Stack(
-          //   children: [
-          //     Column(
-          //       children: [classType, locationType],
-          //     ),
-          //     iconTime,
-          //     iconTwo,
-          //   ],
-          // ),
-          generalText("Classes"),
-          _classes == null
-          ? Center(child: CircularProgressIndicator(
-                backgroundColor: Color(int.parse(FitnessPackage.primaryColor))))
-          : ListView.builder(
+      body: Column(
+        children: [
+          //generalText("Classes"),
+          Expanded(
+            child: _allClasses == null
+                    ? Center(child: CircularProgressIndicator(
+                    backgroundColor: Color(int.parse(FitnessPackage.primaryColor))))
+                    : ListView.builder(
                   scrollDirection: Axis.vertical,
                   shrinkWrap: true,
                   itemBuilder: (BuildContext context, int index) {
-                    return BookingCard(
-                        className: _classes![index].className,
-                        timeStart: DateFormat.Hm().format(_classes![index].timeStart),
-                        timeEnd: DateFormat.Hm().add_MMMd().format(_classes![index].timeEnd),
-                        place: _classes![index].location,
-                        );
+                    return GestureDetector(
+                      child: BookingCard(
+                        className: _allClasses![index].className,
+                        timeStart: DateFormat.Hm().format(_allClasses![index].timeStart),
+                        timeEnd: DateFormat.Hm().add_MMMd().format(_allClasses![index].timeEnd),
+                        place: _allClasses![index].location,
+                        classInfo: _allClasses![index],
+                        email: User.email,
+                        booked: alreadyBooked(_allClasses![index]),
+                      ),
+                      onTap: () {}
+                    );
                   },
-                  itemCount: _classes!.length,
+                  itemCount: _allClasses!.length,
+                ),
           ),
         ],
       ),
-    );
+      );
   }
 }

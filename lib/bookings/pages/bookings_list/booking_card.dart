@@ -1,16 +1,28 @@
+import 'dart:convert';
+import 'dart:io';
+
+import 'package:beefitmember_application/bookings/pages/yourbookings/models/bookingModel.dart';
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:http/http.dart' as http;
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 class BookingCard extends StatefulWidget {
-  final String timeStart, timeEnd, className, place;
+  final String timeStart, timeEnd, className, place, email;
+  final Classes classInfo;
+  final bool booked;
 
   const BookingCard(
       {Key? key,
       required this.timeStart,
       required this.timeEnd,
       required this.className,
-      required this.place})
+      required this.place,
+      required this.classInfo,
+      required this.email,
+      required this.booked})
       : super(key: key);
 
   @override
@@ -18,15 +30,136 @@ class BookingCard extends StatefulWidget {
 }
 
 class _BookingCardState extends State<BookingCard> {
-  bool _isBooked = false;
-  bool _isFull = true;
+  late bool _isBooked;
+  bool _isFull = false;
   String book = "Book";
   String booked = "Booked";
+  var listener;
+  bool shouldNotify = false;
+  bool loaded = false;
 
-  handleBook() {
+  late FlutterLocalNotificationsPlugin localNotification;
+
+  @override
+  void initState() {
+    super.initState();
+    var androidInitialize = new AndroidInitializationSettings('ic_launcher');
+    var iOSInitialize = new IOSInitializationSettings();
+    var initializationSettings = new InitializationSettings(android: androidInitialize, iOS: iOSInitialize);
+    localNotification = new FlutterLocalNotificationsPlugin();
+    localNotification.initialize(initializationSettings);
+    listener = null;
+    shouldNotify = false;
+  }
+
+  deleteBooking(String classId, String email) async {
+    var endpointUrl = Uri.parse('https://bfmbookings.azurewebsites.net/deleteBooking');
+
+    var body = {};
+    body["classId"] = classId;
+    body["email"] = email;
+    var bodyJson = json.encode(body);
+
+    var headers = {
+      HttpHeaders.contentTypeHeader: 'application/json; charset=UTF-8'
+    };
+
+    var response = await http.post(
+      endpointUrl,
+      headers: headers,
+      body: bodyJson,
+    );
+
     setState(() {
-      _isBooked = !_isBooked;
+      if (response.statusCode == 200)
+        _isBooked = !_isBooked;
+        _isFull = false;
     });
+  }
+
+  handleBook(String classId,
+      String email,
+      String className) async {
+    var endpointUrl = Uri.parse('https://bfmbookings.azurewebsites.net/bookClass');
+
+    var body = {};
+    body["classId"] = classId;
+    body["email"] = email;
+    var bodyJson = json.encode(body);
+
+    var headers = {
+      HttpHeaders.contentTypeHeader: 'application/json; charset=UTF-8'
+    };
+
+    listenForBookingConfirmation(classId, email, className);
+
+    var response = await http.post(
+      endpointUrl,
+      headers: headers,
+      body: bodyJson,
+    );
+
+    setState(() {
+      if (response.statusCode == 200){
+        shouldNotify = true;
+        _isBooked = !_isBooked;
+        _isFull = widget.classInfo.isFull;
+      }
+    });
+  }
+
+  listenForBookingConfirmation(String classId,
+      String email,
+      String className) {
+    if (listener == null){
+
+      listener = FirebaseFirestore.instance
+          .collection('Classes')
+          .doc(classId)
+          .snapshots()
+          .listen((event) {
+
+        print("Subscribed to " + classId);
+        var participants = event.data();
+        var participantsList = participants?["Participants"] as List<dynamic>;
+
+        if (participants == null)
+          return;
+
+        var response = participantsList.where((element) => (element.contains(email))).toList();
+        if (response.length >= 1 && shouldNotify){
+          print(response);
+          print("Send notification!");
+          stopListening(classId);
+          publishNotification(className);
+        }else {
+          print("Not in the list. Still subscribed!");
+        }
+      });
+    }
+  }
+
+  stopListening(String classId){
+    print("Unsubscribed from " + classId);
+    listener.cancel();
+    listener = null;
+    shouldNotify = false;
+  }
+
+  Future publishNotification(String className) async {
+    var androidDetails = new AndroidNotificationDetails(
+        "ChannelId",
+        "Message",
+        "Description",
+        importance: Importance.high);
+
+    var iOSDetails = new IOSNotificationDetails();
+    var generalNotificationDetails = new NotificationDetails(android: androidDetails, iOS: iOSDetails);
+    await localNotification.show(
+        0,
+        "Class " + className + " is confirmed!",
+        "We're looking forward to see you!",
+        generalNotificationDetails);
   }
 
   @override
@@ -38,6 +171,14 @@ class _BookingCardState extends State<BookingCard> {
     String timeStart = widget.timeStart;
     String timeEnd = widget.timeEnd;
     String place = widget.place;
+    String email = widget.email;
+    Classes classInfo = widget.classInfo;
+
+    if (!loaded){
+      _isBooked = widget.booked;
+      _isFull = widget.classInfo.isFull;
+      loaded = true;
+    }
 
     final generalHeaderText = (String txt) => Padding(
           padding: const EdgeInsets.only(top: 10),
@@ -81,7 +222,11 @@ class _BookingCardState extends State<BookingCard> {
           return;
         }
 
-        handleBook();
+        if (!_isBooked)
+          handleBook(classInfo.classId, email, classInfo.className);
+
+        if (_isBooked)
+          deleteBooking(classInfo.classId, email);
       },
       child: Text(this._isBooked ? booked : book),
       style: ElevatedButton.styleFrom(
