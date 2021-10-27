@@ -1,10 +1,14 @@
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
+import 'package:beefitmember_application/shared/user/user.dart';
 import 'package:beefitmember_application/shared/widgets/buttons.dart';
 import 'package:beefitmember_application/shared/widgets/texts.dart';
+import 'package:beefitmember_application/training_progression/bloc/weightgoal_bloc.dart';
+import 'package:beefitmember_application/training_progression/bloc/weightgoal_events.dart';
 import 'package:beefitmember_application/training_progression/widgets/image_box.dart';
 import 'package:beefitmember_application/training_progression/widgets/plus_minus_counter.dart';
 import 'package:beefitmember_application/training_progression/widgets/time_limit_counter.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class TrainingProgression extends StatefulWidget {
   const TrainingProgression({Key? key}) : super(key: key);
@@ -14,6 +18,13 @@ class TrainingProgression extends StatefulWidget {
 }
 
 class _TrainingProgressionState extends State<TrainingProgression> {
+  late WeightGoalBloc weightGoalBloc;
+  @override
+  void initState() {
+    weightGoalBloc = BlocProvider.of<WeightGoalBloc>(context);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -79,7 +90,13 @@ class _TrainingProgressionState extends State<TrainingProgression> {
           TimeLimitCounter(),
           CustomButton(
             "Save",
-            () => {},
+            () => {
+              weightGoalBloc.add(SaveButtonPressed(
+                user: User.name,
+                currentWeight: 90,
+                targetWeight: 80,
+              ))
+            },
             Color(int.parse(FitnessPackage.primaryColor)),
           ),
         ],
