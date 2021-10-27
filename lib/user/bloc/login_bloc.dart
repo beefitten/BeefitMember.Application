@@ -1,4 +1,3 @@
-import 'package:beefitmember_application/bookings/services/booking_service.dart';
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:beefitmember_application/shared/user/user.dart';
 import 'package:beefitmember_application/user/bloc/login_events.dart';
