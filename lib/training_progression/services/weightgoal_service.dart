@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:http/http.dart' as http;
 
 class WeightGoalService {
-  login(String user, int currentWeight, int targetWeight) async {
+  create(String user, int currentWeight, int targetWeight) async {
     var endpointUrl = Uri.parse(
         'https://beefitmemberuser.azurewebsites.net/memberLogin'); // <<----- URL GOES HERE!!!
 
