@@ -29,6 +29,31 @@ class _ClassesListState extends State<ClassesList> {
     super.initState();
   }
 
+  handleBook() {
+    setState(() {
+      _isBooked = !_isBooked;
+    });
+  }
+
+  // Future<void> getData() async {
+  //   // All classes
+  //   var fitness = User.primaryGym;
+  //   var allClassesUrl = Uri.parse('https://bfmbookings.azurewebsites.net/getClasses/$fitness');
+  //   var allClassesResponse = await http.get(allClassesUrl);
+  //   List<dynamic> allClassesBody = cnv.jsonDecode(allClassesResponse.body);
+  //   _allClasses = allClassesBody.map((dynamic item) => Classes.fromJson(item)).toList();
+  //
+  //
+  //   // Your bookings
+  //   var userEmail = User.email;
+  //   var yourBookingsUrl = Uri.parse('https://bfmbookings.azurewebsites.net/getUserClasses/$userEmail');
+  //   var yourBookingsResponse = await http.get(yourBookingsUrl);
+  //   List<dynamic> yourBookingBody = cnv.jsonDecode(yourBookingsResponse.body);
+  //   _yourBookings = yourBookingBody.map((dynamic item) => Classes.fromJson(item)).toList();
+  //
+  //   setState(() {});
+  // }
+
   alreadyBooked(Classes currentClass){
     for (Classes item in _yourBookings!) {
       if (item.classId == currentClass.classId)
@@ -56,7 +81,7 @@ class _ClassesListState extends State<ClassesList> {
                 if (state is BookingListLoadingState)
                   return Center(
                     child: CircularProgressIndicator(
-                      backgroundColor: Color(int.parse(FitnessPackage.primaryColor)),
+                      backgroundColor: Color(int.parse(FitnessPackage.model.primaryColor)),
                     ),
                   );
                 if (state is BookingListSuccessState){
@@ -65,7 +90,7 @@ class _ClassesListState extends State<ClassesList> {
                     child: _allClasses!.length == 0
                         ? Padding(
                         padding: const EdgeInsets.only(top: 20),
-                        child: Center(child: Text("You have no classes booked1")))
+                        child: Center(child: Text("You have no classes booked!")))
                         : ListView.builder(
                       scrollDirection: Axis.vertical,
                       shrinkWrap: true,

@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 class LoginService {
   login(String email, String password) async {
     var endpointUrl =
-        Uri.parse('https://bfmu.azurewebsites.net/memberLogin');
+        Uri.parse('https://beefitmemberuser.azurewebsites.net/memberLogin');
 
     var body = {};
     body["email"] = email;

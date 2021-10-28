@@ -76,7 +76,7 @@ class CustomTextButton extends StatelessWidget {
       child: Text(
         this._text,
         style: TextStyle(
-          color: Color(int.parse(FitnessPackage.secondaryColor)),
+          color: Color(int.parse(FitnessPackage.model.secondaryColor)),
           fontSize: MediaQuery.of(context).size.height * 0.02,
         ),
       ),

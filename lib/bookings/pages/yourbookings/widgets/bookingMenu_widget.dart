@@ -40,7 +40,7 @@ class CustomAppBar extends StatelessWidget {
           child: TabBar(
               indicator: ShapeDecoration(
                 shape: StadiumBorder(),
-                color: Color(int.parse(FitnessPackage.secondaryColor)),
+                color: Color(int.parse(FitnessPackage.model.secondaryColor)),
               ),
               labelStyle:
                   TextStyle(color: Colors.white, fontWeight: FontWeight.bold),

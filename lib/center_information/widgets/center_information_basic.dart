@@ -47,7 +47,7 @@ class _CenterInformationBasicState extends State<CenterInformationBasic> {
                     style: TextStyle(
                         fontSize: 16,
                         color:
-                            Color(int.parse(FitnessPackage.secondaryColor)))),
+                            Color(int.parse(FitnessPackage.model.secondaryColor)))),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 2, bottom: 16),
@@ -55,7 +55,7 @@ class _CenterInformationBasicState extends State<CenterInformationBasic> {
                     style: TextStyle(
                         fontSize: 16,
                         color:
-                            Color(int.parse(FitnessPackage.secondaryColor)))),
+                            Color(int.parse(FitnessPackage.model.secondaryColor)))),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 2, bottom: 10),
@@ -71,7 +71,7 @@ class _CenterInformationBasicState extends State<CenterInformationBasic> {
                     style: TextStyle(
                         fontSize: 16,
                         color:
-                            Color(int.parse(FitnessPackage.secondaryColor)))),
+                            Color(int.parse(FitnessPackage.model.secondaryColor)))),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 2, bottom: 16),
@@ -79,7 +79,7 @@ class _CenterInformationBasicState extends State<CenterInformationBasic> {
                     style: TextStyle(
                         fontSize: 16,
                         color:
-                            Color(int.parse(FitnessPackage.secondaryColor)))),
+                            Color(int.parse(FitnessPackage.model.secondaryColor)))),
               ),
             ],
           ),
@@ -108,7 +108,7 @@ final phone = Row(
           child: Text('12 34 56 78',
               style: TextStyle(
                   fontSize: 16,
-                  color: Color(int.parse(FitnessPackage.secondaryColor)))),
+                  color: Color(int.parse(FitnessPackage.model.secondaryColor)))),
         ),
       ],
     ),
@@ -117,7 +117,7 @@ final phone = Row(
       child: Icon(
         Icons.phone,
         size: 22,
-        color: Color(int.parse(FitnessPackage.secondaryColor)),
+        color: Color(int.parse(FitnessPackage.model.secondaryColor)),
       ),
     )
   ],
@@ -142,14 +142,14 @@ final email = Row(
           child: Text('kundeservice@FWFinlandsgade',
               style: TextStyle(
                   fontSize: 16,
-                  color: Color(int.parse(FitnessPackage.secondaryColor)))),
+                  color: Color(int.parse(FitnessPackage.model.secondaryColor)))),
         ),
       ],
     ),
     Padding(
       padding: const EdgeInsets.only(right: 12, top: 10),
       child: Icon(Icons.email_rounded,
-          size: 22, color: Color(int.parse(FitnessPackage.secondaryColor))),
+          size: 22, color: Color(int.parse(FitnessPackage.model.secondaryColor))),
     ),
   ],
 );

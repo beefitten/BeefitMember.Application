@@ -9,7 +9,7 @@ class LogOutBtn extends StatelessWidget {
     final _logOut = Text(
       'Log out',
       style: TextStyle(
-          fontSize: 20.0, color: Color(int.parse(FitnessPackage.secondaryColor))),
+          fontSize: 20.0, color: Color(int.parse(FitnessPackage.model.secondaryColor))),
     );
 
     return TextButton(

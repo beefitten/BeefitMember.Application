@@ -53,7 +53,7 @@ class _BookingCardState extends State<BookingCard> {
   }
 
   deleteBooking(String classId, String email) async {
-    var endpointUrl = Uri.parse('https://bfmbookings.azurewebsites.net/deleteBooking');
+    var endpointUrl = Uri.parse('https://beefitmemberbookings.azurewebsites.net/deleteBooking');
 
     var body = {};
     body["classId"] = classId;
@@ -80,7 +80,7 @@ class _BookingCardState extends State<BookingCard> {
   handleBook(String classId,
       String email,
       String className) async {
-    var endpointUrl = Uri.parse('https://bfmbookings.azurewebsites.net/bookClass');
+    var endpointUrl = Uri.parse('https://beefitmemberbookings.azurewebsites.net/bookClass');
 
     var body = {};
     body["classId"] = classId;
@@ -165,7 +165,7 @@ class _BookingCardState extends State<BookingCard> {
   @override
   Widget build(BuildContext context) {
     final green = Color.fromRGBO(0, 186, 136, 1);
-    final standardBtnColor = Color(int.parse(FitnessPackage.secondaryColor));
+    final standardBtnColor = Color(int.parse(FitnessPackage.model.secondaryColor));
 
     String className = widget.className;
     String timeStart = widget.timeStart;
@@ -216,7 +216,7 @@ class _BookingCardState extends State<BookingCard> {
             msg: "$className Is Fully Booked...",
             toastLength: Toast.LENGTH_SHORT,
             gravity: ToastGravity.BOTTOM,
-            backgroundColor: Color(int.parse(FitnessPackage.primaryColor)),
+            backgroundColor: Color(int.parse(FitnessPackage.model.primaryColor)),
             textColor: Colors.white,
             fontSize: 16.0);
           return;

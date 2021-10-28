@@ -17,7 +17,7 @@ class ParallaxAppBar extends StatelessWidget {
         stretch: true,
         expandedHeight: 150.0,
         shape: AppBarCurve(),
-        backgroundColor: Color(int.parse(FitnessPackage.primaryColor)),
+        backgroundColor: Color(int.parse(FitnessPackage.model.primaryColor)),
         bottom: PreferredSize(
             preferredSize: Size.fromHeight(30.0), child: Text('')),
         flexibleSpace: Stack(
@@ -25,7 +25,7 @@ class ParallaxAppBar extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 20.0),
               child:
-                  Center(child: Image.network(FitnessPackage.logo, height: 50)),
+                  Center(child: Image.network(FitnessPackage.model.logo, height: 50)),
             ),
           ],
         ));

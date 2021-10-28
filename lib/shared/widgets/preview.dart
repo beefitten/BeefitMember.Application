@@ -18,8 +18,8 @@ class Preview extends StatelessWidget {
       children: [
         Flexible(
           child: Card(
-            elevation: FitnessPackage.elevation,
-            color: FitnessPackage.backgroundColor,
+            elevation: double.parse(FitnessPackage.model.elevation),
+            color: Color(int.parse(FitnessPackage.model.backgroundColor)),
             child: Container(
               height: MediaQuery.of(context).size.height * 0.1,
               child: Row(
@@ -39,7 +39,7 @@ class Preview extends StatelessWidget {
                           Text(
                             _title,
                             style: TextStyle(
-                                fontSize: double.parse(FitnessPackage.H1Weight), fontWeight: FontWeight.bold),
+                                fontSize: 18, fontWeight: FontWeight.bold),
                           ),
                           Container(
                             width: MediaQuery.of(context).size.width * 0.6,

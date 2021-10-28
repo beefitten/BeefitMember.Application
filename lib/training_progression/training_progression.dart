@@ -48,7 +48,7 @@ class _TrainingProgressionState extends State<TrainingProgression> {
               CustomButton(
                 "Setup new weight goal",
                 () => _showSheet(),
-                Color(int.parse(FitnessPackage.primaryColor)),
+                Color(int.parse(FitnessPackage.model.primaryColor)),
               ),
             ],
           ),
@@ -98,7 +98,7 @@ class _TrainingProgressionState extends State<TrainingProgression> {
                 ),
               ),
             },
-            Color(int.parse(FitnessPackage.primaryColor)),
+            Color(int.parse(FitnessPackage.model.primaryColor)),
           ),
         ],
       ),

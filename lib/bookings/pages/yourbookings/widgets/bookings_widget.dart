@@ -48,7 +48,7 @@ class _BookingWidgetState extends State<BookingWidget> {
             if (state is BookingLoadingState)
               return Center(
                 child: CircularProgressIndicator(
-                  backgroundColor: Color(int.parse(FitnessPackage.primaryColor)),
+                  backgroundColor: Color(int.parse(FitnessPackage.model.primaryColor)),
                 ),
               );
             if (state is BookingSuccessState)
@@ -117,7 +117,7 @@ class CardExample extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
-                      color: Color(int.parse(FitnessPackage.secondaryColor)),
+                      color: Color(int.parse(FitnessPackage.model.secondaryColor)),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
