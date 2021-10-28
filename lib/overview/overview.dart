@@ -1,4 +1,6 @@
 import 'package:beefitmember_application/bookings/pages/previewBookings/preview_bookings.dart';
+import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/bookings_widget.dart';
+import 'package:beefitmember_application/bookings/pages/yourbookings/your_bookings.dart';
 import 'package:beefitmember_application/center_information/preview/center_information_preview.dart';
 import 'package:beefitmember_application/overview/widgets/parallax_app_bar.dart';
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
@@ -29,9 +31,12 @@ class OverviewState extends State<Overview>
           _widgetOptions.add(PreviewBookings());
           break;
         case 1:
-          _widgetOptions.add(TrainingProgPreview());
+          _widgetOptions.add(BookingWidget());
           break;
         case 2:
+          _widgetOptions.add(TrainingProgPreview());
+          break;
+        case 3:
           _widgetOptions.add(CenterInformationPreview());
           break;
       }
