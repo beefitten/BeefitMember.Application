@@ -1,9 +1,10 @@
-import 'package:beefitmember_application/bookings/pages/yourbookings/models/appointmentModel.dart';
+import 'package:beefitmember_application/bookings/bloc/appointments/appointments_bloc.dart';
+import 'package:beefitmember_application/bookings/bloc/appointments/appointments_events.dart';
+import 'package:beefitmember_application/bookings/bloc/appointments/appointments_state.dart';
+import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert' as cnv;
-
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AppointmentsWidget extends StatefulWidget {
   final _color;
@@ -14,11 +15,27 @@ class AppointmentsWidget extends StatefulWidget {
 }
 
 class _AppointmentsWidgetState extends State<AppointmentsWidget> {
-  List<Appointments>? _appointments;
+  late AppointmentsBloc appointmentsBloc;
+
 
   @override void initState() {
-    getData();
+    appointmentsBloc = BlocProvider.of<AppointmentsBloc>(context);
+    appointmentsBloc.add(AppointmentsLoadingEvent());
+
     super.initState();
+  }
+
+  static generateList(AppointmentsSuccessState state){
+    List<Widget> _widgetOptions = <Widget>[];
+
+    state.appointments.forEach((element) {
+      _widgetOptions.add(BookingExample(
+          element.headline,
+          element.date,
+          element.image));
+    });
+
+    return _widgetOptions;
   }
 
   @override
@@ -36,38 +53,30 @@ class _AppointmentsWidgetState extends State<AppointmentsWidget> {
                 fontWeight: FontWeight.bold,
               )),
         ),
-        BookingExample(
-            "Personal Training Session",
-            "On thursday at 15:40",
-            "https://scontent-cph2-1.xx.fbcdn.net/v/t31.18172-8/15110434_1025175290941186_3443883879887239386_o.jpg?_nc_cat=111&ccb=1-5&_nc_sid=174925&_nc_ohc=ZNlWvVSiFtkAX_0oynG&_nc_ht=scontent-cph2-1.xx&oh=64c3148f10ef67ff62bf2c3515edb0d5&oe=618DAF3C",
-            widget._color),
-        BookingExample(
-            "Personal Training Session",
-            "On thursday at 15:40",
-            "https://scontent-cph2-1.xx.fbcdn.net/v/t1.6435-9/37668083_2177504232277870_8621075462833045504_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=ad2b24&_nc_ohc=yh2q03T3h7sAX8nlc2T&_nc_ht=scontent-cph2-1.xx&oh=b0a69e9aee6802e4376695dd2a3d13b2&oe=618E8369",
-            widget._color),
-        BookingExample(
-            "Personal Training Session",
-            "On thursday at 15:40",
-            "https://scontent-cph2-1.xx.fbcdn.net/v/t1.18169-9/1378411_600839369978308_67470434_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=f9d7a1&_nc_ohc=9k1UXGwl03oAX8ciRg1&_nc_ht=scontent-cph2-1.xx&oh=dafea8ba248aa34f47719789400011de&oe=618B5DD7",
-            widget._color),
-        BookingExample(
-            "Personal Training Session",
-            "On thursday at 15:40",
-            "https://scontent-cph2-1.xx.fbcdn.net/v/t1.18169-9/13240161_10208065408605563_765658668488989296_n.jpg?_nc_cat=107&ccb=1-5&_nc_sid=174925&_nc_ohc=lC-0QbRHbEMAX-8pEyp&_nc_ht=scontent-cph2-1.xx&oh=8ca4fb6622da3f5971da8d19e0f9212e&oe=618DFE5E",
-            widget._color),
+        BlocBuilder<AppointmentsBloc, AppointmentsState>(
+            builder: (context, state) {
+              if (state is AppointmentsLoadingState)
+                return Center(
+                  child: CircularProgressIndicator(
+                    backgroundColor: Color(int.parse(FitnessPackage.model.primaryColor)),
+                  ),
+                );
+              if (state is AppointmentsSuccessState)
+                return Container(
+                  color: Colors.white,
+                  child: state.appointments.length == 0
+                      ? Padding(
+                      padding: const EdgeInsets.only(top: 20),
+                      child: Center(child: Text("You have no appointments booked!")))
+                      : Column(children: generateList(state))
+                );
+              else if (state is AppointmentsErrorState){
+                return Text(state.message);
+              }
+              return Container();
+            }),
       ]),
     );
-  }
-
-  Future<void> getData() async {
-    var endpointUrl = Uri.parse('https://beefitmemberbookings.azurewebsites.net/getRandomAppointments');
-
-    var response = await http.get(endpointUrl);
-
-    List<dynamic> body = cnv.jsonDecode(response.body);
-    _appointments = body.map((dynamic item) => Appointments.fromJson(item)).toList();
-    setState(() { });
   }
 }
 

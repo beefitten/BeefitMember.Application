@@ -22,12 +22,13 @@ class _BookingWidgetState extends State<BookingWidget> {
 
   @override void initState() {
     bookingBloc = BlocProvider.of<BookingBloc>(context);
+    bookingBloc.add(BookingLoadingEvent(email: User.email));
+    print("Tes");
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    bookingBloc.add(BookingLoadingEvent(email: User.email));
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -58,7 +59,7 @@ class _BookingWidgetState extends State<BookingWidget> {
                 child: state.bookings.length == 0
                   ? Padding(
                     padding: const EdgeInsets.only(top: 20),
-                    child: Center(child: Text("You have no classes booked1")))
+                    child: Center(child: Text("You have no classes booked!")))
                   : ListView.builder(
                     scrollDirection: Axis.horizontal,
                     shrinkWrap: true,
