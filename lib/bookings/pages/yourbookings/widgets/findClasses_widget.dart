@@ -1,4 +1,5 @@
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
+import 'package:beefitmember_application/training_progression/widgets/image_box.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +15,7 @@ class FindClassesWidget extends StatelessWidget {
       child: Stack(
         children: <Widget> [
           Center(child: ClipRRect(
-              child: Image(image: AssetImage(logoPath)),
+              child: ImageBox(FitnessPackage.model.bookings.topPicPath),
               borderRadius: BorderRadius.circular(10),
             )
           ),
