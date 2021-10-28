@@ -53,7 +53,7 @@ class _BookingCardState extends State<BookingCard> {
   }
 
   deleteBooking(String classId, String email) async {
-    var endpointUrl = Uri.parse('https://bfmbookings.azurewebsites.net/deleteBooking');
+    var endpointUrl = Uri.parse('https://beefitmemberbookings.azurewebsites.net/deleteBooking');
 
     var body = {};
     body["classId"] = classId;
@@ -80,7 +80,7 @@ class _BookingCardState extends State<BookingCard> {
   handleBook(String classId,
       String email,
       String className) async {
-    var endpointUrl = Uri.parse('https://bfmbookings.azurewebsites.net/bookClass');
+    var endpointUrl = Uri.parse('https://beefitmemberbookings.azurewebsites.net/bookClass');
 
     var body = {};
     body["classId"] = classId;

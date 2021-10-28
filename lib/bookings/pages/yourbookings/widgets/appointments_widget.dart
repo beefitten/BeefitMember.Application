@@ -62,7 +62,7 @@ class _AppointmentsWidgetState extends State<AppointmentsWidget> {
   }
 
   Future<void> getData() async {
-    var endpointUrl = Uri.parse('https://bfmbookings.azurewebsites.net/getRandomAppointments');
+    var endpointUrl = Uri.parse('https://beefitmemberbookings.azurewebsites.net/getRandomAppointments');
 
     var response = await http.get(endpointUrl);
 
