@@ -22,7 +22,8 @@ class FitnessPackage {
   void update(dynamic json) {
     // Save values in class attributes
     name = json['name'].toString();
-    primaryColor = json['primaryColor'].toString(); // Might need to be changed to a "Color"
+    primaryColor = json['primaryColor']
+        .toString(); // Might need to be changed to a "Color"
     secondaryColor = json['secondaryColor'].toString();
     logo = json['logo'].toString();
 
