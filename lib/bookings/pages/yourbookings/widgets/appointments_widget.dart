@@ -1,5 +1,4 @@
 import 'package:beefitmember_application/bookings/pages/yourbookings/models/appointmentModel.dart';
-import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;

@@ -1,11 +1,12 @@
-import 'package:beefitmember_application/bookings/pages/yourbookings/models/bookingModel.dart';
+import 'package:beefitmember_application/bookings/bloc/bookings_bloc.dart';
+import 'package:beefitmember_application/bookings/bloc/bookings_state.dart';
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:beefitmember_application/shared/user/user.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import 'dart:convert' as cnv;
+import 'package:beefitmember_application/bookings/bloc/bookings_events.dart';
 
 class BookingWidget extends StatefulWidget {
   late final Color _color;
@@ -17,15 +18,16 @@ class BookingWidget extends StatefulWidget {
 }
 
 class _BookingWidgetState extends State<BookingWidget> {
-  List<Classes>? _classes;
+  late BookingBloc bookingBloc;
 
   @override void initState() {
-    getData();
+    bookingBloc = BlocProvider.of<BookingBloc>(context);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    bookingBloc.add(BookingLoadingEvent(email: User.email));
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -41,43 +43,42 @@ class _BookingWidgetState extends State<BookingWidget> {
             ),
           ),
         ),
-        Container(
-          color: Colors.white,
-          height: MediaQuery.of(context).size.height * 0.26,
-          child: _classes == null
-              ? Center(child: CircularProgressIndicator(
-                backgroundColor: Color(int.parse(FitnessPackage.model.primaryColor))))
-              : _classes!.length == 0
-              ? Padding(
-                padding: const EdgeInsets.only(top: 20),
-                child: Center(child: Text("You have no classes booked!")),
-              )
-              : ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  shrinkWrap: true,
-                  itemBuilder: (BuildContext context, int index) {
-                    return CardExample(
-                        _classes![index].classImage,
-                        _classes![index].className,
-                        _classes![index].location,
-                        DateFormat.Hm().add_E().add_MMMd().format(_classes![index].timeStart));
-                  },
-                  itemCount: _classes!.length,
-          ),
-        )
+        BlocBuilder<BookingBloc, BookingsState>(
+          builder: (context, state) {
+            if (state is BookingLoadingState)
+              return Center(
+                child: CircularProgressIndicator(
+                  backgroundColor: Color(int.parse(FitnessPackage.model.primaryColor)),
+                ),
+              );
+            if (state is BookingSuccessState)
+              return Container(
+                color: Colors.white,
+                height: MediaQuery.of(context).size.height * 0.26,
+                child: state.bookings.length == 0
+                  ? Padding(
+                    padding: const EdgeInsets.only(top: 20),
+                    child: Center(child: Text("You have no classes booked1")))
+                  : ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    shrinkWrap: true,
+                    itemBuilder: (BuildContext context, int index) {
+                      return CardExample(
+                          state.bookings[index].classImage,
+                          state.bookings[index].className,
+                          state.bookings[index].location,
+                          DateFormat.Hm().add_E().add_MMMd().format(state.bookings[index].timeStart));
+                    },
+                    itemCount: state.bookings.length,
+                    ),
+              );
+            else if (state is BookingErrorState){
+              return Text(state.message);
+            }
+            return Container();
+        })
       ]),
     );
-  }
-
-  Future<void> getData() async {
-    var userEmail = User.email;
-    var endpointUrl = Uri.parse('https://beefitmemberbookings.azurewebsites.net/getUserClasses/$userEmail');
-
-    var response = await http.get(endpointUrl);
-
-    List<dynamic> body = cnv.jsonDecode(response.body);
-    _classes = body.map((dynamic item) => Classes.fromJson(item)).toList();
-    setState(() { });
   }
 }
 
