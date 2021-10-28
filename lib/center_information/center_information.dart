@@ -9,6 +9,7 @@ class CenterInformation extends StatelessWidget {
   CenterInformation();
 
   bool hasHeatMap = FitnessPackage.model.centerInformation.hasHeatmap;
+  bool showLocation = FitnessPackage.model.bookings.showLocation;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,9 @@ class CenterInformation extends StatelessWidget {
               H1Text('Center information'),
               Expanded(
                 child: ListView(children: [
-                  CenterInformationMap(),
+                  showLocation
+                    ? CenterInformationMap() 
+                    : Container(),
                   CenterInformationBasic(),
                   hasHeatMap
                       ? Padding(
