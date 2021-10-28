@@ -1,11 +1,15 @@
 import 'package:beefitmember_application/center_information/widgets/center_information_basic.dart';
 import 'package:beefitmember_application/center_information/widgets/center_information_heatmap.dart';
 import 'package:beefitmember_application/center_information/widgets/center_information_map.dart';
+import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:beefitmember_application/shared/widgets/texts.dart';
 import 'package:flutter/material.dart';
 
 class CenterInformation extends StatelessWidget {
   CenterInformation();
+
+  bool hasHeatMap = FitnessPackage.model.centerInformation.hasHeatmap;
+  bool showLocation = FitnessPackage.model.bookings.showLocation;
 
   @override
   Widget build(BuildContext context) {
@@ -20,13 +24,17 @@ class CenterInformation extends StatelessWidget {
               H1Text('Center information'),
               Expanded(
                 child: ListView(children: [
-                  CenterInformationMap(),
+                  showLocation
+                    ? CenterInformationMap() 
+                    : Container(),
                   CenterInformationBasic(),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 20, left: 10),
-                    child: H2Text('Location heat map'),
-                  ),
-                  CenterInformationHeatMap(),
+                  hasHeatMap
+                      ? Padding(
+                          padding: const EdgeInsets.only(top: 20, left: 10),
+                          child: H2Text('Location heat map'),
+                        )
+                      : Container(),
+                  hasHeatMap ? CenterInformationHeatMap() : Container(),
                 ]),
               ),
             ],
