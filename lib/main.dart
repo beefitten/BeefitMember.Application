@@ -1,5 +1,4 @@
 import 'package:beefitmember_application/training_progression/bloc/weightgoal_bloc.dart';
-import 'package:beefitmember_application/training_progression/bloc/weightgoal_state.dart';
 import 'package:beefitmember_application/training_progression/services/weightgoal_service.dart';
 import 'package:beefitmember_application/user/bloc/login_bloc.dart';
 import 'package:beefitmember_application/user/bloc/login_state.dart';
@@ -13,6 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'bookings/pages/yourbookings/your_bookings.dart';
+import 'training_progression/bloc/weightgoal_states.dart';
 import 'user/pages/pre_login/pre_login.dart';
 
 void main() {
