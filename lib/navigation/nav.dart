@@ -26,7 +26,7 @@ class _NavState extends State<Nav> {
 
   int _selectedIndex = 0;
 
-  List<Widget> _widgetOptions = generateFeatures(FitnessPackage.features);
+  List<Widget> _widgetOptions = generateFeatures(FitnessPackage.model.features);
 
   void onItemTap(int index) {
     setState(() {
@@ -52,11 +52,11 @@ class _NavState extends State<Nav> {
             type: BottomNavigationBarType.fixed,
             showUnselectedLabels: false,
             showSelectedLabels: true,
-            items: generateIcons(FitnessPackage.features),
+            items: generateIcons(FitnessPackage.model.features),
             currentIndex: _selectedIndex,
             onTap: onItemTap,
             backgroundColor: Colors.white,
-            selectedItemColor: Color(int.parse(FitnessPackage.primaryColor)),
+            selectedItemColor: Color(int.parse(FitnessPackage.model.primaryColor)),
           ),
         ),
       ),

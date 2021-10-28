@@ -1,6 +1,4 @@
 import 'package:beefitmember_application/center_information/models/center_information_model.dart';
-import 'dart:convert' as cnv;
-import 'package:http/http.dart' as http;
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:flutter/material.dart';
 
@@ -55,8 +53,8 @@ class _CenterInformationBasicState extends State<CenterInformationBasic> {
                     '${_model.openingHours.elementAt(0).item1} - ${_model.openingHours.elementAt(0).item2} (Mon - Thu)',
                     style: TextStyle(
                         fontSize: 16,
-                        color:
-                            Color(int.parse(FitnessPackage.secondaryColor)))),
+                        color: Color(
+                            int.parse(FitnessPackage.model.secondaryColor)))),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 2, bottom: 16),
@@ -64,8 +62,8 @@ class _CenterInformationBasicState extends State<CenterInformationBasic> {
                     '${_model.openingHours.elementAt(1).item1} - ${_model.openingHours.elementAt(1).item2} (Fri)',
                     style: TextStyle(
                         fontSize: 16,
-                        color:
-                            Color(int.parse(FitnessPackage.secondaryColor)))),
+                        color: Color(
+                            int.parse(FitnessPackage.model.secondaryColor)))),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 2, bottom: 10),
@@ -81,8 +79,8 @@ class _CenterInformationBasicState extends State<CenterInformationBasic> {
                     '${_model.mannedHours.elementAt(0).item1} - ${_model.mannedHours.elementAt(0).item2} (Mon - Thu)',
                     style: TextStyle(
                         fontSize: 16,
-                        color:
-                            Color(int.parse(FitnessPackage.secondaryColor)))),
+                        color: Color(
+                            int.parse(FitnessPackage.model.secondaryColor)))),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 2, bottom: 16),
@@ -90,8 +88,8 @@ class _CenterInformationBasicState extends State<CenterInformationBasic> {
                     '${_model.mannedHours.elementAt(1).item1} - ${_model.mannedHours.elementAt(1).item2} (Mon - Thu)',
                     style: TextStyle(
                         fontSize: 16,
-                        color:
-                            Color(int.parse(FitnessPackage.secondaryColor)))),
+                        color: Color(
+                            int.parse(FitnessPackage.model.secondaryColor)))),
               ),
             ],
           ),
@@ -127,7 +125,8 @@ class Phone extends StatelessWidget {
               child: Text('$_phoneNumber',
                   style: TextStyle(
                       fontSize: 16,
-                      color: Color(int.parse(FitnessPackage.secondaryColor)))),
+                      color: Color(
+                          int.parse(FitnessPackage.model.secondaryColor)))),
             ),
           ],
         ),
@@ -136,7 +135,7 @@ class Phone extends StatelessWidget {
           child: Icon(
             Icons.phone,
             size: 22,
-            color: Color(int.parse(FitnessPackage.secondaryColor)),
+            color: Color(int.parse(FitnessPackage.model.secondaryColor)),
           ),
         )
       ],
@@ -169,14 +168,16 @@ class Email extends StatelessWidget {
               child: Text('$_email',
                   style: TextStyle(
                       fontSize: 16,
-                      color: Color(int.parse(FitnessPackage.secondaryColor)))),
+                      color: Color(
+                          int.parse(FitnessPackage.model.secondaryColor)))),
             ),
           ],
         ),
         Padding(
           padding: const EdgeInsets.only(right: 12, top: 10),
           child: Icon(Icons.email_rounded,
-              size: 22, color: Color(int.parse(FitnessPackage.secondaryColor))),
+              size: 22,
+              color: Color(int.parse(FitnessPackage.model.secondaryColor))),
         ),
       ],
     );

@@ -12,12 +12,12 @@ class BookingMenuWidget extends StatelessWidget {
       length: 3,
       child: Scaffold(
         appBar: PreferredSize(
-            preferredSize: Size(MediaQuery.of(context).size.width, MediaQuery.of(context).size.height*0.17),
+            preferredSize: Size(MediaQuery.of(context).size.width, MediaQuery.of(context).size.height*0.16),
             child: CustomAppBar("Bookings")),
         body: TabBarView(
           children: [
             YourBookings(),
-            Classes(),
+            ClassesList(),
             Center(child: Text("Coming soon!")),
           ],
         ),
@@ -40,7 +40,7 @@ class CustomAppBar extends StatelessWidget {
           child: TabBar(
               indicator: ShapeDecoration(
                 shape: StadiumBorder(),
-                color: Color(int.parse(FitnessPackage.secondaryColor)),
+                color: Color(int.parse(FitnessPackage.model.secondaryColor)),
               ),
               labelStyle:
                   TextStyle(color: Colors.white, fontWeight: FontWeight.bold),

@@ -3,13 +3,13 @@ import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.da
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
-final blue = Color(int.parse(FitnessPackage.secondaryColor));
+final blue = Color(int.parse(FitnessPackage.model.secondaryColor));
 
 class CenterInformationHeatMap extends StatelessWidget {
   final CenterInformationModel model;
   final List<Color> colorGradient = [
-    Color(int.parse(FitnessPackage.secondaryColor)),
-    Color(int.parse(FitnessPackage.primaryColor)),
+    Color(int.parse(FitnessPackage.model.secondaryColor)),
+    Color(int.parse(FitnessPackage.model.primaryColor)),
   ];
   final List<FlSpot> dataPoints = [];
 
@@ -69,7 +69,7 @@ class CenterInformationHeatMap extends StatelessWidget {
         child: Text('HOT',
             style: TextStyle(
                 fontSize: 26,
-                color: Color(int.parse(FitnessPackage.secondaryColor)),
+                color: Color(int.parse(FitnessPackage.model.secondaryColor)),
                 fontWeight: FontWeight.bold)),
       )
     ]);

@@ -106,7 +106,7 @@ class CircleChart extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: CircularProgressIndicator(
             strokeWidth: 8,
-            color: Color(int.parse(FitnessPackage.secondaryColor)),
+            color: Color(int.parse(FitnessPackage.model.secondaryColor)),
             backgroundColor: Colors.grey,
             value: _percentage / 100,
           ),

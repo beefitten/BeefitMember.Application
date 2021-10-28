@@ -1,7 +1,9 @@
-import 'package:beefitmember_application/bookings/pages/previewBookings/widgets/show_more_button.dart';
-import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
-import 'package:beefitmember_application/shared/user/user.dart';
-import 'package:beefitmember_application/user/service/logout_service.dart';
+import 'package:beefitmember_application/more/widgets/background_curve.dart';
+import 'package:beefitmember_application/more/widgets/logout_btn.dart';
+import 'package:beefitmember_application/more/widgets/membership_card.dart';
+import 'package:beefitmember_application/more/widgets/membership_header.dart';
+import 'package:beefitmember_application/more/widgets/more_widget.dart';
+import 'package:beefitmember_application/more/widgets/profile_info.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -11,11 +13,6 @@ class More extends StatefulWidget {
 }
 
 class _MoreState extends State<More> {
-  final _logOut = Text(
-    'Log out',
-    style: TextStyle(
-        fontSize: 20.0, color: Color(int.parse(FitnessPackage.secondaryColor))),
-  );
 
   @override
   void initState() {
@@ -29,261 +26,12 @@ class _MoreState extends State<More> {
 
   @override
   Widget build(BuildContext context) {
-    final _logOutBtn = TextButton(
-      style: ButtonStyle(
-          backgroundColor:
-              MaterialStateProperty.all(Color.fromRGBO(229, 235, 254, 1.0))),
-      child: _logOut,
-      onPressed: () {
-        LogoutService.logOut();
-        Navigator.pop(context, '/nav');
-      },
-    );
-
-    final headerGeneral = (String txt) => Padding(
-          padding:
-              EdgeInsets.only(right: MediaQuery.of(context).size.width * 0.44),
-          child: Text(
-            "$txt",
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-          ),
-        );
-
-    final membership = Container(
-      child: Row(
-        children: [headerGeneral("Membership"), ShowMore()],
-      ),
-    );
-
-    final card = (double height, Icon icon, String txt) => Container(
-          height: height,
-          width: MediaQuery.of(context).size.width * 0.42,
-          margin: EdgeInsets.only(
-              bottom: 8.0, right: MediaQuery.of(context).size.width * 0.05),
-          decoration: BoxDecoration(
-              color: Color.fromRGBO(247, 247, 252, 1),
-              borderRadius: BorderRadius.circular(5.0)),
-          child: Padding(
-            padding: EdgeInsets.only(
-                left: MediaQuery.of(context).size.width * 0.05,
-                right: MediaQuery.of(context).size.width * 0.05,
-                top: MediaQuery.of(context).size.height * 0.01),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                icon,
-                Padding(
-                  padding: EdgeInsets.only(
-                      top: MediaQuery.of(context).size.height * 0.01),
-                  child: Text(
-                    txt,
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
-                  ),
-                )
-              ],
-            ),
-          ),
-        );
-
-    final more = Container(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          headerGeneral("More"),
-          Padding(
-            padding: const EdgeInsets.only(top: 8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Column(
-                  children: [
-                    card(
-                        100,
-                        Icon(
-                          Icons.watch_later,
-                          size: 36,
-                        ),
-                        "Watches and Scales"),
-                    card(
-                        100,
-                        Icon(
-                          Icons.watch_later,
-                          size: 36,
-                        ),
-                        "Watches and Scales"),
-                    card(
-                        100,
-                        Icon(
-                          Icons.watch_later,
-                          size: 36,
-                        ),
-                        "Watches and Scales"),
-                    card(
-                        100,
-                        Icon(
-                          Icons.watch_later,
-                          size: 36,
-                        ),
-                        "Watches and Scales"),
-                    card(
-                        100,
-                        Icon(
-                          Icons.watch_later,
-                          size: 36,
-                        ),
-                        "Watches and Scales"),
-                    card(
-                        100,
-                        Icon(
-                          Icons.watch_later,
-                          size: 36,
-                        ),
-                        "Watches and Scales"),
-                  ],
-                ),
-                Column(
-                  children: [
-                    card(
-                        85,
-                        Icon(
-                          Icons.mobile_friendly,
-                          size: 36,
-                        ),
-                        "Integrations"),
-                    card(
-                        85,
-                        Icon(
-                          Icons.mobile_friendly,
-                          size: 36,
-                        ),
-                        "Integrations"),
-                    card(
-                        85,
-                        Icon(
-                          Icons.mobile_friendly,
-                          size: 36,
-                        ),
-                        "Integrations"),
-                    card(
-                        85,
-                        Icon(
-                          Icons.mobile_friendly,
-                          size: 36,
-                        ),
-                        "Integrations"),
-                    card(
-                        85,
-                        Icon(
-                          Icons.mobile_friendly,
-                          size: 36,
-                        ),
-                        "Integrations"),
-                    card(
-                        85,
-                        Icon(
-                          Icons.mobile_friendly,
-                          size: 36,
-                        ),
-                        "Integrations"),
-                    card(
-                        85,
-                        Icon(
-                          Icons.mobile_friendly,
-                          size: 36,
-                        ),
-                        "Integrations"),
-                  ],
-                )
-              ],
-            ),
-          )
-        ],
-      ),
-    );
-
-    final membershipCard = Container(
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5.0),
-          color: Color.fromRGBO(247, 247, 252, 1) // whitelabelin color
-          ),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row(
-          children: [
-            Padding(
-              padding: EdgeInsets.only(
-                  right: MediaQuery.of(context).size.width * 0.04,
-                  left: MediaQuery.of(context).size.width * 0.02),
-              child: Icon(
-                Icons.beach_access,
-              ),
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 8.0),
-                  child: Text("Membership: " + User.subscription),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 8.0),
-                  child: Text("Primary Gym: " + User.primaryGym),
-                )
-              ],
-            )
-          ],
-        ),
-      ),
-    );
-
-    final backgroundCurve = Container(
-      height: MediaQuery.of(context).size.height * 0.1,
-      decoration: BoxDecoration(
-          color: Color.fromRGBO(247, 247, 252, 1),
-          borderRadius: new BorderRadius.vertical(
-              bottom: new Radius.elliptical(
-                  MediaQuery.of(context).size.width, 90))),
-    );
-
-    final profileInfo = Container(
-      child: Padding(
-        padding: EdgeInsets.only(
-            left: MediaQuery.of(context).size.width * 0.4,
-            top: MediaQuery.of(context).size.height * 0.01),
-        child: Column(
-          children: [
-            CircleAvatar(
-                radius: 45,
-                backgroundImage: NetworkImage(
-                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROy2NZIldQXwZCIOka2hb-jtPEpTBcipkyVA&usqp=CAU')),
-            Padding(
-              padding: EdgeInsets.only(
-                  top: MediaQuery.of(context).size.height * 0.02),
-              child: Column(
-                children: [
-                  Text(User.email),
-                  Text(
-                    "Role: " + User.role,
-                    style: TextStyle(color: Color.fromRGBO(138, 141, 178, 1)),
-                  )
-                ],
-              ),
-            )
-          ],
-        ),
-      ),
-    );
 
     return Scaffold(
         backgroundColor: Colors.white,
         body: Column(
           children: [
-            Container(
-              height: MediaQuery.of(context).size.height * 0.032,
-            ),
+
             Expanded(
               child: MediaQuery.removePadding(
                 context: context,
@@ -291,31 +39,32 @@ class _MoreState extends State<More> {
                 child: ListView(
                   children: [
                     Stack(
-                      children: [backgroundCurve, profileInfo],
+                      children: [BackgroundCurve(), ProfileInfo()],
                     ),
                     Padding(
                       padding: EdgeInsets.only(
                           left: MediaQuery.of(context).size.width * 0.05),
-                      child: membership,
+                      child: MembershipHeader(),
                     ),
                     Padding(
                       padding: EdgeInsets.only(
                           left: MediaQuery.of(context).size.width * 0.05,
                           right: MediaQuery.of(context).size.width * 0.05,
                           bottom: MediaQuery.of(context).size.height * 0.02),
-                      child: membershipCard,
+                      child: MemberShipCard(),
                     ),
                     Padding(
                       padding: EdgeInsets.only(
                         left: MediaQuery.of(context).size.width * 0.05,
                       ),
-                      child: more,
+                      child: MoreWidget(),
                     ),
                     Padding(
                       padding: EdgeInsets.only(
                           left: MediaQuery.of(context).size.width * 0.05,
-                          right: MediaQuery.of(context).size.width * 0.05),
-                      child: _logOutBtn,
+                          right: MediaQuery.of(context).size.width * 0.05,
+                          bottom: MediaQuery.of(context).size.height * 0.02),
+                      child: LogOutBtn(),
                     )
                   ],
                 ),

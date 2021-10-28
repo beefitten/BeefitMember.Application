@@ -27,7 +27,7 @@ class _CenterInformationState extends State<CenterInformation> {
   void initState() {
     super.initState();
     centerInfoBloc = BlocProvider.of<CenterInformationBloc>(context);
-    centerInfoBloc.add(LoadEvent(fitnessName: "Sats"));
+    centerInfoBloc.add(LoadEvent(fitnessName: FitnessPackage.model.name));
   }
 
   @override

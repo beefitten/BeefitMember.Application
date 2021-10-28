@@ -7,8 +7,8 @@ class Classes {
   bool isFull = false;
   int maxParticipants = 0;
   int numberOfParticipants = 0;
-  String timeStart = "";
-  String timeEnd = "";
+  DateTime timeStart = DateTime.now();
+  DateTime timeEnd = DateTime.now();
   List<String> participants = [];
   String location = "";
 
@@ -35,8 +35,8 @@ class Classes {
     isFull = json['isFull'];
     maxParticipants = json['maxParticipants'];
     numberOfParticipants = json['numberOfParticipants'];
-    timeStart = json['timeStart'];
-    timeEnd = json['timeEnd'];
+    timeStart = DateTime.parse(json['timeStart']);
+    timeEnd = DateTime.parse(json['timeEnd']);
     participants = json['participants'].cast<String>();
     location = json['location'];
   }

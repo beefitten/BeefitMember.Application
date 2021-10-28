@@ -3,9 +3,11 @@ class User {
   static String email = "Default User";
   static String subscription = "";
   static String name = "";
+  static String lastName = "";
   static String primaryGym = "";
   static List<String> secondaryGymsList = [];
   static String role = "";
+  static String profileImage = "";
 
   static String cardNumber = "";
   static String expireYear = "";
@@ -25,9 +27,11 @@ class User {
     email = json['userInfo']['email'].toString();
     subscription = json['userInfo']['subscription'].toString();
     name = json['userInfo']['name'].toString();
+    lastName = json['userInfo']['lastName'].toString();
     primaryGym = json['userInfo']['primaryGym'].toString();
     List<dynamic> secondaryGyms = json['userInfo']['secondaryGyms'];
     secondaryGymsList = secondaryGyms.cast<String>();
+    profileImage = json['userInfo']['profileImage'].toString();
 
     role = json['userInfo']['role'].toString();
     cardNumber = json['userInfo']['cardnumber'].toString();
