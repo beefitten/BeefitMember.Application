@@ -29,16 +29,13 @@ class H2Text extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 20),
-      child: Text(
-        _text,
-        textAlign: TextAlign.left,
-        style: TextStyle(
-          color: Colors.black,
-          fontSize: MediaQuery.of(context).size.height * 0.03,
-          fontWeight: FontWeight.bold,
-        ),
+    return Text(
+      _text,
+      textAlign: TextAlign.left,
+      style: TextStyle(
+        color: Colors.black,
+        fontSize: MediaQuery.of(context).size.height * 0.03,
+        fontWeight: FontWeight.bold,
       ),
     );
   }
