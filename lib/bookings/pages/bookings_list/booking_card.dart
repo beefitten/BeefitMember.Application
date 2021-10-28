@@ -165,7 +165,7 @@ class _BookingCardState extends State<BookingCard> {
   @override
   Widget build(BuildContext context) {
     final green = Color.fromRGBO(0, 186, 136, 1);
-    final standardBtnColor = Color(int.parse(FitnessPackage.secondaryColor));
+    final standardBtnColor = Color(int.parse(FitnessPackage.fitnessPackageModel.secondaryColor));
 
     String className = widget.className;
     String timeStart = widget.timeStart;
