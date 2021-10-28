@@ -1,27 +1,28 @@
+import 'package:beefitmember_application/center_information/models/center_information_model.dart';
 import 'package:beefitmember_application/shared/widgets/texts.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class CenterInformationMap extends StatefulWidget {
-  CenterInformationMap();
+  final GoogleMap map;
+  final CenterInformationModel model;
+
+  CenterInformationMap(this.map, this.model);
+
   @override
-  _CenterInformationMapState createState() => _CenterInformationMapState();
+  _CenterInformationMapState createState() =>
+      _CenterInformationMapState(map, model);
 }
 
 class _CenterInformationMapState extends State<CenterInformationMap> {
-  late GoogleMapController mapController;
-  final LatLng _center = const LatLng(56.16961731336789, 10.193464582067223);
-  List<Marker> markers = [];
+  final GoogleMap map;
+  final CenterInformationModel model;
+
+  _CenterInformationMapState(this.map, this.model);
 
   @override
   void initState() {
     super.initState();
-    markers.add(Marker(
-        markerId: MarkerId('CurrentGym'), draggable: false, position: _center));
-  }
-
-  void _onMapCreated(GoogleMapController controller) {
-    mapController = controller;
   }
 
   @override
@@ -32,17 +33,10 @@ class _CenterInformationMapState extends State<CenterInformationMap> {
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(10), topRight: Radius.circular(10)),
           child: Container(
-            constraints: BoxConstraints(
-                maxWidth: MediaQuery.of(context).size.width,
-                maxHeight: MediaQuery.of(context).size.height * 0.3),
-            child: GoogleMap(
-              zoomControlsEnabled: false,
-              onMapCreated: _onMapCreated,
-              initialCameraPosition:
-                  CameraPosition(target: _center, zoom: 14.7),
-              markers: Set.from(markers),
-            ),
-          ),
+              constraints: BoxConstraints(
+                  maxWidth: MediaQuery.of(context).size.width,
+                  maxHeight: MediaQuery.of(context).size.height * 0.3),
+              child: map),
         ),
         Container(
           constraints: BoxConstraints(
@@ -63,7 +57,7 @@ class _CenterInformationMapState extends State<CenterInformationMap> {
         child: Container(
             constraints: BoxConstraints(
                 maxWidth: MediaQuery.of(context).size.width * 0.7),
-            child: CapsText('Jens Baggesens vej 90')),
+            child: CapsText('${model.location}')),
       )
     ]);
   }

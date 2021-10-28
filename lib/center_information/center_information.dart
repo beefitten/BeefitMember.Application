@@ -8,6 +8,7 @@ import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.da
 import 'package:beefitmember_application/shared/widgets/texts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import 'bloc/center_information_bloc.dart';
 import 'bloc/center_information_state.dart';
@@ -26,7 +27,7 @@ class _CenterInformationState extends State<CenterInformation> {
   void initState() {
     super.initState();
     centerInfoBloc = BlocProvider.of<CenterInformationBloc>(context);
-    centerInfoBloc.add(LoadEvent(fitnessName: FitnessPackage.name));
+    centerInfoBloc.add(LoadEvent(fitnessName: "Sats"));
   }
 
   @override
@@ -40,7 +41,7 @@ class _CenterInformationState extends State<CenterInformation> {
         child: BlocBuilder<CenterInformationBloc, CenterInformationState>(
             builder: (context, state) {
           if (state is InfoLoadedState)
-            return BuildLoaded(state.model);
+            return BuildLoaded(state.model, state.map);
           else
             return BuildLoading();
         }),
@@ -66,8 +67,9 @@ class BuildLoading extends StatelessWidget {
 
 class BuildLoaded extends StatelessWidget {
   final CenterInformationModel model;
+  final GoogleMap map;
 
-  BuildLoaded(this.model);
+  BuildLoaded(this.model, this.map);
 
   @override
   Widget build(BuildContext context) {
@@ -76,13 +78,13 @@ class BuildLoaded extends StatelessWidget {
         H1Text('Center information'),
         Expanded(
           child: ListView(children: [
-            CenterInformationMap(),
+            CenterInformationMap(map, model),
             CenterInformationBasic(model),
             Padding(
               padding: const EdgeInsets.only(top: 20, left: 10),
               child: H2Text('Location heat map'),
             ),
-            CenterInformationHeatMap(),
+            CenterInformationHeatMap(model),
           ]),
         ),
       ],

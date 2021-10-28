@@ -1,3 +1,4 @@
+import 'package:beefitmember_application/center_information/models/center_information_model.dart';
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
@@ -5,39 +6,20 @@ import 'package:flutter/material.dart';
 final blue = Color(int.parse(FitnessPackage.secondaryColor));
 
 class CenterInformationHeatMap extends StatelessWidget {
+  final CenterInformationModel model;
   final List<Color> colorGradient = [
     Color(int.parse(FitnessPackage.secondaryColor)),
     Color(int.parse(FitnessPackage.primaryColor)),
   ];
+  final List<FlSpot> dataPoints = [];
 
-  final List<FlSpot> dataPoints = const [
-    FlSpot(1, 0.2),
-    FlSpot(2, 0.3),
-    FlSpot(3, 0.4),
-    FlSpot(4, 0.3),
-    FlSpot(5, 0.9),
-    FlSpot(6, 3),
-    FlSpot(7, 3.4),
-    FlSpot(8, 6),
-    FlSpot(9, 6.5),
-    FlSpot(10, 3),
-    FlSpot(11, 3),
-    FlSpot(12, 4),
-    FlSpot(13, 5.5),
-    FlSpot(14, 4.5),
-    FlSpot(15, 4),
-    FlSpot(16, 6),
-    FlSpot(17, 6.9),
-    FlSpot(18, 6.5),
-    FlSpot(19, 4.6),
-    FlSpot(20, 3.7),
-    FlSpot(21, 3.2),
-    FlSpot(22, 2),
-    FlSpot(23, 0.5),
-    FlSpot(24, 0.1),
-  ];
-
-  CenterInformationHeatMap();
+  CenterInformationHeatMap(this.model) {
+    for (var i = 0; i < model.heatMapDataPoints.length; i++) {
+      dataPoints.add(FlSpot(
+          double.parse(model.heatMapDataPoints.elementAt(i).item1),
+          double.parse(model.heatMapDataPoints.elementAt(i).item2)));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
