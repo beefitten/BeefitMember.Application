@@ -7,7 +7,7 @@ class FitnessPackage {
   static String secondaryColor = "0xF7F7FC";
   static String logo = "noPath";
 
-  static List<int> features = []; // Could also be a list of ints
+  static List<int> features = [0, 1, 2]; // Could also be a list of ints
 
   factory FitnessPackage() {
     return _instance;
