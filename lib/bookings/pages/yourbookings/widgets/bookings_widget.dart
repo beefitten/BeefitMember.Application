@@ -47,7 +47,9 @@ class _BookingWidgetState extends State<BookingWidget> {
           builder: (context, state) {
             if (state is BookingLoadingState)
               return Center(
-                child: CircularProgressIndicator(),
+                child: CircularProgressIndicator(
+                  backgroundColor: Color(int.parse(FitnessPackage.primaryColor)),
+                ),
               );
             if (state is BookingSuccessState)
               return Container(

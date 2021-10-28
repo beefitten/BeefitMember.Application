@@ -3,6 +3,7 @@ import 'package:beefitmember_application/bookings/bloc/bookingsList/bookings_lis
 import 'package:beefitmember_application/bookings/bloc/bookingsList/bookings_list_state.dart';
 import 'package:beefitmember_application/bookings/pages/bookings_list/booking_card.dart';
 import 'package:beefitmember_application/bookings/pages/yourbookings/models/bookingModel.dart';
+import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:beefitmember_application/shared/user/user.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -28,12 +29,6 @@ class _ClassesListState extends State<ClassesList> {
     super.initState();
   }
 
-  handleBook() {
-    setState(() {
-      _isBooked = !_isBooked;
-    });
-  }
-
   alreadyBooked(Classes currentClass){
     for (Classes item in _yourBookings!) {
       if (item.classId == currentClass.classId)
@@ -49,7 +44,9 @@ class _ClassesListState extends State<ClassesList> {
 
   @override
   Widget build(BuildContext context) {
-    bookingListBloc.add(BookingListLoadingEvent(primaryGym: User.primaryGym, email: User.email));
+    bookingListBloc.add(BookingListLoadingEvent(
+        primaryGym: User.primaryGym,
+        email: User.email));
     return Scaffold(
       backgroundColor: Colors.white,
       body: Column(
@@ -58,7 +55,9 @@ class _ClassesListState extends State<ClassesList> {
               builder: (context, state) {
                 if (state is BookingListLoadingState)
                   return Center(
-                    child: CircularProgressIndicator(),
+                    child: CircularProgressIndicator(
+                      backgroundColor: Color(int.parse(FitnessPackage.primaryColor)),
+                    ),
                   );
                 if (state is BookingListSuccessState){
                   setVariables(state.yourBookings, state.allBookings);
