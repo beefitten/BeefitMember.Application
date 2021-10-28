@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "76150879403",
+    "project_id": "beefitmemberbookings",
+    "storage_bucket": "beefitmemberbookings.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:76150879403:android:d1612b854139d2a07e73ee",
+        "android_client_info": {
+          "package_name": "com.example.beefitmember_application"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "76150879403-g4e2nemven0o42u0r6fdnrvkt0q28b1s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8BDSxTftu4ThIebi0olxZj6HyiLlK2zo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "76150879403-g4e2nemven0o42u0r6fdnrvkt0q28b1s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

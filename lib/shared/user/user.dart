@@ -3,6 +3,7 @@ class User {
   static String email = "Default User";
   static String subscription = "";
   static String name = "";
+  static String lastName = "";
   static String primaryGym = "";
   static List<String> secondaryGymsList = [];
   static String role = "";
@@ -26,6 +27,7 @@ class User {
     email = json['userInfo']['email'].toString();
     subscription = json['userInfo']['subscription'].toString();
     name = json['userInfo']['name'].toString();
+    lastName = json['userInfo']['lastName'].toString();
     primaryGym = json['userInfo']['primaryGym'].toString();
     List<dynamic> secondaryGyms = json['userInfo']['secondaryGyms'];
     secondaryGymsList = secondaryGyms.cast<String>();
