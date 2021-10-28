@@ -131,7 +131,7 @@ class _ClassesListState extends State<ClassesList> {
           Expanded(
             child: _allClasses == null
                     ? Center(child: CircularProgressIndicator(
-                    backgroundColor: Color(int.parse(FitnessPackage.primaryColor))))
+                    backgroundColor: Color(int.parse(FitnessPackage.model.primaryColor))))
                     : ListView.builder(
                   scrollDirection: Axis.vertical,
                   shrinkWrap: true,

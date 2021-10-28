@@ -40,7 +40,7 @@ class FindClassesWidget extends StatelessWidget {
                   style:
                   ElevatedButton.styleFrom(
                       primary: Colors.white,
-                      onPrimary: Color(int.parse(FitnessPackage.secondaryColor)),
+                      onPrimary: Color(int.parse(FitnessPackage.model.secondaryColor)),
                       onSurface: Colors.black,
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))))
               ),
