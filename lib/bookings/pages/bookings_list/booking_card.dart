@@ -264,7 +264,7 @@ class _BookingCardState extends State<BookingCard> {
                         Column(
                           children: [
                             subtext("$timeStart - $timeEnd"),
-                            locationText("Location: $place")
+                            FitnessPackage.model.bookings.showLocation ? locationText("Location: $place") : Container()
                           ],
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
