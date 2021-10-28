@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 class WeightGoalService {
   create(String user, int currentWeight, int targetWeight) async {
     var endpointUrl = Uri.parse(
-        'https://beefitmemberuser.azurewebsites.net/memberLogin'); // <<----- URL GOES HERE!!!
+        'https://beefitmembertrainingprogression.azurewebsites.net/create');
 
     var body = {};
     body["user"] = user;
