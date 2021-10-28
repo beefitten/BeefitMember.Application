@@ -48,14 +48,11 @@ class H3Text extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 20, bottom: 10),
-      child: Text(
-        _text,
-        style: TextStyle(
-          fontSize: MediaQuery.of(context).size.height * 0.02,
-          fontWeight: FontWeight.bold,
-        ),
+    return Text(
+      _text,
+      style: TextStyle(
+        fontSize: MediaQuery.of(context).size.height * 0.02,
+        fontWeight: FontWeight.bold,
       ),
     );
   }
