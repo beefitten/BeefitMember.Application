@@ -122,7 +122,7 @@ class _TrainingProgressionState extends State<TrainingProgression> {
 
   int getLatestWeightGoal() {
     //NOT IMPLEMENTED: Should retrive from database
-    return 1;
+    return 0;
   }
 
   Widget weightGoalPage() {
