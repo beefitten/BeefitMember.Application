@@ -54,51 +54,60 @@ class _ClassesListState extends State<ClassesList> {
         primaryGym: User.primaryGym, email: User.email));
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Column(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-        BlocBuilder<BookingListBloc, BookingListState>(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          BlocBuilder<BookingListBloc, BookingListState>(
             builder: (context, state) {
-          if (state is BookingListLoadingState)
-            return Center(
-              child: CircularProgressIndicator(
-                backgroundColor:
-                    Color(int.parse(FitnessPackage.model.primaryColor)),
-              ),
-            );
-          if (state is BookingListSuccessState) {
-            setVariables(state.yourBookings, state.allBookings);
-            return Expanded(
-              child: _allClasses!.length == 0
-                  ? Padding(
-                      padding: const EdgeInsets.only(top: 20),
-                      child: Center(child: Text("You have no classes booked!")))
-                  : ListView.builder(
-                      scrollDirection: Axis.vertical,
-                      shrinkWrap: true,
-                      itemBuilder: (BuildContext context, int index) {
-                        return GestureDetector(
-                            child: BookingCard(
-                              className: _allClasses![index].className,
-                              timeStart: DateFormat.Hm()
-                                  .format(_allClasses![index].timeStart),
-                              timeEnd: DateFormat.Hm()
-                                  .add_MMMd()
-                                  .format(_allClasses![index].timeEnd),
-                              place: _allClasses![index].location,
-                              classInfo: _allClasses![index],
-                              email: User.email,
-                              booked: alreadyBooked(_allClasses![index]),
-                            ),
-                            onTap: () {});
-                      },
-                      itemCount: _allClasses!.length,
-                    ),
-            );
-          } else if (state is BookingListErrorState) {
-            return Text(state.message);
-          }
-          return Container();
-        })
-      ]),
+              if (state is BookingListLoadingState)
+                return Center(
+                  child: CircularProgressIndicator(
+                    backgroundColor:
+                        Color(int.parse(FitnessPackage.model.primaryColor)),
+                  ),
+                );
+              if (state is BookingListSuccessState) {
+                setVariables(state.yourBookings, state.allBookings);
+                return Expanded(
+                  child: _allClasses!.length == 0
+                      ? Padding(
+                          padding: const EdgeInsets.only(top: 20),
+                          child: Center(
+                              child: Text("You have no classes booked!")))
+                      : Padding(
+                          padding:
+                              const EdgeInsets.only(left: 20.0, right: 20.0),
+                          child: ListView.builder(
+                            scrollDirection: Axis.vertical,
+                            shrinkWrap: true,
+                            itemBuilder: (BuildContext context, int index) {
+                              return GestureDetector(
+                                  child: BookingCard(
+                                    className: _allClasses![index].className,
+                                    timeStart: DateFormat.Hm()
+                                        .format(_allClasses![index].timeStart),
+                                    timeEnd: DateFormat.Hm()
+                                        .add_MMMd()
+                                        .format(_allClasses![index].timeEnd),
+                                    place: _allClasses![index].location,
+                                    classInfo: _allClasses![index],
+                                    email: User.email,
+                                    booked: alreadyBooked(_allClasses![index]),
+                                  ),
+                                  onTap: () {});
+                            },
+                            itemCount: _allClasses!.length,
+                          ),
+                        ),
+                );
+              } else if (state is BookingListErrorState) {
+                return Text(state.message);
+              }
+              return Container();
+            },
+          )
+        ],
+      ),
     );
   }
 }
