@@ -4,12 +4,11 @@ import 'package:beefitmember_application/bookings/bloc/appointments/appointments
 import 'package:beefitmember_application/bookings/bloc/bookings_bloc.dart';
 import 'package:beefitmember_application/bookings/bloc/bookings_events.dart';
 import 'package:beefitmember_application/bookings/bloc/bookings_state.dart';
-import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/appointments_widget.dart';
+import 'package:beefitmember_application/bookings/pages/previewBookings/preview_bookings.dart';
 import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/your_classes_widget.dart';
 import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/findClasses_widget.dart';
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:beefitmember_application/shared/user/user.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -46,7 +45,7 @@ class _YourBookingsState extends State<YourBookings> {
           _widgetOptions.add(YourClassesWidget());
           break;
         case 1:
-          _widgetOptions.add(AppointmentsWidget());
+          _widgetOptions.add(PreviewBookings());
           break;
       }
     });
@@ -72,7 +71,10 @@ class _YourBookingsState extends State<YourBookings> {
                 backgroundColor: Color(primaryColor),
               ));
             if (state is AppointmentsSuccessState)
-              return ListView(children: _widgets);
+              return Padding(
+                padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+                child: ListView(children: _widgets),
+              );
             return Container();
           });
         return Container();
