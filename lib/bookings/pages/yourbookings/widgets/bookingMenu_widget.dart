@@ -1,4 +1,4 @@
-import 'package:beefitmember_application/bookings/pages/bookings_list/bookings_list.dart';
+import 'package:beefitmember_application/bookings/pages/bookings_list/classes_list.dart';
 import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/your_bookings.dart';
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:beefitmember_application/shared/widgets/texts.dart';
