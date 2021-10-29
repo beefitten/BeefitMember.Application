@@ -14,8 +14,7 @@ class LogOutBtn extends StatelessWidget {
 
     return TextButton(
       style: ButtonStyle(
-          backgroundColor:
-              MaterialStateProperty.all(Color.fromRGBO(229, 235, 254, 1.0))),
+          backgroundColor: MaterialStateProperty.all(Color(int.parse(FitnessPackage.model.backgroundColor)))),
       child: _logOut,
       onPressed: () {
         LogoutService.logOut();

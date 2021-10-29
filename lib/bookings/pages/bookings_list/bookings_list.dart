@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
+final int primaryColor = int.parse(FitnessPackage.model.primaryColor);
+
 class ClassesList extends StatefulWidget {
   const ClassesList({Key? key}) : super(key: key);
 

@@ -1,3 +1,5 @@
+import 'package:beefitmember_application/center_information/bloc/center_information_bloc.dart';
+import 'package:beefitmember_application/center_information/service/center_information_service.dart';
 import 'package:beefitmember_application/bookings/bloc/appointments/appointments_bloc.dart';
 import 'package:beefitmember_application/bookings/bloc/appointments/appointments_state.dart';
 import 'package:beefitmember_application/bookings/services/appointments_service.dart';
@@ -35,12 +37,13 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => LoginBLoc(LoginInitState(), LoginService()),
-        ),
+            create: (context) => LoginBLoc(LoginInitState(), LoginService())),
         BlocProvider(
-          create: (context) =>
-              WeightGoalBloc(WeightGoalInitState(), WeightGoalService()),
-        ),
+            create: (context) =>
+                CenterInformationBloc(CenterInformationService())),
+        BlocProvider(
+            create: (context) =>
+                WeightGoalBloc(WeightGoalInitState(), WeightGoalService())),
         BlocProvider(
             create: (context) => LoginBLoc(LoginInitState(), LoginService())),
         BlocProvider(
@@ -50,8 +53,8 @@ class MyApp extends StatelessWidget {
             create: (context) =>
                 BookingListBloc(BookingListInitState(), BookingsService())),
         BlocProvider(
-            create: (context) =>
-                AppointmentsBloc(AppointmentsInitState(), AppointmentsService())),
+            create: (context) => AppointmentsBloc(
+                AppointmentsInitState(), AppointmentsService())),
       ],
       child: MaterialApp(
         title: 'Beefit Member',
