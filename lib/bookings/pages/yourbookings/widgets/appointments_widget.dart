@@ -18,9 +18,11 @@ class _AppointmentsWidgetState extends State<AppointmentsWidget> {
   @override
   void initState() {
     appointmentsBloc = BlocProvider.of<AppointmentsBloc>(context);
-    appointmentsBloc.add(AppointmentsLoadingEvent());
-
     super.initState();
+  }
+
+  void dispose() {
+    super.dispose();
   }
 
   static generateList(AppointmentsSuccessState state) {
@@ -51,13 +53,6 @@ class _AppointmentsWidgetState extends State<AppointmentsWidget> {
         ),
         BlocBuilder<AppointmentsBloc, AppointmentsState>(
             builder: (context, state) {
-          if (state is AppointmentsLoadingState)
-            return Center(
-              child: CircularProgressIndicator(
-                backgroundColor:
-                    Color(int.parse(FitnessPackage.model.primaryColor)),
-              ),
-            );
           if (state is AppointmentsSuccessState)
             return Container(
                 color: Colors.white,

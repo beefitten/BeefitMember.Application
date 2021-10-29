@@ -34,25 +34,6 @@ class _ClassesListState extends State<ClassesList> {
     });
   }
 
-  // Future<void> getData() async {
-  //   // All classes
-  //   var fitness = User.primaryGym;
-  //   var allClassesUrl = Uri.parse('https://bfmbookings.azurewebsites.net/getClasses/$fitness');
-  //   var allClassesResponse = await http.get(allClassesUrl);
-  //   List<dynamic> allClassesBody = cnv.jsonDecode(allClassesResponse.body);
-  //   _allClasses = allClassesBody.map((dynamic item) => Classes.fromJson(item)).toList();
-  //
-  //
-  //   // Your bookings
-  //   var userEmail = User.email;
-  //   var yourBookingsUrl = Uri.parse('https://bfmbookings.azurewebsites.net/getUserClasses/$userEmail');
-  //   var yourBookingsResponse = await http.get(yourBookingsUrl);
-  //   List<dynamic> yourBookingBody = cnv.jsonDecode(yourBookingsResponse.body);
-  //   _yourBookings = yourBookingBody.map((dynamic item) => Classes.fromJson(item)).toList();
-  //
-  //   setState(() {});
-  // }
-
   alreadyBooked(Classes currentClass) {
     for (Classes item in _yourBookings!) {
       if (item.classId == currentClass.classId) return true;
@@ -71,7 +52,7 @@ class _ClassesListState extends State<ClassesList> {
         primaryGym: User.primaryGym, email: User.email));
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Column(children: [
+      body: Column(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
         BlocBuilder<BookingListBloc, BookingListState>(
             builder: (context, state) {
           if (state is BookingListLoadingState)

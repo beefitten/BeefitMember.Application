@@ -20,8 +20,6 @@ class _BookingWidgetState extends State<BookingWidget> {
   @override
   void initState() {
     bookingBloc = BlocProvider.of<BookingBloc>(context);
-    bookingBloc.add(BookingLoadingEvent(email: User.email));
-    print("Tes");
     super.initState();
   }
 
@@ -43,13 +41,6 @@ class _BookingWidgetState extends State<BookingWidget> {
           ),
         ),
         BlocBuilder<BookingBloc, BookingsState>(builder: (context, state) {
-          if (state is BookingLoadingState)
-            return Center(
-              child: CircularProgressIndicator(
-                backgroundColor:
-                    Color(int.parse(FitnessPackage.model.primaryColor)),
-              ),
-            );
           if (state is BookingSuccessState)
             return Container(
               color: Colors.white,

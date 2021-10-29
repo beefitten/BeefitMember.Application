@@ -18,7 +18,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'bookings/bloc/bookingsList/bookings_list_bloc.dart';
 import 'bookings/bloc/bookingsList/bookings_list_state.dart';
-import 'bookings/pages/yourbookings/your_bookings.dart';
+import 'bookings/pages/yourbookings/widgets/your_bookings.dart';
 import 'training_progression/bloc/weightgoal_states.dart';
 import 'user/pages/pre_login/pre_login.dart';
 import 'package:firebase_core/firebase_core.dart';
