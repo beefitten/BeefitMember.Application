@@ -1,3 +1,4 @@
+import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:flutter/material.dart';
 
 class BackgroundCurve extends StatelessWidget {
@@ -7,7 +8,7 @@ class BackgroundCurve extends StatelessWidget {
     return Container(
       height: MediaQuery.of(context).size.height * 0.17,
       decoration: BoxDecoration(
-          color: Color.fromRGBO(247, 247, 252, 1),
+          color: Color(int.parse(FitnessPackage.model.thirdColor)),
           borderRadius: new BorderRadius.vertical(
               bottom: new Radius.elliptical(
                   MediaQuery.of(context).size.width, 90))),
