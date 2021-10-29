@@ -37,7 +37,7 @@ class _CenterInformationState extends State<CenterInformation> {
       context: context,
       removeTop: true,
       child: Padding(
-        padding: const EdgeInsets.only(left: 8, right: 8),
+        padding: const EdgeInsets.only(left: 20, right: 20),
         child: BlocBuilder<CenterInformationBloc, CenterInformationState>(
             builder: (context, state) {
           if (state is InfoLoadedState)
@@ -76,7 +76,7 @@ class BuildLoaded extends StatelessWidget {
           child: ListView(children: [
             CenterInformationMain(),
             Padding(
-              padding: const EdgeInsets.only(top: 20, left: 10),
+              padding: const EdgeInsets.only(top: 20, left: 20),
               child: H2Text('Location heat map'),
             ),
             CenterInformationHeatMap(),

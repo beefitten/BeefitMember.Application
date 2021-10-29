@@ -5,7 +5,7 @@ import 'package:beefitmember_application/bookings/bloc/bookings_bloc.dart';
 import 'package:beefitmember_application/bookings/bloc/bookings_events.dart';
 import 'package:beefitmember_application/bookings/bloc/bookings_state.dart';
 import 'package:beefitmember_application/bookings/pages/previewBookings/preview_bookings.dart';
-import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/bookings_widget.dart';
+import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/your_classes_widget.dart';
 import 'package:beefitmember_application/center_information/preview/center_information_preview.dart';
 import 'package:beefitmember_application/overview/widgets/parallax_app_bar.dart';
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
@@ -42,16 +42,28 @@ class OverviewState extends State<Overview>
     _orderList.forEach((element) {
       switch (element) {
         case 0:
-          _widgetOptions.add(PreviewBookings());
+          _widgetOptions.add(Padding(
+            padding: const EdgeInsets.only(bottom: 12.0),
+            child: PreviewBookings(),
+          ));
           break;
         case 1:
-          _widgetOptions.add(BookingWidget());
+          _widgetOptions.add(Padding(
+            padding: const EdgeInsets.only(bottom: 12.0),
+            child: YourClassesWidget(),
+          ));
           break;
         case 2:
-          _widgetOptions.add(TrainingProgPreview());
+          _widgetOptions.add(Padding(
+            padding: const EdgeInsets.only(bottom: 12.0),
+            child: TrainingProgPreview(),
+          ));
           break;
         case 3:
-          _widgetOptions.add(CenterInformationPreview());
+          _widgetOptions.add(Padding(
+            padding: const EdgeInsets.only(bottom: 12.0),
+            child: CenterInformationPreview(),
+          ));
           break;
       }
     });
@@ -106,7 +118,7 @@ class OverviewState extends State<Overview>
         removeTop: true,
         child: Center(
           child: Padding(
-            padding: const EdgeInsets.only(left: 10.0, right: 10),
+            padding: const EdgeInsets.only(left: 20.0, right: 20),
             child: ListView(
               children: _overViewPreviews,
             ),

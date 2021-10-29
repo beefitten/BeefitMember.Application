@@ -1,4 +1,4 @@
-import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/bookingMenu_widget.dart';
+import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/bookings_page.dart';
 import 'package:beefitmember_application/center_information/bloc/center_information_bloc.dart';
 import 'package:beefitmember_application/center_information/bloc/center_information_events.dart';
 import 'package:beefitmember_application/center_information/center_information.dart';
@@ -78,7 +78,7 @@ class _NavState extends State<Nav> {
     featureList.forEach((element) {
       switch (element) {
         case 0:
-          _widgetOptions.add(BookingMenuWidget());
+          _widgetOptions.add(BookingsPage());
           break;
         case 1:
           _widgetOptions.add(TrainingProgression());

@@ -1,24 +1,27 @@
-import 'package:beefitmember_application/bookings/pages/bookings_list/bookings_list.dart';
+import 'package:beefitmember_application/bookings/pages/bookings_list/classes_list.dart';
 import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/your_bookings.dart';
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:beefitmember_application/shared/widgets/texts.dart';
 import 'package:flutter/material.dart';
 
-class BookingMenuWidget extends StatelessWidget {
+class BookingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
         appBar: PreferredSize(
-            preferredSize: Size(MediaQuery.of(context).size.width,
-                MediaQuery.of(context).size.height * 0.16),
-            child: CustomAppBar("Bookings")),
+          preferredSize: Size(MediaQuery.of(context).size.width,
+              MediaQuery.of(context).size.height * 0.16),
+          child: CustomAppBar("Bookings"),
+        ),
         body: TabBarView(
           children: [
             YourBookings(),
             ClassesList(),
-            Center(child: Text("Coming soon!")),
+            Center(
+              child: Text("Coming soon!"),
+            ),
           ],
         ),
       ),

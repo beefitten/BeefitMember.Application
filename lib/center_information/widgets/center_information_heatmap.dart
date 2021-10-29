@@ -74,29 +74,30 @@ class BuildLoaded extends StatelessWidget {
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(borderRadius)),
       elevation: double.parse(FitnessPackage.model.elevation),
-      child: Stack(children: [
-        Container(
-          decoration: BoxDecoration(
-              color: Color(backgroundColor),
+      child: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+                color: Color(backgroundColor),
+                borderRadius: BorderRadius.circular(
+                    double.parse(FitnessPackage.model.elevation))),
+            constraints: BoxConstraints(
+                maxHeight: MediaQuery.of(context).size.height * 0.3,
+                maxWidth: MediaQuery.of(context).size.width),
+            child: ClipRRect(
               borderRadius: BorderRadius.circular(
-                  double.parse(FitnessPackage.model.elevation))),
-          constraints: BoxConstraints(
-              maxHeight: MediaQuery.of(context).size.height * 0.3,
-              maxWidth: MediaQuery.of(context).size.width),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(
-                double.parse(FitnessPackage.model.elevation)),
-            child: LineChart(
-              LineChartData(
-                minX: 1,
-                maxX: 23,
-                minY: 0,
-                maxY: 10,
-                titlesData: LineTitles.getTitleData(),
-                borderData: FlBorderData(show: false),
-                gridData: FlGridData(show: false),
-                lineBarsData: [
-                  LineChartBarData(
+                  double.parse(FitnessPackage.model.elevation)),
+              child: LineChart(
+                LineChartData(
+                  minX: 1,
+                  maxX: 23,
+                  minY: 0,
+                  maxY: 10,
+                  titlesData: LineTitles.getTitleData(),
+                  borderData: FlBorderData(show: false),
+                  gridData: FlGridData(show: false),
+                  lineBarsData: [
+                    LineChartBarData(
                       spots: dataPoints,
                       isCurved: true,
                       colors:
@@ -104,29 +105,36 @@ class BuildLoaded extends StatelessWidget {
                       barWidth: 5,
                       dotData: FlDotData(show: false),
                       belowBarData: BarAreaData(
-                          show: true,
-                          colors: colorGradient
-                              .map((e) => e.withOpacity(0.3))
-                              .toList()))
-                ],
+                        show: true,
+                        colors: colorGradient
+                            .map((e) => e.withOpacity(0.3))
+                            .toList(),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 16, top: 20),
-          child: Text('Current status',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400)),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 20, top: 40),
-          child: Text('HOT',
+          Padding(
+            padding: const EdgeInsets.only(left: 16, top: 20),
+            child: Text(
+              'Current status',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 20, top: 40),
+            child: Text(
+              'HOT',
               style: TextStyle(
                   fontSize: 26,
                   color: Color(secondaryColor),
-                  fontWeight: FontWeight.bold)),
-        )
-      ]),
+                  fontWeight: FontWeight.bold),
+            ),
+          )
+        ],
+      ),
     );
   }
 }
