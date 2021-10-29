@@ -12,12 +12,13 @@ class CardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: _height,
-      width: MediaQuery.of(context).size.width * 0.42,
+      width: MediaQuery.of(context).size.width * 0.38,
       margin: EdgeInsets.only(
           bottom: 8.0, right: MediaQuery.of(context).size.width * 0.05),
       decoration: BoxDecoration(
           color: Color(int.parse(FitnessPackage.model.backgroundColor)),
-          borderRadius: BorderRadius.circular(double.parse(FitnessPackage.model.borderRadius))),
+          borderRadius: BorderRadius.circular(
+              double.parse(FitnessPackage.model.borderRadius))),
       child: Padding(
         padding: EdgeInsets.only(
             left: MediaQuery.of(context).size.width * 0.05,
