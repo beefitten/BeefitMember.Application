@@ -7,14 +7,24 @@ class PreviewBookings extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      alignment: Alignment.topRight,
+    return Column(
       children: [
-        Container(child: AppointmentsWidget()),
-        Padding(
-          padding: const EdgeInsets.only(top: 8, right: 3),
-          child: ShowMore(),
-        )
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              "Your Appointments",
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: MediaQuery.of(context).size.height * 0.03,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            ShowMore(),
+          ],
+        ),
+        AppointmentsWidget(),
       ],
     );
   }
