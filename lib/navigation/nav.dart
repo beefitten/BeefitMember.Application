@@ -1,10 +1,13 @@
 import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/bookingMenu_widget.dart';
+import 'package:beefitmember_application/center_information/bloc/center_information_bloc.dart';
+import 'package:beefitmember_application/center_information/bloc/center_information_events.dart';
 import 'package:beefitmember_application/center_information/center_information.dart';
 import 'package:beefitmember_application/more/pages/more.dart';
 import 'package:beefitmember_application/overview/overview.dart';
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:beefitmember_application/training_progression/training_progression.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Nav extends StatefulWidget {
   @override
@@ -12,14 +15,19 @@ class Nav extends StatefulWidget {
 }
 
 class _NavState extends State<Nav> {
+  late CenterInformationBloc centerInfoBloc;
+
   @override
   void initState() {
     super.initState();
+    centerInfoBloc = BlocProvider.of<CenterInformationBloc>(context);
+    centerInfoBloc.add(LoadEvent(fitnessName: FitnessPackage.model.name));
     print("Init nav");
   }
 
   @override
   void dispose() {
+    // centerInfoBloc.dispose();
     super.dispose();
     print("Dispose nav");
   }
@@ -56,7 +64,8 @@ class _NavState extends State<Nav> {
             currentIndex: _selectedIndex,
             onTap: onItemTap,
             backgroundColor: Colors.white,
-            selectedItemColor: Color(int.parse(FitnessPackage.model.primaryColor)),
+            selectedItemColor:
+                Color(int.parse(FitnessPackage.model.primaryColor)),
           ),
         ),
       ),
@@ -64,12 +73,10 @@ class _NavState extends State<Nav> {
   }
 
   static List<Widget> generateFeatures(List<int> featureList) {
-    List<Widget> _widgetOptions = <Widget>[
-      Overview()
-    ];
+    List<Widget> _widgetOptions = <Widget>[Overview()];
 
     featureList.forEach((element) {
-      switch(element){
+      switch (element) {
         case 0:
           _widgetOptions.add(BookingMenuWidget());
           break;
@@ -87,7 +94,8 @@ class _NavState extends State<Nav> {
   }
 
   static List<BottomNavigationBarItem> generateIcons(List<int> featureList) {
-    List<BottomNavigationBarItem> _navigationBarList = <BottomNavigationBarItem>[
+    List<BottomNavigationBarItem> _navigationBarList =
+        <BottomNavigationBarItem>[
       BottomNavigationBarItem(
         icon: Icon(Icons.home),
         label: "Overview",
@@ -95,7 +103,7 @@ class _NavState extends State<Nav> {
     ];
 
     featureList.forEach((element) {
-      switch(element){
+      switch (element) {
         case 0:
           _navigationBarList.add(BottomNavigationBarItem(
             icon: Icon(Icons.calendar_today),
@@ -103,10 +111,12 @@ class _NavState extends State<Nav> {
           ));
           break;
         case 1:
-          _navigationBarList.add(BottomNavigationBarItem(
-            icon: Icon(Icons.fitness_center),
-            label: "Weight Goal",
-          ),);
+          _navigationBarList.add(
+            BottomNavigationBarItem(
+              icon: Icon(Icons.fitness_center),
+              label: "Weight Goal",
+            ),
+          );
           break;
         case 2:
           _navigationBarList.add(BottomNavigationBarItem(
@@ -125,4 +135,3 @@ class _NavState extends State<Nav> {
     return _navigationBarList;
   }
 }
-

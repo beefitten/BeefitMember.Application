@@ -1,5 +1,6 @@
 import 'package:beefitmember_application/center_information/bloc/center_information_events.dart';
 import 'package:beefitmember_application/center_information/bloc/center_information_state.dart';
+import 'package:beefitmember_application/center_information/models/center_information_package.dart';
 import 'package:beefitmember_application/center_information/models/center_information_model.dart';
 import 'package:beefitmember_application/center_information/service/center_information_service.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -23,6 +24,8 @@ class CenterInformationBloc
         GoogleMap loadedMap = await setupGoogleMaps(LatLng(
             double.parse(response.latitude), double.parse(response.longitude)));
 
+        CenterInformationPackage().update(response, loadedMap);
+
         yield InfoLoadedState(model: response, map: loadedMap);
       } catch (e) {
         yield InfoErrorState(message: "Could not gather center information");
@@ -42,19 +45,10 @@ class CenterInformationBloc
     return GoogleMap(
       zoomControlsEnabled: false,
       onMapCreated: _onMapCreated,
-      initialCameraPosition: CameraPosition(target: center, zoom: 14.7),
+      initialCameraPosition: CameraPosition(target: center, zoom: 15.1),
       markers: Set.from(markers),
     );
   }
 
   void dispose() {}
 }
-
-
-
-
-
-  // @override
-  // CenterInformationState get initialState
-
-  

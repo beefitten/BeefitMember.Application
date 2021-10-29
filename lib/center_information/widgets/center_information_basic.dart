@@ -1,20 +1,19 @@
-import 'package:beefitmember_application/center_information/models/center_information_model.dart';
+import 'package:beefitmember_application/center_information/models/center_information_package.dart';
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:flutter/material.dart';
 
 class CenterInformationBasic extends StatefulWidget {
-  CenterInformationModel _model;
-  CenterInformationBasic(this._model);
+  // CenterInformationModel _model;
+  CenterInformationBasic();
 
   @override
-  _CenterInformationBasicState createState() =>
-      _CenterInformationBasicState(_model);
+  _CenterInformationBasicState createState() => _CenterInformationBasicState();
 }
 
 class _CenterInformationBasicState extends State<CenterInformationBasic> {
-  CenterInformationModel _model;
+  // CenterInformationModel _model;
 
-  _CenterInformationBasicState(this._model);
+  _CenterInformationBasicState();
 
   @override
   void initState() {
@@ -25,20 +24,20 @@ class _CenterInformationBasicState extends State<CenterInformationBasic> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          color: Color(0xFFF7F7FC),
+          color: Color(int.parse(FitnessPackage.model.backgroundColor)),
           borderRadius: BorderRadius.only(
-              bottomRight: Radius.circular(10),
-              bottomLeft: Radius.circular(10))),
-      constraints:
-          BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.9),
+              bottomRight: Radius.circular(
+                  double.parse(FitnessPackage.model.borderRadius)),
+              bottomLeft: Radius.circular(
+                  double.parse(FitnessPackage.model.borderRadius)))),
       child: Padding(
         padding: const EdgeInsets.only(left: 12, top: 16),
         child: Container(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Phone(_model.phoneNumber),
-              Email(_model.email),
+              Phone(CenterInformationPackage.model.phoneNumber),
+              Email(CenterInformationPackage.model.email),
               Padding(
                 padding: const EdgeInsets.only(left: 2, bottom: 10),
                 child: Text('Opening hours',
@@ -50,7 +49,7 @@ class _CenterInformationBasicState extends State<CenterInformationBasic> {
               Padding(
                 padding: const EdgeInsets.only(left: 2),
                 child: Text(
-                    '${_model.openingHours.elementAt(0).item1} - ${_model.openingHours.elementAt(0).item2} (Mon - Thu)',
+                    '${CenterInformationPackage.model.openingHours.elementAt(0).item1} - ${CenterInformationPackage.model.openingHours.elementAt(0).item2} (Mon - Thu)',
                     style: TextStyle(
                         fontSize: 16,
                         color: Color(
@@ -59,7 +58,7 @@ class _CenterInformationBasicState extends State<CenterInformationBasic> {
               Padding(
                 padding: const EdgeInsets.only(left: 2, bottom: 16),
                 child: Text(
-                    '${_model.openingHours.elementAt(1).item1} - ${_model.openingHours.elementAt(1).item2} (Fri)',
+                    '${CenterInformationPackage.model.openingHours.elementAt(1).item1} - ${CenterInformationPackage.model.openingHours.elementAt(1).item2} (Fri)',
                     style: TextStyle(
                         fontSize: 16,
                         color: Color(
@@ -76,7 +75,7 @@ class _CenterInformationBasicState extends State<CenterInformationBasic> {
               Padding(
                 padding: const EdgeInsets.only(left: 2),
                 child: Text(
-                    '${_model.mannedHours.elementAt(0).item1} - ${_model.mannedHours.elementAt(0).item2} (Mon - Thu)',
+                    '${CenterInformationPackage.model.mannedHours.elementAt(0).item1} - ${CenterInformationPackage.model.mannedHours.elementAt(0).item2} (Mon - Thu)',
                     style: TextStyle(
                         fontSize: 16,
                         color: Color(
@@ -85,7 +84,7 @@ class _CenterInformationBasicState extends State<CenterInformationBasic> {
               Padding(
                 padding: const EdgeInsets.only(left: 2, bottom: 16),
                 child: Text(
-                    '${_model.mannedHours.elementAt(1).item1} - ${_model.mannedHours.elementAt(1).item2} (Mon - Thu)',
+                    '${CenterInformationPackage.model.mannedHours.elementAt(1).item1} - ${CenterInformationPackage.model.mannedHours.elementAt(1).item2} (Mon - Thu)',
                     style: TextStyle(
                         fontSize: 16,
                         color: Color(

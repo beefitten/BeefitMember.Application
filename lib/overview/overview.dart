@@ -1,8 +1,12 @@
 import 'package:beefitmember_application/bookings/pages/previewBookings/preview_bookings.dart';
+import 'package:beefitmember_application/center_information/bloc/center_information_bloc.dart';
+import 'package:beefitmember_application/center_information/bloc/center_information_events.dart';
 import 'package:beefitmember_application/center_information/preview/center_information_preview.dart';
 import 'package:beefitmember_application/overview/widgets/parallax_app_bar.dart';
+import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:beefitmember_application/training_progression/preview/training_prog_preview.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Overview extends StatefulWidget {
   @override
@@ -11,6 +15,8 @@ class Overview extends StatefulWidget {
 
 class OverviewState extends State<Overview>
     with SingleTickerProviderStateMixin {
+  late CenterInformationBloc centerInfoBloc;
+
   @override
   void initState() {
     super.initState();
@@ -49,7 +55,7 @@ final previewList = Center(
       children: [
         PreviewBookings(),
         TrainingProgPreview(),
-        CenterInformationPreview(),
+        // CenterInformationPreview(),
         PreviewBookings(),
       ],
     ),

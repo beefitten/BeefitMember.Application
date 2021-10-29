@@ -1,24 +1,16 @@
-import 'package:beefitmember_application/center_information/models/center_information_model.dart';
+import 'package:beefitmember_application/center_information/models/center_information_package.dart';
 import 'package:beefitmember_application/shared/widgets/texts.dart';
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class CenterInformationMap extends StatefulWidget {
-  final GoogleMap map;
-  final CenterInformationModel model;
-
-  CenterInformationMap(this.map, this.model);
+  CenterInformationMap();
 
   @override
-  _CenterInformationMapState createState() =>
-      _CenterInformationMapState(map, model);
+  _CenterInformationMapState createState() => _CenterInformationMapState();
 }
 
 class _CenterInformationMapState extends State<CenterInformationMap> {
-  final GoogleMap map;
-  final CenterInformationModel model;
-
-  _CenterInformationMapState(this.map, this.model);
+  _CenterInformationMapState();
 
   @override
   void initState() {
@@ -36,7 +28,7 @@ class _CenterInformationMapState extends State<CenterInformationMap> {
               constraints: BoxConstraints(
                   maxWidth: MediaQuery.of(context).size.width,
                   maxHeight: MediaQuery.of(context).size.height * 0.3),
-              child: map),
+              child: CenterInformationPackage.map),
         ),
         Container(
           constraints: BoxConstraints(
@@ -57,8 +49,11 @@ class _CenterInformationMapState extends State<CenterInformationMap> {
         child: Container(
             constraints: BoxConstraints(
                 maxWidth: MediaQuery.of(context).size.width * 0.7),
-            child: CapsText('${model.location}')),
+            child: CapsText('${CenterInformationPackage.model.location}')),
       )
     ]);
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
