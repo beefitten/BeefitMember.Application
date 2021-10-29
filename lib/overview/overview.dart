@@ -50,7 +50,7 @@ class OverviewState extends State<Overview>
         case 1:
           _widgetOptions.add(Padding(
             padding: const EdgeInsets.only(bottom: 12.0),
-            child: BookingWidget(),
+            child: YourClassesWidget(),
           ));
           break;
         case 2:

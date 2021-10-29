@@ -5,14 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
-class BookingWidget extends StatefulWidget {
-  BookingWidget();
+class YourClassesWidget extends StatefulWidget {
+  YourClassesWidget();
 
   @override
-  _BookingWidgetState createState() => _BookingWidgetState();
+  _YourClassesWidgetState createState() => _YourClassesWidgetState();
 }
 
-class _BookingWidgetState extends State<BookingWidget> {
+class _YourClassesWidgetState extends State<YourClassesWidget> {
   late BookingBloc bookingBloc;
 
   @override

@@ -43,7 +43,7 @@ class _YourBookingsState extends State<YourBookings> {
     orderList.forEach((element) {
       switch (element) {
         case 0:
-          _widgetOptions.add(BookingWidget());
+          _widgetOptions.add(YourClassesWidget());
           break;
         case 1:
           _widgetOptions.add(AppointmentsWidget());
@@ -61,8 +61,7 @@ class _YourBookingsState extends State<YourBookings> {
         if (state is BookingLoadingState)
           return Center(
               child: CircularProgressIndicator(
-            backgroundColor:
-                Color(primaryColor),
+            backgroundColor: Color(primaryColor),
           ));
         if (state is BookingSuccessState)
           return BlocBuilder<AppointmentsBloc, AppointmentsState>(
@@ -70,8 +69,7 @@ class _YourBookingsState extends State<YourBookings> {
             if (state is AppointmentsLoadingState)
               return Center(
                   child: CircularProgressIndicator(
-                backgroundColor:
-                    Color(primaryColor),
+                backgroundColor: Color(primaryColor),
               ));
             if (state is AppointmentsSuccessState)
               return ListView(children: _widgets);
