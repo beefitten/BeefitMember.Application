@@ -11,12 +11,9 @@ class Overview extends StatefulWidget {
 
 class OverviewState extends State<Overview>
     with SingleTickerProviderStateMixin {
-  late TabController _tabController;
-
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(vsync: this, length: 2);
   }
 
   @override

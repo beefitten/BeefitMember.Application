@@ -5,7 +5,6 @@ import 'package:beefitmember_application/bookings/pages/bookings_list/booking_ca
 import 'package:beefitmember_application/bookings/pages/yourbookings/models/bookingModel.dart';
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:beefitmember_application/shared/user/user.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -54,15 +53,14 @@ class _ClassesListState extends State<ClassesList> {
   //   setState(() {});
   // }
 
-  alreadyBooked(Classes currentClass){
+  alreadyBooked(Classes currentClass) {
     for (Classes item in _yourBookings!) {
-      if (item.classId == currentClass.classId)
-        return true;
+      if (item.classId == currentClass.classId) return true;
     }
     return false;
   }
 
-  setVariables(List<Classes> yourBookings, List<Classes> allClasses){
+  setVariables(List<Classes> yourBookings, List<Classes> allClasses) {
     _yourBookings = yourBookings;
     _allClasses = allClasses;
   }
@@ -70,54 +68,54 @@ class _ClassesListState extends State<ClassesList> {
   @override
   Widget build(BuildContext context) {
     bookingListBloc.add(BookingListLoadingEvent(
-        primaryGym: User.primaryGym,
-        email: User.email));
+        primaryGym: User.primaryGym, email: User.email));
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Column(
-        children: [
-          BlocBuilder<BookingListBloc, BookingListState>(
-              builder: (context, state) {
-                if (state is BookingListLoadingState)
-                  return Center(
-                    child: CircularProgressIndicator(
-                      backgroundColor: Color(int.parse(FitnessPackage.model.primaryColor)),
-                    ),
-                  );
-                if (state is BookingListSuccessState){
-                  setVariables(state.yourBookings, state.allBookings);
-                  return Expanded(
-                    child: _allClasses!.length == 0
-                        ? Padding(
-                        padding: const EdgeInsets.only(top: 20),
-                        child: Center(child: Text("You have no classes booked!")))
-                        : ListView.builder(
+      body: Column(children: [
+        BlocBuilder<BookingListBloc, BookingListState>(
+            builder: (context, state) {
+          if (state is BookingListLoadingState)
+            return Center(
+              child: CircularProgressIndicator(
+                backgroundColor:
+                    Color(int.parse(FitnessPackage.model.primaryColor)),
+              ),
+            );
+          if (state is BookingListSuccessState) {
+            setVariables(state.yourBookings, state.allBookings);
+            return Expanded(
+              child: _allClasses!.length == 0
+                  ? Padding(
+                      padding: const EdgeInsets.only(top: 20),
+                      child: Center(child: Text("You have no classes booked!")))
+                  : ListView.builder(
                       scrollDirection: Axis.vertical,
                       shrinkWrap: true,
                       itemBuilder: (BuildContext context, int index) {
                         return GestureDetector(
                             child: BookingCard(
                               className: _allClasses![index].className,
-                              timeStart: DateFormat.Hm().format(_allClasses![index].timeStart),
-                              timeEnd: DateFormat.Hm().add_MMMd().format(_allClasses![index].timeEnd),
+                              timeStart: DateFormat.Hm()
+                                  .format(_allClasses![index].timeStart),
+                              timeEnd: DateFormat.Hm()
+                                  .add_MMMd()
+                                  .format(_allClasses![index].timeEnd),
                               place: _allClasses![index].location,
                               classInfo: _allClasses![index],
                               email: User.email,
                               booked: alreadyBooked(_allClasses![index]),
                             ),
-                            onTap: () {}
-                        );
+                            onTap: () {});
                       },
                       itemCount: _allClasses!.length,
                     ),
-                  );
-                }
-                else if (state is BookingListErrorState){
-                  return Text(state.message);
-                }
-                return Container();
-              })
-        ]),
+            );
+          } else if (state is BookingListErrorState) {
+            return Text(state.message);
+          }
+          return Container();
+        })
+      ]),
     );
   }
 }

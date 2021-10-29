@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:beefitmember_application/shared/widgets/buttons.dart';
 import 'package:flutter/material.dart';
 

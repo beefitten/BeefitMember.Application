@@ -2,13 +2,11 @@ import 'package:beefitmember_application/bookings/bloc/appointments/appointments
 import 'package:beefitmember_application/bookings/bloc/appointments/appointments_events.dart';
 import 'package:beefitmember_application/bookings/bloc/appointments/appointments_state.dart';
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AppointmentsWidget extends StatefulWidget {
-  final _color;
-  AppointmentsWidget([this._color = Colors.white]);
+  AppointmentsWidget();
 
   @override
   State<AppointmentsWidget> createState() => _AppointmentsWidgetState();
@@ -17,22 +15,20 @@ class AppointmentsWidget extends StatefulWidget {
 class _AppointmentsWidgetState extends State<AppointmentsWidget> {
   late AppointmentsBloc appointmentsBloc;
 
-
-  @override void initState() {
+  @override
+  void initState() {
     appointmentsBloc = BlocProvider.of<AppointmentsBloc>(context);
     appointmentsBloc.add(AppointmentsLoadingEvent());
 
     super.initState();
   }
 
-  static generateList(AppointmentsSuccessState state){
+  static generateList(AppointmentsSuccessState state) {
     List<Widget> _widgetOptions = <Widget>[];
 
     state.appointments.forEach((element) {
-      _widgetOptions.add(BookingExample(
-          element.headline,
-          element.date,
-          element.image));
+      _widgetOptions
+          .add(BookingExample(element.headline, element.date, element.image));
     });
 
     return _widgetOptions;
@@ -55,26 +51,27 @@ class _AppointmentsWidgetState extends State<AppointmentsWidget> {
         ),
         BlocBuilder<AppointmentsBloc, AppointmentsState>(
             builder: (context, state) {
-              if (state is AppointmentsLoadingState)
-                return Center(
-                  child: CircularProgressIndicator(
-                    backgroundColor: Color(int.parse(FitnessPackage.model.primaryColor)),
-                  ),
-                );
-              if (state is AppointmentsSuccessState)
-                return Container(
-                  color: Colors.white,
-                  child: state.appointments.length == 0
-                      ? Padding(
-                      padding: const EdgeInsets.only(top: 20),
-                      child: Center(child: Text("You have no appointments booked!")))
-                      : Column(children: generateList(state))
-                );
-              else if (state is AppointmentsErrorState){
-                return Text(state.message);
-              }
-              return Container();
-            }),
+          if (state is AppointmentsLoadingState)
+            return Center(
+              child: CircularProgressIndicator(
+                backgroundColor:
+                    Color(int.parse(FitnessPackage.model.primaryColor)),
+              ),
+            );
+          if (state is AppointmentsSuccessState)
+            return Container(
+                color: Colors.white,
+                child: state.appointments.length == 0
+                    ? Padding(
+                        padding: const EdgeInsets.only(top: 20),
+                        child: Center(
+                            child: Text("You have no appointments booked!")))
+                    : Column(children: generateList(state)));
+          else if (state is AppointmentsErrorState) {
+            return Text(state.message);
+          }
+          return Container();
+        }),
       ]),
     );
   }

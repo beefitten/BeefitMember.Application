@@ -2,7 +2,6 @@ import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/app
 import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/bookings_widget.dart';
 import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/findClasses_widget.dart';
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class YourBookings extends StatefulWidget {
@@ -11,21 +10,20 @@ class YourBookings extends StatefulWidget {
 }
 
 class _YourBookingsState extends State<YourBookings> {
-
   final _widgets = generateOrder();
 
-  void initState(){
+  void initState() {
     super.initState();
   }
 
-  static generateOrder(){
+  static generateOrder() {
     var orderList = FitnessPackage.model.bookings.bookings;
     List<Widget> _widgetOptions = <Widget>[];
 
     _widgetOptions.add(FindClassesWidget());
 
     orderList.forEach((element) {
-      switch(element){
+      switch (element) {
         case 0:
           _widgetOptions.add(BookingWidget());
           break;
@@ -49,4 +47,3 @@ class _YourBookingsState extends State<YourBookings> {
     );
   }
 }
-

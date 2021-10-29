@@ -1,12 +1,10 @@
-import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:beefitmember_application/shared/widgets/texts.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class GraphBox extends StatelessWidget {
-  String title;
+  final String title;
 
-  int value;
+  final int value;
 
   GraphBox(String this.title, int this.value);
 
@@ -48,7 +46,7 @@ class GraphBox extends StatelessWidget {
 }
 
 class Graph extends StatelessWidget {
-  var color;
+  final Color color;
 
   Graph(this.color);
 
