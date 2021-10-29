@@ -20,7 +20,8 @@ class BookingWidget extends StatefulWidget {
 class _BookingWidgetState extends State<BookingWidget> {
   late BookingBloc bookingBloc;
 
-  @override void initState() {
+  @override
+  void initState() {
     bookingBloc = BlocProvider.of<BookingBloc>(context);
     super.initState();
   }
@@ -42,32 +43,34 @@ class _BookingWidgetState extends State<BookingWidget> {
             ),
           ),
         ),
-        BlocBuilder<BookingBloc, BookingsState>(
-          builder: (context, state) {
-            if (state is BookingSuccessState)
-              return state.bookings.length == 0
+        BlocBuilder<BookingBloc, BookingsState>(builder: (context, state) {
+          if (state is BookingSuccessState)
+            return state.bookings.length == 0
                 ? Padding(
-                  padding: const EdgeInsets.only(top: 20, bottom: 20),
-                  child: Center(child: Text("You have no classes booked!")))
+                    padding: const EdgeInsets.only(top: 20, bottom: 20),
+                    child: Center(child: Text("You have no classes booked!")))
                 : Container(
-                  height: MediaQuery.of(context).size.height * 0.26,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    shrinkWrap: true,
-                    itemBuilder: (BuildContext context, int index) {
-                      return CardExample(
-                          state.bookings[index].classImage,
-                          state.bookings[index].className,
-                          state.bookings[index].location,
-                          DateFormat.Hm().add_E().add_MMMd().format(state.bookings[index].timeStart));
-                    },
-                    itemCount: state.bookings.length,
+                    height: MediaQuery.of(context).size.height * 0.26,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      shrinkWrap: true,
+                      itemBuilder: (BuildContext context, int index) {
+                        return CardExample(
+                            state.bookings[index].classImage,
+                            state.bookings[index].className,
+                            state.bookings[index].location,
+                            DateFormat.Hm()
+                                .add_E()
+                                .add_MMMd()
+                                .format(state.bookings[index].timeStart));
+                      },
+                      itemCount: state.bookings.length,
                     ),
-                );
-            else if (state is BookingErrorState){
-              return Text(state.message);
-            }
-            return Container();
+                  );
+          else if (state is BookingErrorState) {
+            return Text(state.message);
+          }
+          return Container();
         })
       ]),
     );
@@ -109,7 +112,8 @@ class CardExample extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
-                      color: Color(int.parse(FitnessPackage.model.secondaryColor)),
+                      color:
+                          Color(int.parse(FitnessPackage.model.secondaryColor)),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(

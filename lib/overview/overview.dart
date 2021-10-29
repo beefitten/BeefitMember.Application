@@ -19,8 +19,8 @@ class Overview extends StatefulWidget {
   OverviewState createState() => OverviewState();
 }
 
-class OverviewState extends State<Overview> with SingleTickerProviderStateMixin {
-
+class OverviewState extends State<Overview>
+    with SingleTickerProviderStateMixin {
   List<Widget> _overViewPreviews = generateOverviews();
   late AppointmentsBloc appointmentsBloc;
   late BookingBloc bookingBloc;
@@ -63,45 +63,42 @@ class OverviewState extends State<Overview> with SingleTickerProviderStateMixin 
   Widget build(BuildContext context) {
     return Scaffold(
         body: NestedScrollView(
-          floatHeaderSlivers: true,
-          physics: const BouncingScrollPhysics(),
-          body: BlocBuilder<AppointmentsBloc, AppointmentsState>(
-            builder: (context, state) {
-              if (state is AppointmentsLoadingState){
-                return loadingScreen();
-              }
-              if (state is AppointmentsSuccessState)
-                return BlocBuilder<BookingBloc, BookingsState>(
-                  builder: (context, state) {
-                    if (state is BookingLoadingState) {
-                      return loadingScreen();
-                    }
-                    if (state is BookingSuccessState)
-                      return listOfData();
+      floatHeaderSlivers: true,
+      physics: const BouncingScrollPhysics(),
+      body: BlocBuilder<AppointmentsBloc, AppointmentsState>(
+        builder: (context, state) {
+          if (state is AppointmentsLoadingState) {
+            return loadingScreen();
+          }
+          if (state is AppointmentsSuccessState)
+            return BlocBuilder<BookingBloc, BookingsState>(
+              builder: (context, state) {
+                if (state is BookingLoadingState) {
+                  return loadingScreen();
+                }
+                if (state is BookingSuccessState) return listOfData();
 
-                    return Container();
-                  },
-                );
+                return Container();
+              },
+            );
 
-              return Container();
-            },
-          ),
-          headerSliverBuilder: (context, innerBoxIsScrolled){
-            return <Widget>[ParallaxAppBar()];
-          },
-        )
-    );
+          return Container();
+        },
+      ),
+      headerSliverBuilder: (context, innerBoxIsScrolled) {
+        return <Widget>[ParallaxAppBar()];
+      },
+    ));
   }
 
-  loadingScreen(){
+  loadingScreen() {
     return Center(
         child: CircularProgressIndicator(
-          backgroundColor: Color(int.parse(FitnessPackage.model.primaryColor)),
-        )
-    );
+      backgroundColor: Color(int.parse(FitnessPackage.model.primaryColor)),
+    ));
   }
 
-  listOfData(){
+  listOfData() {
     return ScrollConfiguration(
       behavior: ScrollSetup(),
       child: MediaQuery.removePadding(
