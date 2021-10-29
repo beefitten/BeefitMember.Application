@@ -1,3 +1,4 @@
+import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:flutter/material.dart';
 
 class CardWidget extends StatelessWidget {
@@ -15,8 +16,8 @@ class CardWidget extends StatelessWidget {
       margin: EdgeInsets.only(
           bottom: 8.0, right: MediaQuery.of(context).size.width * 0.05),
       decoration: BoxDecoration(
-          color: Color.fromRGBO(247, 247, 252, 1),
-          borderRadius: BorderRadius.circular(5.0)),
+          color: Color(int.parse(FitnessPackage.model.backgroundColor)),
+          borderRadius: BorderRadius.circular(double.parse(FitnessPackage.model.borderRadius))),
       child: Padding(
         padding: EdgeInsets.only(
             left: MediaQuery.of(context).size.width * 0.05,
