@@ -61,17 +61,17 @@ class CenterInformationHeatMap extends StatelessWidget {
               gridData: FlGridData(show: false),
               lineBarsData: [
                 LineChartBarData(
-                    spots: dataPoints,
-                    isCurved: true,
+                  spots: dataPoints,
+                  isCurved: true,
+                  colors: colorGradient.map((e) => e.withOpacity(0.5)).toList(),
+                  barWidth: 5,
+                  dotData: FlDotData(show: false),
+                  belowBarData: BarAreaData(
+                    show: true,
                     colors:
-                        colorGradient.map((e) => e.withOpacity(0.5)).toList(),
-                    barWidth: 5,
-                    dotData: FlDotData(show: false),
-                    belowBarData: BarAreaData(
-                        show: true,
-                        colors: colorGradient
-                            .map((e) => e.withOpacity(0.3))
-                            .toList()))
+                        colorGradient.map((e) => e.withOpacity(0.3)).toList(),
+                  ),
+                ),
               ],
             ),
           ),
