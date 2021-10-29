@@ -1,3 +1,5 @@
+import 'package:beefitmember_application/center_information/bloc/center_information_bloc.dart';
+import 'package:beefitmember_application/center_information/service/center_information_service.dart';
 import 'package:beefitmember_application/bookings/bloc/appointments/appointments_bloc.dart';
 import 'package:beefitmember_application/bookings/bloc/appointments/appointments_state.dart';
 import 'package:beefitmember_application/bookings/services/appointments_service.dart';
@@ -15,7 +17,6 @@ import 'package:beefitmember_application/user/pages/login/login_form.dart';
 import 'package:beefitmember_application/user/pages/pre_login/pre_login.dart';
 import 'package:beefitmember_application/user/service/login_service.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'bookings/bloc/bookingsList/bookings_list_bloc.dart';
 import 'bookings/bloc/bookingsList/bookings_list_state.dart';
@@ -36,12 +37,13 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => LoginBLoc(LoginInitState(), LoginService()),
-        ),
+            create: (context) => LoginBLoc(LoginInitState(), LoginService())),
         BlocProvider(
-          create: (context) =>
-              WeightGoalBloc(WeightGoalInitState(), WeightGoalService()),
-        ),
+            create: (context) =>
+                CenterInformationBloc(CenterInformationService())),
+        BlocProvider(
+            create: (context) =>
+                WeightGoalBloc(WeightGoalInitState(), WeightGoalService())),
         BlocProvider(
             create: (context) => LoginBLoc(LoginInitState(), LoginService())),
         BlocProvider(
@@ -51,8 +53,8 @@ class MyApp extends StatelessWidget {
             create: (context) =>
                 BookingListBloc(BookingListInitState(), BookingsService())),
         BlocProvider(
-            create: (context) =>
-                AppointmentsBloc(AppointmentsInitState(), AppointmentsService())),
+            create: (context) => AppointmentsBloc(
+                AppointmentsInitState(), AppointmentsService())),
       ],
       child: MaterialApp(
         title: 'Beefit Member',
