@@ -42,10 +42,16 @@ class _YourBookingsState extends State<YourBookings> {
     orderList.forEach((element) {
       switch (element) {
         case 0:
-          _widgetOptions.add(YourClassesWidget());
+          _widgetOptions.add(Padding(
+            padding: const EdgeInsets.only(top: 12.0),
+            child: YourClassesWidget(),
+          ));
           break;
         case 1:
-          _widgetOptions.add(PreviewBookings());
+          _widgetOptions.add(Padding(
+            padding: const EdgeInsets.only(top: 12.0),
+            child: PreviewBookings(),
+          ));
           break;
       }
     });
