@@ -76,7 +76,7 @@ class BuildLoaded extends StatelessWidget {
           child: ListView(children: [
             CenterInformationMain(),
             Padding(
-              padding: const EdgeInsets.only(top: 20, left: 10),
+              padding: const EdgeInsets.only(top: 20, left: 20),
               child: H2Text('Location heat map'),
             ),
             CenterInformationHeatMap(),
