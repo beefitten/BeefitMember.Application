@@ -17,7 +17,6 @@ class AppointmentsWidget extends StatefulWidget {
 class _AppointmentsWidgetState extends State<AppointmentsWidget> {
   late AppointmentsBloc appointmentsBloc;
 
-
   @override void initState() {
     appointmentsBloc = BlocProvider.of<AppointmentsBloc>(context);
     super.initState();
