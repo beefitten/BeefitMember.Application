@@ -13,7 +13,7 @@ class CenterInformationPreview extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            H2Text('Center informations'),
+            H2Text('Center information'),
             ShowMore(),
           ],
         ),

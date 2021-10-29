@@ -17,7 +17,7 @@ class _TimeLimitCounterState extends State<TimeLimitCounter> {
       children: [
         H3Text("Enable time limit"),
         DescriptionText(
-            "If you enable time limit this goal will become a weekly weight loss goal as well."),
+            "If you enable time limit this goal will become a weekly weight loss goal as well. NOT IMPLEMENTED"),
         PlusMinusCounter(onChanged: (x) => {x}),
       ],
     );

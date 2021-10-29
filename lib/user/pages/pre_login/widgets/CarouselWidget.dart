@@ -10,9 +10,10 @@ class CarouselWidget extends StatefulWidget {
 
 class _CarouselWidgetState extends State<CarouselWidget> {
   final images = [
-    "lib/user/pages/pre_login/assets/tree.jpg",
-    "lib/user/pages/pre_login/assets/plane.jpg",
-    "lib/user/pages/pre_login/assets/jura.png",
+    "lib/user/pages/pre_login/assets/thanh.jpg",
+    "lib/user/pages/pre_login/assets/alex.jpg",
+    "lib/user/pages/pre_login/assets/jonas.jpg",
+    "lib/user/pages/pre_login/assets/niko.png",
   ];
 
   int activeIndex = 0;

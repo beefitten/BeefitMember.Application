@@ -10,6 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
+final int primaryColor = int.parse(FitnessPackage.model.primaryColor);
+
 class ClassesList extends StatefulWidget {
   const ClassesList({Key? key}) : super(key: key);
 
@@ -35,34 +37,14 @@ class _ClassesListState extends State<ClassesList> {
     });
   }
 
-  // Future<void> getData() async {
-  //   // All classes
-  //   var fitness = User.primaryGym;
-  //   var allClassesUrl = Uri.parse('https://bfmbookings.azurewebsites.net/getClasses/$fitness');
-  //   var allClassesResponse = await http.get(allClassesUrl);
-  //   List<dynamic> allClassesBody = cnv.jsonDecode(allClassesResponse.body);
-  //   _allClasses = allClassesBody.map((dynamic item) => Classes.fromJson(item)).toList();
-  //
-  //
-  //   // Your bookings
-  //   var userEmail = User.email;
-  //   var yourBookingsUrl = Uri.parse('https://bfmbookings.azurewebsites.net/getUserClasses/$userEmail');
-  //   var yourBookingsResponse = await http.get(yourBookingsUrl);
-  //   List<dynamic> yourBookingBody = cnv.jsonDecode(yourBookingsResponse.body);
-  //   _yourBookings = yourBookingBody.map((dynamic item) => Classes.fromJson(item)).toList();
-  //
-  //   setState(() {});
-  // }
-
-  alreadyBooked(Classes currentClass){
+  alreadyBooked(Classes currentClass) {
     for (Classes item in _yourBookings!) {
-      if (item.classId == currentClass.classId)
-        return true;
+      if (item.classId == currentClass.classId) return true;
     }
     return false;
   }
 
-  setVariables(List<Classes> yourBookings, List<Classes> allClasses){
+  setVariables(List<Classes> yourBookings, List<Classes> allClasses) {
     _yourBookings = yourBookings;
     _allClasses = allClasses;
   }
@@ -70,54 +52,53 @@ class _ClassesListState extends State<ClassesList> {
   @override
   Widget build(BuildContext context) {
     bookingListBloc.add(BookingListLoadingEvent(
-        primaryGym: User.primaryGym,
-        email: User.email));
+        primaryGym: User.primaryGym, email: User.email));
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Column(
-        children: [
-          BlocBuilder<BookingListBloc, BookingListState>(
-              builder: (context, state) {
-                if (state is BookingListLoadingState)
-                  return Center(
-                    child: CircularProgressIndicator(
-                      backgroundColor: Color(int.parse(FitnessPackage.model.primaryColor)),
-                    ),
-                  );
-                if (state is BookingListSuccessState){
-                  setVariables(state.yourBookings, state.allBookings);
-                  return Expanded(
-                    child: _allClasses!.length == 0
-                        ? Padding(
-                        padding: const EdgeInsets.only(top: 20),
-                        child: Center(child: Text("You have no classes booked!")))
-                        : ListView.builder(
+      body: Column(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+        BlocBuilder<BookingListBloc, BookingListState>(
+            builder: (context, state) {
+          if (state is BookingListLoadingState)
+            return Center(
+              child: CircularProgressIndicator(
+                backgroundColor: Color(primaryColor),
+              ),
+            );
+          if (state is BookingListSuccessState) {
+            setVariables(state.yourBookings, state.allBookings);
+            return Expanded(
+              child: _allClasses!.length == 0
+                  ? Padding(
+                      padding: const EdgeInsets.only(top: 20),
+                      child: Center(child: Text("You have no classes booked!")))
+                  : ListView.builder(
                       scrollDirection: Axis.vertical,
                       shrinkWrap: true,
                       itemBuilder: (BuildContext context, int index) {
                         return GestureDetector(
                             child: BookingCard(
                               className: _allClasses![index].className,
-                              timeStart: DateFormat.Hm().format(_allClasses![index].timeStart),
-                              timeEnd: DateFormat.Hm().add_MMMd().format(_allClasses![index].timeEnd),
+                              timeStart: DateFormat.Hm()
+                                  .format(_allClasses![index].timeStart),
+                              timeEnd: DateFormat.Hm()
+                                  .add_MMMd()
+                                  .format(_allClasses![index].timeEnd),
                               place: _allClasses![index].location,
                               classInfo: _allClasses![index],
                               email: User.email,
                               booked: alreadyBooked(_allClasses![index]),
                             ),
-                            onTap: () {}
-                        );
+                            onTap: () {});
                       },
                       itemCount: _allClasses!.length,
                     ),
-                  );
-                }
-                else if (state is BookingListErrorState){
-                  return Text(state.message);
-                }
-                return Container();
-              })
-        ]),
+            );
+          } else if (state is BookingListErrorState) {
+            return Text(state.message);
+          }
+          return Container();
+        })
+      ]),
     );
   }
 }

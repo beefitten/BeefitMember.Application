@@ -7,6 +7,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 final blue = Color(int.parse(FitnessPackage.model.secondaryColor));
+final int backgroundColor = int.parse(FitnessPackage.model.backgroundColor);
+final double borderRadius = double.parse(FitnessPackage.model.borderRadius);
+final int secondaryColor = int.parse(FitnessPackage.model.secondaryColor);
+final int primaryColor = int.parse(FitnessPackage.model.primaryColor);
 
 class CenterInformationHeatMap extends StatefulWidget {
   CenterInformationHeatMap();
@@ -18,8 +22,8 @@ class CenterInformationHeatMap extends StatefulWidget {
 
 class _CenterInformationHeatMapState extends State<CenterInformationHeatMap> {
   final List<Color> colorGradient = [
-    Color(int.parse(FitnessPackage.model.secondaryColor)),
-    Color(int.parse(FitnessPackage.model.primaryColor)),
+    Color(secondaryColor),
+    Color(primaryColor),
   ];
   final List<FlSpot> dataPoints = [];
 
@@ -68,13 +72,12 @@ class BuildLoaded extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(
-              double.parse(FitnessPackage.model.borderRadius))),
+          borderRadius: BorderRadius.circular(borderRadius)),
       elevation: double.parse(FitnessPackage.model.elevation),
       child: Stack(children: [
         Container(
           decoration: BoxDecoration(
-              color: Color(int.parse(FitnessPackage.model.backgroundColor)),
+              color: Color(backgroundColor),
               borderRadius: BorderRadius.circular(
                   double.parse(FitnessPackage.model.elevation))),
           constraints: BoxConstraints(
@@ -120,7 +123,7 @@ class BuildLoaded extends StatelessWidget {
           child: Text('HOT',
               style: TextStyle(
                   fontSize: 26,
-                  color: Color(int.parse(FitnessPackage.model.secondaryColor)),
+                  color: Color(secondaryColor),
                   fontWeight: FontWeight.bold)),
         )
       ]),

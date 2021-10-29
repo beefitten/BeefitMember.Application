@@ -13,6 +13,9 @@ import 'bloc/center_information_state.dart';
 class CenterInformation extends StatefulWidget {
   CenterInformation();
 
+  bool hasHeatMap = FitnessPackage.model.centerInformation.hasHeatmap;
+  bool showLocation = FitnessPackage.model.bookings.showLocation;
+
   @override
   State<CenterInformation> createState() => _CenterInformationState();
 }

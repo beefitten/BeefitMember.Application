@@ -10,7 +10,7 @@ class BookingsService {
 
     // All classes
     var fitness = primaryGym;
-    var allClassesUrl = Uri.parse('https://bfmbookings.azurewebsites.net/getClasses/$fitness');
+    var allClassesUrl = Uri.parse('https://beefitmemberbookings.azurewebsites.net/getClasses/$fitness');
     var allClassesResponse = await http.get(allClassesUrl);
     List<dynamic> allClassesBody = cnv.jsonDecode(allClassesResponse.body);
     _allClasses = allClassesBody.map((dynamic item) => Classes.fromJson(item)).toList();
@@ -18,7 +18,7 @@ class BookingsService {
 
     // Your bookings
     var userEmail = email;
-    var yourBookingsUrl = Uri.parse('https://bfmbookings.azurewebsites.net/getUserClasses/$userEmail');
+    var yourBookingsUrl = Uri.parse('https://beefitmemberbookings.azurewebsites.net/getUserClasses/$userEmail');
     var yourBookingsResponse = await http.get(yourBookingsUrl);
     List<dynamic> yourBookingBody = cnv.jsonDecode(yourBookingsResponse.body);
     _yourBookings = yourBookingBody.map((dynamic item) => Classes.fromJson(item)).toList();
@@ -32,7 +32,7 @@ class BookingsService {
 
   getBookings(String email) async {
     var userEmail = email;
-    var endpointUrl = Uri.parse('https://bfmbookings.azurewebsites.net/getUserClasses/$userEmail');
+    var endpointUrl = Uri.parse('https://beefitmemberbookings.azurewebsites.net/getUserClasses/$userEmail');
 
     var response = await http.get(endpointUrl);
 

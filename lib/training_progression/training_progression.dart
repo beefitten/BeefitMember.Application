@@ -4,6 +4,9 @@ import 'package:beefitmember_application/shared/widgets/buttons.dart';
 import 'package:beefitmember_application/shared/widgets/texts.dart';
 import 'package:beefitmember_application/training_progression/bloc/weightgoal_bloc.dart';
 import 'package:beefitmember_application/training_progression/bloc/weightgoal_events.dart';
+import 'package:beefitmember_application/training_progression/preview/training_prog_preview.dart';
+import 'package:beefitmember_application/training_progression/widgets/big_circle_chart.dart';
+import 'package:beefitmember_application/training_progression/widgets/graph_box.dart';
 import 'package:beefitmember_application/training_progression/widgets/image_box.dart';
 import 'package:beefitmember_application/training_progression/widgets/plus_minus_counter.dart';
 import 'package:beefitmember_application/training_progression/widgets/time_limit_counter.dart';
@@ -27,6 +30,14 @@ class _TrainingProgressionState extends State<TrainingProgression> {
 
   @override
   Widget build(BuildContext context) {
+    if (getLatestWeightGoal() == 0) {
+      return emptyWeightGoalPage();
+    } else {
+      return weightGoalPage();
+    }
+  }
+
+  Container emptyWeightGoalPage() {
     return Container(
       child: Padding(
         padding: const EdgeInsets.only(left: 20.0, right: 20.0),
@@ -37,7 +48,7 @@ class _TrainingProgressionState extends State<TrainingProgression> {
             children: [
               H1Text("Weight Goal"),
               ImageBox(
-                "https://2.bp.blogspot.com/-q3qJmAW1T_0/Vty1RAbGe4I/AAAAAAAAAlc/otdCoDEdMl8/s640/Arnold-Schwarzenegger-Champion-BodyBuilder.jpg",
+                FitnessPackage.model.weightGoal.imagePath,
               ),
               H2Text("Setup a weight goal"),
               Container(
@@ -48,7 +59,7 @@ class _TrainingProgressionState extends State<TrainingProgression> {
               CustomButton(
                 "Setup new weight goal",
                 () => _showSheet(),
-                Color(int.parse(FitnessPackage.model.primaryColor)),
+                Color(int.parse(FitnessPackage.model.thirdColor)),
               ),
             ],
           ),
@@ -68,12 +79,15 @@ class _TrainingProgressionState extends State<TrainingProgression> {
               topLeft: Radius.circular(20), topRight: Radius.circular(20))),
       elevation: 3,
       builder: (context) {
-        return _buildBottomNavMenu();
+        return _buildBottomSheet(80, 90);
       },
     );
   }
 
-  Widget _buildBottomNavMenu() {
+  Widget _buildBottomSheet(int currentWeight, int targetWeight) {
+    int cw = currentWeight;
+    int tw = targetWeight;
+
     return Padding(
       padding: const EdgeInsets.only(left: 20.0, right: 20.0),
       child: Column(
@@ -83,9 +97,9 @@ class _TrainingProgressionState extends State<TrainingProgression> {
           DescriptionText(
               "Get motivated by setting up a few simple weekly goals, and the app will keep track of whether you archive the goals every week."),
           H3Text("Your current weight"),
-          PlusMinusCounter(onChanged: (value) => {value}),
+          PlusMinusCounter(onChanged: (value) => {cw = value}),
           H3Text("Your goal weight"),
-          PlusMinusCounter(onChanged: (value) => {value}),
+          PlusMinusCounter(onChanged: (value) => {tw = value}),
           TimeLimitCounter(),
           CustomButton(
             "Save",
@@ -93,14 +107,43 @@ class _TrainingProgressionState extends State<TrainingProgression> {
               weightGoalBloc.add(
                 SaveButtonPressed(
                   user: User.name,
-                  currentWeight: 90,
-                  targetWeight: 80,
+                  currentWeight: cw,
+                  targetWeight: tw,
                 ),
               ),
             },
             Color(int.parse(FitnessPackage.model.primaryColor)),
           ),
         ],
+      ),
+    );
+  }
+
+  int getLatestWeightGoal() {
+    //NOT IMPLEMENTED: Should retrive from database
+    return 0;
+  }
+
+  Widget weightGoalPage() {
+    return Scaffold(
+      body: MediaQuery.removePadding(
+        context: context,
+        removeTop: true,
+        child: Padding(
+          padding: const EdgeInsets.only(left: 8, right: 8),
+          child: ListView(
+            children: [
+              H1Text("Weight Goal"),
+              BigCircleChart(57),
+              Center(
+                  child: DescriptionText(
+                      "That's ${43}% of your goal of loosing ${30} Kg")),
+              GraphBox("Weight", 85),
+              GraphBox("Weight", 85),
+              TrainingProgPreview(),
+            ],
+          ),
+        ),
       ),
     );
   }

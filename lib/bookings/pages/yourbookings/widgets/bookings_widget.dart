@@ -28,14 +28,13 @@ class _BookingWidgetState extends State<BookingWidget> {
 
   @override
   Widget build(BuildContext context) {
-    bookingBloc.add(BookingLoadingEvent(email: User.email));
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Padding(
           padding: const EdgeInsets.all(10.0),
           child: Text(
-            "Your Bookings",
+            "Your Classes",
             textAlign: TextAlign.left,
             style: TextStyle(
               color: Colors.black,
@@ -45,22 +44,14 @@ class _BookingWidgetState extends State<BookingWidget> {
           ),
         ),
         BlocBuilder<BookingBloc, BookingsState>(builder: (context, state) {
-          if (state is BookingLoadingState)
-            return Center(
-              child: CircularProgressIndicator(
-                backgroundColor:
-                    Color(int.parse(FitnessPackage.model.primaryColor)),
-              ),
-            );
           if (state is BookingSuccessState)
-            return Container(
-              color: Colors.white,
-              height: MediaQuery.of(context).size.height * 0.26,
-              child: state.bookings.length == 0
-                  ? Padding(
-                      padding: const EdgeInsets.only(top: 20),
-                      child: Center(child: Text("You have no classes booked1")))
-                  : ListView.builder(
+            return state.bookings.length == 0
+                ? Padding(
+                    padding: const EdgeInsets.only(top: 20, bottom: 20),
+                    child: Center(child: Text("You have no classes booked!")))
+                : Container(
+                    height: MediaQuery.of(context).size.height * 0.26,
+                    child: ListView.builder(
                       scrollDirection: Axis.horizontal,
                       shrinkWrap: true,
                       itemBuilder: (BuildContext context, int index) {
@@ -75,7 +66,7 @@ class _BookingWidgetState extends State<BookingWidget> {
                       },
                       itemCount: state.bookings.length,
                     ),
-            );
+                  );
           else if (state is BookingErrorState) {
             return Text(state.message);
           }
