@@ -6,11 +6,15 @@ import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.da
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 final int secondaryColor = int.parse(FitnessPackage.model.secondaryColor);
 final int primaryColor = int.parse(FitnessPackage.model.primaryColor);
+final TextStyle fontFamily =
+      GoogleFonts.getFont(FitnessPackage.model.font.generalFont);
+
 
 class BookingCard extends StatefulWidget {
   final String timeStart, timeEnd, className, place, email;
@@ -192,7 +196,8 @@ class _BookingCardState extends State<BookingCard> {
           child: Text(
             txt,
             style: TextStyle(
-                fontSize: 15.0, color: Color.fromRGBO(78, 75, 102, 1)),
+                fontSize: 15.0, color: Color.fromRGBO(78, 75, 102, 1),
+            ),
           ),
         );
 
@@ -201,7 +206,8 @@ class _BookingCardState extends State<BookingCard> {
           child: Text(
             txt,
             style: TextStyle(
-                fontSize: 13.0, color: Color.fromRGBO(138, 141, 178, 1)),
+                fontSize: 13.0, color: Color.fromRGBO(138, 141, 178, 1),
+            ),
           ),
         );
 
@@ -212,8 +218,7 @@ class _BookingCardState extends State<BookingCard> {
               msg: "$className Is Fully Booked...",
               toastLength: Toast.LENGTH_SHORT,
               gravity: ToastGravity.BOTTOM,
-              backgroundColor:
-                  Color(primaryColor),
+              backgroundColor: Color(primaryColor),
               textColor: Colors.white,
               fontSize: 16.0);
           return;
@@ -224,7 +229,10 @@ class _BookingCardState extends State<BookingCard> {
 
         if (_isBooked) deleteBooking(classInfo.classId, email);
       },
-      child: Text(this._isBooked ? booked : book),
+      child: Text(
+        this._isBooked ? booked : book, 
+        style: fontFamily,
+      ),
       style: ElevatedButton.styleFrom(
           primary: this._isBooked ? green : standardBtnColor),
     );

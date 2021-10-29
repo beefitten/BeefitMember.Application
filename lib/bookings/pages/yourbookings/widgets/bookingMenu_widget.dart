@@ -4,6 +4,11 @@ import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.da
 import 'package:beefitmember_application/shared/widgets/texts.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+final TextStyle fontFamily =
+      GoogleFonts.getFont(FitnessPackage.model.font.generalFont);
+
 
 class BookingMenuWidget extends StatelessWidget {
   @override
@@ -18,7 +23,7 @@ class BookingMenuWidget extends StatelessWidget {
           children: [
             YourBookings(),
             ClassesList(),
-            Center(child: Text("Coming soon!")),
+            Center(child: Text("Coming soon!", style: fontFamily)),
           ],
         ),
       ),
@@ -43,16 +48,18 @@ class CustomAppBar extends StatelessWidget {
                 color: Color(int.parse(FitnessPackage.model.secondaryColor)),
               ),
               labelStyle:
-                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                  TextStyle(
+                    color: Colors.white, 
+                    fontWeight: FontWeight.bold),
               //For Selected tab
               unselectedLabelStyle: TextStyle(
                 fontSize: 14,
               ),
               unselectedLabelColor: Colors.grey,
               tabs: [
-                Tab(icon: Text("My Bookings")),
-                Tab(icon: Text("Classes")),
-                Tab(icon: Text("Events")),
+                Tab(icon: Text("My Bookings", style: fontFamily,)),
+                Tab(icon: Text("Classes", style: fontFamily)),
+                Tab(icon: Text("Events", style: fontFamily)),
               ]),
         ),
     ]);

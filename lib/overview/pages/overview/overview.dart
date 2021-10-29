@@ -1,8 +1,13 @@
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 final String logoPath = "lib/shared/assets/images/logo.svg";
+
+final TextStyle fontFamily =
+      GoogleFonts.getFont(FitnessPackage.model.font.generalFont);
+
 
 class Overview extends StatefulWidget {
   @override
@@ -87,14 +92,14 @@ final sliverBar = SliverAppBar(
 final previewList = Center(
   child: ListView(
     children: [
-      Center(child: Text('data')),
+      Center(child: Text('data', style: fontFamily,)),
       Center(child: TestWdiget()),
-      Center(child: Text(FitnessPackage.model.name)),
-      Center(child: Text(FitnessPackage.model.name)),
-      Center(child: Text(FitnessPackage.model.name)),
-      Center(child: Text(FitnessPackage.model.name)),
-      Center(child: Text(FitnessPackage.model.name)),
-      Center(child: Text(FitnessPackage.model.name)),
+      Center(child: Text(FitnessPackage.model.name, style: fontFamily,)),
+      Center(child: Text(FitnessPackage.model.name, style: fontFamily,)),
+      Center(child: Text(FitnessPackage.model.name, style: fontFamily)),
+      Center(child: Text(FitnessPackage.model.name, style: fontFamily,)),
+      Center(child: Text(FitnessPackage.model.name, style: fontFamily,)),
+      Center(child: Text(FitnessPackage.model.name, style: fontFamily,)),
     ],
   ),
 );

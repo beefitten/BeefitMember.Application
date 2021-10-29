@@ -1,3 +1,4 @@
+import 'package:beefitmember_application/bookings/pages/bookings_list/bookings_list.dart';
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';

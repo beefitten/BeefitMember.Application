@@ -1,3 +1,4 @@
+import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -75,6 +76,7 @@ class DescriptionText extends StatelessWidget {
   }
 }
 
+
 class CapsText extends StatelessWidget {
   final String _text;
 
@@ -85,7 +87,7 @@ class CapsText extends StatelessWidget {
       _text.toUpperCase(),
       style: GoogleFonts.mulish(
           textStyle: TextStyle(
-              fontSize: 22, fontWeight: FontWeight.w800, color: Colors.white)),
+              fontSize: 22, fontWeight: FontWeight.w800, color: Colors.white,)),
     );
   }
 }

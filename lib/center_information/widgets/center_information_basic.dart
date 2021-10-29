@@ -1,12 +1,15 @@
 import 'package:beefitmember_application/bookings/pages/bookings_list/booking_card.dart';
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 var logoPath =
     "https://d1k976m6pd0u9m.cloudfront.net/public/employer/logo/fdw6c63xu1_Fitness_World.png";
 
 var mondayThursday = '09.00 - 16.00';
 var friday = '09.00 - 14.00';
+
+final TextStyle fontFamily = GoogleFonts.getFont(FitnessPackage.model.font.generalFont);
 
 class CenterInformationBasic extends StatefulWidget {
   CenterInformationBasic();
@@ -65,15 +68,15 @@ class _CenterInformationBasicState extends State<CenterInformationBasic> {
                     style: TextStyle(
                         fontSize: 14,
                         color: Colors.grey,
-                        fontWeight: FontWeight.w800)),
+                        fontWeight: FontWeight.w800,)),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 2),
                 child: Text('$mondayThursday (Mon-Thu)',
                     style: TextStyle(
                         fontSize: 16,
-                        color: Color(
-                            secondaryColor))),
+                        color: Color(secondaryColor),
+                    )),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 2, bottom: 16),
@@ -81,7 +84,7 @@ class _CenterInformationBasicState extends State<CenterInformationBasic> {
                     style: TextStyle(
                         fontSize: 16,
                         color: Color(
-                            secondaryColor))),
+                            secondaryColor),)),
               ),
             ],
           ),
@@ -103,7 +106,7 @@ final phone = Row(
               style: TextStyle(
                   fontSize: 14,
                   color: Colors.grey,
-                  fontWeight: FontWeight.w800)),
+                  fontWeight: FontWeight.w800,)),
         ),
         Padding(
           padding: const EdgeInsets.only(left: 2, bottom: 16),
@@ -111,7 +114,7 @@ final phone = Row(
               style: TextStyle(
                   fontSize: 16,
                   color:
-                      Color(secondaryColor))),
+                      Color(secondaryColor),)),
         ),
       ],
     ),
@@ -138,7 +141,7 @@ final email = Row(
               style: TextStyle(
                   fontSize: 14,
                   color: Colors.grey,
-                  fontWeight: FontWeight.w800)),
+                  fontWeight: FontWeight.w800,)),
         ),
         Padding(
           padding: const EdgeInsets.only(left: 2, bottom: 16),
@@ -146,7 +149,7 @@ final email = Row(
               style: TextStyle(
                   fontSize: 16,
                   color:
-                      Color(secondaryColor))),
+                      Color(secondaryColor),),)
         ),
       ],
     ),

@@ -82,7 +82,7 @@ class _UserLoginState extends State<Login> {
                 "Welcome!",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 24,
+                  fontSize: 24
                 ),
               ),
               SizedBox(height: 6.0),
@@ -90,7 +90,7 @@ class _UserLoginState extends State<Login> {
                 "Please enter your email and password",
                 style: TextStyle(
                   fontSize: 13,
-                  color: Color.fromRGBO(138, 141, 178, 1),
+                  color: Color.fromRGBO(138, 141, 178, 1)
                 ),
               )
             ],
@@ -112,8 +112,8 @@ class _UserLoginState extends State<Login> {
           return Center(
               child: Padding(
             padding: const EdgeInsets.only(top: 125),
-            child: Text(state.message, style: TextStyle(color: Colors.red)),
-          ));
+            child: Text(state.message, style: TextStyle(color: Colors.red),
+          )));
         } else if (state is LoginLoadingState) {
           return Padding(
             padding: const EdgeInsets.only(top: 40),

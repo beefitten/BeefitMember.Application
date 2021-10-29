@@ -1,6 +1,11 @@
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:beefitmember_application/shared/user/user.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+
+final TextStyle fontFamily =
+      GoogleFonts.getFont(FitnessPackage.model.font.generalFont);
 
 class MemberShipCard extends StatelessWidget {
 
@@ -27,11 +32,11 @@ class MemberShipCard extends StatelessWidget {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(bottom: 8.0),
-                  child: Text("Membership: " + User.subscription),
+                  child: Text("Membership: " + User.subscription, style: fontFamily,),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 8.0),
-                  child: Text("Primary Gym: " + User.primaryGym),
+                  child: Text("Primary Gym: " + User.primaryGym, style: fontFamily),
                 )
               ],
             )

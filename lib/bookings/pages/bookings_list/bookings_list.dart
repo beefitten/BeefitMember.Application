@@ -8,9 +8,13 @@ import 'package:beefitmember_application/shared/user/user.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
 final int primaryColor = int.parse(FitnessPackage.model.primaryColor);
+final TextStyle fontFamily =
+      GoogleFonts.getFont(FitnessPackage.model.font.generalFont);
+
 
 class ClassesList extends StatefulWidget {
   const ClassesList({Key? key}) : super(key: key);
@@ -70,7 +74,7 @@ class _ClassesListState extends State<ClassesList> {
               child: _allClasses!.length == 0
                   ? Padding(
                       padding: const EdgeInsets.only(top: 20),
-                      child: Center(child: Text("You have no classes booked!")))
+                      child: Center(child: Text("You have no classes booked!", style: fontFamily,)))
                   : ListView.builder(
                       scrollDirection: Axis.vertical,
                       shrinkWrap: true,
@@ -94,7 +98,7 @@ class _ClassesListState extends State<ClassesList> {
                     ),
             );
           } else if (state is BookingListErrorState) {
-            return Text(state.message);
+            return Text(state.message, style: fontFamily,);
           }
           return Container();
         })
