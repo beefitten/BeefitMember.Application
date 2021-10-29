@@ -20,10 +20,7 @@ class GraphBox extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           color: Colors.grey.shade200,
-          // color: Color(int.parse(FitnessPackage.model.primaryColor)),
         ),
-
-        // color: Color(int.parse(FitnessPackage.model.backgroundColor)),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
