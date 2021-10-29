@@ -36,24 +36,30 @@ class _AppointmentsWidgetState extends State<AppointmentsWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      BlocBuilder<AppointmentsBloc, AppointmentsState>(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        BlocBuilder<AppointmentsBloc, AppointmentsState>(
           builder: (context, state) {
-        if (state is AppointmentsSuccessState)
-          return Container(
-              color: Colors.white,
-              child: state.appointments.length == 0
-                  ? Padding(
-                      padding: const EdgeInsets.only(top: 20),
-                      child: Center(
-                          child: Text("You have no appointments booked!")))
-                  : Column(children: generateList(state)));
-        else if (state is AppointmentsErrorState) {
-          return Text(state.message);
-        }
-        return Container();
-      }),
-    ]);
+            if (state is AppointmentsSuccessState)
+              return Container(
+                  color: Colors.white,
+                  child: state.appointments.length == 0
+                      ? Padding(
+                          padding: const EdgeInsets.only(top: 20),
+                          child: Center(
+                            child: Text("You have no appointments booked!"),
+                          ),
+                        )
+                      : Column(children: generateList(state)));
+            else if (state is AppointmentsErrorState) {
+              return Text(state.message);
+            }
+            return Container();
+          },
+        ),
+      ],
+    );
   }
 }
 
