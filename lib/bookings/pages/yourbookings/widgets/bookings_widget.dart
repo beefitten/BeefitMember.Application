@@ -23,51 +23,49 @@ class _BookingWidgetState extends State<BookingWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Text(
-            "Your Classes",
-            textAlign: TextAlign.left,
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: MediaQuery.of(context).size.height * 0.03,
-              fontWeight: FontWeight.bold,
-            ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "Your Classes",
+          textAlign: TextAlign.left,
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: MediaQuery.of(context).size.height * 0.03,
+            fontWeight: FontWeight.bold,
           ),
         ),
-        BlocBuilder<BookingBloc, BookingsState>(builder: (context, state) {
-          if (state is BookingSuccessState)
-            return state.bookings.length == 0
-                ? Padding(
-                    padding: const EdgeInsets.only(top: 20, bottom: 20),
-                    child: Center(child: Text("You have no classes booked!")))
-                : Container(
-                    height: MediaQuery.of(context).size.height * 0.26,
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      shrinkWrap: true,
-                      itemBuilder: (BuildContext context, int index) {
-                        return CardExample(
+        BlocBuilder<BookingBloc, BookingsState>(
+          builder: (context, state) {
+            if (state is BookingSuccessState)
+              return state.bookings.length == 0
+                  ? Center(child: Text("You have no classes booked!"))
+                  : Container(
+                      height: MediaQuery.of(context).size.height * 0.26,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        shrinkWrap: true,
+                        itemBuilder: (BuildContext context, int index) {
+                          return CardExample(
                             state.bookings[index].classImage,
                             state.bookings[index].className,
                             state.bookings[index].location,
                             DateFormat.Hm()
                                 .add_E()
                                 .add_MMMd()
-                                .format(state.bookings[index].timeStart));
-                      },
-                      itemCount: state.bookings.length,
-                    ),
-                  );
-          else if (state is BookingErrorState) {
-            return Text(state.message);
-          }
-          return Container();
-        })
-      ]),
+                                .format(state.bookings[index].timeStart),
+                          );
+                        },
+                        itemCount: state.bookings.length,
+                      ),
+                    );
+            else if (state is BookingErrorState) {
+              return Text(state.message);
+            }
+            return Container();
+          },
+        )
+      ],
     );
   }
 }
