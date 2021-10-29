@@ -83,10 +83,11 @@ class ValueText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      "${_value} kg",
+      "$_value kg",
       style: TextStyle(
-          fontSize: MediaQuery.of(context).size.height * 0.04,
-          fontWeight: FontWeight.bold),
+        fontSize: MediaQuery.of(context).size.height * 0.04,
+        fontWeight: FontWeight.bold,
+      ),
     );
   }
 }
