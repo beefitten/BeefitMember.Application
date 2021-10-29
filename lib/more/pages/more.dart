@@ -4,6 +4,7 @@ import 'package:beefitmember_application/more/widgets/membership_card.dart';
 import 'package:beefitmember_application/more/widgets/membership_header.dart';
 import 'package:beefitmember_application/more/widgets/more_widget.dart';
 import 'package:beefitmember_application/more/widgets/profile_info.dart';
+import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -57,7 +58,7 @@ class _MoreState extends State<More> {
                       padding: EdgeInsets.only(
                         left: MediaQuery.of(context).size.width * 0.05,
                       ),
-                      child: MoreWidget(),
+                      child: FitnessPackage.model.more.hasMoreMenu? MoreWidget():Container(),
                     ),
                     Padding(
                       padding: EdgeInsets.only(
