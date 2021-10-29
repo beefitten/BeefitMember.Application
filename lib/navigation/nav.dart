@@ -78,7 +78,7 @@ class _NavState extends State<Nav> {
     featureList.forEach((element) {
       switch (element) {
         case 0:
-          _widgetOptions.add(BookingMenuWidget());
+          _widgetOptions.add(BookingsPage());
           break;
         case 1:
           _widgetOptions.add(TrainingProgression());

@@ -4,7 +4,7 @@ import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.da
 import 'package:beefitmember_application/shared/widgets/texts.dart';
 import 'package:flutter/material.dart';
 
-class BookingMenuWidget extends StatelessWidget {
+class BookingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
