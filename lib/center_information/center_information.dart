@@ -18,7 +18,7 @@ class CenterInformation extends StatelessWidget {
         context: context,
         removeTop: true,
         child: Padding(
-          padding: const EdgeInsets.only(left: 8, right: 8),
+          padding: const EdgeInsets.only(left: 20, right: 20),
           child: Column(
             children: [
               H1Text('Center information'),

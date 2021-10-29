@@ -136,17 +136,20 @@ class _TrainingProgressionState extends State<TrainingProgression> {
             children: [
               H1Text("Weight Goal"),
               Expanded(
-                child: ListView(
-                  children: [
-                    SizedBox(height: 10),
-                    BigCircleChart(57),
-                    Center(
-                        child: DescriptionText(
-                            "That's ${43}% of your goal of loosing ${30} Kg")),
-                    GraphBox("Weight", 85, dataPoints1),
-                    GraphBox("Weight", 85, dataPoints2),
-                    TrainingProgPreview(),
-                  ],
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: ListView(
+                    children: [
+                      SizedBox(height: 10),
+                      BigCircleChart(57),
+                      Center(
+                          child: DescriptionText(
+                              "That's ${43}% of your goal of loosing ${30} Kg")),
+                      GraphBox("Weight", 85, dataPoints1),
+                      GraphBox("Weight", 85, dataPoints2),
+                      TrainingProgPreview(),
+                    ],
+                  ),
                 ),
               ),
             ],
