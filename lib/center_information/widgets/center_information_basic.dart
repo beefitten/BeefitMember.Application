@@ -19,10 +19,10 @@ class _CenterInformationBasicState extends State<CenterInformationBasic> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          color: Color(0xFFF7F7FC),
+          color: Color(int.parse(FitnessPackage.model.backgroundColor)),
           borderRadius: BorderRadius.only(
-              bottomRight: Radius.circular(10),
-              bottomLeft: Radius.circular(10))),
+              bottomRight: Radius.circular(double.parse(FitnessPackage.model.borderRadius)),
+              bottomLeft: Radius.circular(double.parse(FitnessPackage.model.borderRadius)))),
       constraints:
           BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.9),
       child: Padding(
