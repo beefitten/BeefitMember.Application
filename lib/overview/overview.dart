@@ -5,7 +5,6 @@ import 'package:beefitmember_application/bookings/bloc/bookings_bloc.dart';
 import 'package:beefitmember_application/bookings/bloc/bookings_events.dart';
 import 'package:beefitmember_application/bookings/bloc/bookings_state.dart';
 import 'package:beefitmember_application/bookings/pages/previewBookings/preview_bookings.dart';
-import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/appointments_widget.dart';
 import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/bookings_widget.dart';
 import 'package:beefitmember_application/center_information/preview/center_information_preview.dart';
 import 'package:beefitmember_application/overview/widgets/parallax_app_bar.dart';
@@ -63,49 +62,34 @@ class OverviewState extends State<Overview> with SingleTickerProviderStateMixin 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocBuilder<AppointmentsBloc, AppointmentsState>(
-      builder: (context, state) {
-        if (state is AppointmentsLoadingState){
-          return loadingScreen();
-        }
-        if (state is AppointmentsSuccessState)
-          return BlocBuilder<BookingBloc, BookingsState>(
+        body: NestedScrollView(
+          floatHeaderSlivers: true,
+          physics: const BouncingScrollPhysics(),
+          body: BlocBuilder<AppointmentsBloc, AppointmentsState>(
             builder: (context, state) {
-                if (state is BookingLoadingState) {
-                  return loadingScreen();
-                }
-                if (state is BookingSuccessState)
-                  return showList();
+              if (state is AppointmentsLoadingState){
+                return loadingScreen();
+              }
+              if (state is AppointmentsSuccessState)
+                return BlocBuilder<BookingBloc, BookingsState>(
+                  builder: (context, state) {
+                    if (state is BookingLoadingState) {
+                      return loadingScreen();
+                    }
+                    if (state is BookingSuccessState)
+                      return listOfData();
 
-                return Container();
+                    return Container();
+                  },
+                );
+
+              return Container();
             },
-          );
-
-        return Container();
-      })
-    );
-  }
-
-  showList(){
-    return NestedScrollView(
-      floatHeaderSlivers: true,
-      physics: const BouncingScrollPhysics(),
-      body: ScrollConfiguration(
-          behavior: ScrollSetup(),
-          child: MediaQuery.removePadding(
-              context: context,
-              removeTop: true,
-              child: Center(
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 10.0, right: 10),
-                  child: ListView(
-                    children: _overViewPreviews,
-                  ),
-                ),
-              ))),
-      headerSliverBuilder: (context, innerBoxIsScrolled) {
-        return <Widget>[ParallaxAppBar()];
-      },
+          ),
+          headerSliverBuilder: (context, innerBoxIsScrolled){
+            return <Widget>[ParallaxAppBar()];
+          },
+        )
     );
   }
 
@@ -114,6 +98,24 @@ class OverviewState extends State<Overview> with SingleTickerProviderStateMixin 
         child: CircularProgressIndicator(
           backgroundColor: Color(int.parse(FitnessPackage.model.primaryColor)),
         )
+    );
+  }
+
+  listOfData(){
+    return ScrollConfiguration(
+      behavior: ScrollSetup(),
+      child: MediaQuery.removePadding(
+        context: context,
+        removeTop: true,
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.only(left: 10.0, right: 10),
+            child: ListView(
+              children: _overViewPreviews,
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
