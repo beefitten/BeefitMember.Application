@@ -1,3 +1,4 @@
+import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:beefitmember_application/shared/user/user.dart';
 import 'package:flutter/material.dart';
 
@@ -7,9 +8,8 @@ class MemberShipCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5.0),
-          color: Color.fromRGBO(247, 247, 252, 1) // whitelabelin color
-          ),
+          borderRadius: BorderRadius.circular(double.parse(FitnessPackage.model.borderRadius)),
+          color: Color(int.parse(FitnessPackage.model.backgroundColor))),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Row(

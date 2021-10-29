@@ -1,3 +1,4 @@
+import 'package:beefitmember_application/bookings/pages/bookings_list/booking_card.dart';
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:flutter/material.dart';
 
@@ -15,14 +16,18 @@ class CenterInformationBasic extends StatefulWidget {
 }
 
 class _CenterInformationBasicState extends State<CenterInformationBasic> {
+  final double borderRadius = double.parse(FitnessPackage.model.borderRadius);
+  final int backgroundColor = int.parse(FitnessPackage.model.backgroundColor);
+  final int secondaryColor = int.parse(FitnessPackage.model.secondaryColor);
+
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          color: Color(int.parse(FitnessPackage.model.backgroundColor)),
+          color: Color(backgroundColor),
           borderRadius: BorderRadius.only(
-              bottomRight: Radius.circular(double.parse(FitnessPackage.model.borderRadius)),
-              bottomLeft: Radius.circular(double.parse(FitnessPackage.model.borderRadius)))),
+              bottomRight: Radius.circular(borderRadius),
+              bottomLeft: Radius.circular(borderRadius))),
       constraints:
           BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.9),
       child: Padding(
@@ -44,18 +49,15 @@ class _CenterInformationBasicState extends State<CenterInformationBasic> {
               Padding(
                 padding: const EdgeInsets.only(left: 2),
                 child: Text('$mondayThursday (Mon-Thu)',
-                    style: TextStyle(
-                        fontSize: 16,
-                        color:
-                            Color(int.parse(FitnessPackage.model.secondaryColor)))),
+                    style: TextStyle(fontSize: 16, color: Color(secondaryColor))),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 2, bottom: 16),
                 child: Text('$friday (Fri)',
                     style: TextStyle(
                         fontSize: 16,
-                        color:
-                            Color(int.parse(FitnessPackage.model.secondaryColor)))),
+                        color: Color(
+                            secondaryColor))),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 2, bottom: 10),
@@ -70,16 +72,16 @@ class _CenterInformationBasicState extends State<CenterInformationBasic> {
                 child: Text('$mondayThursday (Mon-Thu)',
                     style: TextStyle(
                         fontSize: 16,
-                        color:
-                            Color(int.parse(FitnessPackage.model.secondaryColor)))),
+                        color: Color(
+                            secondaryColor))),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 2, bottom: 16),
                 child: Text('$friday (Fri)',
                     style: TextStyle(
                         fontSize: 16,
-                        color:
-                            Color(int.parse(FitnessPackage.model.secondaryColor)))),
+                        color: Color(
+                            secondaryColor))),
               ),
             ],
           ),
@@ -108,7 +110,8 @@ final phone = Row(
           child: Text('12 34 56 78',
               style: TextStyle(
                   fontSize: 16,
-                  color: Color(int.parse(FitnessPackage.model.secondaryColor)))),
+                  color:
+                      Color(secondaryColor))),
         ),
       ],
     ),
@@ -117,7 +120,7 @@ final phone = Row(
       child: Icon(
         Icons.phone,
         size: 22,
-        color: Color(int.parse(FitnessPackage.model.secondaryColor)),
+        color: Color(secondaryColor),
       ),
     )
   ],
@@ -142,14 +145,16 @@ final email = Row(
           child: Text('kundeservice@FWFinlandsgade',
               style: TextStyle(
                   fontSize: 16,
-                  color: Color(int.parse(FitnessPackage.model.secondaryColor)))),
+                  color:
+                      Color(secondaryColor))),
         ),
       ],
     ),
     Padding(
       padding: const EdgeInsets.only(right: 12, top: 10),
       child: Icon(Icons.email_rounded,
-          size: 22, color: Color(int.parse(FitnessPackage.model.secondaryColor))),
+          size: 22,
+          color: Color(secondaryColor)),
     ),
   ],
 );

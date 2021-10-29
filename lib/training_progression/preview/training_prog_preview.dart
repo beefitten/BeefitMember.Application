@@ -86,7 +86,8 @@ class ValueText extends StatelessWidget {
       "${_value} kg",
       style: TextStyle(
           fontSize: MediaQuery.of(context).size.height * 0.04,
-          fontWeight: FontWeight.bold),
+          fontWeight: FontWeight.bold,
+          color: Color(int.parse(FitnessPackage.model.thirdColor))),
     );
   }
 }

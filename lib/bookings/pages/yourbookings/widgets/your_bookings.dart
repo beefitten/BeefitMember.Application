@@ -19,13 +19,13 @@ class YourBookings extends StatefulWidget {
 }
 
 class _YourBookingsState extends State<YourBookings> {
-
   final _widgets = generateOrder();
 
   late BookingBloc bookingBloc;
   late AppointmentsBloc appointmentsBloc;
+  final int primaryColor = int.parse(FitnessPackage.model.primaryColor);
 
-  void initState(){
+  void initState() {
     appointmentsBloc = BlocProvider.of<AppointmentsBloc>(context);
     bookingBloc = BlocProvider.of<BookingBloc>(context);
     appointmentsBloc.add(AppointmentsLoadingEvent());
@@ -34,14 +34,14 @@ class _YourBookingsState extends State<YourBookings> {
     super.initState();
   }
 
-  static generateOrder(){
+  static generateOrder() {
     var orderList = FitnessPackage.model.bookings.bookings;
     List<Widget> _widgetOptions = <Widget>[];
 
     _widgetOptions.add(FindClassesWidget());
 
     orderList.forEach((element) {
-      switch(element){
+      switch (element) {
         case 0:
           _widgetOptions.add(BookingWidget());
           break;
@@ -57,31 +57,28 @@ class _YourBookingsState extends State<YourBookings> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<BookingBloc, BookingsState>(
-          builder: (context, state) {
-            if (state is BookingLoadingState)
+      builder: (context, state) {
+        if (state is BookingLoadingState)
+          return Center(
+              child: CircularProgressIndicator(
+            backgroundColor:
+                Color(primaryColor),
+          ));
+        if (state is BookingSuccessState)
+          return BlocBuilder<AppointmentsBloc, AppointmentsState>(
+              builder: (context, state) {
+            if (state is AppointmentsLoadingState)
               return Center(
                   child: CircularProgressIndicator(
-                    backgroundColor: Color(int.parse(FitnessPackage.model.primaryColor)),
-                  )
-              );
-            if (state is BookingSuccessState)
-              return BlocBuilder<AppointmentsBloc, AppointmentsState>(
-                  builder: (context, state) {
-                    if (state is AppointmentsLoadingState)
-                      return Center(
-                          child: CircularProgressIndicator(
-                            backgroundColor: Color(int.parse(FitnessPackage.model.primaryColor)),
-                          )
-                      );
-                    if (state is AppointmentsSuccessState)
-                      return ListView(
-                          children: _widgets
-                      );
-                    return Container();
-                  });
+                backgroundColor:
+                    Color(primaryColor),
+              ));
+            if (state is AppointmentsSuccessState)
+              return ListView(children: _widgets);
             return Container();
-          },
+          });
+        return Container();
+      },
     );
   }
 }
-
