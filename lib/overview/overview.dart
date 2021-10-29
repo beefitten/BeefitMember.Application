@@ -42,16 +42,28 @@ class OverviewState extends State<Overview>
     _orderList.forEach((element) {
       switch (element) {
         case 0:
-          _widgetOptions.add(PreviewBookings());
+          _widgetOptions.add(Padding(
+            padding: const EdgeInsets.only(bottom: 12.0),
+            child: PreviewBookings(),
+          ));
           break;
         case 1:
-          _widgetOptions.add(BookingWidget());
+          _widgetOptions.add(Padding(
+            padding: const EdgeInsets.only(bottom: 12.0),
+            child: BookingWidget(),
+          ));
           break;
         case 2:
-          _widgetOptions.add(TrainingProgPreview());
+          _widgetOptions.add(Padding(
+            padding: const EdgeInsets.only(bottom: 12.0),
+            child: TrainingProgPreview(),
+          ));
           break;
         case 3:
-          _widgetOptions.add(CenterInformationPreview());
+          _widgetOptions.add(Padding(
+            padding: const EdgeInsets.only(bottom: 12.0),
+            child: CenterInformationPreview(),
+          ));
           break;
       }
     });
@@ -106,7 +118,7 @@ class OverviewState extends State<Overview>
         removeTop: true,
         child: Center(
           child: Padding(
-            padding: const EdgeInsets.only(left: 10.0, right: 10),
+            padding: const EdgeInsets.only(left: 20.0, right: 20),
             child: ListView(
               children: _overViewPreviews,
             ),
