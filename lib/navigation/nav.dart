@@ -89,7 +89,7 @@ class _NavState extends State<Nav> {
   static List<BottomNavigationBarItem> generateIcons(List<int> featureList) {
     List<BottomNavigationBarItem> _navigationBarList = <BottomNavigationBarItem>[
       BottomNavigationBarItem(
-        icon: Icon(Icons.home),
+        icon: Icon(Icons.home, color: Color(int.parse(FitnessPackage.model.thirdColor))),
         label: "Overview",
       ),
     ];
@@ -98,19 +98,19 @@ class _NavState extends State<Nav> {
       switch(element){
         case 0:
           _navigationBarList.add(BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_today),
+            icon: Icon(Icons.calendar_today, color: Color(int.parse(FitnessPackage.model.thirdColor)),),
             label: "Bookings",
           ));
           break;
         case 1:
           _navigationBarList.add(BottomNavigationBarItem(
-            icon: Icon(Icons.fitness_center),
+            icon: Icon(Icons.fitness_center, color: Color(int.parse(FitnessPackage.model.thirdColor))),
             label: "Weight Goal",
           ),);
           break;
         case 2:
           _navigationBarList.add(BottomNavigationBarItem(
-            icon: Icon(Icons.info_rounded),
+            icon: Icon(Icons.info_rounded, color: Color(int.parse(FitnessPackage.model.thirdColor))),
             label: "Information",
           ));
           break;
@@ -118,7 +118,7 @@ class _NavState extends State<Nav> {
     });
 
     _navigationBarList.add(BottomNavigationBarItem(
-      icon: Icon(Icons.menu),
+      icon: Icon(Icons.menu, color: Color(int.parse(FitnessPackage.model.thirdColor))),
       label: "More",
     ));
 

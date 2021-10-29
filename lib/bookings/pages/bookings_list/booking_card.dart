@@ -9,6 +9,9 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
+final int secondaryColor = int.parse(FitnessPackage.model.secondaryColor);
+final int primaryColor = int.parse(FitnessPackage.model.primaryColor);
+
 class BookingCard extends StatefulWidget {
   final String timeStart, timeEnd, className, place, email;
   final Classes classInfo;
@@ -45,7 +48,8 @@ class _BookingCardState extends State<BookingCard> {
     super.initState();
     var androidInitialize = new AndroidInitializationSettings('ic_launcher');
     var iOSInitialize = new IOSInitializationSettings();
-    var initializationSettings = new InitializationSettings(android: androidInitialize, iOS: iOSInitialize);
+    var initializationSettings = new InitializationSettings(
+        android: androidInitialize, iOS: iOSInitialize);
     localNotification = new FlutterLocalNotificationsPlugin();
     localNotification.initialize(initializationSettings);
     listener = null;
@@ -53,7 +57,8 @@ class _BookingCardState extends State<BookingCard> {
   }
 
   deleteBooking(String classId, String email) async {
-    var endpointUrl = Uri.parse('https://beefitmemberbookings.azurewebsites.net/deleteBooking');
+    var endpointUrl = Uri.parse(
+        'https://beefitmemberbookings.azurewebsites.net/deleteBooking');
 
     var body = {};
     body["classId"] = classId;
@@ -71,16 +76,14 @@ class _BookingCardState extends State<BookingCard> {
     );
 
     setState(() {
-      if (response.statusCode == 200)
-        _isBooked = !_isBooked;
-        _isFull = false;
+      if (response.statusCode == 200) _isBooked = !_isBooked;
+      _isFull = false;
     });
   }
 
-  handleBook(String classId,
-      String email,
-      String className) async {
-    var endpointUrl = Uri.parse('https://beefitmemberbookings.azurewebsites.net/bookClass');
+  handleBook(String classId, String email, String className) async {
+    var endpointUrl =
+        Uri.parse('https://beefitmemberbookings.azurewebsites.net/bookClass');
 
     var body = {};
     body["classId"] = classId;
@@ -100,7 +103,7 @@ class _BookingCardState extends State<BookingCard> {
     );
 
     setState(() {
-      if (response.statusCode == 200){
+      if (response.statusCode == 200) {
         shouldNotify = true;
         _isBooked = !_isBooked;
         _isFull = widget.classInfo.isFull;
@@ -108,38 +111,35 @@ class _BookingCardState extends State<BookingCard> {
     });
   }
 
-  listenForBookingConfirmation(String classId,
-      String email,
-      String className) {
-    if (listener == null){
-
+  listenForBookingConfirmation(String classId, String email, String className) {
+    if (listener == null) {
       listener = FirebaseFirestore.instance
           .collection('Classes')
           .doc(classId)
           .snapshots()
           .listen((event) {
-
         print("Subscribed to " + classId);
         var participants = event.data();
         var participantsList = participants?["Participants"] as List<dynamic>;
 
-        if (participants == null)
-          return;
+        if (participants == null) return;
 
-        var response = participantsList.where((element) => (element.contains(email))).toList();
-        if (response.length >= 1 && shouldNotify){
+        var response = participantsList
+            .where((element) => (element.contains(email)))
+            .toList();
+        if (response.length >= 1 && shouldNotify) {
           print(response);
           print("Send notification!");
           stopListening(classId);
           publishNotification(className);
-        }else {
+        } else {
           print("Not in the list. Still subscribed!");
         }
       });
     }
   }
 
-  stopListening(String classId){
+  stopListening(String classId) {
     print("Unsubscribed from " + classId);
     listener.cancel();
     listener = null;
@@ -148,24 +148,20 @@ class _BookingCardState extends State<BookingCard> {
 
   Future publishNotification(String className) async {
     var androidDetails = new AndroidNotificationDetails(
-        "ChannelId",
-        "Message",
-        "Description",
+        "ChannelId", "Message", "Description",
         importance: Importance.high);
 
     var iOSDetails = new IOSNotificationDetails();
-    var generalNotificationDetails = new NotificationDetails(android: androidDetails, iOS: iOSDetails);
-    await localNotification.show(
-        0,
-        "Class " + className + " is confirmed!",
-        "We're looking forward to see you!",
-        generalNotificationDetails);
+    var generalNotificationDetails =
+        new NotificationDetails(android: androidDetails, iOS: iOSDetails);
+    await localNotification.show(0, "Class " + className + " is confirmed!",
+        "We're looking forward to see you!", generalNotificationDetails);
   }
 
   @override
   Widget build(BuildContext context) {
     final green = Color.fromRGBO(0, 186, 136, 1);
-    final standardBtnColor = Color(int.parse(FitnessPackage.model.secondaryColor));
+    final standardBtnColor = Color(secondaryColor);
 
     String className = widget.className;
     String timeStart = widget.timeStart;
@@ -174,7 +170,7 @@ class _BookingCardState extends State<BookingCard> {
     String email = widget.email;
     Classes classInfo = widget.classInfo;
 
-    if (!loaded){
+    if (!loaded) {
       _isBooked = widget.booked;
       _isFull = widget.classInfo.isFull;
       loaded = true;
@@ -213,20 +209,20 @@ class _BookingCardState extends State<BookingCard> {
       onPressed: () {
         if (_isFull && !_isBooked) {
           Fluttertoast.showToast(
-            msg: "$className Is Fully Booked...",
-            toastLength: Toast.LENGTH_SHORT,
-            gravity: ToastGravity.BOTTOM,
-            backgroundColor: Color(int.parse(FitnessPackage.model.primaryColor)),
-            textColor: Colors.white,
-            fontSize: 16.0);
+              msg: "$className Is Fully Booked...",
+              toastLength: Toast.LENGTH_SHORT,
+              gravity: ToastGravity.BOTTOM,
+              backgroundColor:
+                  Color(primaryColor),
+              textColor: Colors.white,
+              fontSize: 16.0);
           return;
         }
 
         if (!_isBooked)
           handleBook(classInfo.classId, email, classInfo.className);
 
-        if (_isBooked)
-          deleteBooking(classInfo.classId, email);
+        if (_isBooked) deleteBooking(classInfo.classId, email);
       },
       child: Text(this._isBooked ? booked : book),
       style: ElevatedButton.styleFrom(
@@ -264,7 +260,9 @@ class _BookingCardState extends State<BookingCard> {
                         Column(
                           children: [
                             subtext("$timeStart - $timeEnd"),
-                            FitnessPackage.model.bookings.showLocation ? locationText("Location: $place") : Container()
+                            FitnessPackage.model.bookings.showLocation
+                                ? locationText("Location: $place")
+                                : Container()
                           ],
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,

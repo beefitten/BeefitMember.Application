@@ -3,11 +3,15 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
 final blue = Color(int.parse(FitnessPackage.model.secondaryColor));
+final int backgroundColor = int.parse(FitnessPackage.model.backgroundColor);
+final double borderRadius = double.parse(FitnessPackage.model.borderRadius);
+final int secondaryColor = int.parse(FitnessPackage.model.secondaryColor);
+final int primaryColor = int.parse(FitnessPackage.model.primaryColor);
 
 class CenterInformationHeatMap extends StatelessWidget {
   final List<Color> colorGradient = [
-    Color(int.parse(FitnessPackage.model.secondaryColor)),
-    Color(int.parse(FitnessPackage.model.primaryColor)),
+    Color(secondaryColor),
+    Color(primaryColor),
   ];
 
   final List<FlSpot> dataPoints = const [
@@ -44,12 +48,13 @@ class CenterInformationHeatMap extends StatelessWidget {
     return Stack(children: [
       Container(
         decoration: BoxDecoration(
-            color: Color(0xFFF7F7FC), borderRadius: BorderRadius.circular(10)),
+            color: Color(backgroundColor),
+            borderRadius: BorderRadius.circular(borderRadius)),
         constraints: BoxConstraints(
             maxHeight: MediaQuery.of(context).size.height * 0.3,
             maxWidth: MediaQuery.of(context).size.width),
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(borderRadius),
           child: LineChart(
             LineChartData(
               minX: 1,
@@ -87,7 +92,7 @@ class CenterInformationHeatMap extends StatelessWidget {
         child: Text('HOT',
             style: TextStyle(
                 fontSize: 26,
-                color: Color(int.parse(FitnessPackage.model.secondaryColor)),
+                color: Color(secondaryColor),
                 fontWeight: FontWeight.bold)),
       )
     ]);
