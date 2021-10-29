@@ -9,7 +9,7 @@ class FitnessPackage {
     return _instance;
   }
 
-  FitnessPackage._internal() {}
+  FitnessPackage._internal();
 
   void update(dynamic json) {
     model = FitnessPackageModel.fromJson(json);
