@@ -11,14 +11,17 @@ class BookingsPage extends StatelessWidget {
       length: 3,
       child: Scaffold(
         appBar: PreferredSize(
-            preferredSize: Size(MediaQuery.of(context).size.width,
-                MediaQuery.of(context).size.height * 0.16),
-            child: CustomAppBar("Bookings")),
+          preferredSize: Size(MediaQuery.of(context).size.width,
+              MediaQuery.of(context).size.height * 0.16),
+          child: CustomAppBar("Bookings"),
+        ),
         body: TabBarView(
           children: [
             YourBookings(),
             ClassesList(),
-            Center(child: Text("Coming soon!")),
+            Center(
+              child: Text("Coming soon!"),
+            ),
           ],
         ),
       ),
