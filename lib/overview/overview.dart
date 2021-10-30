@@ -44,7 +44,7 @@ class OverviewState extends State<Overview>
         case 0:
           _widgetOptions.add(Padding(
             padding: const EdgeInsets.only(bottom: 12.0),
-            child: PreviewBookings(),
+            child: PreviewBookings(true),
           ));
           break;
         case 1:

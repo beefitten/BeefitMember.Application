@@ -2,11 +2,20 @@ import 'package:beefitmember_application/bookings/pages/previewBookings/widgets/
 import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/appointments_widget.dart';
 import 'package:flutter/material.dart';
 
-class PreviewBookings extends StatelessWidget {
-  PreviewBookings();
+class PreviewBookings extends StatefulWidget {
+  final showMore;
+
+  PreviewBookings(this.showMore);
 
   @override
+  State<PreviewBookings> createState() => _PreviewBookingsState();
+}
+
+class _PreviewBookingsState extends State<PreviewBookings> {
+  @override
   Widget build(BuildContext context) {
+    final _showMore = widget.showMore;
+
     return Column(
       children: [
         Row(
@@ -21,7 +30,7 @@ class PreviewBookings extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            ShowMore(),
+            _showMore == true ? ShowMore() : Container(),
           ],
         ),
         AppointmentsWidget(),

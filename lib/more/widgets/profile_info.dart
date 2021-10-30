@@ -8,7 +8,7 @@ class ProfileInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Padding(
-        padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.07),
+        padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.065),
         child: Center(
           child: Column(
             children: [
