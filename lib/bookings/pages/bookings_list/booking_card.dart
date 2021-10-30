@@ -239,56 +239,54 @@ class _BookingCardState extends State<BookingCard> {
 
     final card = Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.fromLTRB(8, 2, 8, 0),
-          child: Card(
-            child: Stack(
-              alignment: Alignment.centerRight,
-              children: [
-                ListTile(
-                    title: Row(
-                      children: [
-                        generalHeaderText("$className"),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 16.0, top: 10.0),
-                          child: Container(
-                            width: 9,
-                            height: 9,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: _isFull ? Colors.red : Colors.green,
-                            ),
+        Card(
+          child: Stack(
+            alignment: Alignment.centerRight,
+            children: [
+              ListTile(
+                  title: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10.0, right: 10),
+                        child: Container(
+                          width: 10,
+                          height: 10,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: _isFull ? Colors.red : Colors.green,
                           ),
                         ),
-                      ],
-                    ),
-                    subtitle: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Column(
-                          children: [
-                            subtext("$timeStart - $timeEnd"),
-                            FitnessPackage.model.bookings.showLocation
-                                ? locationText("Location: $place")
-                                : Container()
-                          ],
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                        ),
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.25,
-                        ),
-                      ],
-                    ),
-                    tileColor: Color.fromRGBO(247, 247, 252, 1)),
-                Padding(
-                  padding: const EdgeInsets.only(right: 16.0),
-                  child: SizedBox(
-                      child: bookBtn,
-                      width: MediaQuery.of(context).size.width * 0.28),
-                )
-              ],
-            ),
+                      ),
+                      generalHeaderText("$className"),
+                    ],
+                  ),
+                  subtitle: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Column(
+                        children: [
+                          subtext("$timeStart - $timeEnd"),
+                          FitnessPackage.model.bookings.showLocation
+                              ? locationText("Location: $place")
+                              : Container()
+                        ],
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                      ),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.25,
+                      ),
+                    ],
+                  ),
+                  tileColor: Color.fromRGBO(247, 247, 252, 1)),
+              Padding(
+                padding: const EdgeInsets.only(right: 16.0),
+                child: SizedBox(
+                    child: bookBtn,
+                    width: MediaQuery.of(context).size.width * 0.28),
+              )
+            ],
           ),
         ),
       ],

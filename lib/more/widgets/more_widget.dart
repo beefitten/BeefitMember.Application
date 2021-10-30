@@ -2,11 +2,8 @@ import 'package:flutter/material.dart';
 import 'card_widget.dart';
 
 class MoreWidget extends StatelessWidget {
-  
   @override
   Widget build(BuildContext context) {
-    
-
     final headerGeneral = (String txt) => Padding(
           padding:
               EdgeInsets.only(right: MediaQuery.of(context).size.width * 0.44),
@@ -23,7 +20,7 @@ class MoreWidget extends StatelessWidget {
         children: [
           headerGeneral("More"),
           Padding(
-            padding: const EdgeInsets.only(top: 8.0),
+            padding: const EdgeInsets.only(top: 12.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.start,

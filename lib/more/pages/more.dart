@@ -5,7 +5,6 @@ import 'package:beefitmember_application/more/widgets/membership_header.dart';
 import 'package:beefitmember_application/more/widgets/more_widget.dart';
 import 'package:beefitmember_application/more/widgets/profile_info.dart';
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class More extends StatefulWidget {
@@ -14,7 +13,6 @@ class More extends StatefulWidget {
 }
 
 class _MoreState extends State<More> {
-
   @override
   void initState() {
     super.initState();
@@ -27,47 +25,29 @@ class _MoreState extends State<More> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
         backgroundColor: Colors.white,
         body: Column(
           children: [
-
+            Stack(
+              children: [BackgroundCurve(), ProfileInfo()],
+            ),
             Expanded(
               child: MediaQuery.removePadding(
                 context: context,
                 removeTop: true,
-                child: ListView(
-                  children: [
-                    Stack(
-                      children: [BackgroundCurve(), ProfileInfo()],
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                          left: MediaQuery.of(context).size.width * 0.05),
-                      child: MembershipHeader(),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                          left: MediaQuery.of(context).size.width * 0.05,
-                          right: MediaQuery.of(context).size.width * 0.05,
-                          bottom: MediaQuery.of(context).size.height * 0.02),
-                      child: MemberShipCard(),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                        left: MediaQuery.of(context).size.width * 0.05,
-                      ),
-                      child: FitnessPackage.model.more.hasMoreMenu? MoreWidget():Container(),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                          left: MediaQuery.of(context).size.width * 0.05,
-                          right: MediaQuery.of(context).size.width * 0.05,
-                          bottom: MediaQuery.of(context).size.height * 0.02),
-                      child: LogOutBtn(),
-                    )
-                  ],
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+                  child: ListView(
+                    children: [
+                      MembershipHeader(),
+                      MemberShipCard(),
+                      FitnessPackage.model.more.hasMoreMenu
+                          ? MoreWidget()
+                          : Container(),
+                      LogOutBtn()
+                    ],
+                  ),
                 ),
               ),
             ),

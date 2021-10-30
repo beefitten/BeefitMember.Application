@@ -1,23 +1,23 @@
 import 'package:beefitmember_application/bookings/pages/previewBookings/widgets/show_more_button.dart';
 import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/appointments_widget.dart';
+import 'package:beefitmember_application/shared/widgets/texts.dart';
 import 'package:flutter/material.dart';
 
 class PreviewBookings extends StatelessWidget {
-  late Color _color;
-
-  PreviewBookings([this._color = Colors.white]);
+  PreviewBookings();
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      alignment: Alignment.topRight,
+    return Column(
       children: [
-        Container(
-            child: AppointmentsWidget(Color.fromARGB(255, 247, 247, 252))),
-        Padding(
-          padding: const EdgeInsets.only(top: 8, right: 3),
-          child: ShowMore(),
-        )
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            H2Text("Your appointments"),
+            ShowMore(),
+          ],
+        ),
+        AppointmentsWidget(),
       ],
     );
   }

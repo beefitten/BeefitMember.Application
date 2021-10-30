@@ -78,27 +78,6 @@ class FitnessPackageModel {
     data['elevation'] = this.elevation;
     data['logo'] = this.logo;
     data['features'] = this.features;
-    if (this.overView != null) {
-      data['overView'] = this.overView.toJson();
-    }
-    if (this.weightGoal != null) {
-      data['weightGoal'] = this.weightGoal.toJson();
-    }
-    if (this.centerInformation != null) {
-      data['centerInformation'] = this.centerInformation.toJson();
-    }
-    if (this.more != null) {
-      data['more'] = this.more.toJson();
-    }
-    if (this.font != null) {
-      data['font'] = this.font.toJson();
-    }
-    if (this.bookings != null) {
-      data['bookings'] = this.bookings.toJson();
-    }
-    if (this.userInfo != null) {
-      data['userInfo'] = this.userInfo.toJson();
-    }
     return data;
   }
 }
@@ -194,15 +173,6 @@ class Font {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['generalFont'] = this.generalFont;
-    if (this.header != null) {
-      data['header'] = this.header.toJson();
-    }
-    if (this.headerTwo != null) {
-      data['headerTwo'] = this.headerTwo.toJson();
-    }
-    if (this.headerThree != null) {
-      data['headerThree'] = this.headerThree.toJson();
-    }
     return data;
   }
 }

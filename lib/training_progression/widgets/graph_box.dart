@@ -1,14 +1,16 @@
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:beefitmember_application/shared/widgets/texts.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
 class GraphBox extends StatelessWidget {
-  String title;
+  final String title;
 
-  int value;
+  final int value;
 
-  GraphBox(String this.title, int this.value);
+  List<FlSpot> data;
+
+  GraphBox(this.title, this.value, this.data);
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +37,7 @@ class GraphBox extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(10.0),
-              child: Graph(Colors.blue.shade400),
+              child: Graph(this.data),
             ),
           ],
         ),
@@ -45,16 +47,44 @@ class GraphBox extends StatelessWidget {
 }
 
 class Graph extends StatelessWidget {
-  var color;
+  final List<Color> colorGradient = [
+    Color(int.parse(FitnessPackage.model.secondaryColor)),
+    Color(int.parse(FitnessPackage.model.primaryColor)),
+  ];
 
-  Graph(this.color);
+  final List<FlSpot> data;
+
+  Graph(this.data);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100,
-      width: 150,
-      color: color,
+      width: MediaQuery.of(context).size.width * 0.4,
+      height: MediaQuery.of(context).size.height * 0.13,
+      child: LineChart(
+        LineChartData(
+          titlesData: FlTitlesData(show: false),
+          minX: 1,
+          // maxX: 31,
+          minY: 0,
+          maxY: 10,
+          borderData: FlBorderData(show: false),
+          gridData: FlGridData(show: false),
+          lineBarsData: [
+            LineChartBarData(
+              spots: data,
+              isCurved: true,
+              colors: colorGradient.map((e) => e.withOpacity(0.5)).toList(),
+              barWidth: 5,
+              dotData: FlDotData(show: false),
+              belowBarData: BarAreaData(
+                show: true,
+                colors: colorGradient.map((e) => e.withOpacity(0.3)).toList(),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

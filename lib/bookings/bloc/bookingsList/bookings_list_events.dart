@@ -1,5 +1,3 @@
-import 'package:beefitmember_application/bookings/services/bookings_service.dart';
-import 'package:beefitmember_application/shared/user/user.dart';
 import 'package:equatable/equatable.dart';
 
 class BookingListEvents extends Equatable {

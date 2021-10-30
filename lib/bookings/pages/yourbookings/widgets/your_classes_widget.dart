@@ -1,77 +1,68 @@
 import 'package:beefitmember_application/bookings/bloc/bookings_bloc.dart';
 import 'package:beefitmember_application/bookings/bloc/bookings_state.dart';
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:beefitmember_application/shared/widgets/texts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+
 final TextStyle fontFamily =
-      GoogleFonts.getFont(FitnessPackage.model.font.generalFont);
+    GoogleFonts.getFont(FitnessPackage.model.font.generalFont);
 
-class BookingWidget extends StatefulWidget {
-  late final Color _color;
-
-  BookingWidget([this._color = Colors.white]);
+class YourClassesWidget extends StatefulWidget {
+  YourClassesWidget();
 
   @override
-  _BookingWidgetState createState() => _BookingWidgetState();
+  _YourClassesWidgetState createState() => _YourClassesWidgetState();
 }
 
-class _BookingWidgetState extends State<BookingWidget> {
+class _YourClassesWidgetState extends State<YourClassesWidget> {
   late BookingBloc bookingBloc;
 
-  @override void initState() {
+  @override
+  void initState() {
     bookingBloc = BlocProvider.of<BookingBloc>(context);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Text(
-            "Your Bookings",
-            textAlign: TextAlign.left,
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: MediaQuery.of(context).size.height * 0.03,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        H2Text("Your classes"),
         BlocBuilder<BookingBloc, BookingsState>(
           builder: (context, state) {
             if (state is BookingSuccessState)
-              return Container(
-                color: Colors.white,
-                height: MediaQuery.of(context).size.height * 0.26,
-                child: state.bookings.length == 0
-                  ? Padding(
-                    padding: const EdgeInsets.only(top: 20),
-                    child: Center(child: Text("You have no classes booked!")))
-                  : ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    shrinkWrap: true,
-                    itemBuilder: (BuildContext context, int index) {
-                      return CardExample(
-                          state.bookings[index].classImage,
-                          state.bookings[index].className,
-                          state.bookings[index].location,
-                          DateFormat.Hm().add_E().add_MMMd().format(state.bookings[index].timeStart));
-                    },
-                    itemCount: state.bookings.length,
-                    ),
-              );
-            else if (state is BookingErrorState){
+              return state.bookings.length == 0
+                  ? Center(child: Text("You have no classes booked!"))
+                  : Container(
+                      height: MediaQuery.of(context).size.height * 0.26,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        shrinkWrap: true,
+                        itemBuilder: (BuildContext context, int index) {
+                          return CardExample(
+                            state.bookings[index].classImage,
+                            state.bookings[index].className,
+                            state.bookings[index].location,
+                            DateFormat.Hm()
+                                .add_E()
+                                .add_MMMd()
+                                .format(state.bookings[index].timeStart),
+                          );
+                        },
+                        itemCount: state.bookings.length,
+                      ),
+                    );
+            else if (state is BookingErrorState) {
               return Text(state.message);
             }
             return Container();
-        })
-      ]),
+          },
+        )
+      ],
     );
   }
 }
@@ -111,7 +102,8 @@ class CardExample extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
-                      color: Color(int.parse(FitnessPackage.model.secondaryColor)),
+                      color:
+                          Color(int.parse(FitnessPackage.model.secondaryColor)),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(

@@ -14,7 +14,7 @@ class TrainingProgPreview extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            H2Text("Weight goal"),
+            H2Text('Weight goal'),
             ShowMore(),
           ],
         ),
@@ -83,11 +83,14 @@ class ValueText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      "${_value} kg",
+      "$_value kg",
       style: TextStyle(
-          fontSize: MediaQuery.of(context).size.height * 0.04,
-          fontWeight: FontWeight.bold,
-          color: Color(int.parse(FitnessPackage.model.thirdColor))),
+        fontSize: MediaQuery.of(context).size.height * 0.04,
+        fontWeight: FontWeight.bold,
+        color: Color(
+          int.parse(FitnessPackage.model.thirdColor),
+        ),
+      ),
     );
   }
 }

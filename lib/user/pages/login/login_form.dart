@@ -3,7 +3,6 @@ import 'package:beefitmember_application/shared/widgets/textfield.dart';
 import 'package:beefitmember_application/user/bloc/login_bloc.dart';
 import 'package:beefitmember_application/user/bloc/login_events.dart';
 import 'package:beefitmember_application/user/bloc/login_state.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';

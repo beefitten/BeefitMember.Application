@@ -11,7 +11,8 @@ class ParallaxAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverAppBar(
         backwardsCompatibility: false,
-        systemOverlayStyle: SystemUiOverlayStyle(statusBarBrightness: Brightness.dark),
+        systemOverlayStyle:
+            SystemUiOverlayStyle(statusBarBrightness: Brightness.dark),
         pinned: true,
         automaticallyImplyLeading: false,
         stretch: true,
@@ -24,8 +25,8 @@ class ParallaxAppBar extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.only(top: 20.0),
-              child:
-                  Center(child: Image.network(FitnessPackage.model.logo, height: 50)),
+              child: Center(
+                  child: Image.network(FitnessPackage.model.logo, height: 50)),
             ),
           ],
         ));
