@@ -5,6 +5,7 @@ import 'package:beefitmember_application/bookings/bloc/bookings_bloc.dart';
 import 'package:beefitmember_application/bookings/bloc/bookings_events.dart';
 import 'package:beefitmember_application/bookings/bloc/bookings_state.dart';
 import 'package:beefitmember_application/bookings/pages/previewBookings/preview_bookings.dart';
+import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/appointments_widget.dart';
 import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/your_classes_widget.dart';
 import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/findClasses_widget.dart';
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
@@ -50,7 +51,7 @@ class _YourBookingsState extends State<YourBookings> {
         case 1:
           _widgetOptions.add(Padding(
             padding: const EdgeInsets.only(top: 12.0),
-            child: PreviewBookings(),
+            child: PreviewBookings(false),
           ));
           break;
       }
