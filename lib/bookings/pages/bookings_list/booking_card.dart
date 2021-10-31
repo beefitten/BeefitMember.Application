@@ -184,7 +184,7 @@ class _BookingCardState extends State<BookingCard> {
           padding: const EdgeInsets.only(top: 10),
           child: Text(
             txt,
-            style: TextStyle(
+            style: GoogleFonts.getFont(FitnessPackage.model.font.generalFont,
               fontWeight: FontWeight.bold,
               fontSize: 16.0,
             ),
@@ -195,7 +195,7 @@ class _BookingCardState extends State<BookingCard> {
           padding: EdgeInsets.only(bottom: 6.0, top: 6.0),
           child: Text(
             txt,
-            style: TextStyle(
+            style: GoogleFonts.getFont(FitnessPackage.model.font.generalFont,
                 fontSize: 15.0, color: Color.fromRGBO(78, 75, 102, 1),
             ),
           ),
@@ -205,7 +205,7 @@ class _BookingCardState extends State<BookingCard> {
           padding: const EdgeInsets.only(bottom: 6.0),
           child: Text(
             txt,
-            style: TextStyle(
+            style: GoogleFonts.getFont(FitnessPackage.model.font.generalFont,
                 fontSize: 13.0, color: Color.fromRGBO(138, 141, 178, 1),
             ),
           ),

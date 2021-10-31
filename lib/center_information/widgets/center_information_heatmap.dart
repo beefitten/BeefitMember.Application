@@ -5,6 +5,7 @@ import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.da
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 final int backgroundColor = int.parse(FitnessPackage.model.backgroundColor);
 final double borderRadius = double.parse(FitnessPackage.model.borderRadius);
@@ -116,14 +117,14 @@ class BuildLoaded extends StatelessWidget {
             padding: const EdgeInsets.only(left: 16, top: 20),
             child: Text(
               'Current status',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
+              style: GoogleFonts.getFont(FitnessPackage.model.font.generalFont,fontSize: 18, fontWeight: FontWeight.w400),
             ),
           ),
           Padding(
             padding: const EdgeInsets.only(left: 20, top: 40),
             child: Text(
               'HOT',
-              style: TextStyle(
+              style: GoogleFonts.getFont(FitnessPackage.model.font.generalFont,
                   fontSize: 26,
                   color: Color(secondaryColor),
                   fontWeight: FontWeight.bold),

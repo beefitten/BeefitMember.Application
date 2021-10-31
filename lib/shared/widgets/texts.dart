@@ -75,6 +75,7 @@ class DescriptionText extends StatelessWidget {
       child: Text(
         _text,
         softWrap: true,
+        style: GoogleFonts.getFont(FitnessPackage.model.font.generalFont),
       ),
     );
   }

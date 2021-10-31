@@ -90,7 +90,7 @@ class CardExample extends StatelessWidget {
                 alignment: Alignment.bottomRight,
                 children: [
                   Container(
-                    height: MediaQuery.of(context).size.height * 0.18,
+                    height: MediaQuery.of(context).size.height * 0.16,
                     width: MediaQuery.of(context).size.width * 0.6,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
@@ -108,7 +108,7 @@ class CardExample extends StatelessWidget {
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
                           _date,
-                          style: TextStyle(
+                          style: GoogleFonts.getFont(FitnessPackage.model.font.generalFont,
                             color: Colors.white,
                             fontWeight: FontWeight.w500,
                           ),
@@ -121,12 +121,17 @@ class CardExample extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 12, top: 6),
                 child: Text(_title,
-                    style:
-                        TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                    style: GoogleFonts.getFont(
+                      FitnessPackage.model.font.generalFont,
+                      fontSize: 16, 
+                      fontWeight: FontWeight.bold)),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 12),
-                child: Text(_subtitle, style: TextStyle(fontSize: 14)),
+                child: Text(_subtitle, 
+                    style: GoogleFonts.getFont(
+                      FitnessPackage.model.font.generalFont,
+                      fontSize: 14)),
               ),
             ],
           ),

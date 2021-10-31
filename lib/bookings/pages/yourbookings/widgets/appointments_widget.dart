@@ -105,12 +105,17 @@ class BookingExample extends StatelessWidget {
                       children: <Widget>[
                         Text(
                           _title,
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold),
+                          style: GoogleFonts.getFont(
+                            FitnessPackage.model.font.generalFont,
+                            fontSize: 18, 
+                            fontWeight: FontWeight.bold),
                         ),
                         Text(
                           _date,
-                          style: TextStyle(fontSize: 15, color: Colors.grey),
+                          style: GoogleFonts.getFont(
+                            FitnessPackage.model.font.generalFont,
+                            fontSize: 15, color: 
+                            Colors.grey),
                         ),
                       ],
                     ),

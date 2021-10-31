@@ -2,6 +2,7 @@ import 'package:beefitmember_application/bookings/pages/previewBookings/widgets/
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:beefitmember_application/shared/widgets/texts.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class TrainingProgPreview extends StatelessWidget {
   const TrainingProgPreview({Key? key}) : super(key: key);
@@ -41,7 +42,7 @@ class _GoalWidgetState extends State<GoalWidget> {
       color: Color(0xfff7f7fc),
       child: Container(
         constraints:
-            BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.2),
+            BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.26),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5),
         ),
@@ -55,7 +56,7 @@ class _GoalWidgetState extends State<GoalWidget> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Text("You've lost"),
+                  Text("You've lost", style: GoogleFonts.getFont(FitnessPackage.model.font.generalFont),),
                   ValueText(12.5),
                   Container(
                     constraints: BoxConstraints(
@@ -84,7 +85,7 @@ class ValueText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       "$_value kg",
-      style: TextStyle(
+      style: GoogleFonts.getFont(FitnessPackage.model.font.generalFont,
         fontSize: MediaQuery.of(context).size.height * 0.04,
         fontWeight: FontWeight.bold,
         color: Color(

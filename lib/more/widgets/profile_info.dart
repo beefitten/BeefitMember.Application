@@ -1,6 +1,7 @@
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:beefitmember_application/shared/user/user.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ProfileInfo extends StatelessWidget {
 
@@ -19,12 +20,13 @@ class ProfileInfo extends StatelessWidget {
                     top: MediaQuery.of(context).size.height * 0.02),
                 child: Column(
                   children: [
-                    Text(User.name + " " + User.lastName, style: TextStyle(fontWeight: FontWeight.bold)),
+                    Text(User.name + " " + User.lastName, 
+                    style: GoogleFonts.getFont(FitnessPackage.model.font.generalFont,fontWeight: FontWeight.bold)),
                     Padding(
                       padding: const EdgeInsets.only(top: 2),
                       child: Text(
                         User.role,
-                        style: TextStyle(color: Color.fromRGBO(138, 141, 178, 1)),
+                        style: GoogleFonts.getFont(FitnessPackage.model.font.generalFont,color: Color.fromRGBO(138, 141, 178, 1)),
                       ),
                     )
                   ],
