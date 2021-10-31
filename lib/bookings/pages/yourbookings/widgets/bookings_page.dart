@@ -53,9 +53,9 @@ class CustomAppBar extends StatelessWidget {
             ),
             unselectedLabelColor: Colors.grey,
             tabs: [
-              Tab(icon: Text("My Bookings")),
-              Tab(icon: Text("Classes")),
-              Tab(icon: Text("Events")),
+              Tab(icon: H3Text("My Bookings")),
+              Tab(icon: H3Text("Classes")),
+              Tab(icon: H3Text("Events")),
             ]),
       ),
     ]);

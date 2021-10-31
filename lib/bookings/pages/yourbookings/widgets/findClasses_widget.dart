@@ -1,6 +1,11 @@
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:beefitmember_application/training_progression/widgets/image_box.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+
+final TextStyle fontFamily =
+      GoogleFonts.getFont(FitnessPackage.model.font.generalFont);
 
 class FindClassesWidget extends StatelessWidget {
   const FindClassesWidget({Key? key}) : super(key: key);

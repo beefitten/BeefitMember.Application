@@ -1,10 +1,17 @@
 import 'package:beefitmember_application/bookings/bloc/appointments/appointments_bloc.dart';
 import 'package:beefitmember_application/bookings/bloc/appointments/appointments_state.dart';
+import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AppointmentsWidget extends StatefulWidget {
-  AppointmentsWidget();
+  final _color;
+  final TextStyle fontFamily =
+      GoogleFonts.getFont(FitnessPackage.model.font.generalFont);
+
+  AppointmentsWidget([this._color = Colors.white]);
 
   @override
   State<AppointmentsWidget> createState() => _AppointmentsWidgetState();
@@ -98,12 +105,17 @@ class BookingExample extends StatelessWidget {
                       children: <Widget>[
                         Text(
                           _title,
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold),
+                          style: GoogleFonts.getFont(
+                            FitnessPackage.model.font.generalFont,
+                            fontSize: 18, 
+                            fontWeight: FontWeight.bold),
                         ),
                         Text(
                           _date,
-                          style: TextStyle(fontSize: 15, color: Colors.grey),
+                          style: GoogleFonts.getFont(
+                            FitnessPackage.model.font.generalFont,
+                            fontSize: 15, color: 
+                            Colors.grey),
                         ),
                       ],
                     ),

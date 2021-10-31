@@ -24,7 +24,7 @@ class CenterInformationBloc
         GoogleMap loadedMap = await setupGoogleMaps(LatLng(
             double.parse(response.latitude), double.parse(response.longitude)));
 
-        CenterInformationPackage().update(response, loadedMap);
+        // CenterInformationPackage().update(response, loadedMap);
 
         yield InfoLoadedState(model: response, map: loadedMap);
       } catch (e) {

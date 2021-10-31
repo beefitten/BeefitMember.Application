@@ -1,10 +1,14 @@
+import 'dart:ui';
+
+import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class H1Text extends StatelessWidget {
   final String _title;
+  final h1 = FitnessPackage.model.font.header;
 
-  const H1Text(this._title);
+  H1Text(this._title);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +19,11 @@ class H1Text extends StatelessWidget {
       ),
       child: Container(
         child: Center(
-          child: H2Text(_title),
+          child: Text(
+            _title,
+            style: GoogleFonts.getFont(h1.family,
+                fontSize: double.parse(h1.size), fontWeight: FontWeight.w700),
+          ),
         ),
       ),
     );
@@ -24,6 +32,7 @@ class H1Text extends StatelessWidget {
 
 class H2Text extends StatelessWidget {
   final String _text;
+  final h2 = FitnessPackage.model.font.headerTwo;
 
   H2Text(this._text);
 
@@ -32,28 +41,24 @@ class H2Text extends StatelessWidget {
     return Text(
       _text,
       textAlign: TextAlign.left,
-      style: TextStyle(
-        color: Colors.black,
-        fontSize: MediaQuery.of(context).size.height * 0.03,
-        fontWeight: FontWeight.bold,
-      ),
+      style: GoogleFonts.getFont(h2.family,
+          fontSize: double.parse(h2.size), fontWeight: FontWeight.w700),
     );
   }
 }
 
 class H3Text extends StatelessWidget {
   final String _text;
+  final h3 = FitnessPackage.model.font.headerThree;
 
-  const H3Text(this._text);
+  H3Text(this._text);
 
   @override
   Widget build(BuildContext context) {
     return Text(
       _text,
-      style: TextStyle(
-        fontSize: MediaQuery.of(context).size.height * 0.02,
-        fontWeight: FontWeight.bold,
-      ),
+      style: GoogleFonts.getFont(h3.family,
+          fontSize: double.parse(h3.size), fontWeight: FontWeight.w700),
     );
   }
 }
@@ -70,6 +75,7 @@ class DescriptionText extends StatelessWidget {
       child: Text(
         _text,
         softWrap: true,
+        style: GoogleFonts.getFont(FitnessPackage.model.font.generalFont),
       ),
     );
   }
@@ -85,7 +91,10 @@ class CapsText extends StatelessWidget {
       _text.toUpperCase(),
       style: GoogleFonts.mulish(
           textStyle: TextStyle(
-              fontSize: 22, fontWeight: FontWeight.w800, color: Colors.white)),
+        fontSize: 22,
+        fontWeight: FontWeight.w800,
+        color: Colors.white,
+      )),
     );
   }
 }

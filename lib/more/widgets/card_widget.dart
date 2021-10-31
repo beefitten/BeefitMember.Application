@@ -1,5 +1,9 @@
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+final TextStyle fontFamily =
+      GoogleFonts.getFont(FitnessPackage.model.font.generalFont);
 
 class CardWidget extends StatelessWidget {
   final double _height;
@@ -23,7 +27,7 @@ class CardWidget extends StatelessWidget {
         padding: EdgeInsets.only(
             left: MediaQuery.of(context).size.width * 0.05,
             right: MediaQuery.of(context).size.width * 0.05,
-            top: MediaQuery.of(context).size.height * 0.01),
+            top: MediaQuery.of(context).size.height * 0.005),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -34,7 +38,7 @@ class CardWidget extends StatelessWidget {
                   top: MediaQuery.of(context).size.height * 0.01),
               child: Text(
                 _txt,
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+                style: GoogleFonts.getFont(FitnessPackage.model.font.generalFont,fontWeight: FontWeight.bold, fontSize: 14),
               ),
             )
           ],

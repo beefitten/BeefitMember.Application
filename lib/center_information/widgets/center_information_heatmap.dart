@@ -5,19 +5,21 @@ import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.da
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-final blue = Color(int.parse(FitnessPackage.model.secondaryColor));
 final int backgroundColor = int.parse(FitnessPackage.model.backgroundColor);
 final double borderRadius = double.parse(FitnessPackage.model.borderRadius);
 final int secondaryColor = int.parse(FitnessPackage.model.secondaryColor);
 final int primaryColor = int.parse(FitnessPackage.model.primaryColor);
 
 class CenterInformationHeatMap extends StatefulWidget {
-  CenterInformationHeatMap();
+  final model;
+
+  CenterInformationHeatMap(this.model);
 
   @override
   State<CenterInformationHeatMap> createState() =>
-      _CenterInformationHeatMapState();
+      _CenterInformationHeatMapState(model);
 }
 
 class _CenterInformationHeatMapState extends State<CenterInformationHeatMap> {
@@ -26,18 +28,13 @@ class _CenterInformationHeatMapState extends State<CenterInformationHeatMap> {
     Color(primaryColor),
   ];
   final List<FlSpot> dataPoints = [];
+  final model;
 
-  _CenterInformationHeatMapState() {
-    for (var i = 0;
-        i < CenterInformationPackage.model.heatMapDataPoints.length;
-        i++) {
+  _CenterInformationHeatMapState(this.model) {
+    for (var i = 0; i < model.heatMapDataPoints.length; i++) {
       dataPoints.add(FlSpot(
-          double.parse(CenterInformationPackage.model.heatMapDataPoints
-              .elementAt(i)
-              .item1),
-          double.parse(CenterInformationPackage.model.heatMapDataPoints
-              .elementAt(i)
-              .item2)));
+          double.parse(model.heatMapDataPoints.elementAt(i).item1),
+          double.parse(model.heatMapDataPoints.elementAt(i).item2)));
     }
   }
 
@@ -120,14 +117,14 @@ class BuildLoaded extends StatelessWidget {
             padding: const EdgeInsets.only(left: 16, top: 20),
             child: Text(
               'Current status',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
+              style: GoogleFonts.getFont(FitnessPackage.model.font.generalFont,fontSize: 18, fontWeight: FontWeight.w400),
             ),
           ),
           Padding(
             padding: const EdgeInsets.only(left: 20, top: 40),
             child: Text(
               'HOT',
-              style: TextStyle(
+              style: GoogleFonts.getFont(FitnessPackage.model.font.generalFont,
                   fontSize: 26,
                   color: Color(secondaryColor),
                   fontWeight: FontWeight.bold),

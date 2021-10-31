@@ -4,6 +4,11 @@ import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.da
 import 'package:flutter/material.dart';
 
 class CenterInformationMain extends StatelessWidget {
+  final map;
+  final model;
+
+  CenterInformationMain(this.map, this.model);
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -12,7 +17,10 @@ class CenterInformationMain extends StatelessWidget {
           borderRadius: BorderRadius.circular(
               double.parse(FitnessPackage.model.borderRadius))),
       child: Column(
-        children: [CenterInformationMap(), CenterInformationBasic()],
+        children: [
+          CenterInformationMap(map, model),
+          CenterInformationBasic(model)
+        ],
       ),
     );
   }

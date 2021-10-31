@@ -1,19 +1,21 @@
 import 'package:beefitmember_application/center_information/models/center_information_package.dart';
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CenterInformationBasic extends StatefulWidget {
-  // CenterInformationModel _model;
-  CenterInformationBasic();
+  final model;
+
+  CenterInformationBasic(this.model);
 
   @override
-  _CenterInformationBasicState createState() => _CenterInformationBasicState();
+  _CenterInformationBasicState createState() =>
+      _CenterInformationBasicState(model);
 }
 
 class _CenterInformationBasicState extends State<CenterInformationBasic> {
-  // CenterInformationModel _model;
-
-  _CenterInformationBasicState();
+  final model;
+  _CenterInformationBasicState(this.model);
 
   @override
   void initState() {
@@ -38,14 +40,14 @@ class _CenterInformationBasicState extends State<CenterInformationBasic> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Phone(CenterInformationPackage.model.phoneNumber,
+              Phone(model.phoneNumber,
                   int.parse(FitnessPackage.model.secondaryColor)),
-              Email(CenterInformationPackage.model.email,
-                  int.parse(FitnessPackage.model.secondaryColor)),
+              Email(
+                  model.email, int.parse(FitnessPackage.model.secondaryColor)),
               Padding(
                 padding: const EdgeInsets.only(left: 2, bottom: 10),
                 child: Text('Opening hours',
-                    style: TextStyle(
+                    style: GoogleFonts.getFont(FitnessPackage.model.font.generalFont,
                         fontSize: 14,
                         color: Colors.grey,
                         fontWeight: FontWeight.w800)),
@@ -53,37 +55,38 @@ class _CenterInformationBasicState extends State<CenterInformationBasic> {
               Padding(
                 padding: const EdgeInsets.only(left: 2),
                 child: Text(
-                    '${CenterInformationPackage.model.openingHours.elementAt(0).item1} - ${CenterInformationPackage.model.openingHours.elementAt(0).item2} (Mon - Thu)',
+                    '${model.openingHours.elementAt(0).item1} - ${model.openingHours.elementAt(0).item2} (Mon - Thu)',
                     style:
-                        TextStyle(fontSize: 16, color: Color(secondaryColor))),
+                        GoogleFonts.getFont(FitnessPackage.model.font.generalFont, fontSize: 16, color: Color(secondaryColor))),
               ),
               Padding(
                   padding: const EdgeInsets.only(left: 2, bottom: 16),
                   child: Text(
-                      '${CenterInformationPackage.model.openingHours.elementAt(1).item1} - ${CenterInformationPackage.model.openingHours.elementAt(1).item2} (Fri)',
-                      style: TextStyle(
+                      '${model.openingHours.elementAt(1).item1} - ${model.openingHours.elementAt(1).item2} (Fri)',
+                      style: GoogleFonts.getFont(FitnessPackage.model.font.generalFont,
                           fontSize: 16, color: Color(secondaryColor)))),
               Padding(
                 padding: const EdgeInsets.only(left: 2, bottom: 10),
                 child: Text('Manned hours',
-                    style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.grey,
-                        fontWeight: FontWeight.w800)),
+                    style: GoogleFonts.getFont(FitnessPackage.model.font.generalFont,
+                      fontSize: 14,
+                      color: Colors.grey,
+                      fontWeight: FontWeight.w800,
+                    )),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 2),
                 child: Text(
-                    '${CenterInformationPackage.model.mannedHours.elementAt(0).item1} - ${CenterInformationPackage.model.mannedHours.elementAt(0).item2} (Mon - Thu)',
+                    '${model.mannedHours.elementAt(0).item1} - ${model.mannedHours.elementAt(0).item2} (Mon - Thu)',
                     style:
-                        TextStyle(fontSize: 16, color: Color(secondaryColor))),
+                        GoogleFonts.getFont(FitnessPackage.model.font.generalFont, fontSize: 16, color: Color(secondaryColor))),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 2, bottom: 16),
                 child: Text(
-                    '${CenterInformationPackage.model.mannedHours.elementAt(1).item1} - ${CenterInformationPackage.model.mannedHours.elementAt(1).item2} (Mon - Thu)',
+                    '${model.mannedHours.elementAt(1).item1} - ${model.mannedHours.elementAt(1).item2} (Mon - Thu)',
                     style:
-                        TextStyle(fontSize: 16, color: Color(secondaryColor))),
+                        GoogleFonts.getFont(FitnessPackage.model.font.generalFont,fontSize: 16, color: Color(secondaryColor))),
               ),
             ],
           ),
@@ -110,7 +113,7 @@ class Phone extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 2, bottom: 10),
               child: Text('Phone',
-                  style: TextStyle(
+                  style: GoogleFonts.getFont(FitnessPackage.model.font.generalFont,
                       fontSize: 14,
                       color: Colors.grey,
                       fontWeight: FontWeight.w800)),
@@ -118,7 +121,7 @@ class Phone extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 2, bottom: 16),
               child: Text('$_phoneNumber',
-                  style: TextStyle(fontSize: 16, color: Color(secondaryColor))),
+                  style: GoogleFonts.getFont(FitnessPackage.model.font.generalFont,fontSize: 16, color: Color(secondaryColor))),
             ),
           ],
         ),
@@ -147,7 +150,7 @@ class Email extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 2, bottom: 10),
               child: Text('Email',
-                  style: TextStyle(
+                  style: GoogleFonts.getFont(FitnessPackage.model.font.generalFont,
                       fontSize: 14,
                       color: Colors.grey,
                       fontWeight: FontWeight.w800)),
@@ -155,7 +158,7 @@ class Email extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 2, bottom: 16),
               child: Text('$_email',
-                  style: TextStyle(
+                  style: GoogleFonts.getFont(FitnessPackage.model.font.generalFont,
                       fontSize: 16,
                       color: Color(
                           int.parse(FitnessPackage.model.secondaryColor)))),

@@ -13,8 +13,8 @@ import 'bloc/center_information_state.dart';
 class CenterInformation extends StatefulWidget {
   CenterInformation();
 
-  final bool hasHeatMap = FitnessPackage.model.centerInformation.hasHeatmap;
-  final bool showLocation = FitnessPackage.model.bookings.showLocation;
+  bool hasHeatMap = FitnessPackage.model.centerInformation.hasHeatmap;
+  bool showLocation = FitnessPackage.model.bookings.showLocation;
 
   @override
   State<CenterInformation> createState() => _CenterInformationState();
@@ -41,7 +41,7 @@ class _CenterInformationState extends State<CenterInformation> {
         child: BlocBuilder<CenterInformationBloc, CenterInformationState>(
             builder: (context, state) {
           if (state is InfoLoadedState)
-            return BuildLoaded();
+            return BuildLoaded(state.map, state.model);
           else
             return BuildLoading();
         }),
@@ -65,7 +65,10 @@ class BuildLoading extends StatelessWidget {
 }
 
 class BuildLoaded extends StatelessWidget {
-  BuildLoaded();
+  final map;
+  final model;
+
+  BuildLoaded(this.map, this.model);
 
   @override
   Widget build(BuildContext context) {
@@ -74,12 +77,15 @@ class BuildLoaded extends StatelessWidget {
         H1Text('Center information'),
         Expanded(
           child: ListView(children: [
-            CenterInformationMain(),
+            CenterInformationMain(map, model),
             Padding(
-              padding: const EdgeInsets.only(top: 20, left: 20),
+              padding: const EdgeInsets.only(top: 20, left: 10),
               child: H2Text('Location heat map'),
             ),
-            CenterInformationHeatMap(),
+            // FitnessPackage.model.centerInformation.hasHeatmap
+            //     ? CenterInformationHeatMap()
+            //     : Container(),
+            CenterInformationHeatMap(model)
           ]),
         ),
       ],

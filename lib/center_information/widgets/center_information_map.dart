@@ -3,14 +3,19 @@ import 'package:beefitmember_application/shared/widgets/texts.dart';
 import 'package:flutter/material.dart';
 
 class CenterInformationMap extends StatefulWidget {
-  CenterInformationMap();
+  final map;
+  final model;
+  CenterInformationMap(this.map, this.model);
 
   @override
-  _CenterInformationMapState createState() => _CenterInformationMapState();
+  _CenterInformationMapState createState() =>
+      _CenterInformationMapState(map, model);
 }
 
 class _CenterInformationMapState extends State<CenterInformationMap> {
-  _CenterInformationMapState();
+  final map;
+  final model;
+  _CenterInformationMapState(this.map, this.model);
 
   @override
   void initState() {
@@ -28,7 +33,7 @@ class _CenterInformationMapState extends State<CenterInformationMap> {
               constraints: BoxConstraints(
                   maxWidth: MediaQuery.of(context).size.width,
                   maxHeight: MediaQuery.of(context).size.height * 0.3),
-              child: CenterInformationPackage.map),
+              child: map),
         ),
         Container(
           constraints: BoxConstraints(
@@ -49,7 +54,7 @@ class _CenterInformationMapState extends State<CenterInformationMap> {
         child: Container(
             constraints: BoxConstraints(
                 maxWidth: MediaQuery.of(context).size.width * 0.7),
-            child: CapsText('${CenterInformationPackage.model.location}')),
+            child: CapsText('${model.location}')),
       )
     ]);
   }

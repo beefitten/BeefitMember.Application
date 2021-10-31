@@ -7,6 +7,7 @@ import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.da
 import 'package:beefitmember_application/shared/user/user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
 final int primaryColor = int.parse(FitnessPackage.model.primaryColor);
@@ -73,7 +74,7 @@ class _ClassesListState extends State<ClassesList> {
                       ? Padding(
                           padding: const EdgeInsets.only(top: 20),
                           child: Center(
-                              child: Text("You have no classes booked!")))
+                              child: Text("You have no classes booked!", style: GoogleFonts.getFont(FitnessPackage.model.font.generalFont),)))
                       : Padding(
                           padding:
                               const EdgeInsets.only(left: 20.0, right: 20.0),

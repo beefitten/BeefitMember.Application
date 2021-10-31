@@ -17,7 +17,7 @@ class CenterInformationPreview extends StatelessWidget {
             ShowMore(),
           ],
         ),
-        CenterInformationHeatMap()
+        // CenterInformationHeatMap()
       ],
     );
   }

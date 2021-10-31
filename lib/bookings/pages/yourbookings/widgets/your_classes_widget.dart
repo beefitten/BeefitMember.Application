@@ -1,9 +1,14 @@
 import 'package:beefitmember_application/bookings/bloc/bookings_bloc.dart';
 import 'package:beefitmember_application/bookings/bloc/bookings_state.dart';
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
+import 'package:beefitmember_application/shared/widgets/texts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+
+final TextStyle fontFamily =
+    GoogleFonts.getFont(FitnessPackage.model.font.generalFont);
 
 class YourClassesWidget extends StatefulWidget {
   YourClassesWidget();
@@ -26,15 +31,7 @@ class _YourClassesWidgetState extends State<YourClassesWidget> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          "Your Classes",
-          textAlign: TextAlign.left,
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: MediaQuery.of(context).size.height * 0.03,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+        H2Text("Your classes"),
         BlocBuilder<BookingBloc, BookingsState>(
           builder: (context, state) {
             if (state is BookingSuccessState)
@@ -93,7 +90,7 @@ class CardExample extends StatelessWidget {
                 alignment: Alignment.bottomRight,
                 children: [
                   Container(
-                    height: MediaQuery.of(context).size.height * 0.18,
+                    height: MediaQuery.of(context).size.height * 0.16,
                     width: MediaQuery.of(context).size.width * 0.6,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
@@ -111,7 +108,7 @@ class CardExample extends StatelessWidget {
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
                           _date,
-                          style: TextStyle(
+                          style: GoogleFonts.getFont(FitnessPackage.model.font.generalFont,
                             color: Colors.white,
                             fontWeight: FontWeight.w500,
                           ),
@@ -124,12 +121,17 @@ class CardExample extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 12, top: 6),
                 child: Text(_title,
-                    style:
-                        TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                    style: GoogleFonts.getFont(
+                      FitnessPackage.model.font.generalFont,
+                      fontSize: 16, 
+                      fontWeight: FontWeight.bold)),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 12),
-                child: Text(_subtitle, style: TextStyle(fontSize: 14)),
+                child: Text(_subtitle, 
+                    style: GoogleFonts.getFont(
+                      FitnessPackage.model.font.generalFont,
+                      fontSize: 14)),
               ),
             ],
           ),
