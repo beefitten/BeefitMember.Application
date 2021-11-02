@@ -23,7 +23,33 @@ class WeightGoalService {
       body: bodyJson,
     );
 
-    if (response.statusCode != 200) {
+    if (response.statusCode == 200) {
+      return "success";
+    } else {
+      return "error";
+    }
+  }
+
+  get(String user) async {
+    var endpointUrl = Uri.parse(
+        'https://beefitmembertrainingprogression.azurewebsites.net/get?user=${user}');
+
+    var body = {};
+    body["user"] = user;
+    var bodyJson = json.encode(body);
+
+    var headers = {
+      HttpHeaders.contentTypeHeader: 'application/json; charset=UTF-8'
+    };
+
+    var response = await http.get(
+      endpointUrl,
+      headers: headers,
+    );
+
+    if (response.statusCode == 200) {
+      return response.body;
+    } else {
       return "error";
     }
   }
