@@ -114,7 +114,9 @@ class BookingExample extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(left: 10),
                     child: CircleAvatar(
-                        radius: 30, backgroundImage: NetworkImage(_picture)),
+                      radius: 30,
+                      backgroundImage: NetworkImage(_picture),
+                    ),
                   ),
                   Container(
                     height: 100,
