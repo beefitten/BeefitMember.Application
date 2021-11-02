@@ -18,3 +18,11 @@ class SaveButtonPressed extends WeightGoalEvents {
     required this.targetWeight,
   });
 }
+
+class LoadingWeightGoalEvent extends WeightGoalEvents {
+  final String user;
+
+  LoadingWeightGoalEvent({
+    required this.user,
+  });
+}
