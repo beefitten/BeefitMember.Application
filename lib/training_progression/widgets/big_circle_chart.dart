@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class BigCircleChart extends StatelessWidget {
-  final int _percentage;
+  final double _percentage;
 
   BigCircleChart(this._percentage);
 
