@@ -2,11 +2,8 @@ import 'package:flutter/material.dart';
 import 'card_widget.dart';
 
 class MoreWidget extends StatelessWidget {
-  
   @override
   Widget build(BuildContext context) {
-    
-
     final headerGeneral = (String txt) => Padding(
           padding:
               EdgeInsets.only(right: MediaQuery.of(context).size.width * 0.44),
@@ -23,7 +20,7 @@ class MoreWidget extends StatelessWidget {
         children: [
           headerGeneral("More"),
           Padding(
-            padding: const EdgeInsets.only(top: 8.0),
+            padding: const EdgeInsets.only(top: 12.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,10 +37,10 @@ class MoreWidget extends StatelessWidget {
                     CardWidget(
                         100.0,
                         Icon(
-                          Icons.watch_later,
+                          Icons.comment,
                           size: 36,
                         ),
-                        "Watches and Scales"),
+                        "Community"),
                     CardWidget(
                         100.0,
                         Icon(
@@ -54,17 +51,17 @@ class MoreWidget extends StatelessWidget {
                     CardWidget(
                         100.0,
                         Icon(
-                          Icons.watch_later,
+                          Icons.sports_motorsports_rounded,
                           size: 36,
                         ),
-                        "Watches and Scales"),
+                        "Achievement"),
                     CardWidget(
                         100.0,
                         Icon(
-                          Icons.watch_later,
+                          Icons.fact_check_outlined,
                           size: 36,
                         ),
-                        "Watches and Scales"),
+                        "Weight Loss"),
                     CardWidget(
                         100,
                         Icon(
@@ -79,10 +76,10 @@ class MoreWidget extends StatelessWidget {
                     CardWidget(
                         85.0,
                         Icon(
-                          Icons.mobile_friendly,
+                          Icons.calendar_today_rounded,
                           size: 36,
                         ),
-                        "Integrations"),
+                        "Calender"),
                     CardWidget(
                         85.0,
                         Icon(
@@ -100,10 +97,10 @@ class MoreWidget extends StatelessWidget {
                     CardWidget(
                         85.0,
                         Icon(
-                          Icons.mobile_friendly,
+                          Icons.data_saver_off_outlined,
                           size: 36,
                         ),
-                        "Integrations"),
+                        "My Data"),
                     CardWidget(
                         85.0,
                         Icon(
@@ -114,12 +111,12 @@ class MoreWidget extends StatelessWidget {
                     CardWidget(
                         85.0,
                         Icon(
-                          Icons.mobile_friendly,
+                          Icons.auto_awesome_rounded,
                           size: 36,
                         ),
-                        "Integrations"),
+                        "Weekly Goals"),
                     CardWidget(
-                        85.0,
+                        81.0,
                         Icon(
                           Icons.mobile_friendly,
                           size: 36,

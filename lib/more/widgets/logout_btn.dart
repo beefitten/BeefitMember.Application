@@ -1,6 +1,11 @@
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:beefitmember_application/user/service/logout_service.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+
+final TextStyle fontFamily =
+      GoogleFonts.getFont(FitnessPackage.model.font.generalFont);
 
 class LogOutBtn extends StatelessWidget {
 
@@ -14,8 +19,7 @@ class LogOutBtn extends StatelessWidget {
 
     return TextButton(
       style: ButtonStyle(
-          backgroundColor:
-              MaterialStateProperty.all(Color.fromRGBO(229, 235, 254, 1.0))),
+          backgroundColor: MaterialStateProperty.all(Color(int.parse(FitnessPackage.model.backgroundColor)))),
       child: _logOut,
       onPressed: () {
         LogoutService.logOut();

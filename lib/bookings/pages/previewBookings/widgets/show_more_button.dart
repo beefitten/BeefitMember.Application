@@ -6,11 +6,9 @@ class ShowMore extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: CustomTextButton(
-        "Show more",
-        () => {Navigator.pushNamed(context, '/bookings')},
-      ),
+    return CustomTextButton(
+      "Show more",
+      () => {Navigator.pushNamed(context, '/bookings')},
     );
   }
 }

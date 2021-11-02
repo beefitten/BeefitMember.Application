@@ -1,6 +1,11 @@
+import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+final TextStyle fontFamily =
+    GoogleFonts.getFont(FitnessPackage.model.font.generalFont);
 
 class FilterClass extends StatefulWidget {
   final List<String> items;
@@ -21,7 +26,10 @@ class _FilterClassState extends State<FilterClass> {
           value: item,
           child: Text(
             item,
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 16.0,
+            ),
           ),
         );
 
