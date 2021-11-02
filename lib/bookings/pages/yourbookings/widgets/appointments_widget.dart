@@ -17,22 +17,20 @@ class AppointmentsWidget extends StatefulWidget {
 class _AppointmentsWidgetState extends State<AppointmentsWidget> {
   late AppointmentsBloc appointmentsBloc;
 
-
-  @override void initState() {
+  @override
+  void initState() {
     appointmentsBloc = BlocProvider.of<AppointmentsBloc>(context);
     appointmentsBloc.add(AppointmentsLoadingEvent());
 
     super.initState();
   }
 
-  static generateList(AppointmentsSuccessState state){
+  static generateList(AppointmentsSuccessState state) {
     List<Widget> _widgetOptions = <Widget>[];
 
     state.appointments.forEach((element) {
-      _widgetOptions.add(BookingExample(
-          element.headline,
-          element.date,
-          element.image));
+      _widgetOptions
+          .add(BookingExample(element.headline, element.date, element.image));
     });
 
     return _widgetOptions;
@@ -42,23 +40,28 @@ class _AppointmentsWidgetState extends State<AppointmentsWidget> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 0, left: 0),
-      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Text("Your Appointments",
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Text(
+              "Your Appointments",
               textAlign: TextAlign.left,
               style: TextStyle(
                 color: Colors.black,
                 fontSize: MediaQuery.of(context).size.height * 0.03,
                 fontWeight: FontWeight.bold,
-              )),
-        ),
-        BlocBuilder<AppointmentsBloc, AppointmentsState>(
+              ),
+            ),
+          ),
+          BlocBuilder<AppointmentsBloc, AppointmentsState>(
             builder: (context, state) {
               if (state is AppointmentsLoadingState)
                 return Center(
                   child: CircularProgressIndicator(
-                    backgroundColor: Color(int.parse(FitnessPackage.model.primaryColor)),
+                    backgroundColor:
+                        Color(int.parse(FitnessPackage.model.primaryColor)),
                   ),
                 );
               if (state is AppointmentsSuccessState)
@@ -66,16 +69,23 @@ class _AppointmentsWidgetState extends State<AppointmentsWidget> {
                   color: Colors.white,
                   child: state.appointments.length == 0
                       ? Padding(
-                      padding: const EdgeInsets.only(top: 20),
-                      child: Center(child: Text("You have no appointments booked!")))
-                      : Column(children: generateList(state))
+                          padding: const EdgeInsets.only(top: 20),
+                          child: Center(
+                            child: Text("You have no appointments booked!"),
+                          ),
+                        )
+                      : Column(
+                          children: generateList(state),
+                        ),
                 );
-              else if (state is AppointmentsErrorState){
+              else if (state is AppointmentsErrorState) {
                 return Text(state.message);
               }
               return Container();
-            }),
-      ]),
+            },
+          ),
+        ],
+      ),
     );
   }
 }
