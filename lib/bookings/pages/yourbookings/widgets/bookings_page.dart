@@ -1,5 +1,5 @@
 import 'package:beefitmember_application/bookings/pages/bookings_list/classes_list.dart';
-import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/your_bookings.dart';
+import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/my_bookings.dart';
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:beefitmember_application/shared/widgets/texts.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +17,7 @@ class BookingsPage extends StatelessWidget {
         ),
         body: TabBarView(
           children: [
-            YourBookings(),
+            MyBookings(),
             ClassesList(),
             Center(
               child: Text("Coming soon!"),
@@ -61,6 +61,19 @@ class CustomAppBar extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class ButtonText extends StatelessWidget {
+  final String _text;
+
+  const ButtonText(this._text);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      _text,
     );
   }
 }
