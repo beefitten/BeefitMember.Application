@@ -29,7 +29,7 @@ class _YourClassesWidgetState extends State<YourClassesWidget> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         H2Text("Your classes"),
         BlocBuilder<BookingBloc, BookingsState>(
@@ -37,9 +37,9 @@ class _YourClassesWidgetState extends State<YourClassesWidget> {
             if (state is BookingSuccessState)
               return state.bookings.length == 0
                   ? Padding(
-                    padding: const EdgeInsets.only(top: 20),
-                    child: Center(child: Text("You have no classes booked!")),
-                  )
+                      padding: const EdgeInsets.only(top: 20),
+                      child: Center(child: Text("You have no classes booked!")),
+                    )
                   : Container(
                       height: MediaQuery.of(context).size.height * 0.26,
                       child: ListView.builder(
@@ -111,7 +111,8 @@ class CardExample extends StatelessWidget {
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
                           _date,
-                          style: GoogleFonts.getFont(FitnessPackage.model.font.generalFont,
+                          style: GoogleFonts.getFont(
+                            FitnessPackage.model.font.generalFont,
                             color: Colors.white,
                             fontWeight: FontWeight.w500,
                           ),
@@ -125,16 +126,16 @@ class CardExample extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 12, top: 6),
                 child: Text(_title,
                     style: GoogleFonts.getFont(
-                      FitnessPackage.model.font.generalFont,
-                      fontSize: 16, 
-                      fontWeight: FontWeight.bold)),
+                        FitnessPackage.model.font.generalFont,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold)),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 12),
-                child: Text(_subtitle, 
+                child: Text(_subtitle,
                     style: GoogleFonts.getFont(
-                      FitnessPackage.model.font.generalFont,
-                      fontSize: 14)),
+                        FitnessPackage.model.font.generalFont,
+                        fontSize: 14)),
               ),
             ],
           ),
