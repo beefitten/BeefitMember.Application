@@ -15,7 +15,7 @@ class TrainingProgPreview extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            H2Text('Weight goal'),
+            H2Text('Weight Goal'),
             ShowMore(),
           ],
         ),
