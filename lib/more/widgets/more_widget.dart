@@ -1,3 +1,4 @@
+import 'package:beefitmember_application/shared/widgets/texts.dart';
 import 'package:flutter/material.dart';
 import 'card_widget.dart';
 
@@ -18,7 +19,10 @@ class MoreWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          headerGeneral("More"),
+          Padding(
+            padding: const EdgeInsets.only(top: 12.0, bottom: 12.0),
+            child: H2Text("More"),
+          ),
           Padding(
             padding: const EdgeInsets.only(top: 12.0),
             child: Row(
