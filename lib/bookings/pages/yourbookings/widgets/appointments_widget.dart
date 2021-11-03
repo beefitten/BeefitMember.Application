@@ -51,15 +51,18 @@ class _AppointmentsWidgetState extends State<AppointmentsWidget> {
           builder: (context, state) {
             if (state is AppointmentsSuccessState)
               return Container(
-                  color: Colors.white,
-                  child: state.appointments.length == 0
-                      ? Padding(
-                          padding: const EdgeInsets.only(top: 20),
-                          child: Center(
-                            child: H3Text("You have no appointments booked!"),
-                          ),
-                        )
-                      : Column(children: generateList(state)));
+                color: Colors.white,
+                child: state.appointments.length == 0
+                    ? Padding(
+                        padding: const EdgeInsets.only(top: 20),
+                        child: Center(
+                          child: Text("You have no appointments booked!"),
+                        ),
+                      )
+                    : Column(
+                        children: generateList(state),
+                      ),
+              );
             else if (state is AppointmentsErrorState) {
               return Text(state.message);
             }
@@ -97,7 +100,9 @@ class BookingExample extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(10),
                     child: CircleAvatar(
-                        radius: 30, backgroundImage: NetworkImage(_picture)),
+                      radius: 30,
+                      backgroundImage: NetworkImage(_picture),
+                    ),
                   ),
                   Center(
                     child: Column(

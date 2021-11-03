@@ -3,7 +3,7 @@ import 'package:beefitmember_application/shared/widgets/texts.dart';
 import 'package:flutter/material.dart';
 
 class BigCircleChart extends StatelessWidget {
-  final int _percentage;
+  final double _percentage;
 
   BigCircleChart(this._percentage);
 

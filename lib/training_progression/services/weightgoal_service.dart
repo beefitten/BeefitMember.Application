@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:beefitmember_application/training_progression/models/weight_goal_model.dart';
 import 'package:http/http.dart' as http;
 
 class WeightGoalService {
@@ -23,7 +24,24 @@ class WeightGoalService {
       body: bodyJson,
     );
 
-    if (response.statusCode != 200) {
+    if (response.statusCode == 200) {
+      return "success";
+    } else {
+      return "error";
+    }
+  }
+
+  get(String user) async {
+    var endpointUrl = Uri.parse(
+        'https://beefitmembertrainingprogression.azurewebsites.net/get?user=${user}');
+
+    var response = await http.get(endpointUrl);
+
+    if (response.statusCode == 200) {
+      return WeightGoalModel.fromJson(json.decode(response.body));
+    } else if (response.statusCode == 204) {
+      return "empty";
+    } else {
       return "error";
     }
   }
