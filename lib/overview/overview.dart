@@ -12,10 +12,12 @@ import 'package:beefitmember_application/center_information/bloc/center_informat
 import 'package:beefitmember_application/center_information/widgets/center_information_heatmap.dart';
 import 'package:beefitmember_application/overview/widgets/parallax_app_bar.dart';
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
+import 'package:beefitmember_application/shared/statics/get_padding.dart';
 import 'package:beefitmember_application/shared/user/user.dart';
 import 'package:beefitmember_application/training_progression/preview/training_prog_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import ''
 
 class Overview extends StatefulWidget {
   @override
@@ -50,7 +52,7 @@ class OverviewState extends State<Overview>
         case 0:
           _widgetOptions.add(Padding(
             padding: const EdgeInsets.only(bottom: 12.0),
-            child: PreviewBookings(true),
+            child: YourAppointmentsPreview(true),
           ));
           break;
         case 1:
@@ -132,7 +134,7 @@ class OverviewState extends State<Overview>
         removeTop: true,
         child: Center(
           child: Padding(
-            padding: const EdgeInsets.only(left: 20.0, right: 20),
+            padding: EdgeInsets.only(left: getPadding(), right: getPadding()),
             child: ListView(
               children: _overViewPreviews,
             ),
