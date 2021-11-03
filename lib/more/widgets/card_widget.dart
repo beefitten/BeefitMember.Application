@@ -35,7 +35,8 @@ class CardWidget extends StatelessWidget {
             _icon,
             Padding(
               padding: EdgeInsets.only(
-                  top: MediaQuery.of(context).size.height * 0.01),
+                top: MediaQuery.of(context).size.height * 0.01,
+              ),
               child: Text(
                 _txt,
                 style: GoogleFonts.getFont(
