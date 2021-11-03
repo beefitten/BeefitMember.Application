@@ -1,9 +1,7 @@
 import 'package:beefitmember_application/bookings/pages/previewBookings/widgets/show_more_button.dart';
 import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/appointments_widget.dart';
-import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:beefitmember_application/shared/widgets/texts.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class PreviewBookings extends StatefulWidget {
   final showMore;
