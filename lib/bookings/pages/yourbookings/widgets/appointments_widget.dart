@@ -1,6 +1,7 @@
 import 'package:beefitmember_application/bookings/bloc/appointments/appointments_bloc.dart';
 import 'package:beefitmember_application/bookings/bloc/appointments/appointments_state.dart';
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
+import 'package:beefitmember_application/shared/widgets/texts.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -103,20 +104,8 @@ class BookingExample extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Text(
-                          _title,
-                          style: GoogleFonts.getFont(
-                            FitnessPackage.model.font.generalFont,
-                            fontSize: 18, 
-                            fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          _date,
-                          style: GoogleFonts.getFont(
-                            FitnessPackage.model.font.generalFont,
-                            fontSize: 15, color: 
-                            Colors.grey),
-                        ),
+                        H2Text(_title),
+                        H3Text(_date),
                       ],
                     ),
                   )
