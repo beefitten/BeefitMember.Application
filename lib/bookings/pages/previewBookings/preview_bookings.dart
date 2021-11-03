@@ -23,9 +23,7 @@ class _PreviewBookingsState extends State<PreviewBookings> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            H1Text(
-              "Your Appointments",
-            ),
+            H1Text("Your Appointments"),
             _showMore == true ? ShowMore() : Container(),
           ],
         ),
