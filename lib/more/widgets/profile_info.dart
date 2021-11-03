@@ -9,12 +9,12 @@ class ProfileInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Padding(
-        padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.065),
+        padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.055),
         child: Center(
           child: Column(
             children: [
               CircleAvatar(
-                  radius: 45, backgroundImage: NetworkImage(User.profileImage)),
+                  radius: 40, backgroundImage: NetworkImage(User.profileImage)),
               Padding(
                 padding: EdgeInsets.only(
                     top: MediaQuery.of(context).size.height * 0.02),

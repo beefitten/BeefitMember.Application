@@ -22,7 +22,7 @@ class FindClassesWidget extends StatelessWidget {
             child: FadeInImage.assetNetwork(
               placeholder: 'lib/bookings/pages/yourbookings/assets/picture1.png',
               image: FitnessPackage.model.bookings.topPicPath,
-              fit: BoxFit.fitWidth,
+              fit: BoxFit.cover,
             ),
             borderRadius: BorderRadius.circular(10),
           ),
