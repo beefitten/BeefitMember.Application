@@ -41,8 +41,8 @@ class _GoalWidgetState extends State<GoalWidget> {
       elevation: 3,
       color: Color(0xfff7f7fc),
       child: Container(
-        constraints:
-            BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.26),
+        constraints: BoxConstraints(
+            maxHeight: MediaQuery.of(context).size.height * 0.26),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5),
         ),
@@ -56,14 +56,15 @@ class _GoalWidgetState extends State<GoalWidget> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Text("You've lost", style: GoogleFonts.getFont(FitnessPackage.model.font.generalFont),),
+                  H3Text("You've lost"),
                   ValueText(12.5),
                   Container(
                     constraints: BoxConstraints(
                       maxWidth: MediaQuery.of(context).size.width * 0.5,
                     ),
-                    child: DescriptionText(
-                        "That’s $_percentage\% of your goal of loosing $_weight kg"),
+                    child: H3Text(
+                      "That’s $_percentage\% of your goal of loosing $_weight kg",
+                    ),
                   ),
                 ],
               ),
@@ -85,7 +86,8 @@ class ValueText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       "$_value kg",
-      style: GoogleFonts.getFont(FitnessPackage.model.font.generalFont,
+      style: GoogleFonts.getFont(
+        FitnessPackage.model.font.generalFont,
         fontSize: MediaQuery.of(context).size.height * 0.04,
         fontWeight: FontWeight.bold,
         color: Color(
