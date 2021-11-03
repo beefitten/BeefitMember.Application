@@ -91,7 +91,7 @@ class ValueText extends StatelessWidget {
         fontSize: MediaQuery.of(context).size.height * 0.04,
         fontWeight: FontWeight.bold,
         color: Color(
-          int.parse(FitnessPackage.model.thirdColor),
+          int.parse(FitnessPackage.model.secondaryColor),
         ),
       ),
     );
