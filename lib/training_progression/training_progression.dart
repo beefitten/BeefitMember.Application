@@ -1,4 +1,5 @@
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
+import 'package:beefitmember_application/shared/statics/get_padding.dart';
 import 'package:beefitmember_application/shared/user/user.dart';
 import 'package:beefitmember_application/shared/widgets/buttons.dart';
 import 'package:beefitmember_application/shared/widgets/texts.dart';
@@ -41,7 +42,7 @@ class _TrainingProgressionState extends State<TrainingProgression> {
   Container emptyWeightGoalPage() {
     return Container(
       child: Padding(
-        padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+        padding: EdgeInsets.only(left: getPadding(), right: getPadding()),
         child: Scaffold(
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -51,7 +52,10 @@ class _TrainingProgressionState extends State<TrainingProgression> {
               ImageBox(
                 FitnessPackage.model.weightGoal.imagePath,
               ),
-              H2Text("Setup a weight goal"),
+              Padding(
+                padding: const EdgeInsets.only(top: 12.0),
+                child: H2Text("Setup a weight goal"),
+              ),
               Container(
                 width: 100,
                 child: DescriptionText(
@@ -90,7 +94,7 @@ class _TrainingProgressionState extends State<TrainingProgression> {
     int tw = targetWeight;
 
     return Padding(
-      padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+      padding: EdgeInsets.only(left: getPadding(), right: getPadding()),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
