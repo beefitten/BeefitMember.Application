@@ -50,7 +50,7 @@ class _YourBookingsState extends State<YourBookings> {
         case 1:
           _widgetOptions.add(Padding(
             padding: const EdgeInsets.only(top: 12.0),
-            child: PreviewBookings(false),
+            child: YourAppointmentsPreview(false),
           ));
           break;
       }
