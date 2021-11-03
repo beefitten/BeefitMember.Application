@@ -41,13 +41,13 @@ class _GoalWidgetState extends State<GoalWidget> {
       elevation: 3,
       color: Color(0xfff7f7fc),
       child: Container(
-        constraints: BoxConstraints(
-            maxHeight: MediaQuery.of(context).size.height * 0.26),
+        constraints:
+            BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.2),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5),
         ),
         child: Padding(
-          padding: EdgeInsets.all(20),
+          padding: EdgeInsets.only(left: 20, right: 20),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
