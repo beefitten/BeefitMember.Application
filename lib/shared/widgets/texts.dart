@@ -12,18 +12,12 @@ class H1Text extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(
-        top: MediaQuery.of(context).size.height * 0.07,
-        bottom: 10,
-      ),
-      child: Container(
-        child: Center(
-          child: Text(
-            _title,
-            style: GoogleFonts.getFont(h1.family,
-                fontSize: double.parse(h1.size), fontWeight: FontWeight.w700),
-          ),
+    return Container(
+      child: Center(
+        child: Text(
+          _title,
+          style: GoogleFonts.getFont(h1.family,
+              fontSize: double.parse(h1.size), fontWeight: FontWeight.w700),
         ),
       ),
     );
