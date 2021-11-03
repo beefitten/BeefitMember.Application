@@ -1,6 +1,7 @@
 import 'package:beefitmember_application/bookings/pages/previewBookings/widgets/show_more_button.dart';
 import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/appointments_widget.dart';
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
+import 'package:beefitmember_application/shared/widgets/texts.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -23,15 +24,8 @@ class _PreviewBookingsState extends State<PreviewBookings> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
+            H1Text(
               "Your Appointments",
-              textAlign: TextAlign.left,
-              style: GoogleFonts.getFont(
-                FitnessPackage.model.font.generalFont,
-                color: Colors.black,
-                fontSize: MediaQuery.of(context).size.height * 0.03,
-                fontWeight: FontWeight.bold,
-              ),
             ),
             _showMore == true ? ShowMore() : Container(),
           ],
