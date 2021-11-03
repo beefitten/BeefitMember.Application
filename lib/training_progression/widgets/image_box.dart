@@ -10,6 +10,7 @@ class ImageBox extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(10.0),
       child: Image(
+        fit: BoxFit.cover,
         image: NetworkImage(
           _assetPath,
         ),
