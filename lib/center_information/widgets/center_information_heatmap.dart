@@ -24,8 +24,8 @@ class CenterInformationHeatMap extends StatefulWidget {
 
 class _CenterInformationHeatMapState extends State<CenterInformationHeatMap> {
   final List<Color> colorGradient = [
-    Color(secondaryColor),
-    Color(primaryColor),
+    Color(int.parse(FitnessPackage.model.secondaryColor)),
+    Color(int.parse(FitnessPackage.model.primaryColor)),
   ];
   final List<FlSpot> dataPoints = [];
   final model;
@@ -117,7 +117,8 @@ class BuildLoaded extends StatelessWidget {
             padding: const EdgeInsets.only(left: 16, top: 20),
             child: Text(
               'Current status',
-              style: GoogleFonts.getFont(FitnessPackage.model.font.generalFont,fontSize: 18, fontWeight: FontWeight.w400),
+              style: GoogleFonts.getFont(FitnessPackage.model.font.generalFont,
+                  fontSize: 18, fontWeight: FontWeight.w400),
             ),
           ),
           Padding(
