@@ -3,16 +3,17 @@ import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/app
 import 'package:beefitmember_application/shared/widgets/texts.dart';
 import 'package:flutter/material.dart';
 
-class PreviewBookings extends StatefulWidget {
+class YourAppointmentsPreview extends StatefulWidget {
   final showMore;
 
-  PreviewBookings(this.showMore);
+  YourAppointmentsPreview(this.showMore);
 
   @override
-  State<PreviewBookings> createState() => _PreviewBookingsState();
+  State<YourAppointmentsPreview> createState() =>
+      _YourAppointmentsPreviewState();
 }
 
-class _PreviewBookingsState extends State<PreviewBookings> {
+class _YourAppointmentsPreviewState extends State<YourAppointmentsPreview> {
   @override
   Widget build(BuildContext context) {
     final _showMore = widget.showMore;
@@ -23,7 +24,7 @@ class _PreviewBookingsState extends State<PreviewBookings> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            H1Text("Your Appointments"),
+            H2Text("Your Appointments"),
             _showMore == true ? ShowMore() : Container(),
           ],
         ),
