@@ -74,7 +74,13 @@ class _ClassesListState extends State<ClassesList> {
                       ? Padding(
                           padding: const EdgeInsets.only(top: 20),
                           child: Center(
-                              child: Text("You have no classes booked!", style: GoogleFonts.getFont(FitnessPackage.model.font.generalFont),)))
+                            child: Text(
+                              "No available classes!",
+                              style: GoogleFonts.getFont(
+                                  FitnessPackage.model.font.generalFont),
+                            ),
+                          ),
+                        )
                       : Padding(
                           padding:
                               const EdgeInsets.only(left: 20.0, right: 20.0),
