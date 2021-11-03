@@ -31,7 +31,7 @@ class _YourClassesWidgetState extends State<YourClassesWidget> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        H2Text("Your classes"),
+        H2Text("Your Classes"),
         BlocBuilder<BookingBloc, BookingsState>(
           builder: (context, state) {
             if (state is BookingSuccessState)
