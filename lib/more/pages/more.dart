@@ -28,33 +28,34 @@ class _MoreState extends State<More> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
-        body: Column(
-          children: [
-            Stack(
-              children: [BackgroundCurve(), ProfileInfo()],
-            ),
-            Expanded(
-              child: MediaQuery.removePadding(
-                context: context,
-                removeTop: true,
-                child: Padding(
-                  padding:
-                      EdgeInsets.only(left: getPadding(), right: getPadding()),
-                  child: ListView(
-                    children: [
-                      MembershipHeader(),
-                      MemberShipCard(),
-                      FitnessPackage.model.more.hasMoreMenu
-                          ? MoreWidget()
-                          : Container(),
-                      LogOutBtn()
-                    ],
-                  ),
+      backgroundColor: Colors.white,
+      body: Column(
+        children: [
+          Stack(
+            children: [BackgroundCurve(), ProfileInfo()],
+          ),
+          Expanded(
+            child: MediaQuery.removePadding(
+              context: context,
+              removeTop: true,
+              child: Padding(
+                padding:
+                    EdgeInsets.only(left: getPadding(), right: getPadding()),
+                child: ListView(
+                  children: [
+                    MembershipHeader(),
+                    MemberShipCard(),
+                    FitnessPackage.model.more.hasMoreMenu
+                        ? MoreWidget()
+                        : Container(),
+                    LogOutBtn()
+                  ],
                 ),
               ),
             ),
-          ],
-        ));
+          ),
+        ],
+      ),
+    );
   }
 }
