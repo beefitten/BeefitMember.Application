@@ -9,7 +9,6 @@ import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/you
 import 'package:beefitmember_application/center_information/bloc/center_information_bloc.dart';
 import 'package:beefitmember_application/center_information/bloc/center_information_events.dart';
 import 'package:beefitmember_application/center_information/bloc/center_information_state.dart';
-import 'package:beefitmember_application/center_information/preview/center_information_preview.dart';
 import 'package:beefitmember_application/center_information/widgets/center_information_heatmap.dart';
 import 'package:beefitmember_application/overview/widgets/parallax_app_bar.dart';
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
@@ -88,33 +87,34 @@ class OverviewState extends State<Overview>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: NestedScrollView(
-      floatHeaderSlivers: true,
-      physics: const BouncingScrollPhysics(),
-      body: BlocBuilder<AppointmentsBloc, AppointmentsState>(
-        builder: (context, state) {
-          if (state is AppointmentsLoadingState) {
-            return loadingScreen();
-          }
-          if (state is AppointmentsSuccessState)
-            return BlocBuilder<BookingBloc, BookingsState>(
-              builder: (context, state) {
-                if (state is BookingLoadingState) {
-                  return loadingScreen();
-                }
-                if (state is BookingSuccessState) return listOfData();
+      body: NestedScrollView(
+        floatHeaderSlivers: true,
+        physics: const BouncingScrollPhysics(),
+        body: BlocBuilder<AppointmentsBloc, AppointmentsState>(
+          builder: (context, state) {
+            if (state is AppointmentsLoadingState) {
+              return loadingScreen();
+            }
+            if (state is AppointmentsSuccessState)
+              return BlocBuilder<BookingBloc, BookingsState>(
+                builder: (context, state) {
+                  if (state is BookingLoadingState) {
+                    return loadingScreen();
+                  }
+                  if (state is BookingSuccessState) return listOfData();
 
-                return Container();
-              },
-            );
+                  return Container();
+                },
+              );
 
-          return Container();
+            return Container();
+          },
+        ),
+        headerSliverBuilder: (context, innerBoxIsScrolled) {
+          return <Widget>[ParallaxAppBar()];
         },
       ),
-      headerSliverBuilder: (context, innerBoxIsScrolled) {
-        return <Widget>[ParallaxAppBar()];
-      },
-    ));
+    );
   }
 
   loadingScreen() {
