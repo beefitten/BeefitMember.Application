@@ -4,6 +4,7 @@ import 'package:beefitmember_application/bookings/bloc/bookingsList/bookings_lis
 import 'package:beefitmember_application/bookings/pages/bookings_list/booking_card.dart';
 import 'package:beefitmember_application/bookings/pages/yourbookings/models/bookingModel.dart';
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
+import 'package:beefitmember_application/shared/statics/get_padding.dart';
 import 'package:beefitmember_application/shared/user/user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -82,8 +83,8 @@ class _ClassesListState extends State<ClassesList> {
                           ),
                         )
                       : Padding(
-                          padding:
-                              const EdgeInsets.only(left: 20.0, right: 20.0),
+                          padding: EdgeInsets.only(
+                              left: getPadding(), right: getPadding()),
                           child: ListView.builder(
                             scrollDirection: Axis.vertical,
                             shrinkWrap: true,
