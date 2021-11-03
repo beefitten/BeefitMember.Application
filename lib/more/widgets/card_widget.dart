@@ -16,9 +16,9 @@ class CardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: _height,
-      width: MediaQuery.of(context).size.width * 0.38,
+      width: MediaQuery.of(context).size.width * 0.433,
       margin: EdgeInsets.only(
-          bottom: 8.0, right: MediaQuery.of(context).size.width * 0.05),
+          bottom: 8.0),
       decoration: BoxDecoration(
           color: Color(int.parse(FitnessPackage.model.backgroundColor)),
           borderRadius: BorderRadius.circular(
