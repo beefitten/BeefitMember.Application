@@ -38,7 +38,7 @@ class _CenterInformationState extends State<CenterInformation> {
       context: context,
       removeTop: true,
       child: Padding(
-        padding: const EdgeInsets.only(left: 20, right: 20),
+        padding: EdgeInsets.only(left: getPadding(), right: getPadding()),
         child: BlocBuilder<CenterInformationBloc, CenterInformationState>(
             builder: (context, state) {
           if (state is InfoLoadedState)
@@ -77,17 +77,14 @@ class BuildLoaded extends StatelessWidget {
       children: [
         H1Text('Center information'),
         Expanded(
-          child: Padding(
-            padding: EdgeInsets.only(left: getPadding(), right: getPadding()),
-            child: ListView(children: [
-              CenterInformationMain(map, model),
-              H2Text('Location heat map'),
-              // FitnessPackage.model.centerInformation.hasHeatmap
-              //     ? CenterInformationHeatMap()
-              //     : Container(),
-              CenterInformationHeatMap(model)
-            ]),
-          ),
+          child: ListView(children: [
+            CenterInformationMain(map, model),
+            H2Text('Location heat map'),
+            // FitnessPackage.model.centerInformation.hasHeatmap
+            //     ? CenterInformationHeatMap()
+            //     : Container(),
+            CenterInformationHeatMap(model)
+          ]),
         ),
       ],
     );
