@@ -1,4 +1,5 @@
 import 'package:beefitmember_application/bookings/pages/previewBookings/widgets/show_more_button.dart';
+import 'package:beefitmember_application/shared/widgets/texts.dart';
 import 'package:flutter/material.dart';
 
 class MembershipHeader extends StatelessWidget {
@@ -7,13 +8,7 @@ class MembershipHeader extends StatelessWidget {
     return Container(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            "Membership",
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-          ),
-          ShowMore()
-        ],
+        children: [H2Text("Membership"), ShowMore()],
       ),
     );
   }
