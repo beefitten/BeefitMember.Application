@@ -14,7 +14,7 @@ class H1Text extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
-        top: MediaQuery.of(context).size.height * 0.07,
+        top: MediaQuery.of(context).viewPadding.top + 12,
         bottom: 10,
       ),
       child: Container(
