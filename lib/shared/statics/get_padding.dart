@@ -1,4 +1,4 @@
-getPadding() {
-  int padding = 10;
+double getPadding() {
+  double padding = 10.0;
   return padding;
 }
