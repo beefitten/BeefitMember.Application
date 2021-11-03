@@ -12,7 +12,7 @@ class BookingsPage extends StatelessWidget {
       child: Scaffold(
         appBar: PreferredSize(
           preferredSize: Size(MediaQuery.of(context).size.width,
-              MediaQuery.of(context).size.height * 0.16),
+              MediaQuery.of(context).size.height * 0.17),
           child: CustomAppBar("Bookings"),
         ),
         body: TabBarView(

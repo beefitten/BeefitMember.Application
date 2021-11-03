@@ -14,7 +14,7 @@ class FindClassesWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height*0.265,
+      height: MediaQuery.of(context).size.height*0.27,
       child: Stack(
         fit: StackFit.expand,
         children: <Widget>[
@@ -22,7 +22,7 @@ class FindClassesWidget extends StatelessWidget {
             child: FadeInImage.assetNetwork(
               placeholder: 'lib/bookings/pages/yourbookings/assets/picture1.png',
               image: FitnessPackage.model.bookings.topPicPath,
-              fit: BoxFit.fitWidth,
+              fit: BoxFit.cover,
             ),
             borderRadius: BorderRadius.circular(10),
           ),
