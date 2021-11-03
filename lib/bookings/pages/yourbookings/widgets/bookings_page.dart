@@ -3,6 +3,7 @@ import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/my_
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:beefitmember_application/shared/widgets/texts.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class BookingsPage extends StatelessWidget {
   @override
@@ -52,9 +53,9 @@ class CustomAppBar extends StatelessWidget {
             ),
             unselectedLabelColor: Colors.grey,
             tabs: [
-              Tab(icon: H3Text("My Bookings")),
-              Tab(icon: H3Text("Classes")),
-              Tab(icon: H3Text("Events")),
+              Tab(icon: ButtonText("My Bookings")),
+              Tab(icon: ButtonText("Classes")),
+              Tab(icon: ButtonText("Events")),
             ],
           ),
         ),
@@ -72,6 +73,11 @@ class ButtonText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       _text,
+      style: GoogleFonts.getFont(
+        FitnessPackage.model.font.generalFont,
+        fontSize: 14,
+        fontWeight: FontWeight.w700,
+      ),
     );
   }
 }
