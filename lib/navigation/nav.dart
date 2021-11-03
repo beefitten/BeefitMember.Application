@@ -98,7 +98,7 @@ class _NavState extends State<Nav> {
         <BottomNavigationBarItem>[
       BottomNavigationBarItem(
         icon: Icon(Icons.home,
-            color: Color(int.parse(FitnessPackage.model.secondaryColor))),
+            color: Color(int.parse(FitnessPackage.model.primaryColor))),
         label: "Overview",
       ),
     ];
@@ -109,7 +109,7 @@ class _NavState extends State<Nav> {
           _navigationBarList.add(BottomNavigationBarItem(
             icon: Icon(
               Icons.calendar_today,
-              color: Color(int.parse(FitnessPackage.model.secondaryColor)),
+              color: Color(int.parse(FitnessPackage.model.primaryColor)),
             ),
             label: "Bookings",
           ));
@@ -118,7 +118,7 @@ class _NavState extends State<Nav> {
           _navigationBarList.add(
             BottomNavigationBarItem(
               icon: Icon(Icons.fitness_center,
-                  color: Color(int.parse(FitnessPackage.model.secondaryColor))),
+                  color: Color(int.parse(FitnessPackage.model.primaryColor))),
               label: "Weight Goal",
             ),
           );
@@ -126,7 +126,7 @@ class _NavState extends State<Nav> {
         case 2:
           _navigationBarList.add(BottomNavigationBarItem(
             icon: Icon(Icons.info_rounded,
-                color: Color(int.parse(FitnessPackage.model.secondaryColor))),
+                color: Color(int.parse(FitnessPackage.model.primaryColor))),
             label: "Information",
           ));
           break;
@@ -135,7 +135,7 @@ class _NavState extends State<Nav> {
 
     _navigationBarList.add(BottomNavigationBarItem(
       icon: Icon(Icons.menu,
-          color: Color(int.parse(FitnessPackage.model.secondaryColor))),
+          color: Color(int.parse(FitnessPackage.model.primaryColor))),
       label: "More",
     ));
 
