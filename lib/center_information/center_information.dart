@@ -34,10 +34,12 @@ class _CenterInformationState extends State<CenterInformation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: MediaQuery.removePadding(
-      context: context,
-      removeTop: true,
-      child: Padding(
+      appBar: PreferredSize(
+        preferredSize: Size(MediaQuery.of(context).size.width,
+            MediaQuery.of(context).size.height * 0.08),
+        child: H1Text('Center Information'),
+      ),
+      body: Padding(
         padding: EdgeInsets.only(left: getPadding(), right: getPadding()),
         child: BlocBuilder<CenterInformationBloc, CenterInformationState>(
             builder: (context, state) {
@@ -47,7 +49,7 @@ class _CenterInformationState extends State<CenterInformation> {
             return BuildLoading();
         }),
       ),
-    ));
+    );
   }
 
   @override
@@ -73,20 +75,13 @@ class BuildLoaded extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        H1Text('Center information'),
-        Expanded(
-          child: ListView(children: [
-            CenterInformationMain(map, model),
-            H2Text('Location heat map'),
-            // FitnessPackage.model.centerInformation.hasHeatmap
-            //     ? CenterInformationHeatMap()
-            //     : Container(),
-            CenterInformationHeatMap(model)
-          ]),
-        ),
-      ],
-    );
+    return ListView(children: [
+      CenterInformationMain(map, model),
+      H2Text('Location heat map'),
+      // FitnessPackage.model.centerInformation.hasHeatmap
+      //     ? CenterInformationHeatMap()
+      //     : Container(),
+      CenterInformationHeatMap(model)
+    ]);
   }
 }
