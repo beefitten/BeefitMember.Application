@@ -2,6 +2,7 @@ import 'package:beefitmember_application/center_information/bloc/center_informat
 import 'package:beefitmember_application/center_information/widgets/center_information_heatmap.dart';
 import 'package:beefitmember_application/center_information/widgets/center_information_main.dart';
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
+import 'package:beefitmember_application/shared/statics/get_padding.dart';
 import 'package:beefitmember_application/shared/widgets/texts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -76,17 +77,17 @@ class BuildLoaded extends StatelessWidget {
       children: [
         H1Text('Center information'),
         Expanded(
-          child: ListView(children: [
-            CenterInformationMain(map, model),
-            Padding(
-              padding: const EdgeInsets.only(top: 20, left: 10),
-              child: H2Text('Location heat map'),
-            ),
-            // FitnessPackage.model.centerInformation.hasHeatmap
-            //     ? CenterInformationHeatMap()
-            //     : Container(),
-            CenterInformationHeatMap(model)
-          ]),
+          child: Padding(
+            padding: EdgeInsets.only(left: getPadding(), right: getPadding()),
+            child: ListView(children: [
+              CenterInformationMain(map, model),
+              H2Text('Location heat map'),
+              // FitnessPackage.model.centerInformation.hasHeatmap
+              //     ? CenterInformationHeatMap()
+              //     : Container(),
+              CenterInformationHeatMap(model)
+            ]),
+          ),
         ),
       ],
     );
