@@ -22,54 +22,56 @@ class MoreWidget extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(top: 12.0),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Column(
-                  children: [
-                    CardWidget(
-                        100.0,
-                        Icon(
-                          Icons.watch_later,
-                          size: 36,
-                        ),
-                        "Watches and Scales"),
-                    CardWidget(
-                        100.0,
-                        Icon(
-                          Icons.comment,
-                          size: 36,
-                        ),
-                        "Community"),
-                    CardWidget(
-                        100.0,
-                        Icon(
-                          Icons.watch_later,
-                          size: 36,
-                        ),
-                        "Watches and Scales"),
-                    CardWidget(
-                        100.0,
-                        Icon(
-                          Icons.sports_motorsports_rounded,
-                          size: 36,
-                        ),
-                        "Achievement"),
-                    CardWidget(
-                        100.0,
-                        Icon(
-                          Icons.fact_check_outlined,
-                          size: 36,
-                        ),
-                        "Weight Loss"),
-                    CardWidget(
-                        100,
-                        Icon(
-                          Icons.watch_later,
-                          size: 36,
-                        ),
-                        "Watches and Scales"),
-                  ],
+                Padding(
+                  padding: EdgeInsets.only(right: 12.0),
+                  child: Column(
+                    children: [
+                      CardWidget(
+                          100.0,
+                          Icon(
+                            Icons.watch_later,
+                            size: 36,
+                          ),
+                          "Watches and Scales"),
+                      CardWidget(
+                          100.0,
+                          Icon(
+                            Icons.comment,
+                            size: 36,
+                          ),
+                          "Community"),
+                      CardWidget(
+                          100.0,
+                          Icon(
+                            Icons.watch_later,
+                            size: 36,
+                          ),
+                          "Watches and Scales"),
+                      CardWidget(
+                          100.0,
+                          Icon(
+                            Icons.sports_motorsports_rounded,
+                            size: 36,
+                          ),
+                          "Achievement"),
+                      CardWidget(
+                          100.0,
+                          Icon(
+                            Icons.fact_check_outlined,
+                            size: 36,
+                          ),
+                          "Weight Loss"),
+                      CardWidget(
+                          100,
+                          Icon(
+                            Icons.watch_later,
+                            size: 36,
+                          ),
+                          "Watches and Scales"),
+                    ],
+                  ),
                 ),
                 Column(
                   children: [

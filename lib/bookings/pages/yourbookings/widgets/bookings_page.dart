@@ -36,11 +36,12 @@ class CustomAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
-      H1Text(_title),
-      Padding(
-        padding: const EdgeInsets.only(left: 8, right: 8),
-        child: TabBar(
+    return Column(
+      children: [
+        H1Text(_title),
+        Padding(
+          padding: const EdgeInsets.only(left: 8, right: 8),
+          child: TabBar(
             indicator: ShapeDecoration(
               shape: StadiumBorder(),
               color: Color(int.parse(FitnessPackage.model.secondaryColor)),
@@ -56,8 +57,10 @@ class CustomAppBar extends StatelessWidget {
               Tab(icon: H3Text("My Bookings")),
               Tab(icon: H3Text("Classes")),
               Tab(icon: H3Text("Events")),
-            ]),
-      ),
-    ]);
+            ],
+          ),
+        ),
+      ],
+    );
   }
 }
