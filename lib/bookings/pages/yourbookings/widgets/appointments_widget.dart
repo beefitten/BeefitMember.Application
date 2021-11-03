@@ -56,7 +56,7 @@ class _AppointmentsWidgetState extends State<AppointmentsWidget> {
                       ? Padding(
                           padding: const EdgeInsets.only(top: 20),
                           child: Center(
-                            child: Text("You have no appointments booked!"),
+                            child: H3Text("You have no appointments booked!"),
                           ),
                         )
                       : Column(children: generateList(state)));
@@ -104,8 +104,8 @@ class BookingExample extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        H2Text(_title),
-                        H3Text(_date),
+                        H3Text(_title),
+                        DescriptionText(_date),
                       ],
                     ),
                   )
