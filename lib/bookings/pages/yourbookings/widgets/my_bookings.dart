@@ -12,12 +12,12 @@ import 'package:beefitmember_application/shared/user/user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class YourBookings extends StatefulWidget {
+class MyBookings extends StatefulWidget {
   @override
-  _YourBookingsState createState() => _YourBookingsState();
+  _MyBookingsState createState() => _MyBookingsState();
 }
 
-class _YourBookingsState extends State<YourBookings> {
+class _MyBookingsState extends State<MyBookings> {
   final _widgets = generateOrder();
 
   late BookingBloc bookingBloc;
