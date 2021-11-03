@@ -6,7 +6,11 @@ import 'package:beefitmember_application/bookings/bloc/bookings_events.dart';
 import 'package:beefitmember_application/bookings/bloc/bookings_state.dart';
 import 'package:beefitmember_application/bookings/pages/previewBookings/preview_bookings.dart';
 import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/your_classes_widget.dart';
+import 'package:beefitmember_application/center_information/bloc/center_information_bloc.dart';
+import 'package:beefitmember_application/center_information/bloc/center_information_events.dart';
+import 'package:beefitmember_application/center_information/bloc/center_information_state.dart';
 import 'package:beefitmember_application/center_information/preview/center_information_preview.dart';
+import 'package:beefitmember_application/center_information/widgets/center_information_heatmap.dart';
 import 'package:beefitmember_application/overview/widgets/parallax_app_bar.dart';
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:beefitmember_application/shared/user/user.dart';
@@ -24,6 +28,7 @@ class OverviewState extends State<Overview>
   List<Widget> _overViewPreviews = generateOverviews();
   late AppointmentsBloc appointmentsBloc;
   late BookingBloc bookingBloc;
+  late CenterInformationBloc centerInfoBloc;
 
   @override
   void initState() {
@@ -31,6 +36,8 @@ class OverviewState extends State<Overview>
     appointmentsBloc.add(AppointmentsLoadingEvent());
     bookingBloc = BlocProvider.of<BookingBloc>(context);
     bookingBloc.add(BookingLoadingEvent(email: User.email));
+    centerInfoBloc = BlocProvider.of<CenterInformationBloc>(context);
+    centerInfoBloc.add(LoadEvent(fitnessName: FitnessPackage.model.name));
 
     super.initState();
   }
@@ -62,7 +69,14 @@ class OverviewState extends State<Overview>
         case 3:
           _widgetOptions.add(Padding(
             padding: const EdgeInsets.only(bottom: 12.0),
-            child: CenterInformationPreview(),
+            child: BlocBuilder<CenterInformationBloc, CenterInformationState>(
+              builder: (context, state) {
+                if (state is InfoLoadedState) {
+                  return CenterInformationHeatMap(state.model);
+                }
+                return CircularProgressIndicator();
+              },
+            ),
           ));
           break;
       }
