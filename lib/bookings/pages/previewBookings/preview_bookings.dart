@@ -21,6 +21,7 @@ class _PreviewBookingsState extends State<PreviewBookings> {
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             H1Text(
               "Your Appointments",
