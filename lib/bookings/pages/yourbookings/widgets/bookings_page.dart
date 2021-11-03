@@ -19,9 +19,7 @@ class BookingsPage extends StatelessWidget {
           children: [
             MyBookings(),
             ClassesList(),
-            Center(
-              child: Text("Coming soon!"),
-            ),
+            Center(child: Text("Coming soon!")),
           ],
         ),
       ),
