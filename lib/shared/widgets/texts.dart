@@ -41,8 +41,11 @@ class H2Text extends StatelessWidget {
     return Text(
       _text,
       textAlign: TextAlign.left,
-      style: GoogleFonts.getFont(h2.family,
-          fontSize: double.parse(h2.size), fontWeight: FontWeight.w700),
+      style: GoogleFonts.getFont(
+        h2.family,
+        fontSize: double.parse(h2.size),
+        fontWeight: FontWeight.w700,
+      ),
     );
   }
 }
@@ -57,8 +60,11 @@ class H3Text extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       _text,
-      style: GoogleFonts.getFont(h3.family,
-          fontSize: double.parse(h3.size), fontWeight: FontWeight.w700),
+      style: GoogleFonts.getFont(
+        h3.family,
+        fontSize: double.parse(h3.size),
+        fontWeight: FontWeight.w700,
+      ),
     );
   }
 }
