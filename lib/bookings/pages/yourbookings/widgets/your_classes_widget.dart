@@ -31,7 +31,10 @@ class _YourClassesWidgetState extends State<YourClassesWidget> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        H2Text("Your Classes"),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 12.0),
+          child: H2Text("Your Classes"),
+        ),
         BlocBuilder<BookingBloc, BookingsState>(
           builder: (context, state) {
             if (state is BookingSuccessState)
