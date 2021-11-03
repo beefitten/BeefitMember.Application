@@ -5,7 +5,9 @@ import 'package:beefitmember_application/more/widgets/membership_header.dart';
 import 'package:beefitmember_application/more/widgets/more_widget.dart';
 import 'package:beefitmember_application/more/widgets/profile_info.dart';
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
+import 'package:beefitmember_application/shared/statics/get_padding.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 
 class More extends StatefulWidget {
   @override
@@ -37,7 +39,8 @@ class _MoreState extends State<More> {
                 context: context,
                 removeTop: true,
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+                  padding:
+                      EdgeInsets.only(left: getPadding(), right: getPadding()),
                   child: ListView(
                     children: [
                       MembershipHeader(),
