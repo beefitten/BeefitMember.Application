@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 final TextStyle fontFamily =
-      GoogleFonts.getFont(FitnessPackage.model.font.generalFont);
+    GoogleFonts.getFont(FitnessPackage.model.font.generalFont);
 
 class CardWidget extends StatelessWidget {
   final double _height;
@@ -38,7 +38,10 @@ class CardWidget extends StatelessWidget {
                   top: MediaQuery.of(context).size.height * 0.01),
               child: Text(
                 _txt,
-                style: GoogleFonts.getFont(FitnessPackage.model.font.generalFont,fontWeight: FontWeight.bold, fontSize: 14),
+                style: GoogleFonts.getFont(
+                    FitnessPackage.model.font.generalFont,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14),
               ),
             )
           ],
