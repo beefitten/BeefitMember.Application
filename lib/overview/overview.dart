@@ -17,7 +17,6 @@ import 'package:beefitmember_application/shared/user/user.dart';
 import 'package:beefitmember_application/training_progression/preview/training_prog_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import ''
 
 class Overview extends StatefulWidget {
   @override
