@@ -29,7 +29,7 @@ class MoreWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: EdgeInsets.only(right: 12.0),
+                  padding: EdgeInsets.only(right: MediaQuery.of(context).size.width*0.045),
                   child: Column(
                     children: [
                       CardWidget(
