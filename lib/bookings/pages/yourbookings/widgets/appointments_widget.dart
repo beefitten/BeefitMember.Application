@@ -2,7 +2,6 @@ import 'package:beefitmember_application/bookings/bloc/appointments/appointments
 import 'package:beefitmember_application/bookings/bloc/appointments/appointments_state.dart';
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:beefitmember_application/shared/widgets/texts.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
