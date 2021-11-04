@@ -29,13 +29,13 @@ class MemberShipCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.only(bottom: 8.0),
+                padding: const EdgeInsets.only(top: 8.0),
                 child: H3Text(
                   "Membership: ${User.subscription}",
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(bottom: 8.0),
+                padding: const EdgeInsets.only(top: 6.0, bottom: 8.0),
                 child: H3Text("Primary Gym: ${User.primaryGym}"),
               )
             ],

@@ -9,7 +9,7 @@ class ProfileInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Padding(
-        padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.055),
+        padding: EdgeInsets.only(top: MediaQuery.of(context).viewPadding.top+18.0),
         child: Center(
           child: Column(
             children: [
@@ -21,12 +21,12 @@ class ProfileInfo extends StatelessWidget {
                 child: Column(
                   children: [
                     Text(User.name + " " + User.lastName, 
-                    style: GoogleFonts.getFont(FitnessPackage.model.font.generalFont,fontWeight: FontWeight.bold)),
+                    style: GoogleFonts.getFont(FitnessPackage.model.font.generalFont,fontWeight: FontWeight.bold, fontSize: 16)),
                     Padding(
                       padding: const EdgeInsets.only(top: 2),
                       child: Text(
                         User.role,
-                        style: GoogleFonts.getFont(FitnessPackage.model.font.generalFont,color: Color.fromRGBO(138, 141, 178, 1)),
+                        style: GoogleFonts.getFont(FitnessPackage.model.font.generalFont,color: Color.fromRGBO(138, 141, 178, 1), fontSize: 15),
                       ),
                     )
                   ],
