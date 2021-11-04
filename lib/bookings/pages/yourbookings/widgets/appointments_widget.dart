@@ -106,7 +106,7 @@ class BookingExample extends StatelessWidget {
                   ),
                   Center(
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         H3Text(_title),
