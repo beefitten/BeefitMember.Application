@@ -1,4 +1,3 @@
-import 'package:beefitmember_application/center_information/models/center_information_package.dart';
 import 'package:beefitmember_application/shared/widgets/texts.dart';
 import 'package:flutter/material.dart';
 
@@ -60,5 +59,6 @@ class _CenterInformationMapState extends State<CenterInformationMap> {
   }
 
   @override
+  // ignore: override_on_non_overriding_member
   bool get wantKeepAlive => true;
 }

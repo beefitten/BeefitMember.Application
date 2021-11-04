@@ -1,6 +1,5 @@
 import 'package:beefitmember_application/center_information/bloc/center_information_bloc.dart';
 import 'package:beefitmember_application/center_information/bloc/center_information_state.dart';
-import 'package:beefitmember_application/center_information/models/center_information_package.dart';
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';

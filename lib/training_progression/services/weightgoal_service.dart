@@ -33,7 +33,7 @@ class WeightGoalService {
 
   get(String user) async {
     var endpointUrl = Uri.parse(
-        'https://beefitmembertrainingprogression.azurewebsites.net/get?user=${user}');
+        'https://beefitmembertrainingprogression.azurewebsites.net/get?user=$user');
 
     var response = await http.get(endpointUrl);
 

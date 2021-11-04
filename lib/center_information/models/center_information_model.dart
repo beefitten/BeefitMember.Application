@@ -51,18 +51,12 @@ class CenterInformationModel {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['name'] = this.name;
     data['location'] = this.location;
-    if (this.openingHours != null) {
-      data['openingHours'] = this.openingHours.map((v) => v.toJson()).toList();
-    }
-    if (this.mannedHours != null) {
-      data['mannedHours'] = this.mannedHours.map((v) => v.toJson()).toList();
-    }
+    data['openingHours'] = this.openingHours.map((v) => v.toJson()).toList();
+    data['mannedHours'] = this.mannedHours.map((v) => v.toJson()).toList();
     data['email'] = this.email;
     data['phoneNumber'] = this.phoneNumber;
-    if (this.heatMapDataPoints != null) {
-      data['heatMapDataPoints'] =
-          this.heatMapDataPoints.map((v) => v.toJson()).toList();
-    }
+    data['heatMapDataPoints'] =
+        this.heatMapDataPoints.map((v) => v.toJson()).toList();
     data['latitude'] = this.latitude;
     data['longitude'] = this.longitude;
     return data;

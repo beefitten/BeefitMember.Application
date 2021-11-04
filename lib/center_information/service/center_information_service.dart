@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 class CenterInformationService {
   Future<CenterInformationModel> getData(String fitnessName) async {
     var endpointUrl = Uri.parse(
-        'https://beefitmembercenterinformation.azurewebsites.net/getCenterInformation/${fitnessName}');
+        'https://beefitmembercenterinformation.azurewebsites.net/getCenterInformation/$fitnessName');
 
     var response = await http.get(endpointUrl);
 

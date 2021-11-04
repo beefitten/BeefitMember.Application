@@ -10,7 +10,6 @@ import 'package:beefitmember_application/center_information/bloc/center_informat
 import 'package:beefitmember_application/center_information/bloc/center_information_events.dart';
 import 'package:beefitmember_application/center_information/bloc/center_information_state.dart';
 import 'package:beefitmember_application/center_information/preview/center_information_preview.dart';
-import 'package:beefitmember_application/center_information/widgets/center_information_heatmap.dart';
 import 'package:beefitmember_application/overview/widgets/parallax_app_bar.dart';
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:beefitmember_application/shared/statics/get_padding.dart';

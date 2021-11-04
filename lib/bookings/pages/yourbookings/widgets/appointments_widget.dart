@@ -8,11 +8,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppointmentsWidget extends StatefulWidget {
-  final _color;
   final TextStyle fontFamily =
       GoogleFonts.getFont(FitnessPackage.model.font.generalFont);
 
-  AppointmentsWidget([this._color = Colors.white]);
+  AppointmentsWidget();
 
   @override
   State<AppointmentsWidget> createState() => _AppointmentsWidgetState();

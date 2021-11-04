@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:beefitmember_application/training_progression/models/weight_goal_model.dart';
 import 'package:equatable/equatable.dart';
 

@@ -7,7 +7,6 @@ import 'package:beefitmember_application/more/widgets/profile_info.dart';
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:beefitmember_application/shared/statics/get_padding.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
 
 class More extends StatefulWidget {
   @override

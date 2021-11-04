@@ -6,13 +6,11 @@ abstract class CenterInformationState extends Equatable {}
 
 class InfoInitialState extends CenterInformationState {
   @override
-  // TODO: implement props
   List<Object?> get props => [];
 }
 
 class InfoLoadingState extends CenterInformationState {
   @override
-  // TODO: implement props
   List<Object?> get props => [];
 }
 
@@ -23,7 +21,6 @@ class InfoLoadedState extends CenterInformationState {
   InfoLoadedState({required this.model, required this.map});
 
   @override
-  // TODO: implement props
   List<Object?> get props => [model];
 }
 
@@ -33,6 +30,5 @@ class InfoErrorState extends CenterInformationState {
   InfoErrorState({required this.message});
 
   @override
-  // TODO: implement props
   List<Object?> get props => [message];
 }

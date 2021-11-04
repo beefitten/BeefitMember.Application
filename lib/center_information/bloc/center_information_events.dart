@@ -8,6 +8,5 @@ class LoadEvent extends CenterInformationEvents {
   LoadEvent({required this.fitnessName});
 
   @override
-  // TODO: implement props
   List<Object?> get props => [fitnessName];
 }

@@ -1,6 +1,5 @@
 import 'package:beefitmember_application/center_information/bloc/center_information_events.dart';
 import 'package:beefitmember_application/center_information/bloc/center_information_state.dart';
-import 'package:beefitmember_application/center_information/models/center_information_package.dart';
 import 'package:beefitmember_application/center_information/models/center_information_model.dart';
 import 'package:beefitmember_application/center_information/service/center_information_service.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

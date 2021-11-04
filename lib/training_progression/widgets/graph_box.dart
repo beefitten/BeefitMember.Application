@@ -8,7 +8,7 @@ class GraphBox extends StatelessWidget {
 
   final int value;
 
-  List<FlSpot> data;
+  final List<FlSpot> data;
 
   GraphBox(this.title, this.value, this.data);
 
