@@ -16,7 +16,7 @@ class CardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: _height,
-      width: MediaQuery.of(context).size.width * 0.433,
+      width: MediaQuery.of(context).size.width * 0.45,
       margin: EdgeInsets.only(
           bottom: 8.0),
       decoration: BoxDecoration(
@@ -27,7 +27,7 @@ class CardWidget extends StatelessWidget {
         padding: EdgeInsets.only(
             left: MediaQuery.of(context).size.width * 0.05,
             right: MediaQuery.of(context).size.width * 0.05,
-            top: MediaQuery.of(context).size.height * 0.005),
+            top: MediaQuery.of(context).size.height * 0.007),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
