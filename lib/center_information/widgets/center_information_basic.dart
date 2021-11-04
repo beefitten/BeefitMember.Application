@@ -84,7 +84,7 @@ class _CenterInformationBasicState extends State<CenterInformationBasic> {
               Padding(
                 padding: const EdgeInsets.only(left: 2, bottom: 16),
                 child: Text(
-                    '${model.mannedHours.elementAt(1).item1} - ${model.mannedHours.elementAt(1).item2} (Mon - Thu)',
+                    '${model.mannedHours.elementAt(1).item1} - ${model.mannedHours.elementAt(1).item2} (Fri - Sun)',
                     style:
                         GoogleFonts.getFont(FitnessPackage.model.font.generalFont,fontSize: 16, color: Color(secondaryColor))),
               ),
