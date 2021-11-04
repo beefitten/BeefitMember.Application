@@ -248,7 +248,7 @@ class _BookingCardState extends State<BookingCard> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(left: 10.0, right: 10),
+                        padding: const EdgeInsets.only(left: 5.0, right: 10, top: 10),
                         child: Container(
                           width: 10,
                           height: 10,

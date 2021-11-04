@@ -75,16 +75,22 @@ class _TrainingProgressionState extends State<TrainingProgression> {
           ImageBox(
             FitnessPackage.model.weightGoal.imagePath,
           ),
-          H2Text("Setup a weight goal"),
+          Padding(
+            padding: const EdgeInsets.only(top: 12.0),
+            child: H2Text("Setup a weight goal"),
+          ),
           Container(
             width: 100,
             child: DescriptionText(
                 "Get motivated by setting up a few simple weekly goals, and the app will keep track of whether you archive the goals every week. "),
           ),
-          CustomButton(
-            "Setup new weight goal",
-            () => _showSheet(),
-            Color(int.parse(FitnessPackage.model.primaryColor)),
+          Padding(
+            padding: const EdgeInsets.only(top: 12.0),
+            child: CustomButton(
+              "Setup new weight goal",
+              () => _showSheet(),
+              Color(int.parse(FitnessPackage.model.primaryColor)),
+            ),
           ),
         ],
       ),
@@ -116,7 +122,10 @@ class _TrainingProgressionState extends State<TrainingProgression> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          H2Text("Setup a weight goal"),
+          Padding(
+            padding: const EdgeInsets.only(top: 12.0),
+            child: H2Text("Setup a weight goal"),
+          ),
           DescriptionText(
               "Get motivated by setting up a few simple weekly goals, and the app will keep track of whether you archive the goals every week."),
           H3Text("Your current weight"),
@@ -124,18 +133,21 @@ class _TrainingProgressionState extends State<TrainingProgression> {
           H3Text("Your goal weight"),
           PlusMinusCounter(onChanged: (value) => {tw = value}),
           TimeLimitCounter(),
-          CustomButton(
-            "Save",
-            () => {
-              weightGoalBloc.add(
-                SaveButtonPressed(
-                  user: User.name,
-                  currentWeight: cw,
-                  targetWeight: tw,
+          Padding(
+            padding: const EdgeInsets.only(top: 12.0),
+            child: CustomButton(
+              "Save",
+              () => {
+                weightGoalBloc.add(
+                  SaveButtonPressed(
+                    user: User.name,
+                    currentWeight: cw,
+                    targetWeight: tw,
+                  ),
                 ),
-              ),
-            },
-            Color(int.parse(FitnessPackage.model.primaryColor)),
+              },
+              Color(int.parse(FitnessPackage.model.primaryColor)),
+            ),
           ),
         ],
       ),
