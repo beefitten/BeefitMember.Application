@@ -77,14 +77,17 @@ class BuildLoaded extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(children: [
       CenterInformationMain(map, model),
-      Padding(
-        padding: const EdgeInsets.only(top: 12.0, bottom: 12.0),
-        child: H2Text('Location heat map'),
-      ),
-      // FitnessPackage.model.centerInformation.hasHeatmap
-      //     ? CenterInformationHeatMap()
-      //     : Container(),
-      CenterInformationHeatMap(model)
+      FitnessPackage.model.centerInformation.hasHeatmap
+          ? Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 12.0, bottom: 12.0),
+                  child: H2Text('Location heat map'),
+                ),
+                CenterInformationHeatMap(model)
+              ],
+            )
+          : Container(),
     ]);
   }
 }
