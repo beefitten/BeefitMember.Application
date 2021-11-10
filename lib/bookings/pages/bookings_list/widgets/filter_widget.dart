@@ -1,7 +1,5 @@
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 final TextStyle fontFamily =

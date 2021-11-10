@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
