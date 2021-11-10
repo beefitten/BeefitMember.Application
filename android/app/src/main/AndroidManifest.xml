@@ -7,7 +7,7 @@
 
     <application
         android:label="Beefit Member"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon">
 
         <meta-data android:name="com.google.android.geo.API_KEY"
                android:value="AIzaSyBF8NrInyFDG_AHa_sh4mmfp60ZgBCPXK4"/>
