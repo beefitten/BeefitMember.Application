@@ -1,6 +1,7 @@
 import 'package:beefitmember_application/bookings/pages/bookings_list/classes_list.dart';
 import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/my_bookings.dart';
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
+import 'package:beefitmember_application/shared/statics/get_padding.dart';
 import 'package:beefitmember_application/shared/widgets/texts.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -13,7 +14,7 @@ class BookingsPage extends StatelessWidget {
       child: Scaffold(
         appBar: PreferredSize(
           preferredSize: Size(MediaQuery.of(context).size.width,
-              MediaQuery.of(context).size.height * 0.17),
+              MediaQuery.of(context).size.height * 0.14),
           child: CustomAppBar("Bookings"),
         ),
         body: TabBarView(
@@ -37,9 +38,11 @@ class CustomAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        H1Text(_title),
+        Container(
+            height: MediaQuery.of(context).size.height * 0.14,
+            child: H1Text(_title)),
         Padding(
-          padding: const EdgeInsets.only(left: 8, right: 8),
+          padding: EdgeInsets.only(left: getPadding(), right: getPadding()),
           child: TabBar(
             indicator: ShapeDecoration(
               shape: StadiumBorder(),

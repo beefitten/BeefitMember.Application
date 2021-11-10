@@ -41,7 +41,7 @@ class _TrainingProgressionState extends State<TrainingProgression> {
         child: Scaffold(
           appBar: PreferredSize(
               preferredSize: Size(MediaQuery.of(context).size.width,
-                  MediaQuery.of(context).size.height * 0.07),
+                  MediaQuery.of(context).size.height * 0.08),
               child: H1Text("Weight Goal")),
           body: BlocBuilder<WeightGoalBloc, WeightGoalState>(
             builder: (context, state) {
