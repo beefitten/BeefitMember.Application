@@ -10,7 +10,6 @@ class ParallaxAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-        backwardsCompatibility: false,
         systemOverlayStyle:
             SystemUiOverlayStyle(statusBarBrightness: Brightness.dark),
         pinned: true,
