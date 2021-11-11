@@ -108,8 +108,10 @@ class CardExample extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
-                      color:
-                          Color(int.parse(FitnessPackage.model.secondaryColor)),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Color(
+                              int.parse(FitnessPackage.model.secondaryColor))),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
