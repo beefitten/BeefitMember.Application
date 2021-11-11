@@ -38,9 +38,7 @@ class CustomAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-            height: MediaQuery.of(context).size.height * 0.14,
-            child: H1Text(_title)),
+        H1Text(_title),
         Padding(
           padding: EdgeInsets.only(left: getPadding(), right: getPadding()),
           child: TabBar(
