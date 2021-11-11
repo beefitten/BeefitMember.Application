@@ -1,3 +1,4 @@
+import 'package:beefitmember_application/bookings/pages/yourbookings/widgets/bookings_page.dart';
 import 'package:beefitmember_application/center_information/bloc/center_information_bloc.dart';
 import 'package:beefitmember_application/center_information/service/center_information_service.dart';
 import 'package:beefitmember_application/bookings/bloc/appointments/appointments_bloc.dart';
@@ -68,7 +69,7 @@ class MyApp extends StatelessWidget {
           '/contacts': (context) => Contact(),
           '/login': (context) => Login(),
           '/nav': (context) => Nav(),
-          '/bookings': (context) => MyBookings()
+          '/bookings': (context) => BookingsPage()
         },
       ),
     );
