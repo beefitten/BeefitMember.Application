@@ -140,7 +140,7 @@ class _TrainingProgressionState extends State<TrainingProgression> {
               () => {
                 weightGoalBloc.add(
                   SaveButtonPressed(
-                    user: User.name,
+                    user: User.email,
                     currentWeight: cw,
                     targetWeight: tw,
                   ),
