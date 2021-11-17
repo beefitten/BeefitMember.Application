@@ -120,9 +120,12 @@ class OverviewState extends State<Overview>
 
   loadingScreen() {
     return Center(
-        child: CircularProgressIndicator(
-      backgroundColor: Color(int.parse(FitnessPackage.model.primaryColor)),
-    ));
+      child: CircularProgressIndicator(
+        backgroundColor: Color(
+          int.parse(FitnessPackage.model.primaryColor),
+        ),
+      ),
+    );
   }
 
   listOfData() {
