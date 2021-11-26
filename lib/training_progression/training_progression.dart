@@ -138,19 +138,22 @@ class _TrainingProgressionState extends State<TrainingProgression> {
             padding: const EdgeInsets.only(top: 12.0),
             child: CustomButton(
               "Save",
-              () => {
-                weightGoalBloc.add(
-                  SaveButtonPressed(
-                    user: User.email,
-                    currentWeight: cw,
-                    targetWeight: tw,
-                  ),
-                ),
-              },
+              () => {savePressed(cw, tw)},
               Color(int.parse(FitnessPackage.model.primaryColor)),
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  void savePressed(int cw, int tw) {
+    Navigator.pop(context);
+    return weightGoalBloc.add(
+      SaveButtonPressed(
+        user: User.email,
+        currentWeight: cw,
+        targetWeight: tw,
       ),
     );
   }
