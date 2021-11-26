@@ -22,9 +22,7 @@ class BigCircleChart extends StatelessWidget {
           child: CircularProgressIndicator(
             strokeWidth: 10,
             color: Color(int.parse(FitnessPackage.model.secondaryColor)),
-            backgroundColor:
-                // Color(int.parse(FitnessPackage.model.backgroundColor)), //Doens't work when firness package is not configured correctly
-                Colors.grey,
+            backgroundColor: Colors.grey,
             value: _percentage / 100,
           ),
         ),
