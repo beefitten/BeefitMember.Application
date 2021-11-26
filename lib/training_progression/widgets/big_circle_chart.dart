@@ -14,7 +14,10 @@ class BigCircleChart extends StatelessWidget {
       children: [
         Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [H3Text("You've Lost:"), H2Text("12.2 KG")],
+          children: [
+            H3Text("You've Lost:"),
+            H2Text("12.2 KG"),
+          ],
         ),
         SizedBox(
           height: MediaQuery.of(context).size.width * 0.4,
