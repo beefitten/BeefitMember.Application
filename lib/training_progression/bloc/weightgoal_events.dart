@@ -19,10 +19,10 @@ class SaveButtonPressed extends WeightGoalEvents {
   });
 }
 
-class LoadingWeightGoalEvent extends WeightGoalEvents {
+class WeightGoalLoadingEvent extends WeightGoalEvents {
   final String user;
 
-  LoadingWeightGoalEvent({
+  WeightGoalLoadingEvent({
     required this.user,
   });
 }

@@ -29,7 +29,7 @@ class _TrainingProgressionState extends State<TrainingProgression> {
   @override
   void initState() {
     weightGoalBloc = BlocProvider.of<WeightGoalBloc>(context);
-    weightGoalBloc.add(LoadingWeightGoalEvent(user: User.email));
+    weightGoalBloc.add(WeightGoalLoadingEvent(user: User.email));
     super.initState();
   }
 
@@ -46,7 +46,7 @@ class _TrainingProgressionState extends State<TrainingProgression> {
           body: BlocBuilder<WeightGoalBloc, WeightGoalState>(
             builder: (context, state) {
               if (state is WeightGoalLoadingState) {
-                weightGoalBloc.add(LoadingWeightGoalEvent(user: User.email));
+                weightGoalBloc.add(WeightGoalLoadingEvent(user: User.email));
                 return Center(
                   child: CircularProgressIndicator(
                     backgroundColor:

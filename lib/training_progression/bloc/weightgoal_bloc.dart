@@ -29,7 +29,7 @@ class WeightGoalBloc extends Bloc<WeightGoalEvents, WeightGoalState> {
         yield WeightGoalErrorState(message: "Error occured");
       }
     }
-    if (event is LoadingWeightGoalEvent) {
+    if (event is WeightGoalLoadingEvent) {
       var response = await service.get(event.user);
       if (response == "error") {
         yield WeightGoalErrorState(message: "ERMEGHERD SOMTHG WRNG!!!");
