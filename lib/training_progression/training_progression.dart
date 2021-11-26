@@ -45,14 +45,15 @@ class _TrainingProgressionState extends State<TrainingProgression> {
               child: H1Text("Weight Goal")),
           body: BlocBuilder<WeightGoalBloc, WeightGoalState>(
             builder: (context, state) {
-              if (state is WeightGoalLoadingState)
+              if (state is WeightGoalLoadingState) {
+                weightGoalBloc.add(LoadingWeightGoalEvent(user: User.email));
                 return Center(
                   child: CircularProgressIndicator(
                     backgroundColor:
                         Color(int.parse(FitnessPackage.model.primaryColor)),
                   ),
                 );
-              else if (state is WeightGoalShowState) {
+              } else if (state is WeightGoalShowState) {
                 return showWeightGoal(state.json);
               } else if (state is WeightGoalCreateState) {
                 return emptyWeightGoalPage();

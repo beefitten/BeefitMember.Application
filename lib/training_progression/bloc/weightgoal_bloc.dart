@@ -23,15 +23,14 @@ class WeightGoalBloc extends Bloc<WeightGoalEvents, WeightGoalState> {
         event.currentWeight,
         event.targetWeight,
       );
-      if (response == 200) {
-        yield WeightGoalSuccessState();
+      if (response == "success") {
+        yield WeightGoalLoadingState();
       } else {
         yield WeightGoalErrorState(message: "Error occured");
       }
     }
     if (event is LoadingWeightGoalEvent) {
       var response = await service.get(event.user);
-
       if (response == "error") {
         yield WeightGoalErrorState(message: "ERMEGHERD SOMTHG WRNG!!!");
       } else if (response == "empty") {
