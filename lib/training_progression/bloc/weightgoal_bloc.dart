@@ -17,7 +17,7 @@ class WeightGoalBloc extends Bloc<WeightGoalEvents, WeightGoalState> {
       yield WeightGoalInitState();
     }
     if (event is SaveButtonPressed) {
-      yield LoadingWeightGoalState();
+      yield WeightGoalLoadingState();
       var response = await service.create(
         event.user,
         event.currentWeight,
@@ -35,9 +35,9 @@ class WeightGoalBloc extends Bloc<WeightGoalEvents, WeightGoalState> {
       if (response == "error") {
         yield WeightGoalErrorState(message: "ERMEGHERD SOMTHG WRNG!!!");
       } else if (response == "empty") {
-        yield CreateWeightGoalState();
+        yield WeightGoalCreateState();
       } else {
-        yield ShowWeightGoalState(json: response);
+        yield WeightGoalShowState(json: response);
       }
     }
   }

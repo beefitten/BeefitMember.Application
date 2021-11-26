@@ -8,7 +8,7 @@ class WeightGoalState extends Equatable {
 
 class WeightGoalInitState extends WeightGoalState {}
 
-class LoadingWeightGoalState extends WeightGoalState {}
+class WeightGoalLoadingState extends WeightGoalState {}
 
 class WeightGoalSuccessState extends WeightGoalState {}
 
@@ -18,10 +18,10 @@ class WeightGoalErrorState extends WeightGoalState {
   WeightGoalErrorState({required this.message});
 }
 
-class CreateWeightGoalState extends WeightGoalState {}
+class WeightGoalCreateState extends WeightGoalState {}
 
-class ShowWeightGoalState extends WeightGoalState {
+class WeightGoalShowState extends WeightGoalState {
   final WeightGoalModel json;
 
-  ShowWeightGoalState({required this.json});
+  WeightGoalShowState({required this.json});
 }
