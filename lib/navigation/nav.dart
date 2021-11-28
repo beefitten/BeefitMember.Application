@@ -81,7 +81,7 @@ class _NavState extends State<Nav> {
           _widgetOptions.add(BookingsPage());
           break;
         case 1:
-          _widgetOptions.add(TrainingProgression());
+          _widgetOptions.add(WeightGoal());
           break;
         case 2:
           _widgetOptions.add(CenterInformation());

@@ -17,14 +17,14 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class TrainingProgression extends StatefulWidget {
-  const TrainingProgression({Key? key}) : super(key: key);
+class WeightGoal extends StatefulWidget {
+  const WeightGoal({Key? key}) : super(key: key);
 
   @override
-  State<TrainingProgression> createState() => _TrainingProgressionState();
+  State<WeightGoal> createState() => _WeightGoalState();
 }
 
-class _TrainingProgressionState extends State<TrainingProgression> {
+class _WeightGoalState extends State<WeightGoal> {
   late WeightGoalBloc weightGoalBloc;
   @override
   void initState() {
