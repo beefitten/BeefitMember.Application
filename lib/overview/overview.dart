@@ -14,7 +14,7 @@ import 'package:beefitmember_application/overview/widgets/parallax_app_bar.dart'
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
 import 'package:beefitmember_application/shared/statics/get_padding.dart';
 import 'package:beefitmember_application/shared/user/user.dart';
-import 'package:beefitmember_application/training_progression/preview/training_prog_preview.dart';
+import 'package:beefitmember_application/weight_goal/preview/training_prog_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:beefitmember_application/training_progression/models/weight_goal_model.dart';
+import 'package:beefitmember_application/weight_goal/models/weight_goal_model.dart';
 import 'package:http/http.dart' as http;
 
 class WeightGoalService {

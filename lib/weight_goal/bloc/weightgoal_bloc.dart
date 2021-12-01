@@ -1,6 +1,6 @@
-import 'package:beefitmember_application/training_progression/bloc/weightgoal_events.dart';
-import 'package:beefitmember_application/training_progression/bloc/weightgoal_states.dart';
-import 'package:beefitmember_application/training_progression/services/weightgoal_service.dart';
+import 'package:beefitmember_application/weight_goal/bloc/weightgoal_events.dart';
+import 'package:beefitmember_application/weight_goal/bloc/weightgoal_states.dart';
+import 'package:beefitmember_application/weight_goal/services/weightgoal_service.dart';
 import 'weightgoal_events.dart';
 import 'weightgoal_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

@@ -1,5 +1,5 @@
 import 'package:beefitmember_application/shared/widgets/texts.dart';
-import 'package:beefitmember_application/training_progression/widgets/plus_minus_counter.dart';
+import 'package:beefitmember_application/weight_goal/widgets/plus_minus_counter.dart';
 import 'package:flutter/material.dart';
 
 class TimeLimitCounter extends StatefulWidget {

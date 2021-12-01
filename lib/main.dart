@@ -4,8 +4,8 @@ import 'package:beefitmember_application/center_information/service/center_infor
 import 'package:beefitmember_application/bookings/bloc/appointments/appointments_bloc.dart';
 import 'package:beefitmember_application/bookings/bloc/appointments/appointments_state.dart';
 import 'package:beefitmember_application/bookings/services/appointments_service.dart';
-import 'package:beefitmember_application/training_progression/bloc/weightgoal_bloc.dart';
-import 'package:beefitmember_application/training_progression/services/weightgoal_service.dart';
+import 'package:beefitmember_application/weight_goal/bloc/weightgoal_bloc.dart';
+import 'package:beefitmember_application/weight_goal/services/weightgoal_service.dart';
 import 'package:beefitmember_application/bookings/bloc/bookings_bloc.dart';
 import 'package:beefitmember_application/bookings/bloc/bookings_state.dart';
 import 'package:beefitmember_application/bookings/services/bookings_service.dart';
@@ -22,7 +22,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'bookings/bloc/bookingsList/bookings_list_bloc.dart';
 import 'bookings/bloc/bookingsList/bookings_list_state.dart';
-import 'training_progression/bloc/weightgoal_states.dart';
+import 'weight_goal/bloc/weightgoal_states.dart';
 import 'user/pages/pre_login/pre_login.dart';
 import 'package:firebase_core/firebase_core.dart';
 

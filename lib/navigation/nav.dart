@@ -5,7 +5,7 @@ import 'package:beefitmember_application/center_information/center_information.d
 import 'package:beefitmember_application/more/pages/more.dart';
 import 'package:beefitmember_application/overview/overview.dart';
 import 'package:beefitmember_application/shared/FitnessPackage/FitnessPackage.dart';
-import 'package:beefitmember_application/training_progression/weight_goal.dart';
+import 'package:beefitmember_application/weight_goal/weight_goal.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
