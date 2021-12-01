@@ -37,16 +37,14 @@ dependencies:
   flutter_secure_storage:
   flutter_displaymode: 
   flutter_svg: 0.22.0 # Bug in version 0.23.0
-  google_maps_flutter: ^2.0.9
-  fl_chart: ^0.40.2
-  google_fonts: ^2.1.0
+  google_maps_flutter:
+  fl_chart:
+  google_fonts:
   intl:
   fluttertoast:
-
-  firebase_core: ^1.8.0
-  cloud_firestore: ^2.5.4
-
-  flutter_local_notifications: ^7.0.0
+  firebase_core:
+  cloud_firestore:
+  flutter_local_notifications:
 
 
 dev_dependencies:
