@@ -62,6 +62,7 @@ class MyApp extends StatelessWidget {
                 AppointmentsInitState(), AppointmentsService())),
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Beefit Member',
         routes: {
           '/': (context) => PreLogin(),
