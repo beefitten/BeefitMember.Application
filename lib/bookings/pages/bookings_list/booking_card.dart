@@ -10,12 +10,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
-final int secondaryColor = int.parse(FitnessPackage.model.secondaryColor);
-final int primaryColor = int.parse(FitnessPackage.model.primaryColor);
-final TextStyle fontFamily =
-      GoogleFonts.getFont(FitnessPackage.model.font.generalFont);
-
-
 class BookingCard extends StatefulWidget {
   final String timeStart, timeEnd, className, place, email;
   final Classes classInfo;
@@ -165,7 +159,6 @@ class _BookingCardState extends State<BookingCard> {
   @override
   Widget build(BuildContext context) {
     final green = Color.fromRGBO(0, 186, 136, 1);
-    final standardBtnColor = Color(secondaryColor);
 
     String className = widget.className;
     String timeStart = widget.timeStart;
@@ -218,7 +211,7 @@ class _BookingCardState extends State<BookingCard> {
               msg: "$className Is Fully Booked...",
               toastLength: Toast.LENGTH_SHORT,
               gravity: ToastGravity.BOTTOM,
-              backgroundColor: Color(primaryColor),
+              backgroundColor: Color(int.parse(FitnessPackage.model.primaryColor)),
               textColor: Colors.white,
               fontSize: 16.0);
           return;
@@ -231,10 +224,10 @@ class _BookingCardState extends State<BookingCard> {
       },
       child: Text(
         this._isBooked ? booked : book, 
-        style: fontFamily,
+        style: GoogleFonts.getFont(FitnessPackage.model.font.generalFont),
       ),
       style: ElevatedButton.styleFrom(
-          primary: this._isBooked ? green : standardBtnColor),
+          primary: this._isBooked ? green : Color(int.parse(FitnessPackage.model.secondaryColor))),
     );
 
     final card = Column(

@@ -21,7 +21,6 @@ class ClassesList extends StatefulWidget {
 }
 
 class _ClassesListState extends State<ClassesList> {
-  bool _isBooked = false;
   List<Classes>? _allClasses;
   List<Classes>? _yourBookings;
   late BookingListBloc bookingListBloc;
@@ -30,12 +29,6 @@ class _ClassesListState extends State<ClassesList> {
   void initState() {
     bookingListBloc = BlocProvider.of<BookingListBloc>(context);
     super.initState();
-  }
-
-  handleBook() {
-    setState(() {
-      _isBooked = !_isBooked;
-    });
   }
 
   alreadyBooked(Classes currentClass) {
@@ -65,7 +58,7 @@ class _ClassesListState extends State<ClassesList> {
                 return Center(
                   child: CircularProgressIndicator(
                     backgroundColor:
-                        Color(int.parse(FitnessPackage.model.primaryColor)),
+                        Color(primaryColor),
                   ),
                 );
               if (state is BookingListSuccessState) {
