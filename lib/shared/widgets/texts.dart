@@ -30,7 +30,7 @@ class H1Text extends StatelessWidget {
 
 class H2Text extends StatelessWidget {
   final String _text;
-  final h2 = FitnessPackage.model.font.headerTwo;
+  final _h2 = FitnessPackage.model.font.headerTwo;
 
   H2Text(this._text);
 
@@ -40,8 +40,8 @@ class H2Text extends StatelessWidget {
       _text,
       textAlign: TextAlign.left,
       style: GoogleFonts.getFont(
-        h2.family,
-        fontSize: double.parse(h2.size),
+        _h2.family,
+        fontSize: double.parse(_h2.size),
         fontWeight: FontWeight.w700,
       ),
     );
@@ -50,7 +50,7 @@ class H2Text extends StatelessWidget {
 
 class H3Text extends StatelessWidget {
   final String _text;
-  final h3 = FitnessPackage.model.font.headerThree;
+  final _h3 = FitnessPackage.model.font.headerThree;
 
   H3Text(this._text);
 
@@ -59,8 +59,8 @@ class H3Text extends StatelessWidget {
     return Text(
       _text,
       style: GoogleFonts.getFont(
-        h3.family,
-        fontSize: double.parse(h3.size),
+        _h3.family,
+        fontSize: double.parse(_h3.size),
         fontWeight: FontWeight.w700,
       ),
     );
