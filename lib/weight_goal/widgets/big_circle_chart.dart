@@ -16,7 +16,7 @@ class BigCircleChart extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             H3Text("You've Lost:"),
-            H2Text("12.2 KG"),
+            H2Text("12.5 KG"),
           ],
         ),
         SizedBox(
