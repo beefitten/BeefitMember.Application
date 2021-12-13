@@ -79,6 +79,7 @@ class BuildLoaded extends StatelessWidget {
       CenterInformationMain(map, model),
       FitnessPackage.model.centerInformation.hasHeatmap
           ? Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Padding(
                   padding: const EdgeInsets.only(top: 12.0, bottom: 12.0),
